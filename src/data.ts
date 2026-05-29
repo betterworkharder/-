@@ -317,6 +317,17 @@ export const CATEGORIES: TrendCategory[] = [
     "description": "关注大模型、Agent、空间计算及底层技术的突破与应用。",
     "news": [
       {
+        "id": "pt26-6",
+        "sourceTitle": "Flowr：多智能体 AI 正在从“辅助分析”走向“供应链流程自动化” (arXiv 预印本)",
+        "sourceUrl": "https://arxiv.org/pdf/2604.05987",
+        "date": "2026-05-29",
+        "eventProperty": "多智能体大模型 / 供应链端到端自动化 / arXiv前沿研究",
+        "coreFacts": "arXiv最新预印本发表了由Old Dominion University、Deloitte、Accenture Technology Labs等机构联合撰写的关于Flowr架构的论文。该研究指出过往供应链运营中的需求预测、采购、供应商协调、补货和异常处理中大量依赖人工协调的短板，证明了依靠多智能体AI (Multi-Agent) 可以将这些流程拆分为若干个承担专业职责的 agent，在人类监督下(Human-in-the-Loop)实现端到端自动化。",
+        "strategicSignal": "这篇文章的价值在于提醒：AI 真正改变供应链和货运行业的方式，不是“回答问题”，而是“参与流程、协调角色、处理异常、辅助决策”。从对话式AI到流程式、业务执行型AI的演进，正成为行业共识。",
+        "businessConnection": "对丰行慧运的启示：未来丰行的AI应用不应停留在问答与报表生成，而应深植到具体的运输以及周转经营流程中，演变并扮演调度、派车、补能、异常解决、结算风控的“业务执行型智能体”。",
+        "judgmentSuggestion": "建议迅速建立“车辆运营在途多智能体”技术原型，验证恶劣天气或事故在途自动预警解耦重排的效率，推动产品向执行期Agent转化。"
+      },
+      {
         "id": "pt26-1",
         "sourceTitle": "Motive发布AI-powered Automations，车队运营走向自动化工作流",
         "sourceUrl": "https://gomotive.com/blog/ai-fleet-automation/",

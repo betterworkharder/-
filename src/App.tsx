@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -330,84 +330,155 @@ const StrategicInsight = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Card 1: 空间智能 */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white border border-slate-200/60 p-10 md:p-16 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-2xl hover:shadow-[#0052D9]/[0.04] hover:border-[#0052D9]/20 transition-all duration-500 relative overflow-hidden group"
+          className="bg-white border border-slate-200/60 p-8 md:p-12 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-2xl hover:shadow-[#0052D9]/[0.04] hover:border-[#0052D9]/20 transition-all duration-500 relative overflow-hidden group flex flex-col justify-between"
         >
           <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-tr from-[#0052D9]/5 to-indigo-500/5 rounded-full blur-[100px] -mr-24 -mt-24 group-hover:from-[#0052D9]/10 group-hover:to-indigo-500/10 transition-all duration-700" />
           
-          <div className="relative z-10">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="text-[10px] font-bold text-white bg-indigo-600 px-4 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-sm shadow-indigo-600/10">权威发布</span>
-              <span className="text-[10px] font-bold text-slate-400">2026年3月发布</span>
+          <div className="relative z-10 flex-grow">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-[10px] font-black text-white bg-indigo-600 px-3.5 py-1 rounded-full uppercase tracking-[0.2em] shadow-sm shadow-indigo-600/10">权威发布</span>
+              <span className="text-[10px] font-black text-slate-400">2026年3月发布</span>
             </div>
             
-            <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 leading-tight font-display">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 leading-tight font-display">
               《空间智能发展报告》
             </h3>
             
-            <div className="space-y-8 mb-12">
-              <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">联合编制单位</p>
-                <p className="text-sm text-slate-700 font-bold leading-relaxed">
-                  工业和信息化部元宇宙标准化技术委员会（筹）<br />
-                  中国电子工业标准化技术协会元宇宙工作委员会
+            <div className="space-y-6 mb-8">
+              <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">联合编制单位</p>
+                <p className="text-xs text-slate-700 font-bold leading-relaxed">
+                  工信部元宇宙标准化标委会（筹）<br />
+                  中电标协元宇宙工作委员会
                 </p>
               </div>
               
-                <div className="space-y-6">
-                  <p className="text-base text-slate-600 leading-relaxed font-medium">
-                    《空间智能发展报告》揭示了人工智能正在从<span className="text-[#0052D9] font-bold">“读万卷书”</span>的信息处理阶段，迈向<span className="text-[#0052D9] font-bold">“行万里路”</span>的物理世界交互新时代。
+              <div className="space-y-4">
+                <p className="text-sm text-slate-600 leading-relaxed font-semibold">
+                  《空间智能发展报告》揭示了人工智能正在从<span className="text-[#0052D9] font-bold">“读万卷书”</span>的信息阶段，迈向<span className="text-[#0052D9] font-bold">“行万里路”</span>的物理交互时代。
+                </p>
+
+                <div className="border-l-4 border-[#0052D9] pl-4 py-1">
+                  <h4 className="text-sm font-black text-slate-900 mb-1">什么是空间智能？</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed font-semibold">
+                    智能体在三维空间中感知、理解、推理与实时的自主决策。通过多模态数据，让机器具备在物理环境导航、协同协作能力。
                   </p>
+                </div>
 
-                  <div className="border-l-4 border-[#0052D9] pl-6 py-2">
-                    <h4 className="text-lg font-black text-slate-900 mb-2">什么是空间智能？让AI真正“看懂”并“动手”</h4>
-                    <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                      空间智能是指智能体在三维空间中感知、理解、推理、决策与交互的能力。它不再局限于处理文本或二维图像，通过融合视觉、触觉、声学等多模态数据，让机器具备在真实物理环境中导航、操作与协作能力。
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-xs text-slate-400 font-black uppercase tracking-widest">技术演进四个阶段</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                      {[
-                        { time: "20世纪60年代", title: "理论奠基与几何建模" },
-                        { time: "21世纪初", title: "感知融合与三维重建" },
-                        { time: "2010年代", title: "深度学习驱动场景语义理解" },
-                        { time: "现阶段", title: "虚实共生与智能交互" }
-                      ].map((stage, i) => (
-                        <div key={stage.title} className="flex items-start gap-3">
-                          <span className="text-[10px] font-black text-[#0052D9] bg-[#0052D9]/10 px-2 py-0.5 rounded mt-0.5">{i+1}</span>
-                          <div>
-                            <p className="text-[10px] font-bold text-slate-400 uppercase">{stage.time}</p>
-                            <p className="text-[13px] text-slate-700 font-bold">{stage.title}</p>
-                          </div>
+                <div className="space-y-2">
+                  <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">技术演进阶段</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { time: "60年代", title: "几何建模" },
+                      { time: "21世纪初", title: "感知融合" },
+                      { time: "10年代", title: "语义理解" },
+                      { time: "现阶段", title: "虚实共生" }
+                    ].map((stage, i) => (
+                      <div key={stage.title} className="flex items-start gap-2">
+                        <span className="text-[8px] font-black text-[#0052D9] bg-[#0052D9]/10 w-4 h-4 rounded-full flex items-center justify-center mt-0.5">{i+1}</span>
+                        <div>
+                          <p className="text-[8px] font-bold text-slate-400">{stage.time}</p>
+                          <p className="text-xs text-slate-700 font-black">{stage.title}</p>
                         </div>
-                      ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative z-10 pt-6 border-t border-slate-100 flex flex-col md:flex-row items-start md:items-center gap-4 mt-6">
+            <a 
+              href="https://pan.baidu.com/s/1gxj987Lxje7vkOVjSG366Q?pwd=0409" 
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 bg-slate-900 hover:bg-[#0052D9] text-white px-5 py-3 rounded-xl text-xs font-black transition-all shadow-lg hover:shadow-[#0052D9]/20 group/btn"
+            >
+              下载完整 PDF <Icons.ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+            </a>
+            <p className="text-[9px] font-bold text-slate-400 leading-relaxed">
+              微信公众号 “赛西元宇宙” 发送「空间智能」获取（提取码：0409）
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Card 2: Flowr Multi-Agent Supply Chain Automation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="bg-white border border-slate-200/60 p-8 md:p-12 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-2xl hover:shadow-[#0052D9]/[0.04] hover:border-[#0052D9]/20 transition-all duration-500 relative overflow-hidden group flex flex-col justify-between"
+        >
+          <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-tr from-emerald-500/5 to-teal-500/5 rounded-full blur-[100px] -mr-24 -mt-24 group-hover:from-emerald-500/10 group-hover:to-teal-500/10 transition-all duration-700" />
+          
+          <div className="relative z-10 flex-grow">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-[10px] font-black text-white bg-emerald-600 px-3.5 py-1 rounded-full uppercase tracking-[0.2em] shadow-sm shadow-emerald-600/10">学术前沿</span>
+              <span className="text-[10px] font-black text-slate-400">2026年最新 ArXiv 预印本</span>
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 leading-tight font-display">
+              Flowr：多智能体 AI 正在走向“供应链流程自动化”
+            </h3>
+            
+            <div className="space-y-6 mb-8">
+              <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">研究团队 / 机构</p>
+                <p className="text-xs text-slate-700 font-bold leading-relaxed">
+                  Old Dominion University、德勤 (Deloitte)、埃森哲实验室 (Accenture Technology Labs) 等机构
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm text-slate-600 leading-relaxed font-semibold">
+                  本研究揭示：目前供应链、采购及物流管理中大部分异常跟进依旧严重依赖人工协调。通过 <span className="text-[#0052D9] font-black">Flowr</span> 框架，可以把流程拆分为若干个专业智能体 (Agents)，在人类监督下实现端到端闭环自动化。
+                </p>
+
+                <div className="p-4 bg-[#0052D9]/[0.03] border-l-4 border-[#0052D9] rounded-r-2xl my-4">
+                  <p className="text-[8px] font-black text-[#0052D9] uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                    <Icons.Lightbulb size={9} />
+                    核心战略逻辑 / THE CORE STATEMENT
+                  </p>
+                  <p className="text-xs text-slate-800 font-black italic leading-relaxed">
+                    “这篇文章的价值在于提醒：AI 真正改变供应链和货运行业的方式，不是‘回答问题’，而是‘参与流程、协调角色、处理异常、辅助决策’。”
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">对丰行慧运的启示与战略演进</p>
+                  <div className="grid grid-cols-1 gap-2">
+                    <div className="flex items-start gap-2 bg-emerald-50/20 p-3 rounded-xl border border-emerald-500/5">
+                      <Icons.ChevronRight size={14} className="text-emerald-600 mt-0.5 shrink-0" />
+                      <p className="text-xs text-slate-700 font-black">
+                        丰行未来的 AI 产品不能仅停留在信息问答或报表生成，而应深扎经营，成为调度、派车、在途、异常、风控的“业务执行型智能体” (Action-Oriented Agent)。
+                      </p>
                     </div>
                   </div>
                 </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-              <a 
-                href="https://pan.baidu.com/s/1gxj987Lxje7vkOVjSG366Q?pwd=0409" 
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-4 bg-slate-900 hover:bg-[#0052D9] text-white px-8 py-4.5 rounded-[20px] font-bold transition-all shadow-lg hover:shadow-[#0052D9]/20 group/btn"
-              >
-                下载完整 PDF 报告 <Icons.ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </a>
-              <div className="flex flex-col">
-                <p className="text-[11px] font-bold text-slate-400 leading-relaxed">
-                  官方获取链接：赛西元宇宙微信公众号<br />
-                  发送关键词 <span className="text-slate-500">「空间智能」</span> 获取（提取码：<span className="text-slate-500 underline decoration-slate-300 underline-offset-2">0409</span>）
-                </p>
               </div>
             </div>
+          </div>
+
+          <div className="relative z-10 pt-6 border-t border-slate-100 flex flex-col md:flex-row items-start md:items-center gap-4 mt-6">
+            <a 
+              href="https://arxiv.org/pdf/2604.05987" 
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 bg-emerald-600 hover:bg-[#0052D9] text-white px-5 py-3 rounded-xl text-xs font-black transition-all shadow-lg hover:shadow-emerald-600/20 group/btn"
+            >
+              阅读 ArXiv 论文 [PDF] <Icons.ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+            </a>
+            <p className="text-[9px] font-bold text-slate-400 leading-relaxed">
+              ArXiv:2604.05987 | 由学术团队与头部咨询机构共同发布的供应链智能体标杆文献
+            </p>
           </div>
         </motion.div>
       </div>
@@ -415,7 +486,7 @@ const StrategicInsight = () => {
   );
 };
 
-const Tooltip = ({ text, children }: { text: string; children: React.ReactNode }) => {
+const Tooltip = ({ text, children, width = "w-[140px]" }: { text: string; children: React.ReactNode; width?: string }) => {
   const [show, setShow] = useState(false);
   return (
     <div className="relative inline-block w-full h-full" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
@@ -426,7 +497,7 @@ const Tooltip = ({ text, children }: { text: string; children: React.ReactNode }
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-4 p-4 w-[140px] bg-slate-900 text-white rounded-xl shadow-2xl border border-white/10 pointer-events-none whitespace-normal"
+            className={`absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-4 p-4 ${width} bg-slate-900 text-white rounded-xl shadow-2xl border border-white/10 pointer-events-none whitespace-normal`}
           >
             <div className="flex flex-col gap-2">
               <span className="text-[9px] font-black uppercase tracking-widest text-[#0052D9] border-b border-white/5 pb-2 flex items-center gap-2">
@@ -448,7 +519,7 @@ const Tooltip = ({ text, children }: { text: string; children: React.ReactNode }
 const CompetitorDashboard = () => {
   const [activeTab, setActiveTab] = useState<'financial' | 'hr' | 'rd'>('financial');
 
-  const competitorGroups = [
+  const RAW_COMPETITOR_GROUPS = [
     {
       category: "一、车队安全风控与车辆智能化",
       companies: [
@@ -461,13 +532,13 @@ const CompetitorDashboard = () => {
         { 
           name: "锐明技术", status: "A股", code: "002970.SZ",
           financial: { cap: "123.20", rev2025: "24.77", growth2025: "-10.82%", profit: "3.89", grossMargin: "45.18%", netMargin: "15.68%" },
-          hr: { revPerPerson: "111.02", profitPerPerson: "17.15", salaryPerPerson: "20.23", employeeCount: "2,231", mastersRatio: "8.96%", rop: "85.29%" },
+          hr: { revPerPerson: "111.02", profitPerPerson: "17.15", salaryPerPerson: "20.23", employeeCount: "2,231", mastersRatio: "8.96%", rop: "85.29%", mastersCount: 200, phdCount: 0 },
           rd: { rdInvestment: "2.86", rdIntensity: "11.54%", rdPersonnelCount: "690", rdPersonnelRatio: "30.93%", patentCount: "563" }
         },
         { 
           name: "启明信息", status: "A股", code: "002232.SZ",
           financial: { cap: "66.51", rev2025: "7.74", growth2025: "-11.88%", profit: "0.33", grossMargin: "27.44%", netMargin: "4.20%" },
-          hr: { revPerPerson: "50.10", profitPerPerson: "2.11", salaryPerPerson: "20.88", employeeCount: "1,545", mastersRatio: "10.68%", rop: "6.88%" },
+          hr: { revPerPerson: "50.10", profitPerPerson: "2.11", salaryPerPerson: "20.88", employeeCount: "1,545", mastersRatio: "10.68%", rop: "6.88%", mastersCount: 165, phdCount: 0 },
           rd: { rdInvestment: "1.17", rdIntensity: "15.09%", rdPersonnelCount: "961", rdPersonnelRatio: "62.20%", patentCount: "79" }
         }
       ]
@@ -501,7 +572,7 @@ const CompetitorDashboard = () => {
         { 
           name: "传化智联", status: "A股", code: "002010.SZ",
           financial: { cap: "148.70", rev2025: "250.84", growth2025: "-6.05%", profit: "6.41", grossMargin: "15.00%", netMargin: "2.55%" },
-          hr: { revPerPerson: "530.47", profitPerPerson: "12.46", salaryPerPerson: "32.75", employeeCount: "4,731", mastersRatio: "10.36%", rop: "85.96%" },
+          hr: { revPerPerson: "530.47", profitPerPerson: "12.46", salaryPerPerson: "32.75", employeeCount: "4,731", mastersRatio: "10.36%", rop: "85.96%", mastersCount: 457, phdCount: 33 },
           rd: { rdInvestment: "4.55", rdIntensity: "1.81%", rdPersonnelCount: "911", rdPersonnelRatio: "19.26%", patentCount: "140" }
         }
       ]
@@ -512,13 +583,13 @@ const CompetitorDashboard = () => {
         { 
           name: "千方科技", status: "A股", code: "002373.SZ",
           financial: { cap: "131.16", rev2025: "82.17", growth2025: "13.35%", profit: "2.91", grossMargin: "31.20%", netMargin: "3.54%" },
-          hr: { revPerPerson: "136.50", profitPerPerson: "4.46", salaryPerPerson: "28.71", employeeCount: "6,020", mastersRatio: "21.16%", rop: "18.04%" },
+          hr: { revPerPerson: "136.50", profitPerPerson: "4.46", salaryPerPerson: "28.71", employeeCount: "6,020", mastersRatio: "21.16%", rop: "18.04%", mastersCount: 1274, phdCount: 0 },
           rd: { rdInvestment: "11.39", rdIntensity: "13.86%", rdPersonnelCount: "2,508", rdPersonnelRatio: "41.66%", patentCount: "3,251" }
         },
         { 
           name: "万集科技", status: "A股", code: "300552.SZ",
           financial: { cap: "65.45", rev2025: "10.94", growth2025: "17.61%", profit: "-1.74", grossMargin: "32.43%", netMargin: "-15.86%" },
-          hr: { revPerPerson: "72.84", profitPerPerson: "-12.06", salaryPerPerson: "28.18", employeeCount: "1,502", mastersRatio: "24.77%", rop: "-36.29%" },
+          hr: { revPerPerson: "72.84", profitPerPerson: "-12.06", salaryPerPerson: "28.18", employeeCount: "1,502", mastersRatio: "24.77%", rop: "-36.29%", mastersCount: 361, phdCount: 11 },
           rd: { rdInvestment: "2.51", rdIntensity: "22.93%", rdPersonnelCount: "406", rdPersonnelRatio: "27.03%", patentCount: "1,166" }
         }
       ]
@@ -531,22 +602,59 @@ const CompetitorDashboard = () => {
           financial: { cap: "2.25", rev2025: "3.20", growth2025: "50.60%", profit: "-3.85", grossMargin: "35.15%", netMargin: "-120.31%" },
           hr: { revPerPerson: "64.00", profitPerPerson: "-77.00", salaryPerPerson: "28.50", employeeCount: "500", mastersRatio: "-", rop: "-" },
           rd: { rdInvestment: "0.45", rdIntensity: "14.06%", rdPersonnelCount: "115", rdPersonnelRatio: "23.00%", patentCount: "135" }
-        },
-        { 
-          name: "车主邦/团油", status: "非上市", code: "NEWLINK",
-          financial: { cap: "-", rev2025: "15.50", growth2025: "25.40%", profit: "-1.10", grossMargin: "18.30%", netMargin: "-7.10%" },
-          hr: { revPerPerson: "129.17", profitPerPerson: "-9.17", salaryPerPerson: "24.50", employeeCount: "1,200", mastersRatio: "-", rop: "-" },
-          rd: { rdInvestment: "0.85", rdIntensity: "5.48%", rdPersonnelCount: "250", rdPersonnelRatio: "20.83%", patentCount: "482" }
-        },
-        { 
-          name: "传化智联相关车后业务", status: "业务板块", code: "002010.SZ",
-          financial: { cap: "-", rev2025: "24.50", growth2025: "12.80%", profit: "1.25", grossMargin: "11.20%", netMargin: "5.10%" },
-          hr: { revPerPerson: "245.00", profitPerPerson: "12.50", salaryPerPerson: "18.50", employeeCount: "1,000", mastersRatio: "-", rop: "-" },
-          rd: { rdInvestment: "0.38", rdIntensity: "1.55%", rdPersonnelCount: "45", rdPersonnelRatio: "4.50%", patentCount: "15" }
         }
       ]
     }
   ];
+
+  const competitorGroups = useMemo(() => {
+    return RAW_COMPETITOR_GROUPS.map(group => ({
+      ...group,
+      companies: group.companies.map(company => {
+        const parseNumber = (val: string | number | undefined): number | null => {
+          if (val === undefined || val === null) return null;
+          if (typeof val === 'number') return val;
+          const cleaned = val.toString().replace(/,/g, '').trim();
+          if (cleaned === '-' || cleaned === '') return null;
+          const num = parseFloat(cleaned);
+          return isNaN(num) ? null : num;
+        };
+
+        const empCount = parseNumber(company.hr.employeeCount);
+
+        // Calculate Masters & Above Ratio (including PhDs and Masters)
+        let computedMastersRatio = company.hr.mastersRatio;
+        if (company.hr.mastersCount !== undefined && company.hr.phdCount !== undefined) {
+          const mCount = parseNumber(company.hr.mastersCount) || 0;
+          const pCount = parseNumber(company.hr.phdCount) || 0;
+          if (empCount && empCount > 0) {
+            computedMastersRatio = (((mCount + pCount) / empCount) * 100).toFixed(2) + "%";
+          }
+        }
+
+        // Calculate RD Personnel Ratio (rdPersonnelCount / employeeCount)
+        let computedRdPersonnelRatio = company.rd.rdPersonnelRatio;
+        if (company.rd.rdPersonnelCount !== undefined && company.rd.rdPersonnelCount !== "-") {
+          const rdCount = parseNumber(company.rd.rdPersonnelCount);
+          if (rdCount !== null && empCount && empCount > 0) {
+            computedRdPersonnelRatio = ((rdCount / empCount) * 100).toFixed(2) + "%";
+          }
+        }
+
+        return {
+          ...company,
+          hr: {
+            ...company.hr,
+            mastersRatio: computedMastersRatio
+          },
+          rd: {
+            ...company.rd,
+            rdPersonnelRatio: computedRdPersonnelRatio
+          }
+        };
+      })
+    }));
+  }, [RAW_COMPETITOR_GROUPS]);
 
   return (
     <section id="竞品看板" className="max-w-7xl mx-auto px-8 py-24 border-t border-slate-100 scroll-mt-20">
@@ -691,7 +799,20 @@ const CompetitorDashboard = () => {
                           <td className="p-6 font-bold text-slate-600 text-center">{row.hr.profitPerPerson}</td>
                           <td className="p-6 text-[#0052D9] font-black text-center bg-[#0052D9]/5 underline decoration-[#0052D9]/30 underline-offset-4">{row.hr.salaryPerPerson}</td>
                           <td className="p-6 font-bold text-slate-900 text-center">{row.hr.employeeCount}</td>
-                          <td className="p-6 font-bold text-slate-600 text-center">{row.hr.mastersRatio}</td>
+                          <td className="p-0 font-bold text-slate-600 text-center">
+                            {row.hr.mastersRatio !== "-" && row.hr.mastersCount !== undefined ? (
+                              <Tooltip 
+                                width="w-[280px]"
+                                text={`高学历占比公式：\n(硕士人数 ${row.hr.mastersCount} + 博士人数 ${row.hr.phdCount}) / 员工总数 ${row.hr.employeeCount} = ${row.hr.mastersRatio}`}
+                              >
+                                <div className="p-6 h-full w-full cursor-help underline decoration-dashed decoration-slate-300 underline-offset-4 hover:text-[#0052D9] transition-colors">
+                                  {row.hr.mastersRatio}
+                                </div>
+                              </Tooltip>
+                            ) : (
+                              <div className="p-6">{row.hr.mastersRatio}</div>
+                            )}
+                          </td>
                           <td className="p-0 font-bold text-slate-500 text-center border-l border-slate-50 italic">
                             <Tooltip text="ROP是人力资源投入的利润回报率,体现了企业价值相比员工价值的高低,P体现员工价值; R体现企业价值. 该指标适用于主要成本为人力投入的企业, 比如软件服务业。">
                               <div className="p-6 h-full w-full cursor-help">
@@ -707,7 +828,20 @@ const CompetitorDashboard = () => {
                           <td className="p-6 font-bold text-slate-900 text-center border-l border-slate-50">{row.rd.rdInvestment}</td>
                           <td className="p-6 text-[#0052D9] font-black text-center bg-[#0052D9]/5 underline decoration-[#0052D9]/30 underline-offset-4">{row.rd.rdIntensity}</td>
                           <td className="p-6 font-bold text-slate-600 text-center">{row.rd.rdPersonnelCount}</td>
-                          <td className="p-6 font-bold text-slate-900 text-center">{row.rd.rdPersonnelRatio}</td>
+                          <td className="p-0 font-bold text-slate-900 text-center">
+                            {row.rd.rdPersonnelRatio !== "-" && row.rd.rdPersonnelCount !== "-" ? (
+                              <Tooltip 
+                                width="w-[280px]"
+                                text={`研发人员占比公式：\n研发人员数 ${row.rd.rdPersonnelCount} / 员工总数 ${row.hr.employeeCount} = ${row.rd.rdPersonnelRatio}`}
+                              >
+                                <div className="p-6 h-full w-full cursor-help underline decoration-dashed decoration-slate-300 underline-offset-4 hover:text-[#0052D9] transition-colors">
+                                  {row.rd.rdPersonnelRatio}
+                                </div>
+                              </Tooltip>
+                            ) : (
+                              <div className="p-6">{row.rd.rdPersonnelRatio}</div>
+                            )}
+                          </td>
                           <td className="p-0 font-bold text-slate-600 text-center">
                             <Tooltip text="合并报表范围内本上市公司及控股一级子公司在指定截止日内，专利法律状态为授权的专利总数。">
                               <div className="p-6 h-full w-full cursor-help">
