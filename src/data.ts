@@ -1,0 +1,379 @@
+export interface NewsLink {
+  title: string;
+  url: string;
+}
+
+export interface NewsDetail {
+  id: string;
+  sourceTitle: string;
+  sourceUrl: string;
+  date: string;
+  eventProperty: string;
+  coreFacts: string;
+  strategicSignal: string;
+  businessConnection: string;
+  judgmentSuggestion: string;
+  downloads?: NewsLink[];
+  interpretations?: NewsLink[];
+}
+
+export interface TrendCategory {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  news: NewsDetail[];
+}
+
+export interface ArchiveIssue {
+  date: string;
+  title: string;
+  categories: TrendCategory[];
+}
+
+// 2026年5月29日刊 - 丰行慧运情报中心当前内容
+export const CATEGORIES: TrendCategory[] = [
+  {
+    "id": "policy",
+    "title": "政策与监管动态",
+    "icon": "ShieldCheck",
+    "description": "追踪部委政策、专项行动及规制要求，助力合规经营。",
+    "news": [
+      {
+        "id": "p26-0",
+        "sourceTitle": "国家发改委详解“六张网”建设规划，年内投资超7万亿、“十五五”总投资超10万亿",
+        "sourceUrl": "https://www.gov.cn/lianbo/202605/content_7070126.htm",
+        "date": "2026-05-25",
+        "eventProperty": "基础设施建设 / 数字化融合 / 六张网规划",
+        "coreFacts": "国家发改委详解‘六张网’建设计划：包括水网、新型电网、算力网、新一代通信网、城市地下管网、物流网。2026年年内‘六张网’投资将超7万亿元，‘十五五’期间总投资将超10万亿元，正在抓紧出台六张网规划及实施方案。其中，新型电网‘十五五’投资超5万亿元，地下管网将改造约77万公里，算力网全国一体化调度，新一代通信网全面支持大数据/智慧物流，物流网将实现要素自由流动与大幅降本。",
+        "strategicSignal": "国家‘六张网’建设是推动数字与实体融合的战略。建设机制采用‘年度分解 + 季度调度 + 动态项目库’，在稳增长与培育长期新质生产力之间取得平衡。",
+        "businessConnection": "物流网、算力网和新一代通信网的大规模建设，为丰行慧运带来极佳的发展契机。丰行慧运可积极对接‘十五五’智慧物流基础设施项目，将实时车载监控和路网数智化能力与‘六张网’无缝结合，探索由国家七万亿基建牵引的产业控制塔和物流降本协同商业新机会。",
+        "judgmentSuggestion": "",
+        "interpretations": [
+          {
+            "title": "【官方解读】新华社：中国经济面面观丨为什么是“六张网”——看政策出台的深层逻辑",
+            "url": "http://www.xinhuanet.com/fortune/20260528/34acb525283449df9ac1e56565eae3cd/c.html"
+          },
+          {
+            "title": "【官方解读】人民网：“六张网”建设顾当前利长远",
+            "url": "http://theory-app.people.cn/n1/2026/0507/c40531-40714867.html"
+          },
+          {
+            "title": "【媒体解读】21世纪经济报道：年内投资7万亿的基建大生意，国家发改委详解“六张网”",
+            "url": "http://m.toutiao.com/group/7642710382104117779/"
+          }
+        ]
+      },
+      {
+        "id": "p26-1",
+        "sourceTitle": "交通运输部部署2026年“安全生产月”，强调风险隐患排查和数智赋能安全生产",
+        "sourceUrl": "https://xxgk.mot.gov.cn/jigou/aqyzljlglj/202605/t20260528_4206449.html",
+        "date": "2026-05-28",
+        "eventProperty": "交通运输安全生产 / 风险隐患排查 / 数智监管",
+        "coreFacts": "交通运输部办公厅发布2026年交通运输“安全生产月”活动通知，主题为“人人讲安全、个个会应急——排查整治风险隐患”，并提出强化人工智能、大数据、监测预警设备设施在安全监管中的应用。",
+        "strategicSignal": "交通运输安全监管进一步从事后检查转向事前预防、风险识别、动态监测和闭环处置。",
+        "businessConnection": "可包装“安全生产月专项服务包”，包括车辆风险画像、报警清零、重点车辆督办、司机培训台账、企业整改闭环、政府监管看板。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "p26-2",
+        "sourceTitle": "交通运输部调度重点地区强化强降雨期间响应、巡查、管控",
+        "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260526_4206272.html",
+        "date": "2026-05-26",
+        "eventProperty": "汛期公路安全 / 极端天气应急 / 主动防御",
+        "coreFacts": "针对5月25日至27日中东部较大范围降雨过程，交通运输部要求重点地区强化响应、巡查、管控，做好暴雨、大暴雨、雷暴大风、短时强降水等天气下的运输安全保障。",
+        "strategicSignal": "公路货运安全管理正在从常规监管，延伸到天气、路况、车辆、任务联动的动态风险管控。",
+        "businessConnection": "可推出“汛期货运安全运营方案”，将天气预警、风险路段、车辆任务、司机提醒、ETA重算和客户通知联动起来。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "p26-3",
+        "sourceTitle": "交通运输部发布4月交通运输经济运行情况，公路货运保持平稳增长",
+        "sourceUrl": "https://xxgk.mot.gov.cn/jigou/zhghs/202605/t20260526_4206311.html",
+        "date": "2026-05-26",
+        "eventProperty": "交通运输经济运行 / 公路货运数据",
+        "coreFacts": "4月营业性货运量49.8亿吨，同比增长2.2%；其中公路货运量38.1亿吨，同比增长1.7%。1—4月公路货运量136.8亿吨，同比增长3.4%。",
+        "strategicSignal": "公路货运大盘仍保持增长，但增速较平稳，行业竞争重点将更多转向存量提效、降本、安全和履约。",
+        "businessConnection": "对外汇报时，不宜只讲“市场变大”，更应强调“如何帮助存量车队和货主降低事故、空驶、绕路、货损、赔付和结算纠纷”。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "p26-4",
+        "sourceTitle": "河北推动产业集群“共享物流”，降低社会物流成本",
+        "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260528_4206418.html",
+        "date": "2026-05-28",
+        "eventProperty": "物流降本 / 产业集群共享物流 / 多式联运",
+        "coreFacts": "河北推动现代钢铁、装备制造、纺织服装等产业集群共享物流，整合运输通道、仓储设施、配送网络和数据信息，降低全社会物流成本。",
+        "strategicSignal": "地方政府正在把物流降本从单个企业问题，上升为产业集群和区域供应链组织能力问题。",
+        "businessConnection": "可面向产业园区、工业集群、地方政府打造“产业集群运力池+共享物流控制塔”方案。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "p26-5",
+        "sourceTitle": "2026年度“暖途”行动启动，预计服务货车司机和出租车司机630万人次以上",
+        "sourceUrl": "https://news.gmw.cn/2026-05/22/content_38780665.htm",
+        "date": "2026-05-22",
+        "eventProperty": "货车司机权益 / 新就业群体保障 / 行业治理",
+        "coreFacts": "2026年度“暖途”行动启动，确定32个执行项目，预计直接服务货车司机、出租汽车司机630万人次以上。",
+        "strategicSignal": "货车司机不再只是平台和车队的管理对象，也成为监管、工会、协会、平台企业共同关注的新就业群体。",
+        "businessConnection": "丰行车队平台可增加司机权益、培训、健康、法律咨询、保险保障、申诉机制等模块，提升司机侧粘性。",
+        "judgmentSuggestion": ""
+      }
+    ]
+  },
+  {
+    "id": "competitor",
+    "title": "竞品与标杆企业动态",
+    "icon": "Target",
+    "description": "监控标杆企业及竞争对手的战略布局、产品研发及重大市场动向。",
+    "news": [
+      {
+        "id": "c26-1",
+        "sourceTitle": "满帮发布2026年一季度业绩，履约订单和货主月活继续增长",
+        "sourceUrl": "https://www.prnewswire.com/news-releases/full-truck-alliance-co-ltd-announces-first-quarter-2026-unaudited-financial-results-302778713.html",
+        "date": "2026-05-21",
+        "eventProperty": "数字货运平台 / 交易服务 / AI物流工作流",
+        "coreFacts": "满帮2026年一季度履约订单5500万单，同比增长14.3%；平均货主月活311万，同比增长12.7%；交易服务收入同比增长33.1%。",
+        "strategicSignal": "网络货运平台正在从撮合交易，向交易服务、履约服务和AI工作流变现升级。",
+        "businessConnection": "丰行不能只做后台管理工具，应向“货主下单—运力组织—在途履约—异常处置—结算风控”的一体化平台靠拢。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "c26-2",
+        "sourceTitle": "路歌“AI安全护航”入围2026年度“暖途”行动执行项目",
+        "sourceUrl": "https://www.rmzxw.com.cn/c/2026-05-22/3920120.shtml?n2m=1",
+        "date": "2026-05-22",
+        "eventProperty": "路歌 / 司机安全服务 / AI护航",
+        "coreFacts": "路歌全国货车司机“AI安全护航”项目提供智能路线规划、危险路段预警、异常天气推送、精准安全培训、7×24小时法律咨询等服务。",
+        "strategicSignal": "平台竞争从货源、运价、交易效率，延伸到司机安全、司机权益和稳定运力运营。",
+        "businessConnection": "丰行可把司机安全服务产品化，形成“安全+经济+时效+权益”的司机服务体系。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "c26-3",
+        "sourceTitle": "中储智运升级“一平米健康站”，上线“灵犀”AI健康助手",
+        "sourceUrl": "https://thinktank.cnfin.com/szjj-lb/detail/20260525/4416866_1.html",
+        "date": "2026-05-25",
+        "eventProperty": "中储智运 / 司机健康 / AI助手",
+        "coreFacts": "中储智运在APP内嵌“灵犀”AI健康助手，通过分析行车轨迹等数据，实时研判货车司机驾驶行为与健康风险。",
+        "strategicSignal": "车队和平台正在把“健康、安全、行为数据”合并为司机运营能力的一部分。",
+        "businessConnection": "丰行可探索“司机风险画像2.0”，不仅看超速、疲劳、分心驾驶，也关注连续驾驶、休息规律、路线强度和健康风险。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "c26-4",
+        "sourceTitle": "货拉拉公开行为分规则修订流程，放宽错抢订单扣分",
+        "sourceUrl": "https://www.stcn.com/article/detail/3929342.html",
+        "date": "2026-05-27",
+        "eventProperty": "货拉拉 / 平台治理 / 司机规则优化",
+        "coreFacts": "货拉拉公开平台行为分规则修订流程，并优化错抢订单、违规收费两类规则；错抢订单扣分由5分下调至2分，扣分强度降低60%。",
+        "strategicSignal": "平台治理透明化正在成为货运平台稳定司机、降低摩擦的重要能力。",
+        "businessConnection": "丰行如果做平台化运营，需要提前设计司机规则、申诉机制、扣分模型、信用体系和规则公示流程。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "c26-5",
+        "sourceTitle": "Motive发布AI自动化能力，推动车队运营从被动响应转向主动预防",
+        "sourceUrl": "https://gomotive.com/blog/ai-fleet-automation/",
+        "date": "2026-05-27",
+        "eventProperty": "海外标杆 / AI车队运营 / 自动化工作流",
+        "coreFacts": "Motive发布AI-powered Automations，支持通过模板或自然语言设置自动化流程，触发驾驶员提醒、安全培训、维护提醒、怠速管理等动作。",
+        "strategicSignal": "海外车队平台已经从“数据看板”进入“AI自动执行”阶段。",
+        "businessConnection": "丰行产品应减少人工盯屏依赖，增加自动触发机制：疲劳驾驶提醒、偏航通知、故障派单、连续违规升级等。",
+        "judgmentSuggestion": ""
+      }
+    ]
+  },
+  {
+    "id": "customer",
+    "title": "客户需求与场景机会",
+    "icon": "Users",
+    "description": "洞察数字化项目营收逻辑与城市治理、商业空间新机会。",
+    "news": [
+      {
+        "id": "cu26-1",
+        "sourceTitle": "黄山12328调解跨省货运纠纷，货物外包装受潮引发责任争议",
+        "sourceUrl": "https://www.zgjtb.com/m/2026-05/21/content_519627.html",
+        "date": "2026-05-21",
+        "eventProperty": "物流企业 / 货车司机 / 货主收货方",
+        "coreFacts": "司机承接黄山至东莞跨省运输业务，货物准时送达后因外包装受潮被退回，物流企业要求司机承担货损和赔偿，双方围绕责任归属产生争议。",
+        "strategicSignal": "货主、物流企业、司机之间缺少完整履约证据链，难以还原车型是否匹配、装车状态、天气、路线、停留、签收和货损责任。",
+        "businessConnection": "可做“履约证据链产品”：装车照片、在途轨迹、异常停留、天气风险、到货签收、货损责任辅助判定。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "cu26-2",
+        "sourceTitle": "河北推动产业集群共享物流，整合运输、仓储、配送和数据信息",
+        "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260528_4206418.html",
+        "date": "2026-05-28",
+        "eventProperty": "产业集群 / 钢铁、装备制造、纺织服装企业",
+        "coreFacts": "河北围绕重点产业集群推动共享物流，整合分散的运输通道、仓储设施、配送网络和数据信息。",
+        "strategicSignal": "产业集群内企业规模不同、货量分散、车辆组织低效，容易出现空驶、重复配送、仓配割裂。",
+        "businessConnection": "适合打造“产业集群物流控制塔”：共享运力池、共同配送、线路优化、承运商评分、成本分摊和政府降本成效看板。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "cu26-3",
+        "sourceTitle": "中保物流企业对接跨里海运输走廊，关注跨境运输、国际班列和绿色低碳",
+        "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260527_4206346.html",
+        "date": "2026-05-27",
+        "eventProperty": "跨境物流 / 国际班列 / 港口与航运企业",
+        "coreFacts": "中国—保加利亚国际物流企业对接活动在北京举办，双方围绕跨里海国际运输走廊、跨境运输、国际航运、国际班列、绿色低碳等方向交流合作。",
+        "strategicSignal": "跨境物流链条长、节点多，货主关注节点可视、异常预警、时效可控、单证协同和多式联运衔接。",
+        "businessConnection": "丰行可先从境内段能力切入：跨境货物集货、干线运输、场站衔接、ETA预测和异常预警。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "cu26-4",
+        "sourceTitle": "强降雨期间交通运输部要求重点地区强化风险辨识和应急管控",
+        "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260526_4206272.html",
+        "date": "2026-05-26",
+        "eventProperty": "车队 / 货主 / 道路运输企业",
+        "coreFacts": "中东部大范围强降雨期间，交通运输部要求重点地区强化响应、巡查、管控，防范暴雨、大风、短时强降水等天气对交通运输安全的影响。",
+        "strategicSignal": "恶劣天气会带来晚点、绕路、事故、货损、司机安全和客户投诉等连锁风险。",
+        "businessConnection": "可推出“天气风险运输助手”：风险线路识别、替代路线推荐、重点车辆提醒、客户ETA重算、异常任务自动上报。",
+        "judgmentSuggestion": ""
+      },
+      {
+        "id": "cu26-5",
+        "sourceTitle": "“暖途”行动继续服务货车司机，司机保障和平台责任成为行业议题",
+        "sourceUrl": "https://news.gmw.cn/2026-05/22/content_38780665.htm",
+        "date": "2026-05-22",
+        "eventProperty": "货车司机 / 车队 / 平台企业",
+        "coreFacts": "2026年度“暖途”行动预计直接服务货车司机、出租汽车司机630万人次以上，服务内容包括互助帮扶、保险保障、法律援助、安全培训等。",
+        "strategicSignal": "司机群体长期面临安全风险高、收入波动、健康压力、维权难、平台规则不透明等问题。",
+        "businessConnection": "丰行车队业务可加入“司机服务中心”：培训、健康、安全、保险、法律、申诉、信用成长，提升车队和司机粘性。",
+        "judgmentSuggestion": ""
+      }
+    ]
+  },
+  {
+    "id": "industry",
+    "title": "产业与市场趋势",
+    "icon": "BarChart3",
+    "description": "追踪空间智能行业演进，提供产业发展方向参考",
+    "news": [
+      {
+        "id": "i26-1",
+        "sourceTitle": "4月公路货运量同比增长1.7%，公路货运进入平稳增长阶段",
+        "sourceUrl": "https://xxgk.mot.gov.cn/jigou/zhghs/202605/t20260526_4206311.html",
+        "date": "2026-05-26",
+        "eventProperty": "交通运输部发布4月交通运输经济运行数据。",
+        "coreFacts": "4月公路货运量38.1亿吨，同比增长1.7%；1—4月公路货运量136.8亿吨，同比增长3.4%。",
+        "strategicSignal": "公路货运仍是大盘基本盘，但增速偏稳，行业重点从增量扩张转向存量效率提升。",
+        "judgmentSuggestion": "同质化车队系统和低价项目竞争会加剧，客户更关注实际降本和安全效果。",
+        "businessConnection": "丰行的价值表达要从“系统建设”转为“经营结果”：事故率、空驶率、准点率、货损率、赔付率、吨公里成本。"
+      },
+      {
+        "id": "i26-2",
+        "sourceTitle": "满帮一季度履约订单同比增长14.3%，数字货运渗透率继续提升",
+        "sourceUrl": "https://www.prnewswire.com/news-releases/full-truck-alliance-co-ltd-announces-first-quarter-2026-unaudited-financial-results-302778713.html",
+        "date": "2026-05-21",
+        "eventProperty": "满帮发布2026年一季度业绩。",
+        "coreFacts": "满帮一季度履约订单5500万单，同比增长14.3%；平均货主月活311万，同比增长12.7%。",
+        "strategicSignal": "头部数字货运平台订单增长快于公路货运大盘，线上化、平台化仍在提升。",
+        "judgmentSuggestion": "平台型企业会进一步挤压传统车队和中小货运组织的客户入口。",
+        "businessConnection": "丰行需要形成自己的交易入口或客户控制点，不能只停留在后台管理工具。"
+      },
+      {
+        "id": "i26-3",
+        "sourceTitle": "河北推进共享物流，物流降本成为地方产业竞争力抓手",
+        "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260528_4206418.html",
+        "date": "2026-05-28",
+        "eventProperty": "河北推进物流降本和产业集群共享物流。",
+        "coreFacts": "河北整合产业集群运输通道、仓储设施、配送网络、数据信息等物流资源，推动降低全社会物流成本。",
+        "strategicSignal": "地方政府越来越关注物流成本占经济运行的比重，物流数字化会成为区域营商环境和产业竞争力工具。",
+        "judgmentSuggestion": "政府项目不只看平台功能，还会看是否能带动产业降本的可量化指标。",
+        "businessConnection": "政府业务方案要增加“降本测算模型”：线路缩短、空驶下降、等待时间减少、仓配协同、运力共享带来的成本变化。"
+      },
+      {
+        "id": "i26-4",
+        "sourceTitle": "低空物流从“能不能飞”转向“划不划算”，常态化运营和盈利成为重点",
+        "sourceUrl": "https://finance.sina.com.cn/chanjing/2026-05-26/doc-inhzcxxh1879224.shtml",
+        "date": "2026-05-26",
+        "eventProperty": "2026世界无人机大会后，低空物流商业化受到关注。",
+        "coreFacts": "美团、顺丰等企业已开通超过1400条低空航线，低空物流从常态化运营向商业盈利过渡。",
+        "strategicSignal": "物流网络正在从单一公路干线向“公路+低空+仓配+末端”复合网络演进。",
+        "judgmentSuggestion": "低空物流短期不是丰行主战场，但会改变高时效、偏远、应急场景的运输组织方式。",
+        "businessConnection": "当前重点不是立即切入低空，而是学习其“任务调度、实时监控、异常预警、成本核算”的平台化思路。"
+      },
+      {
+        "id": "i26-5",
+        "sourceTitle": "中保物流企业推动跨里海运输走廊合作，跨境多式联运持续升温",
+        "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202605/t20260527_4206346.html",
+        "date": "2026-05-27",
+        "eventProperty": "中国—保加利亚国际物流企业对接活动举办。",
+        "coreFacts": "双方围绕跨里海国际运输走廊、跨境运输、国际航运、国际班列、绿色低碳发展等方面开展合作交流。",
+        "strategicSignal": "中国企业物流需求正在从国内干线运输延伸到跨境、多式联运和全球供应链可视化。",
+        "judgmentSuggestion": "跨境运输链条长、规则复杂，单一车队系统难以覆盖全链条。",
+        "businessConnection": "中长期可布局“跨境物流控制塔”的境内段能力：集货、干线、场站、关务节点、ETA、异常协同。"
+      }
+    ]
+  },
+  {
+    "id": "product_tech",
+    "title": "产品与技术动态",
+    "icon": "Cpu",
+    "description": "关注大模型、Agent、空间计算及底层技术的突破与应用。",
+    "news": [
+      {
+        "id": "pt26-1",
+        "sourceTitle": "Motive发布AI-powered Automations，车队运营走向自动化工作流",
+        "sourceUrl": "https://gomotive.com/blog/ai-fleet-automation/",
+        "date": "2026-05-27",
+        "eventProperty": "AI车队自动化 / 工作流产品",
+        "coreFacts": "支持通过模板或自然语言设置自动化流程，触发驾驶员提醒、安全培训、维护提醒、怠速管理等动作。",
+        "strategicSignal": "海外车队运营技术跃升：自动化工作流、安全培训、异常处理闭环。",
+        "judgmentSuggestion": "重点研发方向：AI自动化工作流、风险事件自动分派、司机提醒、培训闭环、车辆维护联动。",
+        "businessConnection": "丰行平台要从“报警展示”升级为“报警—判断—派发—跟踪—复盘”的自动闭环系统。"
+      },
+      {
+        "id": "pt26-2",
+        "sourceTitle": "Motive推出内嵌商用车导航，支持车辆尺寸、重量、轴数、危化品限制等路线约束",
+        "sourceUrl": "https://gomotive.com/blog/commercial-navigation-motive-driver-app/",
+        "date": "2026-05-27",
+        "eventProperty": "商用车导航 / 货车安全路线",
+        "coreFacts": "根据车辆尺寸、重量、轴数、危化品限制等生成商用车适配路线，并嵌入司机App。",
+        "strategicSignal": "商用车的定制化导航深度融入司机驾驶流程，确保安全与合规。",
+        "judgmentSuggestion": "重点研发产品/方向：货车安全导航、限高限重限行规避、危化品路线、ETA、调度任务联动。",
+        "businessConnection": "丰行源自地图和货运路网能力，应把“货车导航+线路成本+安全风险+合规限制+在途监控”作为核心差异化产品。"
+      },
+      {
+        "id": "pt26-3",
+        "sourceTitle": "顺丰分享AI+供应链实践，大模型、Agent和运筹算法重构物流决策",
+        "sourceUrl": "https://m.36kr.com/p/3820107133555077",
+        "date": "2026-05-22",
+        "eventProperty": "AI+供应链 / 智能调度 / 运筹优化",
+        "coreFacts": "顺丰分享在航空货运、车辆调度、动态路由等复杂供应链场景中应用AI调度、大模型、Agent和运筹算法。",
+        "strategicSignal": "供应链多要素重构：航空/车辆/路由等业务在大模型与智商因子结合下，迈向全链路协同决策。",
+        "judgmentSuggestion": "重点研发产品/方向：AI调度、动态路由、运筹优化、Agent协同、供应链控制塔。",
+        "businessConnection": "丰行应把“智能调度”讲成可落地能力：排线、派车、异常重算、资源匹配、成本优化，而不只是AI概念。"
+      },
+      {
+        "id": "pt26-4",
+        "sourceTitle": "数智化与低空技术赋能物流，物流服务从平面运输走向立体协同",
+        "sourceUrl": "https://finance.sina.com.cn/stock/t/2026-05-26/doc-inhzequs2998959.shtml",
+        "date": "2026-05-26",
+        "eventProperty": "数智物流 / 低空技术 / 数字孪生调度",
+        "coreFacts": "报道提到无人机、无人车、智能仓配、无人视频监控等物流要素通过数字孪生系统实现实时指挥调度。",
+        "strategicSignal": "交通立体物流与数字孪生深度演化，使得全要素在三维流转中敏捷可控。",
+        "judgmentSuggestion": "重点研发产品/方向：数字孪生调度、低空物流网络、智能仓配、无人车协同、实时监控。",
+        "businessConnection": "丰行可关注多运输方式协同下的“运输控制塔”，未来从公路货运延伸到园区、仓配、低空、末端等复合运输场景。"
+      },
+      {
+        "id": "pt26-5",
+        "sourceTitle": "Motive Vision 26发布AI硬件和软件能力，AI从洞察走向行动",
+        "sourceUrl": "https://gomotive.com/blog/announced-at-vision-26-motive-ai-innovation/",
+        "date": "2026-05-27",
+        "eventProperty": "AI硬件 / 车载感知 / 车队平台",
+        "coreFacts": "Motive在Vision 26发布Dashcam Plus、Omnicam、AI Assistant and Automations等能力，强调AI从洞察走向行动。",
+        "strategicSignal": "AI软硬件一体化监控，赋能端边云多层主动干预，实现安全与运营的完整流程管理。",
+        "judgmentSuggestion": "重点研发产品/方向：车载摄像头、360度感知、AI助手、自动化工作流、风险识别。",
+        "businessConnection": "丰行可强化“软件平台+硬件终端+运营服务”一体化能力，避免只做轻量SaaS而缺少安全风控闭环。"
+      }
+    ]
+  }
+];
+
+// 历史期刊归档
+export const HISTORICAL_ISSUES: ArchiveIssue[] = [];
