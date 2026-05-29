@@ -41,8 +41,8 @@ const Navbar = ({ onOpenHistory, likesCount, onLike, isLiked, currentTitle }: { 
               {[
                 { id: 'policy', label: '政策与监管动态' },
                 { id: 'competitor', label: '竞品与标杆企业动态' },
-                { id: 'customer', label: '客户需求与场景机会' },
                 { id: 'industry', label: '产业与市场趋势' },
+                { id: 'customer', label: '客户需求与场景机会' },
                 { id: 'product_tech', label: '产品与技术动态' }
               ].map((link) => (
                 <a 
