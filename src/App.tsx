@@ -41,8 +41,8 @@ const Navbar = ({ onOpenHistory, likesCount, onLike, isLiked, currentTitle }: { 
               {[
                 { id: 'policy', label: '政策与监管动态' },
                 { id: 'competitor', label: '竞品与标杆企业动态' },
-                { id: 'industry', label: '产业与市场趋势' },
                 { id: 'customer', label: '客户需求与场景机会' },
+                { id: 'industry', label: '产业与市场趋势' },
                 { id: 'product_tech', label: '产品与技术动态' }
               ].map((link) => (
                 <a 
@@ -132,6 +132,26 @@ const Header = ({ displayDate }: { displayDate: string }) => (
     </motion.div>
   </header>
 );
+
+const RatingStars = ({ rating = 5 }: { rating?: number }) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    if (i <= rating) {
+      stars.push(
+        <Icons.Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+      );
+    } else {
+      stars.push(
+        <Icons.Star key={i} className="w-3.5 h-3.5 text-amber-400" />
+      );
+    }
+  }
+  return (
+    <div className="flex items-center gap-0.5" title={`丰行慧运重要度评估：${rating}星`}>
+      {stars}
+    </div>
+  );
+};
 
 const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string }) => {
   const getLabels = () => {
@@ -303,9 +323,20 @@ const CategoryDetail = ({ isOpen, onClose, category, activeNewsId }: { isOpen: b
                   id={`news-${item.id}`}
                   className={`space-y-4 p-6 rounded-3xl transition-all border border-transparent ${activeNewsId === item.id ? 'bg-[#0052D9]/[0.02] border-[#0052D9]/10 shadow-sm' : ''}`}
                 >
-                  <h3 className="text-xl font-bold text-slate-900 border-l-[4px] border-[#0052D9] pl-4 leading-normal">
+                  <div className="pl-4">
+                    <RatingStars rating={item.rating} />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 border-l-[4px] border-[#0052D9] pl-4 leading-normal mt-2">
                     {item.sourceTitle}
                   </h3>
+                  {item.summary && (
+                    <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 ml-4 mt-3 shadow-inner">
+                      <span className="text-xs font-bold text-[#0052D9] tracking-wider block mb-1">【情报摘要】</span>
+                      <p className="text-sm text-slate-600 leading-relaxed font-semibold">
+                        {item.summary}
+                      </p>
+                    </div>
+                  )}
                   <NewsTable news={item} categoryId={category.id} />
                 </section>
               ))}
@@ -915,23 +946,26 @@ const TrendCard = ({ category, index, onOpen }: { category: TrendCategory; index
                 }}
                 className="w-full text-left p-4 rounded-xl border border-transparent hover:border-slate-200/50 hover:bg-slate-50/50 hover:shadow-sm transition-all group/item flex items-center justify-between"
               >
-                <div className="flex flex-col gap-1 flex-grow">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 bg-slate-300 rounded-full flex-shrink-0 group-hover/item:bg-[#0052D9] transition-colors" />
-                      <span className="text-sm text-slate-800 font-bold leading-relaxed group-hover/item:text-[#0052D9] transition-colors">
-                        {item.sourceTitle.replace(/^新闻\d+：/, '')}
-                      </span>
-                    </div>
+                <div className="flex flex-col gap-2 flex-grow pr-2">
+                  <div className="flex items-center justify-between pl-4.5">
+                    <RatingStars rating={item.rating} />
                     <span className="text-[10px] font-mono text-slate-350 font-medium group-hover/item:text-[#6f8df1] transition-colors flex-shrink-0">
                       {item.date}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-400 font-medium line-clamp-1 pl-4 group-hover/item:text-slate-500 transition-colors">
-                    {item.coreFacts.replace(/[#*|`-]/g, '').replace(/\n/g, ' ').substring(0, 100)}
-                  </p>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-slate-300 rounded-full flex-shrink-0 mt-2 group-hover/item:bg-[#0052D9] transition-colors" />
+                    <div className="flex-grow">
+                      <span className="text-sm text-slate-800 font-bold leading-relaxed group-hover/item:text-[#0052D9] transition-colors block">
+                        {item.sourceTitle.replace(/^新闻\d+：/, '')}
+                      </span>
+                      <p className="text-[11px] text-slate-400 font-medium leading-relaxed group-hover/item:text-slate-500 transition-colors mt-1.5">
+                        {item.summary || item.coreFacts.replace(/[#*|`-]/g, '').replace(/\n/g, ' ').substring(0, 100)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <Icons.ChevronRight className="w-4 h-4 text-slate-200 group-hover/item:text-[#0052D9] transition-colors" />
+                <Icons.ChevronRight className="w-4 h-4 text-slate-200 group-hover/item:text-[#0052D9] transition-colors flex-shrink-0" />
               </button>
             ))}
           </div>
@@ -1102,9 +1136,9 @@ const Footer = () => (
 );
 
 const HistorySidebar = ({ isOpen, onClose, selectedDate, onSelect }: { isOpen: boolean; onClose: () => void; selectedDate: string; onSelect: (date: string) => void }) => {
-  const currentIssueDate = "2026-05-29";
+  const currentIssueDate = "2026-06-05";
   const allIssues = [
-    { date: currentIssueDate, title: '2026年5月29日刊 (最新)', isCurrent: true },
+    { date: currentIssueDate, title: '2026年6月5日刊 (最新)', isCurrent: true },
     ...HISTORICAL_ISSUES.map(issue => ({ date: issue.date, title: issue.title, isCurrent: false }))
   ];
 
@@ -1192,12 +1226,12 @@ export default function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("2026-05-29");
+  const [selectedDate, setSelectedDate] = useState("2026-06-05");
 
   // Derive data based on selection
-  const isCurrentIssue = selectedDate === "2026-05-29";
+  const isCurrentIssue = selectedDate === "2026-06-05";
   const displayIssue = isCurrentIssue 
-    ? { title: "2026年5月29日刊", date: "2026.05.29", categories: CATEGORIES }
+    ? { title: "2026年6月5日刊", date: "2026.06.05", categories: CATEGORIES }
     : HISTORICAL_ISSUES.find(issue => issue.date === selectedDate) || { title: "未知期刊", date: selectedDate, categories: [] };
 
   useEffect(() => {
