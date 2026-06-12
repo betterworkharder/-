@@ -2,5 +2,5 @@
   "name": "Remix: 丰行慧运情报中心",
   "description": "Strategic intelligence system for Fengtu Technology, covering industry, technology, customer, business, capital, and regulatory trends.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

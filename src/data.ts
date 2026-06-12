@@ -1,4 +1,5 @@
 import { JUNE_05_CATEGORIES } from './news_june05';
+import { JUNE_12_CATEGORIES } from './news_june12';
 
 export interface NewsLink {
   title: string;
@@ -35,11 +36,33 @@ export interface ArchiveIssue {
   categories: TrendCategory[];
 }
 
-// 2026年6月5日刊 - 丰行慧运情报中心当前最新内容
-export const CATEGORIES: TrendCategory[] = JUNE_05_CATEGORIES;
+function reorderCategories(cats: TrendCategory[]): TrendCategory[] {
+  const orderedIds = ['policy', 'competitor', 'industry', 'customer', 'product_tech'];
+  const map = new Map(cats.map(c => [c.id, c]));
+  const result: TrendCategory[] = [];
+  for (const id of orderedIds) {
+    const item = map.get(id);
+    if (item) {
+      result.push(item);
+      map.delete(id);
+    }
+  }
+  for (const item of map.values()) {
+    result.push(item);
+  }
+  return result;
+}
+
+// 2026年6月12日刊 - 丰行慧运情报中心当前最新内容
+export const CATEGORIES: TrendCategory[] = reorderCategories(JUNE_12_CATEGORIES);
 
 // 历史期刊归档
 export const HISTORICAL_ISSUES: ArchiveIssue[] = [
+  {
+    "date": "2026-06-05",
+    "title": "2026年6月5日刊",
+    "categories": reorderCategories(JUNE_05_CATEGORIES)
+  },
   {
     "date": "2026-05-29",
     "title": "2026年5月29日刊",

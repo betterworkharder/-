@@ -41,8 +41,8 @@ const Navbar = ({ onOpenHistory, likesCount, onLike, isLiked, currentTitle }: { 
               {[
                 { id: 'policy', label: '政策与监管动态' },
                 { id: 'competitor', label: '竞品与标杆企业动态' },
-                { id: 'customer', label: '客户需求与场景机会' },
                 { id: 'industry', label: '产业与市场趋势' },
+                { id: 'customer', label: '客户需求与场景机会' },
                 { id: 'product_tech', label: '产品与技术动态' }
               ].map((link) => (
                 <a 
@@ -1136,9 +1136,9 @@ const Footer = () => (
 );
 
 const HistorySidebar = ({ isOpen, onClose, selectedDate, onSelect }: { isOpen: boolean; onClose: () => void; selectedDate: string; onSelect: (date: string) => void }) => {
-  const currentIssueDate = "2026-06-05";
+  const currentIssueDate = "2026-06-12";
   const allIssues = [
-    { date: currentIssueDate, title: '2026年6月5日刊 (最新)', isCurrent: true },
+    { date: currentIssueDate, title: '2026年6月12日刊 (最新)', isCurrent: true },
     ...HISTORICAL_ISSUES.map(issue => ({ date: issue.date, title: issue.title, isCurrent: false }))
   ];
 
@@ -1226,12 +1226,12 @@ export default function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("2026-06-05");
+  const [selectedDate, setSelectedDate] = useState("2026-06-12");
 
   // Derive data based on selection
-  const isCurrentIssue = selectedDate === "2026-06-05";
+  const isCurrentIssue = selectedDate === "2026-06-12";
   const displayIssue = isCurrentIssue 
-    ? { title: "2026年6月5日刊", date: "2026.06.05", categories: CATEGORIES }
+    ? { title: "2026年6月12日刊", date: "2026.06.12", categories: CATEGORIES }
     : HISTORICAL_ISSUES.find(issue => issue.date === selectedDate) || { title: "未知期刊", date: selectedDate, categories: [] };
 
   useEffect(() => {
