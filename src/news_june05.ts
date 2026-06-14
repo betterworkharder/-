@@ -38,92 +38,7 @@ export const JUNE_05_CATEGORIES: TrendCategory[] = [
     "title": "竞品与标杆企业动态",
     "icon": "Target",
     "description": "聚焦国内外数字化车队、数字货运平台及头部物流科技企业战略动作，启迪创新路径。",
-    "news": [
-      {
-        "id": "c26-0605-1",
-        "sourceTitle": "【满帮/运满满】中大型物流公司的福利来了！运满满免费开放API，降本提效这么猛？",
-        "sourceUrl": "https://www.sohu.com/a/1029490485_168370",
-        "date": "2026-05-31",
-        "eventProperty": "开放平台",
-        "coreFacts": "运满满向中大型物流企业开放API，支持企业ERP、TMS与找车、询价、轨迹、支付、发票等能力连接。助力中大型物流企业快速调配社会运力，完成线上全链路数据化对接。",
-        "strategicSignal": "满帮从撮合平台向企业物流系统入口延伸。",
-        "businessConnection": "丰行需要建设开放API、TMS插件、运价接口、履约回传、电子回单 and 自动对账能力，避免被满帮嵌入客户系统后锁定入口。",
-        "rating": 5,
-        "summary": "运满满全面向中大型物流企业开放API，支持ERP与TMS连接询价、轨迹与结算，平台战略由单纯撮合向企业数智入口纵深推进。"
-      },
-      {
-        "id": "c26-0605-2",
-        "sourceTitle": "【Samsara】Samsara Approaches $2 Billion in ARR Amid Physical Economy Boom",
-        "sourceUrl": "https://www.samsara.com/company/news/press-releases/q1-fiscal-year-27-results",
-        "date": "2026-06-04",
-        "eventProperty": "经营结果",
-        "coreFacts": "Samsara ARR接近20亿美元，年同比增长30%，大客户收入实现强劲增长，Operational AI和智能硬件新产品对收入贡献比例持续攀升，高利润率SaaS订阅继续领跑工业物联网。",
-        "strategicSignal": "车队SaaS正在升级为物理运营AI平台。",
-        "businessConnection": "丰行应把车队安全、车辆设备、货主履约、道路事件、场站作业统一到交通货运运营AI平台。",
-        "rating": 5,
-        "summary": "Samsara年经常性收入（ARR）触及20亿美元里程碑，同比增长30%。大客户订阅维持高景气度，推动传统的车队管理工具向整体实体运营AI平台演化。"
-      },
-      {
-        "id": "c26-0605-3",
-        "sourceTitle": "【G7易流】数字化使能公路货运：G7易流最新商用车在途安全可信管理平台",
-        "sourceUrl": "https://caijing.chinadaily.com.cn/a/202603/31/WS69cb8647a310942cc49a5dad.html?utm_source=chatgpt.com",
-        "date": "2026-03-31",
-        "eventProperty": "安全管理 / 数字化转型 / 车队物联网",
-        "coreFacts": "G7易流发布新一代端云协同智驾安全管理服务平台，整合主动安全硬件、温控监测物联网、在途定位精算算法，深度服务危化大宗、跨境通关、高密冷链运输，降低车队在途风险并提高大盘时效质量。",
-        "strategicSignal": "车队数字化管理已由单一物理状态知晓，迈向高频高危实时闭环干预及安全利润核算。",
-        "businessConnection": "丰行需强化多厂商设备接入可控性，将行车轨迹、在途超速/疲劳高频打卡报警，完美打通后链路，并赋能保司快速核损结案。",
-        "rating": 4,
-        "summary": "G7易流发布最新一代端云协同智驾安全管理服务平台，通过物联网及主动安全硬件在途精算，强化公路大宗和冷链特种运输抗险能力。"
-      },
-      {
-        "id": "c26-0605-4",
-        "sourceTitle": "【千方科技】以“车路运能”聚势，千方科技自动驾驶干线物流业务稳步推进",
-        "sourceUrl": "https://www.stcn.com/article/detail/3943394.html",
-        "date": "2026-06-04",
-        "eventProperty": "自动驾驶干线物流",
-        "coreFacts": "千方科技围绕L3/L4自动驾驶重卡，布局接单、规划、行车、补能、运力管理和在途管控闭环，构建从底层技术至全链路的智驾干线走廊模式。",
-        "strategicSignal": "自动驾驶重卡竞争正在从车辆技术转向车、路、运、能一体化运营能力。",
-        "businessConnection": "丰行应提前布局无人重卡运营平台、线路准入模型、补能规划、远程监管、异常处置 and 货主订单履约。",
-        "rating": 4,
-        "summary": "千方科技全面整合“车、路、运、能”闭环链条稳步推进自动驾驶重卡干线运输，战略重心偏向全流程的无人驾驶车队智慧管控力。"
-      },
-      {
-        "id": "c26-0605-5",
-        "sourceTitle": "【锐明技术】乘风破浪，出海智领未来！锐明技术2026全球展会高光复盘",
-        "sourceUrl": "https://m.10jqka.com.cn/20260601/c677111193.shtml",
-        "date": "2026-06-01",
-        "eventProperty": "AI视频出海",
-        "coreFacts": "锐明技术在全球系列行业展中高光复盘，集中展示包括车载移动展厅、智能车载ADAS系统、智能公交/重卡运营、统一安全管理系统等软硬结合产品方案。",
-        "strategicSignal": "主防硬件厂商继续向AI视频、出海市场 and 综合运营平台延伸。",
-        "businessConnection": "丰行不应陷入硬件价格竞争，应强化多厂商设备接入、算法评估、报警分级、人工干预 and 保险闭环。",
-        "rating": 4,
-        "summary": "锐明技术高调复盘两款海外AI车载安防大展成果。硬核展现端云协同AI视频托管，通过出海中东与欧美等高门槛合规市场拓展技术红利。"
-      },
-      {
-        "id": "c26-0605-6",
-        "sourceTitle": "【京东物流】京东物流国际：织就全球供应链网络，做最值得托付的跨境物流伙伴",
-        "sourceUrl": "https://finance.sina.com.cn/jjxw/2026-06-02/doc-inhzzcpq3216263.shtml",
-        "date": "2026-06-02",
-        "eventProperty": "跨境供应链",
-        "coreFacts": "京东物流国际深度推进海外仓、国际干线运网、末端快递网高效协同，强化端到端自主可控的跨境自营卡车 and 仓配供应链服务能力。",
-        "strategicSignal": "头部物流企业从国内履约平台向全球供应链基础设施延伸。",
-        "businessConnection": "丰行可服务出海制造业 and 跨境电商，提供跨境干线可视化、承运商绩效、海外仓履约监控、异常工单 and 成本分析。",
-        "rating": 4,
-        "summary": "京东物流国际发力编织跨境自营运网与海外智能仓，通过软硬一体能力打通中欧及中美物理走廊实现时效提速。"
-      },
-      {
-        "id": "c26-0605-8",
-        "sourceTitle": "【华为数字能源】华为兆瓦超充助力全国首个县域物流全面电动化落地",
-        "sourceUrl": "https://digitalpower.huawei.com/cn/news/smart-charging-network/county-megawatt-charging",
-        "date": "2026-06-02",
-        "eventProperty": "重卡补能",
-        "coreFacts": "华为智能超充系统在全国首个县级大宗和冷链重卡电动化标杆中落地，引入兆瓦级全液冷超充技术，高度适配国内重载3.5C大件超快充卡车运营。",
-        "strategicSignal": "补能网络正在成为新能源重卡运营的基础设施入口。",
-        "businessConnection": "丰行应将充电站、能耗、排队、车辆载重、线路时效、运单利润纳入车队经营模型。",
-        "rating": 3,
-        "summary": "华为兆瓦级液冷超充解决方案在多省绿色短倒重快充标杆点发布，推动在途运单能耗核算与电动重卡补能无缝契合。"
-      }
-    ]
+    "news": []
   },
   {
     "id": "customer",
@@ -161,7 +76,7 @@ export const JUNE_05_CATEGORIES: TrendCategory[] = [
         "strategicSignal": "物流需求恢复，企业开始从保规模转向提效率、降成本 and 稳利润。",
         "businessConnection": "针对行业‘主营业务利润修复慢，运输成本、用车效率、回款周期仍限制车队经营’痛点，主打丰行提升车辆实载率、一单纠纷2小时极速解决、结算闭环降低回款周期的价值模式。",
         "rating": 3,
-        "summary": "5月份中国物流业景气指数回升至50.3%，连续三个月复苏拓展。车队开始偏重降本提效及利润保值。"
+        "summary": "5月份中国物流业景气指数回升至50.3%，连续三个月复苏拓展. 车队开始偏重降本提效及利润保值。"
       },
       {
         "id": "i26-0605-2",

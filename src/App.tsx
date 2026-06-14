@@ -937,37 +937,44 @@ const TrendCard = ({ category, index, onOpen }: { category: TrendCategory; index
         <div className="md:w-2/3 border-t md:border-t-0 md:border-l border-slate-100 pt-8 md:pt-0 md:pl-12">
           <div className="space-y-4">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6 block font-mono">近期要闻回顾</div>
-            {category.news.map((item) => (
-              <button
-                key={item.id}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpen(category, item.id);
-                }}
-                className="w-full text-left p-4 rounded-xl border border-transparent hover:border-slate-200/50 hover:bg-slate-50/50 hover:shadow-sm transition-all group/item flex items-center justify-between"
-              >
-                <div className="flex flex-col gap-2 flex-grow pr-2">
-                  <div className="flex items-center justify-between pl-4.5">
-                    <RatingStars rating={item.rating} />
-                    <span className="text-[10px] font-mono text-slate-350 font-medium group-hover/item:text-[#6f8df1] transition-colors flex-shrink-0">
-                      {item.date}
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 bg-slate-300 rounded-full flex-shrink-0 mt-2 group-hover/item:bg-[#0052D9] transition-colors" />
-                    <div className="flex-grow">
-                      <span className="text-sm text-slate-800 font-bold leading-relaxed group-hover/item:text-[#0052D9] transition-colors block">
-                        {item.sourceTitle.replace(/^新闻\d+：/, '')}
+            {category.news.length === 0 ? (
+              <div className="text-center py-10 px-4 bg-slate-50 border border-dashed border-slate-200/60 rounded-2xl">
+                <Icons.Sparkles className="w-6 h-6 text-slate-300 mx-auto mb-2.5" />
+                <p className="text-xs text-slate-400 font-bold">目前该板块暂无最新情报动态发布</p>
+              </div>
+            ) : (
+              category.news.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpen(category, item.id);
+                  }}
+                  className="w-full text-left p-4 rounded-xl border border-transparent hover:border-slate-200/50 hover:bg-slate-50/50 hover:shadow-sm transition-all group/item flex items-center justify-between"
+                >
+                  <div className="flex flex-col gap-2 flex-grow pr-2">
+                    <div className="flex items-center justify-between pl-4.5">
+                      <RatingStars rating={item.rating} />
+                      <span className="text-[10px] font-mono text-slate-350 font-medium group-hover/item:text-[#6f8df1] transition-colors flex-shrink-0">
+                        {item.date}
                       </span>
-                      <p className="text-[11px] text-slate-400 font-medium leading-relaxed group-hover/item:text-slate-500 transition-colors mt-1.5">
-                        {item.summary || item.coreFacts.replace(/[#*|`-]/g, '').replace(/\n/g, ' ').substring(0, 100)}
-                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 bg-slate-300 rounded-full flex-shrink-0 mt-2 group-hover/item:bg-[#0052D9] transition-colors" />
+                      <div className="flex-grow">
+                        <span className="text-sm text-slate-800 font-bold leading-relaxed group-hover/item:text-[#0052D9] transition-colors block">
+                          {item.sourceTitle.replace(/^新闻\d+：/, '')}
+                        </span>
+                        <p className="text-[11px] text-slate-400 font-medium leading-relaxed group-hover/item:text-slate-500 transition-colors mt-1.5">
+                          {item.summary || item.coreFacts.replace(/[#*|`-]/g, '').replace(/\n/g, ' ').substring(0, 100)}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <Icons.ChevronRight className="w-4 h-4 text-slate-200 group-hover/item:text-[#0052D9] transition-colors flex-shrink-0" />
-              </button>
-            ))}
+                  <Icons.ChevronRight className="w-4 h-4 text-slate-200 group-hover/item:text-[#0052D9] transition-colors flex-shrink-0" />
+                </button>
+              ))
+            )}
           </div>
         </div>
       </div>
