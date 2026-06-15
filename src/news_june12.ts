@@ -81,7 +81,7 @@ export const JUNE_12_CATEGORIES: TrendCategory[] = [
     "id": "industry",
     "title": "产业与市场趋势",
     "icon": "BarChart3",
-    "description": "追踪空间智能行业演进，提供产业发展方向参考",
+    "description": "提供产业发展方向参考",
     "news": [
       {
         "id": "i26-0612-1",
