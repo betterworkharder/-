@@ -3,9 +3,9 @@ import { TrendCategory } from './data';
 export const JUNE_05_CATEGORIES: TrendCategory[] = [
   {
     "id": "policy",
-    "title": "政策与监管动态",
+    "title": "政策趋势与监管",
     "icon": "ShieldCheck",
-    "description": "追踪部委政策、专项行动及规制要求，助力合规经营。",
+    "description": "聚焦政策导向、制度演进与监管边界的变化，识别影响行业秩序、业务规则和合规空间的关键信号。重点呈现政策变化背后的方向性趋势，判断其对相关行业 and 市场环境的长期影响。",
     "news": [
       {
         "id": "p26-0605-1",
@@ -35,16 +35,16 @@ export const JUNE_05_CATEGORIES: TrendCategory[] = [
   },
   {
     "id": "competitor",
-    "title": "竞品与标杆企业动态",
+    "title": "竞合与标杆动向",
     "icon": "Target",
-    "description": "聚焦国内外数字化车队、数字货运平台及头部物流科技企业战略动作，启迪创新路径。",
+    "description": "聚焦重点企业、平台厂商和生态伙伴的关键动作，持续跟踪其在产品、业务、合作和市场拓展中的实际进展。重点提炼外部主体的策略变化、能力布局和落地路径，为判断竞争态势和产业格局提供参照。",
     "news": []
   },
   {
-    "id": "customer",
-    "title": "客户需求与场景机会",
+    "id": "market",
+    "title": "市场与客户趋势",
     "icon": "Users",
-    "description": "洞察数字化项目营收逻辑与城市治理、商业空间新机会。",
+    "description": "聚焦客户侧需求结构和市场共性变化，识别行业客户在治理模式、运营效率和数字化能力上的新要求。重点呈现需求变化背后的业务逻辑，判断客户侧投入方向和市场需求的演进趋势。",
     "news": [
       {
         "id": "cu26-0605-5",
@@ -61,10 +61,10 @@ export const JUNE_05_CATEGORIES: TrendCategory[] = [
     ]
   },
   {
-    "id": "industry",
-    "title": "产业与市场趋势",
+    "id": "funding",
+    "title": "资金与项目机会",
     "icon": "BarChart3",
-    "description": "提供产业发展方向参考",
+    "description": "聚焦具备明确落地基础的资金安排、项目建设和实施机会，筛选可转化、可跟进、可承接的信息线索。重点判断机会所处阶段、牵头主体、推进路径和落地条件，呈现其后续转化价值。",
     "news": [
       {
         "id": "i26-0605-1",
@@ -117,10 +117,10 @@ export const JUNE_05_CATEGORIES: TrendCategory[] = [
     ]
   },
   {
-    "id": "product_tech",
-    "title": "产品与技术动态",
+    "id": "tech",
+    "title": "技术与能力演进",
     "icon": "Cpu",
-    "description": "关注大模型、Agent、空间计算及底层技术的突破与应用。",
+    "description": "聚焦技术范式、能力体系和应用路径的演进，识别影响行业效率、产品边界和竞争门槛的关键变化。重点判断相关能力从概念走向规模化落地所需达到的成熟度，呈现技术演进对产业能力结构的影响。",
     "news": [
       {
         "id": "pt26-0605-1",

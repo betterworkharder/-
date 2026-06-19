@@ -39,11 +39,11 @@ const Navbar = ({ onOpenHistory, likesCount, onLike, isLiked, currentTitle }: { 
           <div className="absolute top-full left-0 w-64 bg-white border border-slate-200/80 shadow-2xl rounded-2xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
             <div className="flex flex-col gap-1">
               {[
-                { id: 'policy', label: '政策与监管动态' },
-                { id: 'competitor', label: '竞品与标杆企业动态' },
-                { id: 'industry', label: '产业与市场趋势' },
-                { id: 'customer', label: '客户需求与场景机会' },
-                { id: 'product_tech', label: '产品与技术动态' }
+                { id: 'policy', label: '政策趋势与监管' },
+                { id: 'funding', label: '资金与项目机会' },
+                { id: 'market', label: '市场与客户趋势' },
+                { id: 'competitor', label: '竞合与标杆动向' },
+                { id: 'tech', label: '技术与能力演进' }
               ].map((link) => (
                 <a 
                   key={link.id} 
@@ -155,49 +155,51 @@ const RatingStars = ({ rating = 5 }: { rating?: number }) => {
 
 const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string }) => {
   const getLabels = () => {
-    if (categoryId === 'customer') {
+    if (categoryId === 'funding') {
       return {
-        eventProperty: '客户行业与主体',
-        coreFacts: '新闻实质内容',
-        strategicSignal: '业务痛点推演',
-        businessConnection: '丰行慧运契合点'
+        eventProperty: '项目阶段与牵头主体',
+        coreFacts: '项目/资金落地内容',
+        strategicSignal: '推进路径与建设基础',
+        businessConnection: '后续转化与承接契合点',
+        judgmentSuggestion: '落地条件与研判建议'
       };
     }
     if (categoryId === 'competitor') {
       return {
-        eventProperty: '动态类别',
-        coreFacts: '核心内容',
-        strategicSignal: '战略意义',
-        businessConnection: '对丰行慧运的启示'
+        eventProperty: '标杆动态类型与进展',
+        coreFacts: '产品/业务与拓展内容',
+        strategicSignal: '策略变化与核心布局',
+        businessConnection: '竞争态势参照与启示',
+        judgmentSuggestion: '落地路径研判与建议'
       };
     }
-    if (categoryId === 'industry') {
+    if (categoryId === 'market') {
       return {
-        eventProperty: '背景',
-        coreFacts: '核心内容',
-        strategicSignal: '趋势意义',
-        judgmentSuggestion: '风险挑战',
-        businessConnection: '对丰行慧运的启示'
+        eventProperty: '客户侧与市场共性变化',
+        coreFacts: '需求变化与采购实质',
+        strategicSignal: '变化背后的业务逻辑',
+        businessConnection: '投入方向与业务契合点',
+        judgmentSuggestion: '需求演进趋势与行动建议'
       };
     }
-    if (categoryId === 'product_tech') {
+    if (categoryId === 'tech') {
       return {
-        eventProperty: '信息类型',
-        coreFacts: '核心技术突破',
-        strategicSignal: '重点研发产品/方向',
-        businessConnection: '对丰行慧运的启示'
+        eventProperty: '技术演进与能力体系',
+        coreFacts: '技术突破与应用路径内容',
+        strategicSignal: '行业效率与成熟度判断',
+        businessConnection: '产业能力影响与丰行契合点',
+        judgmentSuggestion: '规模化落地成熟度与应用建议'
       };
     }
     return {
-      eventProperty: '政策属性',
-      coreFacts: '政策内容',
-      strategicSignal: '政策意义',
-      businessConnection: '对丰行慧运的启示',
-      judgmentSuggestion: '研判建议'
+      eventProperty: '类别',
+      coreFacts: '实质内容',
+      strategicSignal: '政策影响',
+      businessConnection: '对丰行的启示'
     };
   };
 
-  const labels = getLabels();
+  const labels = getLabels() as { eventProperty: string; coreFacts: string; strategicSignal: string; businessConnection: string; judgmentSuggestion?: string };
 
   return (
     <div className="overflow-hidden bg-white border border-slate-100 rounded-2xl shadow-sm my-6">
@@ -209,19 +211,13 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100">
-          {(categoryId === 'industry' ? [
-            { label: '发布时间', content: news.date },
-            { label: '背景', content: news.strategicSignal },
-            { label: '核心内容', content: news.coreFacts },
-            { label: '趋势意义', content: news.businessConnection },
-            { label: '风险挑战', content: news.judgmentSuggestion },
-          ] : [
+          {([
             { label: '发布时间', content: news.date },
             { label: labels.eventProperty, content: news.eventProperty },
             { label: labels.coreFacts, content: news.coreFacts },
             { label: labels.strategicSignal, content: news.strategicSignal },
             { label: labels.businessConnection, content: news.businessConnection },
-            ...(news.judgmentSuggestion ? [{ label: labels.judgmentSuggestion || '研判建议', content: news.judgmentSuggestion }] : []),
+            ...(labels.judgmentSuggestion && news.judgmentSuggestion ? [{ label: labels.judgmentSuggestion, content: news.judgmentSuggestion }] : []),
           ]).map((row, idx) => (
             <tr key={idx} className="hover:bg-slate-50/50 transition-colors bg-white">
               <td className="px-6 py-4 font-bold text-slate-600/90 bg-slate-50/70 border-r border-slate-100/60 w-32 text-xs tracking-wide">{row.label}</td>
@@ -1143,9 +1139,9 @@ const Footer = () => (
 );
 
 const HistorySidebar = ({ isOpen, onClose, selectedDate, onSelect }: { isOpen: boolean; onClose: () => void; selectedDate: string; onSelect: (date: string) => void }) => {
-  const currentIssueDate = "2026-06-12";
+  const currentIssueDate = "2026-06-18";
   const allIssues = [
-    { date: currentIssueDate, title: '2026年6月12日刊 (最新)', isCurrent: true },
+    { date: currentIssueDate, title: '2026年6月18日刊 (最新)', isCurrent: true },
     ...HISTORICAL_ISSUES.map(issue => ({ date: issue.date, title: issue.title, isCurrent: false }))
   ];
 
@@ -1233,12 +1229,12 @@ export default function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("2026-06-12");
+  const [selectedDate, setSelectedDate] = useState("2026-06-18");
 
   // Derive data based on selection
-  const isCurrentIssue = selectedDate === "2026-06-12";
+  const isCurrentIssue = selectedDate === "2026-06-18";
   const displayIssue = isCurrentIssue 
-    ? { title: "2026年6月12日刊", date: "2026.06.12", categories: CATEGORIES }
+    ? { title: "2026年6月18日刊", date: "2026.06.18", categories: CATEGORIES }
     : HISTORICAL_ISSUES.find(issue => issue.date === selectedDate) || { title: "未知期刊", date: selectedDate, categories: [] };
 
   useEffect(() => {
