@@ -153,6 +153,20 @@ const RatingStars = ({ rating = 5 }: { rating?: number }) => {
   );
 };
 
+const cleanText = (text: string | undefined): string => {
+  if (!text) return '';
+  return text
+    .split('\n')
+    .map((line) => {
+      const match = line.match(/^(?!(?:https?|ftp):\/\/)([^：:\n]{2,15})[：:]\s*(.*)$/i);
+      if (match) {
+        return match[2];
+      }
+      return line;
+    })
+    .join('\n');
+};
+
 const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string }) => {
   const getLabels = () => {
     if (categoryId === 'funding') {
@@ -184,22 +198,58 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
     }
     if (categoryId === 'tech') {
       return {
-        eventProperty: '技术演进与能力体系',
-        coreFacts: '技术突破与应用路径内容',
-        strategicSignal: '行业效率与成熟度判断',
-        businessConnection: '产业能力影响与丰行契合点',
-        judgmentSuggestion: '规模化落地成熟度与应用建议'
+        eventProperty: '技术/能力方向',
+        coreFacts: '核心变化',
+        strategicSignal: '应用场景',
+        businessConnection: '能力启示'
       };
     }
     return {
-      eventProperty: '类别',
-      coreFacts: '实质内容',
-      strategicSignal: '政策影响',
+      eventProperty: '政策方向',
+      coreFacts: '核心内容',
+      strategicSignal: '趋势分析',
       businessConnection: '对丰行的启示'
     };
   };
 
-  const labels = getLabels() as { eventProperty: string; coreFacts: string; strategicSignal: string; businessConnection: string; judgmentSuggestion?: string };
+  const getRows = () => {
+    const baseRows = [{ label: '发布时间', content: news.date }];
+
+    if (categoryId === 'funding') {
+      // Split eventProperty by newline to separate "机会类型" and "牵头主体"
+      const eventParts = news.eventProperty.split('\n');
+      const oppType = eventParts[0] || '';
+      const leadEntity = eventParts[1] || '';
+
+      return [
+        ...baseRows,
+        { label: '机会类型', content: oppType },
+        { label: '牵头主体', content: leadEntity },
+        { label: '涉及地区/行业', content: news.coreFacts },
+        { label: '可跟进点', content: news.businessConnection }
+      ];
+    }
+
+    if (categoryId === 'market') {
+      return [
+        ...baseRows,
+        { label: '客户行业', content: news.eventProperty },
+        { label: '需求变化', content: news.coreFacts },
+        { label: '业务痛点', content: news.strategicSignal },
+        { label: '丰行契合点', content: news.businessConnection }
+      ];
+    }
+
+    const labels = getLabels() as { eventProperty: string; coreFacts: string; strategicSignal: string; businessConnection: string; judgmentSuggestion?: string };
+    return [
+      ...baseRows,
+      { label: labels.eventProperty, content: news.eventProperty },
+      { label: labels.coreFacts, content: news.coreFacts },
+      { label: labels.strategicSignal, content: news.strategicSignal },
+      { label: labels.businessConnection, content: news.businessConnection },
+      ...(labels.judgmentSuggestion && news.judgmentSuggestion ? [{ label: labels.judgmentSuggestion, content: news.judgmentSuggestion }] : [])
+    ];
+  };
 
   return (
     <div className="overflow-hidden bg-white border border-slate-100 rounded-2xl shadow-sm my-6">
@@ -211,19 +261,12 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100">
-          {([
-            { label: '发布时间', content: news.date },
-            { label: labels.eventProperty, content: news.eventProperty },
-            { label: labels.coreFacts, content: news.coreFacts },
-            { label: labels.strategicSignal, content: news.strategicSignal },
-            { label: labels.businessConnection, content: news.businessConnection },
-            ...(labels.judgmentSuggestion && news.judgmentSuggestion ? [{ label: labels.judgmentSuggestion, content: news.judgmentSuggestion }] : []),
-          ]).map((row, idx) => (
+          {getRows().map((row, idx) => (
             <tr key={idx} className="hover:bg-slate-50/50 transition-colors bg-white">
               <td className="px-6 py-4 font-bold text-slate-600/90 bg-slate-50/70 border-r border-slate-100/60 w-32 text-xs tracking-wide">{row.label}</td>
               <td className="px-6 py-4 text-slate-700 leading-relaxed font-medium">
                 <div className="prose prose-sm max-w-none prose-slate leading-snug prose-p:my-1 prose-table:border prose-table:border-slate-200 prose-th:bg-slate-50 prose-th:px-2 prose-th:py-1 prose-td:px-2 prose-td:py-1 whitespace-pre-wrap">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{row.content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{cleanText(row.content)}</ReactMarkdown>
                 </div>
               </td>
             </tr>
@@ -238,7 +281,7 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
             rel="noopener noreferrer"
             className="text-[10px] font-bold text-[#0052D9] hover:text-[#0045c4] underline uppercase tracking-widest flex items-center gap-1"
           >
-            查看官网原文 <Icons.ExternalLink className="w-3 h-3" />
+            {news.sourceLabel || "查看官网原文"} <Icons.ExternalLink className="w-3 h-3" />
           </a>
         </div>
         
@@ -1139,9 +1182,9 @@ const Footer = () => (
 );
 
 const HistorySidebar = ({ isOpen, onClose, selectedDate, onSelect }: { isOpen: boolean; onClose: () => void; selectedDate: string; onSelect: (date: string) => void }) => {
-  const currentIssueDate = "2026-06-18";
+  const currentIssueDate = "2026-06-26";
   const allIssues = [
-    { date: currentIssueDate, title: '2026年6月18日刊 (最新)', isCurrent: true },
+    { date: currentIssueDate, title: '2026年6月26日刊 (最新)', isCurrent: true },
     ...HISTORICAL_ISSUES.map(issue => ({ date: issue.date, title: issue.title, isCurrent: false }))
   ];
 
@@ -1229,12 +1272,12 @@ export default function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("2026-06-18");
+  const [selectedDate, setSelectedDate] = useState("2026-06-26");
 
   // Derive data based on selection
-  const isCurrentIssue = selectedDate === "2026-06-18";
+  const isCurrentIssue = selectedDate === "2026-06-26";
   const displayIssue = isCurrentIssue 
-    ? { title: "2026年6月18日刊", date: "2026.06.18", categories: CATEGORIES }
+    ? { title: "2026年6月26日刊", date: "2026.06.26", categories: CATEGORIES }
     : HISTORICAL_ISSUES.find(issue => issue.date === selectedDate) || { title: "未知期刊", date: selectedDate, categories: [] };
 
   useEffect(() => {
