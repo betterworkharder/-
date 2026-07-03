@@ -281,7 +281,7 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
             rel="noopener noreferrer"
             className="text-[10px] font-bold text-[#0052D9] hover:text-[#0045c4] underline uppercase tracking-widest flex items-center gap-1"
           >
-            {news.sourceLabel || "查看官网原文"} <Icons.ExternalLink className="w-3 h-3" />
+            {news.sourceLabel || "原文链接"} <Icons.ExternalLink className="w-3 h-3" />
           </a>
         </div>
         
