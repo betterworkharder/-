@@ -1182,10 +1182,10 @@ const Footer = () => (
 );
 
 const HistorySidebar = ({ isOpen, onClose, selectedDate, onSelect }: { isOpen: boolean; onClose: () => void; selectedDate: string; onSelect: (date: string) => void }) => {
-  const currentIssueDate = "2026-06-26";
+  const currentIssueDate = "2026-07-03";
   const allIssues = [
-    { date: currentIssueDate, title: '2026年6月26日刊 (最新)', isCurrent: true },
-    ...HISTORICAL_ISSUES.map(issue => ({ date: issue.date, title: issue.title, isCurrent: false }))
+    { date: currentIssueDate, title: '2026年7月3日刊 (最新)', isCurrent: true },
+    ...HISTORICAL_ISSUES.filter(issue => issue.date !== currentIssueDate).map(issue => ({ date: issue.date, title: issue.title, isCurrent: false }))
   ];
 
   return (
@@ -1272,12 +1272,12 @@ export default function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("2026-06-26");
+  const [selectedDate, setSelectedDate] = useState("2026-07-03");
 
   // Derive data based on selection
-  const isCurrentIssue = selectedDate === "2026-06-26";
+  const isCurrentIssue = selectedDate === "2026-07-03";
   const displayIssue = isCurrentIssue 
-    ? { title: "2026年6月26日刊", date: "2026.06.26", categories: CATEGORIES }
+    ? { title: "2026年7月3日刊", date: "2026.07.03", categories: CATEGORIES }
     : HISTORICAL_ISSUES.find(issue => issue.date === selectedDate) || { title: "未知期刊", date: selectedDate, categories: [] };
 
   useEffect(() => {
