@@ -350,29 +350,38 @@ const CategoryDetail = ({ isOpen, onClose, category, activeNewsId }: { isOpen: b
             </div>
             
             <div className="space-y-12 pb-20">
-              {category.news.map((item) => (
-                <section 
-                  key={item.id} 
-                  id={`news-${item.id}`}
-                  className={`space-y-4 p-6 rounded-3xl transition-all border border-transparent ${activeNewsId === item.id ? 'bg-[#0052D9]/[0.02] border-[#0052D9]/10 shadow-sm' : ''}`}
-                >
-                  <div className="pl-4">
-                    <RatingStars rating={item.rating} />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 border-l-[4px] border-[#0052D9] pl-4 leading-normal mt-2">
-                    {item.sourceTitle}
-                  </h3>
-                  {item.summary && (
-                    <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 ml-4 mt-3 shadow-inner">
-                      <span className="text-xs font-bold text-[#0052D9] tracking-wider block mb-1">【情报摘要】</span>
-                      <p className="text-sm text-slate-600 leading-relaxed font-semibold">
-                        {item.summary}
-                      </p>
+              {category.news.length === 0 ? (
+                <div className="text-center py-20 px-4 bg-slate-50 border border-dashed border-slate-200/60 rounded-3xl">
+                  <Icons.Sparkles className="w-8 h-8 text-slate-300 mx-auto mb-3" />
+                  <p className="text-sm text-slate-400 font-bold">
+                    {category.id === 'funding' ? '本期无该模块内容' : '目前该板块暂无最新情报动态发布'}
+                  </p>
+                </div>
+              ) : (
+                category.news.map((item) => (
+                  <section 
+                    key={item.id} 
+                    id={`news-${item.id}`}
+                    className={`space-y-4 p-6 rounded-3xl transition-all border border-transparent ${activeNewsId === item.id ? 'bg-[#0052D9]/[0.02] border-[#0052D9]/10 shadow-sm' : ''}`}
+                  >
+                    <div className="pl-4">
+                      <RatingStars rating={item.rating} />
                     </div>
-                  )}
-                  <NewsTable news={item} categoryId={category.id} />
-                </section>
-              ))}
+                    <h3 className="text-xl font-bold text-slate-900 border-l-[4px] border-[#0052D9] pl-4 leading-normal mt-2">
+                      {item.sourceTitle}
+                    </h3>
+                    {item.summary && (
+                      <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 ml-4 mt-3 shadow-inner">
+                        <span className="text-xs font-bold text-[#0052D9] tracking-wider block mb-1">【情报摘要】</span>
+                        <p className="text-sm text-slate-600 leading-relaxed font-semibold">
+                          {item.summary}
+                        </p>
+                      </div>
+                    )}
+                    <NewsTable news={item} categoryId={category.id} />
+                  </section>
+                ))
+              )}
             </div>
           </motion.div>
         </>
@@ -973,7 +982,9 @@ const TrendCard = ({ category, index, onOpen }: { category: TrendCategory; index
             {category.news.length === 0 ? (
               <div className="text-center py-10 px-4 bg-slate-50 border border-dashed border-slate-200/60 rounded-2xl">
                 <Icons.Sparkles className="w-6 h-6 text-slate-300 mx-auto mb-2.5" />
-                <p className="text-xs text-slate-400 font-bold">目前该板块暂无最新情报动态发布</p>
+                <p className="text-xs text-slate-400 font-bold">
+                  {category.id === 'funding' ? '本期无该模块内容' : '目前该板块暂无最新情报动态发布'}
+                </p>
               </div>
             ) : (
               category.news.map((item) => (
