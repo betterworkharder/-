@@ -101,9 +101,9 @@ const SectionIcon = ({ name, className }: { name: string; className?: string }) 
   } else if (name === "Users" || name === "User" || name === "Zap") {
     iconName = "Boxes"; // Scene supply-chain layout opportunities
   } else if (name === "BarChart3" || name === "LineChart" || name === "Network") {
-    iconName = "Globe"; // Industry and market global trends
+    iconName = "Globe"; // Industry与market global trends
   } else if (name === "Cpu" || name === "Settings" || name === "BrainCircuit") {
-    iconName = "Workflow"; // Product routing and automation flow
+    iconName = "Workflow"; // Product routing与automation flow
   }
   const IconComponent = (Icons as any)[iconName];
   return IconComponent ? <IconComponent className={className} /> : <Icons.HelpCircle className={className} />;
@@ -168,61 +168,21 @@ const cleanText = (text: string | undefined): string => {
 };
 
 const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string }) => {
-  const getLabels = () => {
-    if (categoryId === 'funding') {
-      return {
-        eventProperty: '项目阶段与牵头主体',
-        coreFacts: '项目/资金落地内容',
-        strategicSignal: '推进路径与建设基础',
-        businessConnection: '后续转化与承接契合点',
-        judgmentSuggestion: '落地条件与研判建议'
-      };
-    }
-    if (categoryId === 'competitor') {
-      return {
-        eventProperty: '标杆动态类型与进展',
-        coreFacts: '产品/业务与拓展内容',
-        strategicSignal: '策略变化与核心布局',
-        businessConnection: '竞争态势参照与启示',
-        judgmentSuggestion: '落地路径研判与建议'
-      };
-    }
-    if (categoryId === 'market') {
-      return {
-        eventProperty: '客户侧与市场共性变化',
-        coreFacts: '需求变化与采购实质',
-        strategicSignal: '变化背后的业务逻辑',
-        businessConnection: '投入方向与业务契合点',
-        judgmentSuggestion: '需求演进趋势与行动建议'
-      };
-    }
-    if (categoryId === 'tech') {
-      return {
-        eventProperty: '技术/能力方向',
-        coreFacts: '核心变化',
-        strategicSignal: '应用场景',
-        businessConnection: '能力启示'
-      };
-    }
-    return {
-      eventProperty: '政策方向',
-      coreFacts: '核心内容',
-      strategicSignal: '趋势分析',
-      businessConnection: '对丰行的启示'
-    };
-  };
-
   const getRows = () => {
-    const baseRows = [{ label: '发布时间', content: news.date }];
+    if (categoryId === 'policy') {
+      return [
+        { label: '政策方向', content: news.eventProperty },
+        { label: '核心内容', content: news.coreFacts },
+        { label: '趋势分析', content: news.strategicSignal },
+        { label: '对丰行的启示', content: news.businessConnection }
+      ];
+    }
 
     if (categoryId === 'funding') {
-      // Split eventProperty by newline to separate "机会类型" and "牵头主体"
       const eventParts = news.eventProperty.split('\n');
       const oppType = eventParts[0] || '';
       const leadEntity = eventParts[1] || '';
-
       return [
-        ...baseRows,
         { label: '机会类型', content: oppType },
         { label: '牵头主体', content: leadEntity },
         { label: '涉及地区/行业', content: news.coreFacts },
@@ -230,9 +190,30 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
       ];
     }
 
+    if (categoryId === 'competitor') {
+      const getDynamicCategory = (eventProp: string) => {
+        const lines = eventProp.split('\n');
+        const catLine = lines.find(l => l.includes('动态类别：') || l.includes('动态类别:'));
+        if (catLine) {
+          return catLine.replace(/^(企业主体.*?)*动态类别[：:]\s*/, '');
+        }
+        return eventProp;
+      };
+
+      return [
+        { label: '新闻标题', content: news.sourceTitle },
+        { label: '新闻文本网址链接', content: news.sourceUrl },
+        { label: '摘要', content: news.summary || '' },
+        { label: '发布时间', content: news.date },
+        { label: '动态类别', content: getDynamicCategory(news.eventProperty) },
+        { label: '核心内容', content: news.coreFacts },
+        { label: '战略意义', content: news.strategicSignal },
+        { label: '对丰行的启示', content: news.businessConnection }
+      ];
+    }
+
     if (categoryId === 'market') {
       return [
-        ...baseRows,
         { label: '客户行业', content: news.eventProperty },
         { label: '需求变化', content: news.coreFacts },
         { label: '业务痛点', content: news.strategicSignal },
@@ -240,14 +221,21 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
       ];
     }
 
-    const labels = getLabels() as { eventProperty: string; coreFacts: string; strategicSignal: string; businessConnection: string; judgmentSuggestion?: string };
+    if (categoryId === 'tech') {
+      return [
+        { label: '技术/能力方向', content: news.eventProperty },
+        { label: '核心变化', content: news.coreFacts },
+        { label: '应用场景', content: news.strategicSignal },
+        { label: '能力启示', content: news.businessConnection }
+      ];
+    }
+
+    // Default fallback
     return [
-      ...baseRows,
-      { label: labels.eventProperty, content: news.eventProperty },
-      { label: labels.coreFacts, content: news.coreFacts },
-      { label: labels.strategicSignal, content: news.strategicSignal },
-      { label: labels.businessConnection, content: news.businessConnection },
-      ...(labels.judgmentSuggestion && news.judgmentSuggestion ? [{ label: labels.judgmentSuggestion, content: news.judgmentSuggestion }] : [])
+      { label: '政策方向', content: news.eventProperty },
+      { label: '核心内容', content: news.coreFacts },
+      { label: '趋势分析', content: news.strategicSignal },
+      { label: '对丰行的启示', content: news.businessConnection }
     ];
   };
 
@@ -265,9 +253,15 @@ const NewsTable = ({ news, categoryId }: { news: NewsDetail; categoryId?: string
             <tr key={idx} className="hover:bg-slate-50/50 transition-colors bg-white">
               <td className="px-6 py-4 font-bold text-slate-600/90 bg-slate-50/70 border-r border-slate-100/60 w-32 text-xs tracking-wide">{row.label}</td>
               <td className="px-6 py-4 text-slate-700 leading-relaxed font-medium">
-                <div className="prose prose-sm max-w-none prose-slate leading-snug prose-p:my-1 prose-table:border prose-table:border-slate-200 prose-th:bg-slate-50 prose-th:px-2 prose-th:py-1 prose-td:px-2 prose-td:py-1 whitespace-pre-wrap">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{cleanText(row.content)}</ReactMarkdown>
-                </div>
+                {row.label === '新闻文本网址链接' ? (
+                  <a href={row.content} target="_blank" rel="noopener noreferrer" className="text-[#0052D9] hover:underline font-bold break-all flex items-center gap-1.5">
+                    {row.content} <Icons.ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                  </a>
+                ) : (
+                  <div className="prose prose-sm max-w-none prose-slate leading-snug prose-p:my-1 prose-table:border prose-table:border-slate-200 prose-th:bg-slate-50 prose-th:px-2 prose-th:py-1 prose-td:px-2 prose-td:py-1 whitespace-pre-wrap">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{cleanText(row.content)}</ReactMarkdown>
+                  </div>
+                )}
               </td>
             </tr>
           ))}
@@ -692,7 +686,7 @@ const CompetitorDashboard = () => {
 
         const empCount = parseNumber(company.hr.employeeCount);
 
-        // Calculate Masters & Above Ratio (including PhDs and Masters)
+        // Calculate Masters & Above Ratio (including PhDs与Masters)
         let computedMastersRatio = company.hr.mastersRatio;
         if (company.hr.mastersCount !== undefined && company.hr.phdCount !== undefined) {
           const mCount = parseNumber(company.hr.mastersCount) || 0;
@@ -1169,7 +1163,7 @@ const Footer = () => (
           </span>
         </div>
         <p className="text-xs text-slate-400 font-medium max-w-xs uppercase leading-loose tracking-widest">
-           Strategic excellence in spatial data and AI decision support.
+           Strategic excellence in spatial data与AI decision support.
         </p>
       </div>
       
@@ -1182,9 +1176,9 @@ const Footer = () => (
 );
 
 const HistorySidebar = ({ isOpen, onClose, selectedDate, onSelect }: { isOpen: boolean; onClose: () => void; selectedDate: string; onSelect: (date: string) => void }) => {
-  const currentIssueDate = "2026-07-03";
+  const currentIssueDate = "2026-07-10";
   const allIssues = [
-    { date: currentIssueDate, title: '2026年7月3日刊 (最新)', isCurrent: true },
+    { date: currentIssueDate, title: '2026年7月10日刊 (最新)', isCurrent: true },
     ...HISTORICAL_ISSUES.filter(issue => issue.date !== currentIssueDate).map(issue => ({ date: issue.date, title: issue.title, isCurrent: false }))
   ];
 
@@ -1272,12 +1266,12 @@ export default function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("2026-07-03");
+  const [selectedDate, setSelectedDate] = useState("2026-07-10");
 
   // Derive data based on selection
-  const isCurrentIssue = selectedDate === "2026-07-03";
+  const isCurrentIssue = selectedDate === "2026-07-10";
   const displayIssue = isCurrentIssue 
-    ? { title: "2026年7月3日刊", date: "2026.07.03", categories: CATEGORIES }
+    ? { title: "2026年7月10日刊", date: "2026.07.10", categories: CATEGORIES }
     : HISTORICAL_ISSUES.find(issue => issue.date === selectedDate) || { title: "未知期刊", date: selectedDate, categories: [] };
 
   useEffect(() => {

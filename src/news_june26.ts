@@ -102,7 +102,7 @@ export const JUNE_26_CATEGORIES: TrendCategory[] = [
     "news": [
       {
         "id": "june26-competitor-1",
-        "sourceTitle": "Samsara 6月24日发布 Agent Studio 与新一代 AI 视觉安全能力",
+        "sourceTitle": "Samsara 6月24日发布 Agent Studio与新一代 AI 视觉安全能力",
         "sourceUrl": "https://www.samsara.com/company/news/press-releases/samsara-launches-new-agentic-capabilities-to-automate-tedious-operational-tasks",
         "date": "2026-06-24",
         "rating": 4,
@@ -110,7 +110,7 @@ export const JUNE_26_CATEGORIES: TrendCategory[] = [
         "eventProperty": "企业主体：Samsara\n动态类别：产品发布/AI 自动化工作流/视频安全能力升级",
         "coreFacts": "核心动作：发布 Agent Studio、预置/自定义 AI agents、360 Camera、AI Multicam 和 Two-Way Voice。",
         "strategicSignal": "参考意义：海外车队管理标杆继续从连接设备和平台走向 AI 自动化工作流与视频安全闭环。",
-        "businessConnection": "对丰行的启示：关注 Samsara 将 AI 自动化工作流与视频安全能力深度结合的动向，作为丰行车队管理与 AI 应用发展的技术与业务参照。"
+        "businessConnection": "对丰行的启示：关注 Samsara 将 AI 自动化工作流与视频安全能力深度结合的动向，作为丰行车队管理与AI 应用发展的技术与业务参照。"
       },
       {
         "id": "june26-competitor-2",
@@ -122,7 +122,7 @@ export const JUNE_26_CATEGORIES: TrendCategory[] = [
         "eventProperty": "企业主体：G7易流\n动态类别：产品发布/货运交付AI硬件/API与Skill开放",
         "coreFacts": "核心动作：发布穿戴式AI硬件“拍拍豆”，面向装卸交接、货损纠纷、节点录像和货物流转追溯，并表示将开放API接口和Skill能力。",
         "strategicSignal": "参考意义：G7易流把运输可视化从车上轨迹和驾驶安全延伸到车下交付环节，意在把装卸、清点、交付证据和客户沟通纳入数字化闭环。",
-        "businessConnection": "对丰行的启示：应关注 G7 开放 API 与 Skill 的动向，并评估是否需要针对车下交付等高价值交付闭环场景建立相应的 AI 硬件或数据抓取、纠纷追溯产品能力。"
+        "businessConnection": "对丰行的启示：应关注 G7 开放 API与Skill 的动向，并评估是否需要针对车下交付等高价值交付闭环场景建立相应的 AI 硬件或数据抓取、纠纷追溯产品能力。"
       },
       {
         "id": "june26-competitor-3",

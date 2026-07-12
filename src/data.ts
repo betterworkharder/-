@@ -3,6 +3,7 @@ import { JUNE_12_CATEGORIES } from './news_june12';
 import { JUNE_18_CATEGORIES } from './news_june18';
 import { JUNE_26_CATEGORIES } from './news_june26';
 import { JULY_03_CATEGORIES } from './news_july03';
+import { JULY_10_CATEGORIES } from './news_july10';
 
 export interface NewsLink {
   title: string;
@@ -69,11 +70,16 @@ function reorderCategories(cats: TrendCategory[]): TrendCategory[] {
   return result;
 }
 
-// 2026年7月3日刊 - 丰行慧运情报中心当前最新内容
-export const CATEGORIES: TrendCategory[] = reorderCategories(JULY_03_CATEGORIES);
+// 2026年7月10日刊 - 丰行慧运情报中心当前最新内容
+export const CATEGORIES: TrendCategory[] = reorderCategories(JULY_10_CATEGORIES);
 
 // 历史期刊归档
 export const HISTORICAL_ISSUES: ArchiveIssue[] = [
+  {
+    "date": "2026-07-10",
+    "title": "2026年7月10日刊",
+    "categories": reorderCategories(JULY_10_CATEGORIES)
+  },
   {
     "date": "2026-07-03",
     "title": "2026年7月3日刊",

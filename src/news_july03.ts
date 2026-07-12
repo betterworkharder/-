@@ -31,7 +31,7 @@ export const JULY_03_CATEGORIES: TrendCategory[] = [
         "eventProperty": "政策方向：人工智能安全治理、行业标准体系和通信技术标准更新。",
         "coreFacts": "核心内容：公告显示，工业和信息化部批准680项行业标准，覆盖化工、石化、冶金、建材、机械、汽车、电子、通信等多个行业，其中包括《人工智能 安全治理 术语》等人工智能相关标准；行业标准修改单自发布之日起实施。",
         "strategicSignal": "趋势分析：AI 标准化正在进入更多工业和通信行业的基础规范层面，安全治理、术语、接口、测试方法等基础标准会影响企业后续采购、验收和合规评估口径。",
-        "businessConnection": "对丰行的启示：丰行在运输管理、车队安全、监管平台和智能体工具链中使用 AI 能力时，应关注安全治理术语、接口测试和行业标准口径，提前沉淀模型调用、告警解释、数据使用 and 人工复核的可审计材料。",
+        "businessConnection": "对丰行的启示：丰行在运输管理、车队安全、监管平台和智能体工具链中使用 AI 能力时，应关注安全治理术语、接口测试和行业标准口径，提前沉淀模型调用、告警解释、数据使用与人工复核的可审计材料。",
         "interpretations": [],
         "downloads": [
           {
@@ -117,7 +117,7 @@ export const JULY_03_CATEGORIES: TrendCategory[] = [
     "id": "funding",
     "title": "资金与项目机会",
     "icon": "BarChart3",
-    "description": "聚焦具备明确落地基础的资金安排、项目建设和实施机会，筛选可转化、可跟进、可承接的信息线索。重点判断机会所处阶段、牵头主体、推进路径 and 落地条件，呈现其后续转化价值。",
+    "description": "聚焦具备明确落地基础的资金安排、项目建设和实施机会，筛选可转化、可跟进、可承接的信息线索。重点判断机会所处阶段、牵头主体、推进路径与落地条件，呈现其后续转化价值。",
     "news": [
       {
         "id": "july03-funding-1",
@@ -167,17 +167,17 @@ export const JULY_03_CATEGORIES: TrendCategory[] = [
     "id": "competitor",
     "title": "竞合与标杆动向",
     "icon": "Target",
-    "description": "聚焦重点企业、平台厂商 and 生态伙伴的关键动作，持续跟踪其在产品、业务、合作和市场拓展中的实际进展。重点提炼外部主体的策略变化、能力布局与落地路径，为判断竞争态势和产业格局提供参照。",
+    "description": "聚焦重点企业、平台厂商与生态伙伴的关键动作，持续跟踪其在产品、业务、合作和市场拓展中的实际进展。重点提炼外部主体的策略变化、能力布局与落地路径，为判断竞争态势和产业格局提供参照。",
     "news": [
       {
         "id": "july03-competitor-1",
-        "sourceTitle": "Samsara 发布 Tracking Label 与 Shipment Center，补齐跨承运商货物可视化",
+        "sourceTitle": "Samsara 发布 Tracking Label与Shipment Center，补齐跨承运商货物可视化",
         "sourceUrl": "https://www.samsara.com/company/news/press-releases/samsara-introduces-the-tracking-label-and-agentic-shipment-center-to-close-supply-chain-visibility-gap",
         "date": "2026-06-24",
         "rating": 4,
         "summary": "Samsara 官方新闻稿披露，公司推出一次性蓝牙 Tracking Label、Shipment Center 和 Shipment App，用于近实时货物可视、AI 异常提示和既有 TMS/ERP 流程接入。",
         "eventProperty": "企业主体：Samsara\n动态类别：产品发布；供应链可视化；物流控制塔能力延伸。",
-        "coreFacts": "核心动作：Samsara 将其 Connected Operations 网络从车队 and 设备延伸到货物级追踪，发布可贴附在包裹或货物上的低成本蓝牙标签，并通过 Shipment Center 汇总位置、延迟、天气、交付证明和绩效分析等信息。",
+        "coreFacts": "核心动作：Samsara 将其 Connected Operations 网络从车队与设备延伸到货物级追踪，发布可贴附在包裹或货物上的低成本蓝牙标签，并通过 Shipment Center 汇总位置、延迟、天气、交付证明和绩效分析等信息。",
         "strategicSignal": "参考意义：该动作显示海外车队管理平台正在向货主侧供应链可视化和跨承运商货物追踪延伸。",
         "businessConnection": "对丰行的启示：丰行可参考其“低成本标签+联网设备网络+AI异常中心+TMS/ERP接入”的产品组合，但 Samsara 的网络覆盖和商业环境主要基于北美市场，不能直接套用于中国市场。"
       },
@@ -211,7 +211,7 @@ export const JULY_03_CATEGORIES: TrendCategory[] = [
     "id": "market",
     "title": "市场与客户趋势",
     "icon": "Users",
-    "description": "聚焦客户侧需求结构和市场共性变化，识别行业客户在治理模式、运营效率和数字化能力上的新要求。重点呈现需求变化背后的业务逻辑，判断客户侧投入方向 and 市场需求的演进趋势。",
+    "description": "聚焦客户侧需求结构和市场共性变化，识别行业客户在治理模式、运营效率和数字化能力上的新要求。重点呈现需求变化背后的业务逻辑，判断客户侧投入方向与市场需求的演进趋势。",
     "news": [
       {
         "id": "july03-market-1",
@@ -275,7 +275,7 @@ export const JULY_03_CATEGORIES: TrendCategory[] = [
         "sourceUrl": "https://waabi.ai/insights/waabi-crosses-the-next-frontier-of-generalization-unlocking-truly-scalable-avs",
         "date": "2026-06-26",
         "rating": 5,
-        "summary": "Waabi 宣布其 Waabi Driver 与 Volvo Autonomous Solutions 合作，将同一个虚拟驾驶 AI 迁移到 Volvo VNL Autonomous 平台，在没有新增真实道路数据、仿真数据或微调的情况下，实现高速和复杂地面道路自动驾驶测试。",
+        "summary": "Waabi 宣布其 Waabi Driver与Volvo Autonomous Solutions 合作，将同一个虚拟驾驶 AI 迁移到 Volvo VNL Autonomous 平台，在没有新增真实道路数据、仿真数据或微调的情况下，实现高速和复杂地面道路自动驾驶测试。",
         "eventProperty": "技术/能力方向：自动驾驶货运、Physical AI、虚拟驾驶员泛化、无人货运运营",
         "coreFacts": "核心变化：自动驾驶卡车的竞争点从“单一车型、单一路线训练”转向“AI 驾驶能力跨车型、跨传感器、跨控制系统迁移”，商业化成本与扩张速度可能因此发生变化。",
         "strategicSignal": "应用场景：干线无人货运、跨车型自动驾驶平台、远程安全运营、ODD 路线管理、自动驾驶车队调度。",
@@ -285,13 +285,13 @@ export const JULY_03_CATEGORIES: TrendCategory[] = [
       },
       {
         "id": "july03-tech-2",
-        "sourceTitle": "Clustag 与 Impinj 用 Gen2X 实现近乎满分的箱内/件级发运校验",
+        "sourceTitle": "Clustag与Impinj 用 Gen2X 实现近乎满分的箱内/件级发运校验",
         "sourceUrl": "https://www.supplychaindive.com/press-release/20260624-clustag-and-impinj-automate-item-level-shipment-verification-with-near-perf/",
         "date": "2026-06-26",
         "rating": 4,
         "summary": "Clustag 和 Impinj 宣布，基于 Impinj R700 读写器、Gen2X 技术和 Clustag RAIN RFID 隧道方案，可在 1.5 秒内完成高密度货品的件级发运校验，目标是满足大型零售企业超过 99% 的出库准确率要求。",
         "eventProperty": "技术/能力方向：RAIN RFID、件级可视化、仓配校验、供应链数据采集",
-        "coreFacts": "核心变化：仓配出库从“扫码/抽检/人工复核”向“高密度、自动化、秒级、件级校验”演进，并把货品身份数据直接喂给后续 AI 与追踪系统。",
+        "coreFacts": "核心变化：仓配出库从“扫码/抽检/人工复核”向“高密度、自动化、秒级、件级校验”演进，并把货品身份数据直接喂给后续 AI与追踪系统。",
         "strategicSignal": "应用场景：零售仓配、冷链仓、医药/高值货品、B2B 出库复核、干支线交接、错发漏发追责。",
         "businessConnection": "能力启示：丰行的园区/场所数字化和 OTMS 能力可向“货物级数据”延伸，不只看车和司机，也要看货品、托盘、周转箱、笼车和出库单，把发运准确率、装车校验、签收差异和货损责任纳入履约风控。",
         "interpretations": [],
@@ -307,13 +307,13 @@ export const JULY_03_CATEGORIES: TrendCategory[] = [
         "eventProperty": "技术/能力方向：车队 SaaS AI 助手、自然语言分析、能耗与维保洞察",
         "coreFacts": "核心变化：车队平台从“报表系统”变成“运营问答与决策助手”，降低车队经理查数据、做分析、找异常的时间成本。",
         "strategicSignal": "应用场景：油耗分析、轮胎维护、异常车辆识别、司机行为分析、维修保养、轻型车/重卡混合车队管理。",
-        "businessConnection": "能力启示：丰行的车队 SaaS、能耗平台和安全风控平台应考虑建设“角色化 AI 助手”：给车队长看风险和成本，给调度看任务 and 异常，给保险看风险因子，给监管看企业主体责任闭环。",
+        "businessConnection": "能力启示：丰行的车队 SaaS、能耗平台和安全风控平台应考虑建设“角色化 AI 助手”：给车队长看风险和成本，给调度看任务与异常，给保险看风险因子，给监管看企业主体责任闭环。",
         "interpretations": [],
         "downloads": []
       },
       {
         "id": "july03-tech-4",
-        "sourceTitle": "LytxOne 平台新增 Fleet AI Assistant 与 privacy 控制能力",
+        "sourceTitle": "LytxOne 平台新增 Fleet AI Assistant与privacy 控制能力",
         "sourceUrl": "https://www.prnewswire.com/news-releases/lytx-advances-lytxone-platform-with-new-capabilities-for-safer-more-connected-fleet-operations-302814197.html",
         "date": "2026-06-30",
         "rating": 4,
