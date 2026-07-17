@@ -1,0 +1,65 @@
+primary_entity:
+  canonical: 丰行慧运
+  aliases:
+  - 丰行
+  - 丰行慧运
+  - 交通货运业务
+  - 丰图交通货运（历史材料称谓）
+  note: “丰图交通货运”是否等同于丰行慧运当前品牌需确认。
+product_terms:
+  运输OTMS:
+  - OTMS
+  - 运输管理系统
+  - 运输执行平台
+  - 运输运营管理
+  车队SaaS:
+  - 车队管理平台
+  - FMS
+  - fleet management system
+  网络货运:
+  - 无车承运
+  - 数字货运平台
+  - network freight platform
+  主动安全:
+  - ADAS
+  - DMS
+  - 智能视频监控
+  - 双防
+  - 视频安全
+  最优线路:
+  - 路线规划
+  - 路径优化
+  - route optimization
+  - routing
+  在途监控:
+  - 车辆可视化
+  - 轨迹监控
+  - ETA
+  - 运输可视化
+  能耗管理:
+  - 油耗管理
+  - 电耗管理
+  - 补能调度
+  - fleet energy management
+customer_terms:
+  货主:
+  - shipper
+  - 制造企业
+  - 品牌商
+  - 零售企业
+  - 供应链企业
+  车队:
+  - fleet
+  - 承运商
+  - 物流公司
+  - 运输企业
+  - carrier
+  监管方:
+  - 交通运输厅
+  - 交通运输局
+  - 道路运输管理机构
+  - 交管部门
+  保险机构:
+  - 保险公司
+  - 财险公司
+  - 车险公司

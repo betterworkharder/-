@@ -1,0 +1,935 @@
+version: 2
+schema_note: >-
+  Watchlist entities are research targets, not permanent conclusions. Entity-level
+  default_relation_type is only the starting point. Formal intelligence items must
+  assign event_relation_type independently according to the concrete event.
+relation_types:
+  - direct_competitor
+  - partial_competitor
+  - platform_competitor
+  - technology_competitor
+  - regional_competitor
+  - potential_competitor
+  - benchmark_company
+  - ecosystem_partner
+  - customer_and_competitor
+  - pending_confirmation
+verification_policy:
+  no_realtime_verification_this_update: true
+  rule: >-
+    This update did not perform internet research or official-source verification.
+    Fields not supported by AGENTS.md, fengxing_knowledge_pack, or the previous
+    local config are marked pending, partial, or null.
+  event_relation_field: event_relation_type
+
+entities:
+  - entity_id: manbang_group
+    group_name: 满帮集团
+    listed_entity_name: Full Truck Alliance Co. Ltd.
+    legal_entities:
+      - 江苏满运软件科技有限公司
+    short_name_zh: 满帮集团
+    english_name: Full Truck Alliance
+    aliases:
+      - 满帮
+      - 满帮集团
+      - Full Truck Alliance
+      - FTA
+      - 运满满
+      - 货车帮
+    brands:
+      - 满帮
+      - 运满满
+      - 货车帮
+    products:
+      - 满帮货运平台
+      - 平台API
+      - 司机服务
+      - 货主服务
+    default_relation_type: platform_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - platform_competitor
+      - potential_competitor
+      - benchmark_company
+      - ecosystem_partner
+      - customer_and_competitor
+    main_business: 数字货运平台、货源与运力匹配、网络货运、司机和车队生态、物流金融、物流保险、车后服务。
+    business_overlap_with_fengxing:
+      - 网络货运
+      - 货主服务
+      - 运力组织
+      - TMS/ERP对接
+      - 运力交易
+      - 司机车队生态
+      - 运输信用体系
+      - 新能源商用车生态
+    key_events_to_watch:
+      - 产品开放平台
+      - API能力
+      - 大客户物流数字化
+      - 运力交易
+      - 财报
+      - 并购投资
+      - 新能源商用车
+      - 物流保险
+      - 海外扩张
+    search:
+      zh_queries:
+        - 满帮 运满满 API TMS ERP 轨迹 结算
+        - 满帮 网络货运 大客户 物流数字化
+        - 运满满 货主服务 车队服务 新能源 商用车
+        - 满帮 财报 物流金融 保险 司机生态
+        - 满帮 产品发布 货运平台 API
+        - 满帮 客户签约 物流企业 TMS
+        - 满帮 战略合作 并购 投资 物流
+      en_queries:
+        - Full Truck Alliance API shipper TMS fleet
+        - Full Truck Alliance earnings logistics insurance
+        - FTA digital freight platform enterprise logistics
+        - Full Truck Alliance product launch freight platform API
+        - Full Truck Alliance partnership acquisition logistics
+      official_source_queries:
+        - 满帮 官方 运满满 API
+        - Full Truck Alliance official investor relations earnings
+        - 满帮 官网 产品发布
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - 满帮 运满满 中标 运输管理
+        - 满帮 网络货运 招标 项目
+        - 运满满 政府采购 物流 平台
+      financial_queries:
+        - Full Truck Alliance earnings annual report investor relations
+        - 满帮 财报 年报 投资者关系
+        - Full Truck Alliance 20-F annual report
+      exclusion_terms:
+        - 股吧
+        - 行情快讯
+        - 无来源转载
+        - 司机投诉单帖
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: >-
+        集团名称、上市主体、境内法律主体和品牌已按现有本地配置拆分；未进行实时联网核验，
+        境内法律主体、上市主体英文名、官网域名和产品正式名称均需通过官网、SEC/IR材料或工商资料核验。
+
+  - entity_id: g7_yiliu
+    group_name: G7 易流
+    listed_entity_name: null
+    legal_entities:
+      - 北京汇通天下物联科技有限公司
+    short_name_zh: G7 易流
+    english_name: G7 Connect
+    aliases:
+      - G7
+      - 易流
+      - G7物联
+      - G7 Connect
+      - G7易流
+    brands:
+      - G7
+      - 易流
+      - G7易流
+    products:
+      - 商用车在途安全可信管理平台
+      - 车队管理
+      - 运输可视化
+      - 车联网平台
+      - 安全管理服务
+    default_relation_type: direct_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - technology_competitor
+      - benchmark_company
+      - ecosystem_partner
+      - potential_competitor
+    main_business: 车联网、车队管理、运输可视化、司机安全、视频安全、物流数据服务和保险风控。
+    business_overlap_with_fengxing:
+      - 货主运输数字化
+      - 车队数字化
+      - 在途可视化
+      - 运输安全
+      - 车联网
+      - 物流数据服务
+      - 保险风控
+    key_events_to_watch:
+      - 产品发布
+      - 客户签约
+      - 项目中标
+      - 安全管理平台
+      - AI运输管理
+      - 保险合作
+      - 海外扩张
+      - 产品定价和商业模式
+    search:
+      zh_queries:
+        - G7易流 车队管理 在途安全 平台
+        - G7 易流 运输可视化 客户 签约
+        - G7易流 保险风控 商用车 安全
+        - G7易流 产品发布 车联网 物流
+        - G7易流 战略合作 运输管理
+      en_queries:
+        - G7 Connect fleet management telematics
+        - G7 Connect logistics visibility safety platform
+        - G7 Connect product launch fleet safety
+      official_source_queries:
+        - G7易流 官网 产品发布
+        - G7 Connect official fleet management
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - G7易流 中标 车队管理
+        - G7易流 招标 运输可视化
+        - G7易流 政府采购 商用车 安全
+      financial_queries:
+        - G7易流 融资 财报 经营表现
+        - G7 Connect funding revenue fleet management
+      exclusion_terms:
+        - 无来源转载
+        - 招聘无业务信息
+        - 股吧
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 现有资料提供别名、重点关注和一个法律主体；未联网核验官网、英文名和产品正式名称。
+
+  - entity_id: samsara
+    group_name: Samsara
+    listed_entity_name: Samsara Inc.
+    legal_entities: []
+    short_name_zh: Samsara
+    english_name: Samsara Inc.
+    aliases:
+      - Samsara
+      - Samsara Inc.
+      - Samsara Connected Operations Cloud
+    brands:
+      - Samsara
+    products:
+      - Connected Operations Cloud
+      - Fleet Management
+      - Video-Based Safety
+      - Driver Safety
+      - Telematics
+      - Equipment Monitoring
+      - Maintenance
+      - Asset Tracking
+    default_relation_type: benchmark_company
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - technology_competitor
+      - potential_competitor
+      - benchmark_company
+      - ecosystem_partner
+    main_business: Connected Operations、车队管理、视频安全、车联网、设备监控、维护、资产追踪和运营AI。
+    business_overlap_with_fengxing:
+      - 车队SaaS
+      - 安全托管
+      - 视频安全
+      - 司机安全
+      - 车联网
+      - 运营AI
+      - SaaS商业模式标杆
+    key_events_to_watch:
+      - ARR与财报
+      - AI产品
+      - 大客户案例
+      - 安全产品
+      - 国际扩张
+      - 开发者平台
+      - 保险合作
+      - 产品集成
+    search:
+      zh_queries:
+        - Samsara 车队管理 视频安全 AI
+        - Samsara Connected Operations 财报 ARR
+        - Samsara 保险合作 车队安全
+      en_queries:
+        - Samsara Connected Operations Cloud AI fleet management
+        - Samsara video-based safety driver safety telematics
+        - Samsara earnings ARR large customers insurance
+        - Samsara product launch AI agents fleet safety
+        - Samsara customer win fleet management
+      official_source_queries:
+        - Samsara official Connected Operations Cloud AI
+        - Samsara investor relations earnings ARR
+        - Samsara official blog product launch fleet
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - Samsara fleet management contract customer
+        - Samsara public sector fleet safety award
+      financial_queries:
+        - Samsara earnings ARR investor relations
+        - Samsara annual report 10-K 10-Q revenue
+        - Samsara SEC filing connected operations
+      exclusion_terms:
+        - stock price only
+        - analyst rating only
+        - no source repost
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 现有资料确认其为标杆/潜在竞品及重点关注方向；本次未核验官网、SEC文件或产品文档。
+
+  - entity_id: streamax
+    group_name: 锐明技术
+    listed_entity_name: 深圳市锐明技术股份有限公司
+    legal_entities:
+      - 深圳市锐明技术股份有限公司
+    short_name_zh: 锐明技术
+    english_name: Streamax
+    aliases:
+      - 锐明
+      - 锐明技术
+      - Streamax
+      - 深圳市锐明技术股份有限公司
+    brands:
+      - 锐明技术
+      - Streamax
+    products:
+      - 商用车视频监控
+      - AI车载视频
+      - ADAS
+      - DMS
+      - 主动安全平台
+      - 视频安全平台
+    default_relation_type: technology_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - technology_competitor
+      - regional_competitor
+      - benchmark_company
+      - ecosystem_partner
+    main_business: 商用车视频、AI视觉、司机状态监测、ADAS/DMS、主动安全、车载硬件和海外商用车市场。
+    business_overlap_with_fengxing:
+      - 主动安全
+      - 视频安全
+      - ADAS/DMS
+      - 车队安全
+      - 政府监管硬件与算法能力
+      - 保险风控
+    key_events_to_watch:
+      - 海外展会
+      - 新产品
+      - 政府项目
+      - 运输企业项目
+      - 保险合作
+      - AI视觉算法
+    search:
+      zh_queries:
+        - 锐明技术 商用车 视频安全 ADAS DMS
+        - 锐明技术 主动安全 货运车辆 政府项目
+        - 锐明技术 产品发布 AI车载视频
+        - 锐明技术 客户签约 运输企业
+      en_queries:
+        - Streamax commercial vehicle video telematics ADAS DMS
+        - Streamax fleet safety overseas market
+        - Streamax product launch AI vehicle camera
+      official_source_queries:
+        - 锐明技术 官网 产品发布 商用车视频
+        - Streamax official commercial vehicle video telematics
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - 锐明技术 中标 主动安全
+        - 锐明技术 政府采购 商用车 视频
+        - 锐明技术 货运车辆 监管 平台 招标
+      financial_queries:
+        - 锐明技术 年报 财报 研发
+        - 锐明技术 上市公司公告 主动安全
+        - Streamax annual report revenue overseas
+      exclusion_terms:
+        - 行情快讯
+        - 股吧
+        - 无来源转载
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 名称和别名来自现有资料；未联网核验英文全称、官网域名、产品正式名称或公告来源。
+
+  - entity_id: china_transinfo
+    group_name: 千方科技
+    listed_entity_name: 北京千方科技股份有限公司
+    legal_entities:
+      - 北京千方科技股份有限公司
+    short_name_zh: 千方科技
+    english_name: China TransInfo
+    aliases:
+      - 千方
+      - 千方科技
+      - China TransInfo
+      - 北京千方科技股份有限公司
+    brands:
+      - 千方科技
+      - China TransInfo
+    products:
+      - 智慧交通平台
+      - 车路协同
+      - 交通大数据
+      - 智能网联
+      - 自动驾驶干线物流相关能力
+    default_relation_type: technology_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - technology_competitor
+      - regional_competitor
+      - potential_competitor
+      - benchmark_company
+      - ecosystem_partner
+      - customer_and_competitor
+    main_business: 智慧交通、交通运输数字化、车路协同、智能网联、交通大数据、政府交通项目和产业投资。
+    business_overlap_with_fengxing:
+      - 政府交通监管
+      - 车路协同
+      - 智能网联商用车
+      - 自动驾驶货运
+      - 交通数据
+      - 交通安全
+    key_events_to_watch:
+      - 项目中标
+      - 地方政府合作
+      - 车路云
+      - 智能网联
+      - 自动驾驶货运
+      - 交通大数据
+      - 产业投资
+    search:
+      zh_queries:
+        - 千方科技 车路协同 货运 自动驾驶
+        - 千方科技 交通运输 数字化 中标
+        - 千方科技 智能网联 商用车 交通大数据
+        - 千方科技 产品发布 车路云
+        - 千方科技 战略合作 地方政府 交通
+      en_queries:
+        - China TransInfo intelligent transportation connected vehicle freight
+        - China TransInfo V2X autonomous trucking
+        - China TransInfo smart transportation product launch
+      official_source_queries:
+        - 千方科技 官网 车路协同 产品发布
+        - 千方科技 投资者关系 年报 交通大数据
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - 千方科技 中标 交通运输 数字化
+        - 千方科技 政府采购 车路协同
+        - 千方科技 智能网联 招标 商用车
+      financial_queries:
+        - 千方科技 年报 财报 智慧交通
+        - 千方科技 上市公司公告 车路协同
+      exclusion_terms:
+        - 纯城市交通且无货运关联
+        - 股吧
+        - 行情快讯
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 现有资料提供英文别名 China TransInfo；未联网核验英文全称、官网、公告和商用车货运业务边界。
+
+  - entity_id: wanji_technology
+    group_name: 万集科技
+    listed_entity_name: 北京万集科技股份有限公司
+    legal_entities:
+      - 北京万集科技股份有限公司
+    short_name_zh: 万集科技
+    english_name: Wanji Technology
+    aliases:
+      - 万集
+      - 万集科技
+      - 北京万集科技股份有限公司
+      - Wanji Technology
+    brands:
+      - 万集科技
+      - Wanji Technology
+    products:
+      - ETC
+      - 动态称重
+      - 交通流量监测
+      - V2X
+      - 激光雷达
+      - 智慧公路
+    default_relation_type: technology_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - technology_competitor
+      - regional_competitor
+      - potential_competitor
+      - benchmark_company
+      - ecosystem_partner
+    main_business: 智能交通、ETC、动态称重、交通感知、V2X、激光雷达、智慧公路和超限超载治理。
+    business_overlap_with_fengxing:
+      - 货运车辆监管
+      - 公路数字化
+      - 超限超载治理
+      - 交通感知
+      - 商用车智能化
+      - 政府项目
+    key_events_to_watch:
+      - 政府项目
+      - 交通集团项目
+      - 超限超载治理
+      - V2X
+      - 智慧公路
+      - 商用车智能化
+    search:
+      zh_queries:
+        - 万集科技 动态称重 超限超载 货运车辆监管
+        - 万集科技 V2X 智慧公路 商用车
+        - 万集科技 产品发布 激光雷达 智慧交通
+        - 万集科技 政府项目 交通集团
+      en_queries:
+        - Wanji Technology V2X weigh-in-motion freight regulation
+        - Wanji Technology smart highway commercial vehicle
+        - Wanji Technology product launch intelligent transportation
+      official_source_queries:
+        - 万集科技 官网 动态称重 产品发布
+        - 万集科技 投资者关系 年报 智慧交通
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - 万集科技 中标 动态称重
+        - 万集科技 政府采购 超限超载
+        - 万集科技 智慧公路 招标 货运
+      financial_queries:
+        - 万集科技 年报 财报 研发
+        - 万集科技 上市公司公告 V2X
+      exclusion_terms:
+        - 纯乘用车
+        - 股吧
+        - 行情快讯
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 现有资料提供中文法律主体和英文别名；未联网核验英文全称、官网和货运监管项目事实。
+
+  - entity_id: transfar_zhilian
+    group_name: 传化智联
+    listed_entity_name: 传化智联股份有限公司
+    legal_entities:
+      - 传化智联股份有限公司
+    short_name_zh: 传化智联
+    english_name: Transfar Zhilian
+    aliases:
+      - 传化
+      - 传化智联
+      - 传化物流
+      - 传化货运网
+      - Transfar Zhilian
+    brands:
+      - 传化智联
+      - 传化物流
+      - 传化货运网
+    products:
+      - 公路港
+      - 传化货运网
+      - 网络货运平台
+      - 供应链服务
+      - 物流金融
+    default_relation_type: platform_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - platform_competitor
+      - potential_competitor
+      - benchmark_company
+      - ecosystem_partner
+      - customer_and_competitor
+    main_business: 公路港、物流园区、网络货运、货主服务、运输组织、运力管理、物流金融和供应链服务。
+    business_overlap_with_fengxing:
+      - 网络货运
+      - 运力管理
+      - 货主服务
+      - 物流园区
+      - 车辆司机生态
+      - 地方政府合作
+      - 物流金融
+    key_events_to_watch:
+      - 公路港
+      - 网络货运
+      - 运力管理
+      - 大客户项目
+      - 地方政府合作
+      - 物流金融
+    search:
+      zh_queries:
+        - 传化智联 网络货运 运力管理 货主服务
+        - 传化物流 公路港 数字物流 平台
+        - 传化智联 产品发布 供应链服务
+        - 传化智联 客户签约 物流园区
+      en_queries:
+        - Transfar logistics network freight platform
+        - Transfar Zhilian digital logistics supply chain
+        - Transfar logistics partnership freight platform
+      official_source_queries:
+        - 传化智联 官网 网络货运 产品发布
+        - 传化智联 投资者关系 年报 物流
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - 传化智联 中标 网络货运
+        - 传化物流 招标 公路港 物流园区
+        - 传化智联 政府采购 物流 平台
+      financial_queries:
+        - 传化智联 年报 财报 网络货运
+        - 传化智联 上市公司公告 物流金融
+      exclusion_terms:
+        - 无来源转载
+        - 股吧
+        - 行情快讯
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 现有资料提供主体和别名；未联网核验英文名、官网和产品正式名称。
+
+  - entity_id: jd_logistics
+    group_name: 京东物流
+    listed_entity_name: 京东物流股份有限公司
+    legal_entities:
+      - 京东物流股份有限公司
+    short_name_zh: 京东物流
+    english_name: JD Logistics
+    aliases:
+      - 京东物流
+      - JDL
+      - JD Logistics
+      - 京东物流股份有限公司
+    brands:
+      - 京东物流
+      - JDL
+      - JD Logistics
+    products:
+      - 一体化供应链
+      - 物流控制塔
+      - 智能调度
+      - 物流大模型
+      - 京东物流国际
+      - 物流科技
+    default_relation_type: customer_and_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - platform_competitor
+      - technology_competitor
+      - potential_competitor
+      - benchmark_company
+      - ecosystem_partner
+      - customer_and_competitor
+    main_business: 一体化供应链、仓运配、运输管理、智能调度、物流科技输出、跨境供应链和绿色物流。
+    business_overlap_with_fengxing:
+      - 运输管理
+      - 物流控制塔
+      - 供应链规划
+      - 智能调度
+      - 物流科技输出
+      - 新能源运输
+      - 海外供应链
+      - 无人配送和自动驾驶
+    key_events_to_watch:
+      - 外部客户项目
+      - 物流科技输出
+      - 海外供应链
+      - 智能调度
+      - 物流大模型
+      - 无人配送
+      - 新能源运输
+      - 绿色物流
+    search:
+      zh_queries:
+        - 京东物流 运输管理 控制塔 智能调度
+        - 京东物流 物流大模型 供应链科技 输出
+        - 京东物流 新能源运输 绿色物流 海外供应链
+        - 京东物流 客户签约 物流科技
+        - 京东物流 战略合作 并购 供应链
+      en_queries:
+        - JD Logistics transportation management control tower AI dispatch
+        - JD Logistics supply chain technology overseas logistics
+        - JD Logistics product launch logistics AI
+        - JD Logistics customer win supply chain technology
+      official_source_queries:
+        - 京东物流 官网 物流科技 产品发布
+        - JD Logistics investor relations annual report
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - 京东物流 中标 运输管理
+        - 京东物流 招标 供应链 物流科技
+        - 京东物流 政府采购 物流 平台
+      financial_queries:
+        - 京东物流 年报 财报 物流科技
+        - JD Logistics annual report earnings investor relations
+      exclusion_terms:
+        - 京东零售促销
+        - 快递末端无运输管理
+        - 股吧
+        - 行情快讯
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 现有资料明确其关系需按事件判断；未联网核验官网、IR来源和对外科技产品边界。
+
+  - entity_id: naas_technology
+    group_name: 能链智电
+    listed_entity_name: NaaS Technology Inc.
+    legal_entities: []
+    short_name_zh: 能链智电
+    english_name: NaaS Technology
+    aliases:
+      - 能链
+      - 能链智电
+      - NaaS
+      - NaaS Technology
+    brands:
+      - 能链智电
+      - NaaS
+    products:
+      - 充电服务
+      - 能源数字化
+      - 商用车充电
+      - 重卡补能
+      - 车队能源管理
+    default_relation_type: ecosystem_partner
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - platform_competitor
+      - technology_competitor
+      - potential_competitor
+      - benchmark_company
+      - ecosystem_partner
+      - customer_and_competitor
+    main_business: 充电和能源服务、能源数字化、新能源车队补能、物流园区能源和车后服务相关生态。
+    business_overlap_with_fengxing:
+      - 新能源车队
+      - 补能规划
+      - 能源成本管理
+      - 物流园区能源
+      - 商用车车后服务
+      - 车队能源管理
+    key_events_to_watch:
+      - 重卡充换电
+      - 物流园区能源
+      - 商用车能源管理
+      - 车队合作
+      - 物流企业合作
+      - 财报
+      - 保险和金融
+    search:
+      zh_queries:
+        - 能链智电 新能源重卡 充电 物流车队
+        - 能链智电 商用车 能源管理 物流园区
+        - 能链智电 产品发布 车队能源
+        - 能链智电 战略合作 物流企业
+      en_queries:
+        - NaaS Technology electric truck charging fleet energy management
+        - NaaS logistics fleet charging commercial vehicles
+        - NaaS Technology earnings charging network commercial fleet
+      official_source_queries:
+        - 能链智电 官网 商用车 充电 产品发布
+        - NaaS Technology investor relations earnings
+        - pending: official website domain not verified in this update
+      tender_queries:
+        - 能链智电 中标 充电 物流园区
+        - 能链智电 招标 新能源重卡 补能
+        - 能链智电 政府采购 充电 平台
+      financial_queries:
+        - 能链智电 财报 年报 商用车
+        - NaaS Technology annual report earnings investor relations
+      exclusion_terms:
+        - 乘用车个人充电无车队关联
+        - 股吧
+        - 行情快讯
+    verification:
+      status: partial
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 现有资料确认其为生态伙伴或潜在竞品；未联网核验官网、IR来源和商用车产品边界。
+
+  - entity_id: zhonghuan_satellite
+    group_name: 中寰卫星
+    listed_entity_name: null
+    legal_entities:
+      - 中寰卫星导航通信有限公司
+    short_name_zh: 中寰卫星
+    english_name: null
+    aliases:
+      - 中寰
+      - 中寰卫星
+      - 中寰卫星导航通信有限公司
+    brands:
+      - 中寰卫星
+    products:
+      - 北斗车辆定位
+      - 道路运输动态监管平台
+      - 重点营运车辆监管
+      - 主动安全设备接入
+    default_relation_type: direct_competitor
+    allowed_relation_types:
+      - direct_competitor
+      - partial_competitor
+      - regional_competitor
+      - technology_competitor
+      - ecosystem_partner
+      - potential_competitor
+    main_business: 北斗车辆定位、道路运输动态监管、两客一危一重、重载普货、地方监管运营和车辆风险服务。
+    business_overlap_with_fengxing:
+      - 政府车辆监管
+      - 北斗动态监管
+      - 重点营运车辆
+      - 主动安全设备接入
+      - 地方监管运营
+      - 保险与车辆风险服务
+    key_events_to_watch:
+      - 交通运输监管平台
+      - 政府采购
+      - 中标公告
+      - 主动安全设备
+      - 地方监管运营
+      - 保险合作
+      - 运营商合作
+    search:
+      zh_queries:
+        - 中寰卫星 道路运输 动态监管 北斗
+        - 中寰卫星 重载普货 主动安全 政府采购
+        - 中寰卫星 交通运输 监管平台 中标
+        - 中寰卫星 保险 车辆风险 服务
+      en_queries:
+        - Zhonghuan Satellite Beidou vehicle monitoring road transport
+        - Zhonghuan Satellite commercial vehicle safety supervision
+      official_source_queries:
+        - 中寰卫星 官网 道路运输 动态监管
+        - 中寰卫星 官方 北斗 车辆监控
+        - pending: official website domain and English name not verified in this update
+      tender_queries:
+        - 中寰卫星 中标 道路运输 动态监管
+        - 中寰卫星 政府采购 北斗 车辆监控
+        - 中寰卫星 重载普货 主动安全 招标
+      financial_queries:
+        - 中寰卫星 年报 财报 经营表现
+        - 中寰卫星 股东 公告 北斗
+      exclusion_terms:
+        - 卫星通信科普无车辆监管
+        - 无来源转载
+        - 同名无关主体
+    verification:
+      status: pending
+      last_verified_at: null
+      official_website: pending
+      official_sources: []
+      confidence: low
+      notes: 需通过企业官网、工商资料或官方公告核验英文名称。
+
+discovery_rules:
+  local_beidou_operators:
+    description: 地方北斗运营商不是单一企业，应按省市和项目持续发现、核验和建档。
+    province_city_search_method:
+      - "{省份} 北斗运营商 道路运输动态监管"
+      - "{城市} 北斗车辆监控 两客一危一重"
+      - "{省份} 重载普货 主动安全 车辆监控平台"
+      - "{城市} 交通运输监管平台 运营服务商"
+    government_procurement_search_method:
+      - "{省份} 道路运输动态监管 政府采购 北斗"
+      - "{城市} 车辆监控平台 政府采购 主动安全"
+      - "site:ccgp.gov.cn {省份} 北斗 车辆监管"
+      - "site:ccgp.gov.cn {城市} 道路运输 动态监管"
+    tender_award_search_method:
+      - "{省份} 北斗车辆监控 中标公告"
+      - "{城市} 两客一危一重 主动安全 中标"
+      - "{省份} 重载普货 车辆监管 平台 中标"
+      - "{城市} 交通运输 监管平台 运维 中标"
+    operation_platform_search_method:
+      - "{省份} 道路运输车辆动态监管平台 运营"
+      - "{城市} 北斗车辆监控平台 运维 服务商"
+      - "{省份} 重点营运车辆 联网联控 运营商"
+    new_entity_record_standard:
+      required_fields:
+        - 企业名称
+        - 所在省市
+        - 来源URL
+        - 来源等级
+        - 主要客户或采购方
+        - 主要监管项目
+        - 与政府部门关系
+        - 项目规模或车辆类型
+        - 是否涉及主动安全
+        - 是否涉及保险或货运企业服务
+        - 与丰行重叠的产品或市场
+        - 建议关系类型
+        - 待确认事项
+      default_status: pending_confirmation
+    long_term_watchlist_conditions:
+      - 已通过A/B级来源确认企业主体和项目
+      - 近24个月出现道路运输监管、北斗车辆监控或主动安全项目
+      - 与丰行政府监管、车队安全、保险风控或货运企业服务存在明确重叠
+      - 在同一省市具有持续运营、平台运维或多次中标记录
+      - 人工确认后再加入 entities，默认先使用 regional_competitor 或 pending_confirmation
+
+  additional_competitors:
+    description: 其他后续发现对象不是实体，应作为发现规则维护。
+    categories_to_scan:
+      - TMS/OTMS厂商
+      - 货主运输管理平台
+      - 车队管理SaaS
+      - 车联网和车辆定位服务商
+      - 视频安全和主动安全厂商
+      - 北斗运营商
+      - 网络货运平台
+      - 物流控制塔厂商
+      - 运筹优化和智能调度厂商
+      - 商用车保险科技公司
+      - 新能源商用车运营平台
+      - 车后服务平台
+      - 自动驾驶货运企业
+      - 海外车队管理平台
+      - 大型物流企业自研科技平台
+      - 政府交通监管平台服务商
+    discovery_queries:
+      zh:
+        - TMS OTMS 运输管理 平台 中标
+        - 车队管理 SaaS 商用车 安全 平台
+        - 物流控制塔 智能调度 运输可视化
+        - 商用车保险 风险减量 车联网
+        - 自动驾驶卡车 运营平台 干线物流
+        - 新能源重卡 车队 能源管理 平台
+      en:
+        - TMS OTMS transportation management startup freight visibility
+        - fleet management SaaS video telematics commercial vehicle
+        - logistics control tower route optimization dynamic dispatch
+        - autonomous trucking operations platform commercial fleet
+        - commercial auto insurance telematics risk reduction
+    confirmation_rules:
+      - 必须打开来源正文，确认企业名称、产品或项目、日期和来源等级。
+      - 必须说明与丰行重叠的业务域、产品能力、客户类型或场景。
+      - 必须区分直接竞争、局部竞争、技术竞争、平台竞争、标杆、生态伙伴、客户兼竞争者或潜在竞争者。
+      - C级来源只能作为线索，不能单独建为长期观察实体。
+      - 未经人工确认，不得将新发现企业列为 direct_competitor。
+    long_term_watchlist_conditions:
+      - 两次以上高相关事件，或一次A/B级来源确认的重大产品、客户、中标、融资、财报或政策相关事件。
+      - 与丰行至少一个核心业务域高度重叠。
+      - 能提供明确的实体名称、别名、产品、来源URL和初始关系判断。
+      - 通过人工确认后再加入 entities。

@@ -1,0 +1,158 @@
+primary_entity:
+  canonical: 丰行慧运
+  aliases:
+    - 丰行
+    - 丰行慧运
+    - 丰图交通货运
+    - 丰图交通货运（历史材料称谓）
+  note: 丰图交通货运是否等同于丰行慧运当前品牌需人工确认，不能自动归属。
+
+company_boundary:
+  fengxing_scope:
+    - 货主运输数字化
+    - 车队数智化
+    - 政府道路运输监管
+    - 保险风控
+    - 网络货运与运力生态
+    - 商用车车后与新能源
+    - 智驾和无人货运运营支持
+    - 交通数据资产
+  fengtu_sensitive_scope:
+    - 通用地图服务
+    - 地址/POI/AOI 数据
+    - 智慧城市
+    - 城市数字孪生
+    - 高速公路感知
+    - 政务地理信息
+    - 通用空间智能体
+  rule: 仅当与道路货运、运输运营、车队、安全、监管、保险、能源车后或交通数据商业化直接相关时，才纳入丰行研究。
+
+watchlist_entities:
+  manbang_group:
+    canonical: 满帮集团
+    aliases: [满帮, 满帮集团, Full Truck Alliance, FTA, 运满满, 货车帮]
+    brands: [满帮, 运满满, 货车帮]
+    pending_fields: [official_website, official_sources, legal_entity_verification]
+  g7_yiliu:
+    canonical: G7 易流
+    aliases: [G7, 易流, G7物联, G7 Connect, G7易流]
+    brands: [G7, 易流, G7易流]
+    pending_fields: [official_website, official_sources, english_name_verification]
+  samsara:
+    canonical: Samsara
+    aliases: [Samsara, Samsara Inc., Samsara Connected Operations Cloud]
+    brands: [Samsara]
+    pending_fields: [official_website, official_sources]
+  streamax:
+    canonical: 锐明技术
+    aliases: [锐明, 锐明技术, Streamax, 深圳市锐明技术股份有限公司]
+    brands: [锐明技术, Streamax]
+    pending_fields: [official_website, official_sources, english_name_verification]
+  china_transinfo:
+    canonical: 千方科技
+    aliases: [千方, 千方科技, China TransInfo, 北京千方科技股份有限公司]
+    brands: [千方科技, China TransInfo]
+    pending_fields: [official_website, official_sources, commercial_freight_scope]
+  wanji_technology:
+    canonical: 万集科技
+    aliases: [万集, 万集科技, 北京万集科技股份有限公司, Wanji Technology]
+    brands: [万集科技, Wanji Technology]
+    pending_fields: [official_website, official_sources, english_name_verification]
+  transfar_zhilian:
+    canonical: 传化智联
+    aliases: [传化, 传化智联, 传化物流, 传化货运网, Transfar Zhilian]
+    brands: [传化智联, 传化物流, 传化货运网]
+    pending_fields: [official_website, official_sources, english_name_verification]
+  jd_logistics:
+    canonical: 京东物流
+    aliases: [京东物流, JDL, JD Logistics, 京东物流股份有限公司]
+    brands: [京东物流, JDL, JD Logistics]
+    pending_fields: [official_website, official_sources, outward_technology_product_scope]
+  naas_technology:
+    canonical: 能链智电
+    aliases: [能链, 能链智电, NaaS, NaaS Technology]
+    brands: [能链智电, NaaS]
+    pending_fields: [official_website, official_sources, commercial_vehicle_product_scope]
+  zhonghuan_satellite:
+    canonical: 中寰卫星
+    aliases: [中寰, 中寰卫星, 中寰卫星导航通信有限公司]
+    brands: [中寰卫星]
+    pending_fields: [english_name, official_website, official_sources]
+    note: 英文名称必须通过企业官网、工商资料或官方公告核验后再填写。
+
+discovery_alias_groups:
+  local_beidou_operators:
+    terms: [地方北斗, 北斗运营商, 车辆监控运营商, 道路运输动态监管平台, 北斗车辆监控平台, 联网联控运营商]
+    note: 不是单一企业，发现具体主体后按 watchlist.yaml 的 discovery_rules 建档。
+  additional_competitors:
+    terms: [TMS厂商, OTMS厂商, 车队管理SaaS, 车联网服务商, 视频安全厂商, 网络货运平台, 物流控制塔, 智能调度厂商, 商用车保险科技, 自动驾驶货运企业]
+    note: 不是单一企业，需经来源核验和人工确认后加入 watchlist entities。
+
+product_terms:
+  运输OTMS:
+    - OTMS
+    - 运输管理系统
+    - 运输执行平台
+    - 运输运营管理
+    - transportation management system
+    - transportation execution
+  车队SaaS:
+    - 车队管理平台
+    - FMS
+    - fleet management system
+    - fleet management SaaS
+  网络货运:
+    - 无车承运
+    - 数字货运平台
+    - network freight platform
+    - digital freight platform
+  主动安全:
+    - ADAS
+    - DMS
+    - 智能视频监控
+    - 双防
+    - 视频安全
+    - video telematics
+    - driver safety
+  最优线路:
+    - 路线规划
+    - 路径优化
+    - route optimization
+    - routing
+  在途监控:
+    - 车辆可视化
+    - 轨迹监控
+    - ETA
+    - 运输可视化
+    - freight visibility
+  能耗管理:
+    - 油耗管理
+    - 电耗管理
+    - 补能调度
+    - fleet energy management
+    - EV fleet charging
+
+customer_terms:
+  货主:
+    - shipper
+    - 制造企业
+    - 品牌商
+    - 零售企业
+    - 供应链企业
+  车队:
+    - fleet
+    - 承运商
+    - 物流公司
+    - 运输企业
+    - carrier
+  监管方:
+    - 交通运输厅
+    - 交通运输局
+    - 道路运输管理机构
+    - 运管部门
+    - 交管部门
+  保险机构:
+    - 保险公司
+    - 财险公司
+    - 车险公司
+    - commercial auto insurance

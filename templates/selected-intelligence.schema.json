@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fengxing Selected Intelligence",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "category",
+      "title",
+      "summary",
+      "published_at",
+      "stars",
+      "score",
+      "entities",
+      "competitor_relation",
+      "fields",
+      "source",
+      "evidence",
+      "source_facts",
+      "business_inference",
+      "implication_for_fengxing",
+      "recommended_actions",
+      "uncertainties",
+      "review_status"
+    ],
+    "properties": {
+      "id": { "type": "string" },
+      "category": {
+        "enum": [
+          "政策趋势与监管",
+          "资金与项目机会",
+          "竞合与标杆动向",
+          "市场与客户趋势",
+          "技术与能力演进"
+        ]
+      },
+      "title": { "type": "string" },
+      "summary": { "type": "string" },
+      "published_at": { "type": "string" },
+      "stars": { "enum": ["★★★★★", "★★★★", "★★★"] },
+      "score": { "type": "integer", "minimum": 75, "maximum": 100 },
+      "entities": { "type": "array", "items": { "type": "string" } },
+      "competitor_relation": {
+        "type": ["string", "null"],
+        "enum": [
+          "direct_competitor",
+          "partial_competitor",
+          "platform_competitor",
+          "technology_competitor",
+          "regional_competitor",
+          "potential_competitor",
+          "benchmark_company",
+          "ecosystem_partner",
+          "customer_and_competitor",
+          null
+        ]
+      },
+      "fields": { "type": "object" },
+      "source": {
+        "type": "object",
+        "required": ["name", "url", "tier", "is_original"],
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+          "tier": { "type": "string" },
+          "is_original": { "type": "boolean" }
+        }
+      },
+      "evidence": { "type": "array", "items": { "type": "string" } },
+      "source_facts": { "type": "string" },
+      "business_inference": { "type": "string" },
+      "implication_for_fengxing": { "type": "string" },
+      "recommended_actions": { "type": "array", "items": { "type": "string" } },
+      "uncertainties": { "type": "array", "items": { "type": "string" } },
+      "review_status": { "const": "待人工审核草稿" }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+entity: 丰行慧运
+positioning:
+- 交通货运行业数智化解决方案服务商
+- 科技解决方案+运营服务
+business_domains:
+- 货主运输数字化
+- 车队数智化
+- 政府道路运输监管
+- 保险风控
+- 交通数据资产
+- 车后与能源服务
+- 智驾/无人货运运营支持
+process_stages:
+- 需求规划
+- 资源调度
+- 运输执行
+- 车后管理
+customer_segments:
+- 货主企业
+- 物流公司
+- 干线车队
+- 城市配送车队
+- 工程/特种车辆车队
+- 新能源商用车队
+- 海外车队
+- 交通运输主管部门
+- 保险机构
+- 智驾/无人车企业
+- 能源与车后服务商
+products:
+- 运输OTMS
+- 生产制造OTMS场景套件
+- 货运地图数字化决策套件
+- 网络货运
+- 最优线路规划
+- 资源结构规划
+- 智能排线
+- 动态资源调度
+- 在途数字化监控
+- 场所/园区数字化
+- 车队SaaS
+- 车辆安全托管
+- 保险风险评分与反欺诈
+- 道路运输车辆监管平台
+- 能源/补能决策服务
+- 交通数据产品
+capabilities:
+- 行业与场景理解
+- 货运地图与道路数据
+- 轨迹与车辆运营数据
+- AIoT接入与治理
+- 智能调度算法
+- 路线/时效/成本/风险模型
+- ADAS/DMS驾驶行为分析
+- 7x24人工干预运营
+- 数据增值与联合建模
+- 项目管理与硬件交付
+policy_topics:
+- 道路运输安全生产
+- 联网联控
+- 主动安全智能防控
+- 网络货运合规与税务
+- 交通运输数字化
+- 新能源商用车
+- 充换电基础设施
+- 自动驾驶货运监管
+- 营运车险风险减量
+- 交通数据要素与可信数据空间
+technology_topics:
+- fleet management SaaS
+- transportation management system
+- OTMS
+- route optimization
+- dynamic dispatch
+- ETA
+- commercial vehicle telematics
+- video-based safety
+- ADAS
+- DMS
+- AIoT
+- energy management
+- EV fleet charging
+- autonomous trucking operations
+- logistics agent
+- transportation data space
+priority_scenarios:
+- 货主降本增效
+- 承运商与运力管理
+- 运输计划和排线
+- 车货匹配
+- 在途可视化
+- 安全风控闭环
+- 车辆能耗与补能
+- 园区作业数字化
+- 政府车辆监管
+- 保险核保与降赔
+- 海外车队运营
+exclusions:
+- 纯智慧城市/GIS且与货运无直接关联
+- 纯乘用车消费资讯
+- 没有来源或无法确认日期的信息
+- 内部目标被误写成已实现事实
+pending_confirmation:
+- 丰行慧运法律主体与丰图科技的准确关系
+- 当前正式在售产品名称和版本
+- 可对外披露的客户与案例
+- 直接竞品和标杆企业名单
+- 当前已覆盖车辆/客户/收入等经营指标

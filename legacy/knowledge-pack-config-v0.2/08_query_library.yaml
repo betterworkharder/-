@@ -1,0 +1,78 @@
+policy_regulation:
+  zh:
+  - 道路运输 安全生产 数字化 监管
+  - 重载普货 主动安全 监管平台
+  - 网络货运 合规 税务 新规
+  - 新能源商用车 运营 补能 政策
+  - 自动驾驶货运 无人卡车 监管
+  - 营运车险 风险减量 服务
+  - 交通数据要素 可信数据空间
+  en:
+  - commercial fleet safety regulation
+  - road freight digitalization policy
+  - network freight platform regulation China
+  - electric commercial vehicle fleet charging policy
+  - autonomous trucking regulation
+  - commercial auto insurance risk prevention
+  - transportation data space
+competitor_benchmark:
+  zh:
+  - 车队管理SaaS 新产品
+  - 商用车视频安全 ADAS DMS 平台
+  - TMS OTMS 运输管理 中标
+  - 智能调度 路线优化 物流 产品发布
+  - 新能源车队 能耗管理 平台
+  - 营运车辆 保险风控 科技
+  - 无人卡车 运营平台 合作
+  en:
+  - fleet management SaaS product launch
+  - commercial vehicle video safety platform
+  - TMS OTMS customer win
+  - route optimization logistics platform
+  - electric fleet energy management
+  - commercial auto insurance telematics
+  - autonomous trucking operations platform
+market_customer:
+  zh:
+  - 制造企业 物流数字化 TMS 招标
+  - 零售企业 城配 运输管理 招标
+  - 车队 安全管理 数字化 项目
+  - 物流降本增效 专项 运输
+  - 新能源重卡 运营 成本 数据
+  - 中资企业 海外 车队 管理
+  - 交通运输厅 车辆监管 项目
+  en:
+  - shipper transportation management RFP
+  - manufacturing logistics digitalization project
+  - fleet safety management procurement
+  - freight cost reduction initiative
+  - electric truck total cost of ownership fleet
+  - Chinese companies overseas fleet management
+  - government commercial vehicle safety platform tender
+product_technology:
+  zh:
+  - 物流智能调度 大模型 Agent
+  - 动态路线规划 实时ETA 货运
+  - AIoT 商用车 运营管理
+  - 车辆能耗优化 补能调度
+  - 供应链控制塔 运输执行
+  - 园区车辆调度 视觉算法
+  - 交通数据 联合建模 可信空间
+  en:
+  - AI agent transportation planning
+  - dynamic route optimization real-time ETA freight
+  - AIoT commercial fleet operations
+  - EV fleet charging optimization
+  - transportation control tower execution
+  - yard management computer vision
+  - transportation trusted data space joint modeling
+source_filters:
+- site:gov.cn
+- site:mot.gov.cn
+- site:ccgp.gov.cn
+- site:chinabidding.cn
+- site:cninfo.com.cn
+- site:sec.gov
+- site:company-domain official
+- filetype:pdf 年报
+- intitle:招标 运输管理

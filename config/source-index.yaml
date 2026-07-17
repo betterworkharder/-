@@ -1,0 +1,266 @@
+version: 1
+purpose: >-
+  Stable source index for Fengxing intelligence research. Use this before broad
+  web search so candidate discovery starts from trusted recurring sources.
+
+quality_gate:
+  formal_candidate_requires:
+    - visible_http_url
+    - source_name
+    - published_at
+    - opened_source_body
+    - source_tier_a_or_b
+    - business_fit_reason
+    - dedupe_key
+    - score_breakdown
+  blocks_formal_output:
+    - source_url_missing
+    - published_at_missing
+    - official_original_pending_for_policy
+    - unresolved_source_audit
+    - arxiv_or_preprint_as_formal_item
+    - duplicate_url_or_event
+    - score_below_75
+    - c_tier_only
+
+recurring_sources:
+  policy_regulation:
+    - name: 交通运输部
+      tier: A
+      domains: [mot.gov.cn]
+      use_for: [交通运输政策, 道路货运监管, 多式联运, 新能源重卡, 数据要素交通赛道]
+    - name: 国家发展改革委
+      tier: A
+      domains: [ndrc.gov.cn]
+      use_for: [物流降本, 交通能源, 新能源重卡, 重卡补能, 绿色低碳交通, 重大工程, 数据要素]
+    - name: 国家能源局
+      tier: A
+      domains: [nea.gov.cn, ndrc.gov.cn]
+      use_for: [新型能源体系, 充电基础设施, 车网互动, 重卡补能, 绿色燃料, 交通能源]
+    - name: 国家数据局
+      tier: A
+      domains: [nda.gov.cn]
+      use_for: [数据要素, 可信数据空间, 公共数据授权运营]
+    - name: 工业和信息化部
+      tier: A
+      domains: [miit.gov.cn]
+      use_for: [智能网联汽车, 商用车, AI治理, 标准]
+    - name: 央视网汽车频道
+      tier: A/B
+      domains: [auto.cctv.com, cctv.com]
+      use_for: [工信部转载, 自动驾驶法规, 智能网联汽车, 联合国车辆法规, 商用车智能化线索]
+
+  customer_opportunities:
+    - name: 中国政府采购网
+      tier: A
+      domains: [ccgp.gov.cn]
+      use_for: [政府采购, 车辆监管, 交通平台, 数据治理]
+    - name: 中国招标投标公共服务平台
+      tier: A
+      domains: [cebpubservice.com]
+      use_for: [招标, 中标, 交通监管, TMS, 车队平台]
+    - name: 全国公共资源交易平台
+      tier: A
+      domains: [ggzy.gov.cn]
+      use_for: [地方交通项目, 数据平台, 监管平台]
+    - name: 中国公路学会
+      tier: A/B
+      domains: [chts.cn]
+      use_for: [公路交通行业赛事, 数据要素应用创新大赛, 高速公路数据上图上车, 全域物流供应链数据融合, 智慧运力协同, 交通运输安全监管]
+      mandatory_scan: true
+      scan_rule: >-
+        周度研究需检索中国公路学会通知公告，特别是公路交通数据要素、
+        智慧公路、交通安全、交通运输大模型、高速公路数据上图上车、
+        全域物流供应链数据融合与智慧运力协同等赛题、征集和会议线索。
+
+  competitor_benchmark:
+    - name: 东方财富网
+      tier: B/C by item
+      domains: [eastmoney.com]
+      use_for: [上市公司动态, 财报, 公告, 投资者互动, 资本市场报道, 企业动态线索]
+      mandatory_scan: true
+      scan_rule: >-
+        每次周度研究必须按固定竞品和观察名单企业的名称、别名逐一站内检索。
+        东方财富网可以作为正式候选来源：正文具备明确来源、发布时间、可核验事实
+        和业务相关性时，可按 B 级或 B/C 级纳入候选。重大数字、客户、项目规模、
+        财务指标或监管事项仍应优先回溯企业公告、巨潮资讯、交易所、企业官网或
+        投资者关系原文；无法回溯但正文证据较完整时，必须标注不确定性。
+      query_patterns:
+        - "site:eastmoney.com {企业名称} 财报"
+        - "site:eastmoney.com {企业名称} 公告"
+        - "site:eastmoney.com {企业名称} 投资者互动"
+        - "site:eastmoney.com {企业名称} 战略合作"
+        - "site:eastmoney.com {企业别名} 产品"
+    - name: 新浪网/新浪财经
+      tier: B/C by item
+      domains: [sina.com.cn, finance.sina.com.cn, sina.cn]
+      use_for: [财报, 公告, 资本市场报道, 企业动态, 行业报道, 舆情线索]
+      mandatory_scan: true
+      scan_rule: >-
+        每次周度研究必须按固定竞品和观察名单企业的名称、别名逐一站内检索新浪网/
+        新浪财经。新浪网/新浪财经可以作为正式候选来源：正文具备明确来源、发布时间、
+        可核验事实和业务相关性时，可按 B 级或 B/C 级纳入候选。重大数字、客户、
+        项目规模、财务指标或监管事项仍应优先回溯企业公告、巨潮资讯、交易所、
+        企业官网或投资者关系原文；无法回溯但正文证据较完整时，必须标注不确定性。
+      query_patterns:
+        - "site:finance.sina.com.cn {企业名称} 财报"
+        - "site:finance.sina.com.cn {企业名称} 公告"
+        - "site:finance.sina.com.cn {企业名称} 战略合作"
+        - "site:finance.sina.com.cn {企业名称} 产品"
+        - "site:sina.com.cn {企业别名} 物流"
+        - "site:sina.com.cn {企业别名} 车队"
+        - "site:finance.sina.com.cn G7易流 亚洲物流双年展 AI 硬件"
+        - "site:finance.sina.com.cn G7易流 拍拍豆 API Skill"
+    - name: 满帮集团投资者关系
+      tier: A
+      domains: [ir.fulltruckalliance.com]
+      use_for: [财报, 货运平台, 司机生态, 大客户服务]
+    - name: Samsara Investor Relations
+      tier: A
+      domains: [investors.samsara.com]
+      use_for: [财报, Connected Operations, Fleet, AI产品]
+    - name: 锐明技术公告
+      tier: A
+      domains: [cninfo.com.cn, streamax.com]
+      use_for: [财报, 车载视频, ADAS, DMS, 海外业务]
+    - name: 千方科技公告
+      tier: A
+      domains: [cninfo.com.cn, ctfo.com]
+      use_for: [智慧交通, 车路云, 交通监管]
+    - name: 万集科技公告
+      tier: A
+      domains: [cninfo.com.cn, wanji.net.cn]
+      use_for: [动态称重, 超限超载, 路侧感知]
+    - name: 传化智联公告
+      tier: A
+      domains: [cninfo.com.cn, transfar.com]
+      use_for: [网络货运, 公路港, 运力服务]
+    - name: 京东物流投资者关系
+      tier: A
+      domains: [ir.jdwl.com]
+      use_for: [一体化供应链, 物流科技, 控制塔]
+    - name: 能链智电投资者关系
+      tier: A
+      domains: [ir.enaas.com]
+      use_for: [充电网络, 能源管理, 商用车补能]
+    - name: 泰伯网
+      tier: B/C
+      domains: [taibo.cn]
+      use_for: [地理信息, 时空智能, 地图, 智慧交通, 车路协同, 城市治理, 交通数字化, 企业动态线索]
+      mandatory_scan: true
+      scan_rule: >-
+        每次周度研究必须检索泰伯网，重点发现地图、时空智能、智慧交通、
+        车路协同和交通数字化相关竞品、标杆企业和项目线索。正式候选如采用
+        泰伯网线索，应回溯企业官网、政府公告、招投标原文或其他 A/B 级来源。
+      query_patterns:
+        - "site:taibo.cn 智慧交通 货运"
+        - "site:taibo.cn 车路协同 商用车"
+        - "site:taibo.cn 时空智能 物流"
+        - "site:taibo.cn 地图 运输"
+        - "site:taibo.cn {企业名称}"
+    - name: 泰伯数据情报数据库
+      tier: B/C
+      domains: [data.taibo.cn]
+      use_for:
+        - 情报监测
+        - 产业动态
+        - 市场情报
+        - 地理信息
+        - 时空智能
+        - 智慧交通
+        - 车路协同
+        - 智能网联汽车
+        - 自动驾驶仿真
+        - 低空物流
+        - 空间数据
+        - 数据空间
+        - 企业动态线索
+      mandatory_scan: true
+      access_pattern: api_first
+      api_endpoints:
+        list_latest: "https://data.taibo.cn/api/info/index?page={page}"
+        list_news: "https://data.taibo.cn/api/info/index?type=0&page={page}"
+        list_market: "https://data.taibo.cn/api/info/index?type=1&page={page}"
+        detail: "https://data.taibo.cn/api/info/view?id={id}"
+      scan_rule: >-
+        每次周度研究必须通过泰伯数据 API 扫描最近 7 天列表页，至少覆盖
+        最新监测 type=空、产业动态 type=0、市场情报 type=1 三类入口。
+        对命中丰行直接业务、邻近行业能力或重要政策/项目/资本信号的条目，
+        必须打开 detail API 阅读标题、来源、发布时间、摘要、正文和关联企业。
+        未执行 API 扫描时，不得写“泰伯网未发现有效新增信息”，只能写
+        “泰伯数据 API 固定来源未完成扫描”。
+      retention_rule: >-
+        泰伯数据命中条目即使未达到正式候选标准，也必须进入 candidate-pool.md，
+        标注为入选、观察池或淘汰，并写明原因。不能因暂未回溯到 A 级来源而静默丢弃。
+      formal_candidate_rule: >-
+        泰伯数据原则上作为线索或补充来源。正式候选必须优先回溯政府原文、
+        企业官网/官微、招投标原文、上市公司公告、投资者关系材料或其他 A/B 级来源。
+      minimum_weekly_pages:
+        latest: 3
+        news: 3
+        market: 3
+      required_candidate_fields:
+        - guid
+        - title
+        - created_at
+        - source_copyfrom
+        - description
+        - content
+        - related_companies
+        - original_url_if_any
+        - taibo_url
+        - relevance_level
+        - disposition_reason
+
+  market_trends:
+    - name: 泰伯网
+      tier: B/C
+      domains: [taibo.cn]
+      use_for: [地理信息产业趋势, 时空智能趋势, 智慧交通趋势, 地图数据能力趋势]
+      note: 只作趋势线索或补充，正式趋势判断应结合官方报告、协会材料或其他独立来源。
+    - name: 中国物流与采购联合会
+      tier: A/B
+      domains: [chinawuliu.com.cn]
+      use_for: [物流景气, 冷链, 公路货运, 供应链趋势]
+    - name: 中国交通新闻网
+      tier: B
+      domains: [zgjt.org.cn]
+      use_for: [交通运输行业报道, 政策解读线索]
+    - name: 罗戈网
+      tier: B/C
+      domains: [logclub.com]
+      use_for: [物流科技线索, 企业动态线索]
+      note: 只作线索或补充，正式候选应回溯官方来源。
+    - name: 证券市场周刊
+      tier: B/C
+      domains: [weeklyonstock.com]
+      use_for: [新能源重卡销量, 商用车市场趋势, 物流能源, 行业二手数据线索]
+      note: 只作趋势线索或补充；销量、渗透率等关键数据应回溯协会、企业公告或原始统计口径。
+
+  product_technology:
+    - name: 企业官方技术博客和产品文档
+      tier: A
+      domains: []
+      use_for: [产品文档, API, 开发者平台, 官方技术实践]
+    - name: 标准组织与政府标准公开页
+      tier: A
+      domains: [samr.gov.cn, sac.gov.cn, miit.gov.cn, mot.gov.cn]
+      use_for: [标准, 技术规范, 能力成熟度]
+    - name: 中国证券报·中证网
+      tier: B
+      domains: [cs.com.cn]
+      use_for: [上市公司业务动态, AI交通运输, 智慧交通, 干线物流自动驾驶, 车路云, 重卡补能线索]
+      note: 涉及上市公司战略和项目进展时，应继续回溯公告、官网或投资者关系材料。
+
+search_order:
+  - read_knowledge_and_state
+  - scan_recurring_sources
+  - scan_taibo_data_api
+  - scan_mandatory_vertical_sources
+  - scan_eastmoney_for_all_watchlist_entities
+  - scan_sina_for_all_watchlist_entities
+  - scan_watchlist_entities
+  - run_category_query_library
+  - trace_to_original_source
+  - score_and_dedupe_candidates
+  - validate_before_render

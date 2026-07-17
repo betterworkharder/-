@@ -1,0 +1,257 @@
+version: 2
+schema_note: >-
+  Query library remains category-oriented. Entity-specific executable queries now
+  live under config/watchlist.yaml search blocks. Formal intelligence records must
+  use event_relation_type, not the entity default_relation_type, when assigning a
+  concrete competitive relationship.
+event_relation_type_required: true
+watchlist_entity_ids:
+  - manbang_group
+  - g7_yiliu
+  - samsara
+  - streamax
+  - china_transinfo
+  - wanji_technology
+  - transfar_zhilian
+  - jd_logistics
+  - naas_technology
+  - zhonghuan_satellite
+discovery_rule_ids:
+  - local_beidou_operators
+  - additional_competitors
+categories:
+  policy_regulation:
+    name: 政策趋势与监管
+    core_topics: [数据要素, AI治理, 城市治理, 城市生命线, 测绘地理信息, 住建, 交通运输, 物流与供应链, 公共数据授权运营, 道路运输监管, 智能网联汽车, 低空物流, 平台经济协同发展, 新型能源体系, 重卡补能, 绿色燃料, 自动驾驶全球技术法规]
+    synonyms: [政策方向, 制度变化, 监管要求, 合规边界, 数据安全治理, 地理信息安全, 时空数据, 可信数据空间, 城市运行管理, 低空经济, 智能驾驶测试, 自动驾驶仿真, 商用车智能化, 车网互动, 绿电物流, 低碳零碳运输走廊]
+    event_types: [政策发布, 征求意见, 专项行动, 标准发布, 试点申报, 监管处罚, 数据安全治理, 管理办法, 指导意见]
+    official_source_filters: ["site:gov.cn", "site:ndrc.gov.cn", "site:miit.gov.cn", "site:mnr.gov.cn", "site:mohurd.gov.cn", "site:mot.gov.cn", "site:samr.gov.cn", "site:cac.gov.cn"]
+    tender_filters: [招标, 中标, 采购, 政府采购, 竞争性磋商, 单一来源, 项目立项]
+    finance_filters: [年报, 半年报, 季报, 投资者关系, 上市公司公告]
+    procurement_filters: ["site:ccgp.gov.cn", "site:chinabidding.com.cn", "site:cebpubservice.com", "site:ctbpsp.com"]
+    english_technical_terms: [commercial fleet safety regulation, road freight digitalization policy, network freight platform regulation, commercial vehicle telematics regulation, autonomous trucking regulation, transportation data space]
+    exclude_terms: [乘用车, 网约车, 城市治理, 智慧城市, 旅游客运, 无关GIS]
+    query_combinations:
+      zh:
+        - 数据要素 公共数据 授权运营 政策 "site:gov.cn"
+        - AI治理 人工智能 治理办法 标准 指南
+        - 城市生命线 安全工程 住建 政策
+        - 城市运行管理 服务平台 政策 住建
+        - 测绘地理信息 数据安全 政策 自然资源部
+        - 时空数据 城市治理 数据治理 政策
+        - 可信数据空间 政策 数据要素 官方
+        - 交通运输 数据安全 治理 公共数据 授权运营 "site:gov.cn"
+        - 智能网联汽车 自动驾驶 测试 交通运输 政策 官方
+        - 低空物流 平台企业 中小企业 政策 官方
+        - 新型能源体系 十五五 重卡补能 主要货运通道 官方
+        - 绿电物流 新能源重卡 补能 交通干线 site:ndrc.gov.cn
+        - 自动驾驶系统 全球技术法规 工信部 货运 商用车
+      en:
+        - AI governance geospatial data policy official
+        - trusted data space policy geospatial official
+        - urban governance digital twin policy official
+        - geospatial data security regulation official
+
+  competitor_benchmark:
+    name: 竞合与标杆动向
+    core_topics: [GIS企业, AI公司, 地图平台, 地址治理, 地理编码, 企业核验, 物流科技, 车队管理SaaS, TMS/OTMS, 城市治理平台, 数据治理, 亚洲物流双年展, 穿戴式AI硬件, 车下交付数据, 干线物流自动驾驶]
+    synonyms: [竞品, 标杆企业, 平台厂商, 生态伙伴, GIS, geospatial, map platform, fleet management, logistics technology, data governance, 交付数据黑洞, API开放, Skill能力, 车路运能]
+    entity_ids: [manbang_group, g7_yiliu, samsara, streamax, china_transinfo, wanji_technology, transfar_zhilian, jd_logistics, naas_technology, zhonghuan_satellite]
+    discovery_rule_ids: [local_beidou_operators, additional_competitors]
+    company_and_product_names: [满帮, 运满满, 货车帮, G7易流, Samsara, 锐明技术, Streamax, 千方科技, 万集科技, 传化智联, 京东物流, 能链智电, 中寰卫星, Motive, project44]
+    event_types: [产品发布, 产品升级, 客户签约, 项目中标, 战略合作, 融资并购, 财报, 组织变化, 高管变化, 招聘变化, 定价变化, 海外扩张, API开放, 负面事件, 客户落地]
+    official_source_filters: [官网, 官方, 新闻稿, 投资者关系, SEC, 年报, 财报, pending_official_domain]
+    mandatory_site_filters: ["site:eastmoney.com", "site:finance.sina.com.cn", "site:sina.com.cn", "site:taibo.cn"]
+    tender_filters: [中标, 招标, 采购, 项目, 合同]
+    finance_filters: [财报, 年报, 20-F, 10-K, 10-Q, investor relations, earnings, ARR, revenue]
+    procurement_filters: ["site:ccgp.gov.cn", "site:chinabidding.com.cn", "site:cninfo.com.cn", "site:sec.gov"]
+    english_technical_terms: [fleet management SaaS, connected operations cloud, video-based safety, freight visibility, route optimization, AI dispatch, autonomous trucking operations]
+    exclude_terms: [招聘广告无业务信息, 二手转载, 股吧, 行情快讯, 无来源]
+    query_combinations:
+      zh:
+        - 满帮 运满满 API TMS ERP 轨迹 结算 官方
+        - G7易流 商用车 在途安全 管理平台 发布
+        - G7易流 拍拍豆 穿戴式AI硬件 API Skill
+        - G7易流 亚洲物流双年展 车下场景 数据黑洞
+        - 锐明技术 商用车 视频安全 ADAS DMS 海外
+        - 千方科技 自动驾驶 干线物流 车路云
+        - 千方科技 AI+交通运输 干线物流 车路运能
+        - 千方科技 阳关 SOP 智能体 宇视科技
+        - 万集科技 动态称重 货运车辆监管 中标
+        - 传化智联 网络货运 运力管理 大客户
+        - 京东物流 运输管理 控制塔 智能调度 物流科技
+        - 能链智电 新能源重卡 充电 车队 能源管理
+        - 中寰卫星 道路运输 动态监管 北斗 中标
+        - 地方北斗运营商 道路运输动态监管 政府采购 中标
+        - "{企业名称} 财报 公告 投资者互动 site:eastmoney.com"
+        - "{企业名称} 财报 公告 战略合作 site:finance.sina.com.cn"
+        - "{企业别名} 产品 物流 车队 site:sina.com.cn"
+        - "{企业名称} 地图 智慧交通 时空智能 site:taibo.cn"
+      en:
+        - Samsara Connected Operations Cloud AI fleet management earnings
+        - Samsara video-based safety driver safety telematics official
+        - Full Truck Alliance enterprise logistics API TMS earnings
+        - Streamax commercial vehicle video telematics ADAS DMS
+        - project44 freight visibility AI delay prediction official
+        - Motive fleet management edge AI dashcam official
+
+  market_trends:
+    name: 市场与客户趋势
+    core_topics: [政务数字化, 城市治理, 物流, 零售, 金融, 园区, 能源, 水务, 环卫, 客户需求变化, 数据治理需求, 低空物流, 智能网联汽车, 自动驾驶测试, 时空数据服务, 新能源重卡销量, 园区补能, 绿电物流]
+    synonyms: [ToG, ToB, 客户行业, 需求变化, 业务痛点, 城市运行, 地址治理, 地图底座, 企业核验, 路径规划, 仿真测试, 数据合成, 场景库, 空间数据, 数据空间, 重卡充电站, 补能网络, 中长途干线物流]
+    event_types: [行业报告, 市场规模, 渗透率, 客户预算, 行业大会, 多企业同向动作, 客户需求变化, 建设趋势]
+    official_source_filters: ["site:stats.gov.cn", "site:gov.cn", "site:ndrc.gov.cn", "site:mohurd.gov.cn", "site:mot.gov.cn", "site:chinawuliu.com.cn"]
+    tender_filters: [招标 趋势, 采购 运输管理, TMS 招标]
+    finance_filters: [行业报告, 白皮书, 年报, 财报, 业绩说明会]
+    procurement_filters: [政府采购 物流 数字化, 物流园区 项目]
+    english_technical_terms: [freight digitalization market, fleet management market, electric truck TCO, autonomous trucking commercialization, logistics AI agent]
+    exclude_terms: [乘用车消费, 快递末端无运输管理, 无数据来源, 软文]
+    query_combinations:
+      zh:
+        - 城市治理 数字化 市场 需求 报告
+        - 政务数据治理 公共数据运营 客户需求
+        - 物流 降本增效 运输管理 数字化 报告
+        - 园区 数字化 地图 数据治理 需求
+        - 水务 环卫 城市运行 数字化 需求
+        - 零售 物流 履约 路径规划 需求
+        - 金融 企业核验 地址治理 风控 需求
+        - 自动驾驶 仿真测试 场景库 数据合成 需求
+        - 低空物流 城市配送 客户需求 场景
+        - 时空数据 空间数据 开放平台 客户需求
+        - 新能源重卡 销量 渗透率 交强险 物流 干线
+        - 绿电物流 重卡充电站 园区 运输成本
+        - 重卡补能网络 物流园区 能源成本 运输
+      en:
+        - urban governance digitalization market trend report
+        - geospatial data governance customer demand report
+        - logistics digitalization customer demand route planning
+        - enterprise verification address data risk management trend
+
+  customer_opportunities:
+    name: 资金与项目机会
+    core_topics: [奖补, 采购, 招投标, 试点, 示范工程, 重点工程, 客户侧建设任务, 城市生命线工程, 数据治理项目, 地址治理项目, 低空物流项目, 智能网联测试项目, 遥感数据平台, 数据要素应用创新大赛, 公路交通行业赛事]
+    synonyms: [政府采购, 项目立项, 试点申报, 示范城市, 建设任务, 数字化改造, 地图底座, 企业核验, 路径规划, 城市运行, 数据空间, 仿真平台, 场景库, 低空航线, 高速公路数据上图上车, 智慧运力协同]
+    event_types: [奖补, 新建, 投产, 招标, 中标, 采购, 立项, 试点, 示范工程, 重点工程, 建设任务]
+    official_source_filters: [政府采购, 招标平台, 发改委项目, 住建部门公告, 自然资源部门公告, 交通部门公告, 公司官网, 投资者关系]
+    tender_filters: [城市生命线 招标, 数据治理 招标, 地址治理 招标, 城市运行 平台 招标, 地图服务 采购, 企业核验 采购, 路径规划 采购]
+    finance_filters: [年报 物流成本, 投资者关系 供应链, 财报 物流数字化]
+    procurement_filters: ["site:ccgp.gov.cn 运输管理", "site:cebpubservice.com 车辆监管", "site:chinabidding.com.cn TMS"]
+    english_technical_terms: [shipper transportation management RFP, fleet safety management procurement, overseas fleet management, electric fleet charging project]
+    exclude_terms: [普通营销, 无采购动作, 无主体, 与货运无关, 历史重复]
+    query_combinations:
+      zh:
+        - 城市生命线 安全工程 招标 采购
+        - 城市运行管理 服务平台 招标 中标
+        - 公共数据 授权运营 试点 项目
+        - 地址治理 数据治理 招标 采购
+        - 地图服务 地理信息 平台 采购
+        - 企业核验 数据服务 采购 招标
+        - 路径规划 物流 数字化 项目 招标
+        - 园区 数字化 地图 平台 招标
+        - 重点工程 数字化 建设任务 数据治理
+        - 低空物流 航线 示范 项目 招标
+        - 自动驾驶 仿真平台 场景库 招标 采购
+        - 遥感 数据空间 开放平台 项目 验收
+        - 公路交通行业 数据要素 应用创新大赛 全域物流 供应链
+        - 数据要素X 交通运输赛道 智慧运力协同 安全监管
+        - 高速公路 数据 上图上车 大赛 申报
+      en:
+        - geospatial data platform procurement tender
+        - smart city operations platform procurement
+        - address data governance procurement
+        - route planning logistics procurement RFP
+
+  product_technology:
+    name: 技术与能力演进
+    core_topics: [AI Agent, MCP, Skill, 地图智能体, 地址治理, 地理编码, 路径规划, WiFi指纹, 货运地图, 数据质检, 可信数据空间, 可审计决策链, 物理世界模型, 自动驾驶仿真, 数据合成, 场景库, 空间感知, 时空智能, 低空物流, 数智科技链, 供应链智能体, 产业链数智化]
+    synonyms: [map agent, geocoding, address intelligence, route optimization, WiFi fingerprinting, data quality, trusted data space, auditable decision chain, operational AI, world model, physical AI, simulation, synthetic data, scenario library, spatial perception, geospatial intelligence, low-altitude logistics, 代理式AI, 规则约束建模, 工业数字孪生]
+    entity_ids: [g7_yiliu, samsara, streamax, china_transinfo, wanji_technology, jd_logistics]
+    company_and_product_names: [Samsara, Motive, project44, G7易流, 锐明技术, 京东物流, 千方科技, 华为数字能源]
+    event_types: [技术范式变化, 能力升级, 标准发布, 产品文档更新, API更新, 官方博客, 开发者平台, 行业技术资讯, AI助手, 大模型应用]
+    official_source_filters: [official blog, product docs, developer docs, 企业官网, 官方博客, 产品文档, 开发者平台, 官方新闻稿, 行业媒体, pending_official_domain]
+    mandatory_site_filters: ["site:taibo.cn"]
+    tender_filters: [智能调度 招标, 路线优化 采购, 车联网 平台 中标]
+    finance_filters: [研发投入, 年报 研发, 财报 AI, investor relations product]
+    procurement_filters: [政府采购 AI调度, 交通数据 平台 招标]
+    english_technical_terms: [AI transportation planning, AI dispatch, route optimization, dynamic dispatch, freight visibility, video telematics, EV fleet charging optimization, autonomous trucking operations]
+    exclude_terms: [乘用车娱乐系统, 与货运无关的地图渲染, 纯概念无产品, 无来源博客]
+    query_combinations:
+      zh:
+        - AI Agent 地图 智能体 地理空间
+        - MCP Skill 企业 数据 工具 调用
+        - 地址治理 地理编码 精度 覆盖 自动化
+        - 路径规划 实时 ETA 货运 地图
+        - WiFi 指纹 室内定位 地图 能力
+        - 数据质检 空间数据 自动化 可解释
+        - 可信数据空间 可审计 决策链 地理数据
+        - 货运地图 路网 限行 限高 限重 时效
+        - 物理世界模型 自动驾驶 仿真 数据合成
+        - 自动驾驶 场景库 合成数据 仿真测试 商用车
+        - 空间感知 真实场景 数据采集 时空智能
+        - 低空物流 路径规划 调度 监管 数据
+        - 链博会 数智科技链 供应链 智能体 物流 调度
+        - 供应链智能体 规则 约束 调度 物流 决策
+      en:
+        - geospatial AI agent map intelligence
+        - MCP skill data workflow enterprise AI
+        - address intelligence geocoding accuracy coverage automation
+        - route optimization real-time ETA freight map
+        - WiFi fingerprint indoor positioning map
+        - geospatial data quality automation explainability
+        - trusted data space auditable decision chain geospatial
+        - physical world model autonomous driving simulation synthetic data
+        - autonomous driving scenario library synthetic data commercial vehicle
+        - spatial perception real-world data collection geospatial intelligence
+        - low-altitude logistics routing dispatch regulation data
+
+taibo_data_relevance_keywords:
+  direct_fengxing:
+    - 公路货运
+    - 货运
+    - 物流
+    - 商用车
+    - 车队
+    - 道路运输
+    - 运输管理
+    - 智能调度
+    - 路径规划
+    - 低空物流
+    - 新能源重卡
+    - 智能网联货车
+    - 自动驾驶卡车
+    - 干线运输
+    - 园区运输
+    - 运输监管
+    - 车辆监管
+    - 北斗
+  adjacent_industry:
+    - 时空智能
+    - 空间数据
+    - 数据空间
+    - 可信数据空间
+    - 智慧交通
+    - 车路协同
+    - 智能网联汽车
+    - 自动驾驶
+    - 仿真平台
+    - 数据合成
+    - 场景库
+    - 物理世界模型
+    - 物理AI
+    - 空间感知
+    - 遥感
+    - 卫星数据
+    - 地图
+    - 数字孪生
+  background_watch:
+    - 具身智能
+    - 机器人
+    - 世界模型
+    - 大模型
+    - AI Agent
+    - 低空经济
+    - 商业航天
+  handling_rule: >-
+    direct_fengxing 命中条目必须进入候选池并回溯原始来源；
+    adjacent_industry 命中条目至少进入观察池或淘汰留痕；
+    background_watch 命中条目不得静默丢弃，应记录低相关或背景观察原因。
