@@ -72,13 +72,16 @@ class SitePublicationTest(unittest.TestCase):
         self.assertEqual(mapped["sourceLabel"], "测试来源")
 
     def test_validated_issue_exports_without_review_record(self):
+        internal_issue = ROOT / "output" / "weekly" / "2026-07-10"
+        if not internal_issue.exists():
+            self.skipTest("internal weekly source is intentionally absent from public release")
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "scripts", temp_root / "scripts")
             shutil.copytree(ROOT / "publish", temp_root / "publish")
             shutil.copytree(ROOT / "output" / "site", temp_root / "output" / "site")
             shutil.copytree(
-                ROOT / "output" / "weekly" / "2026-07-10",
+                internal_issue,
                 temp_root / "output" / "weekly" / "2026-07-10",
             )
             generated = temp_root / "site-content.json"
