@@ -12,9 +12,8 @@ from urllib.request import Request, urlopen
 
 CATEGORY_ORDER = [
     "政策趋势与监管",
-    "资金与项目机会",
     "竞合与标杆动向",
-    "市场与客户趋势",
+    "市场客户趋势与资金项目机会",
     "技术与能力演进",
 ]
 
@@ -27,6 +26,14 @@ CATEGORY_FIELDS = {
         "官方原文链接",
         "解读链接",
     ],
+    "市场客户趋势与资金项目机会": [
+        "信息类型",
+        "客户行业/项目主体",
+        "趋势或机会内容",
+        "业务痛点/建设任务",
+        "丰行契合点/可跟进点",
+    ],
+    # Legacy categories remain valid so historical issues can still be checked.
     "资金与项目机会": [
         "机会类型",
         "牵头主体",
@@ -91,6 +98,8 @@ ACADEMIC_SOURCE_PATTERNS = [
     "doi.org/10.",
 ]
 
+OUT_OF_SCOPE_FORMAL_ENTITIES = {"project44"}
+
 TAIBO_API_BASE = "https://data.taibo.cn/api"
 TAIBO_DATA_URL = "https://data.taibo.cn/intelligence/{id}"
 TAIBO_LIST_TYPES = {
@@ -152,11 +161,20 @@ TAIBO_RELEVANCE_KEYWORDS = {
 }
 
 TAIBO_CATEGORY_HINTS = [
-    ("政策趋势与监管", ["政策", "方案", "规划", "办法", "行动方案", "工信部", "交通运输部", "七部门"]),
-    ("资金与项目机会", ["招标", "中标", "采购", "预算", "项目", "验收", "示范", "航线", "试点"]),
+    ("政策趋势与监管", ["政策", "法规", "条例", "规章", "规范性文件", "方案", "规划", "办法", "规定", "指导意见", "征求意见", "国家标准", "行业标准", "地方标准", "团体标准", "标准发布", "行动方案", "工信部", "交通运输部", "七部门"]),
+    ("市场客户趋势与资金项目机会", ["招标", "中标", "采购", "预算", "项目", "验收", "示范", "航线", "试点"]),
     ("竞合与标杆动向", ["发布", "战略合作", "融资", "财报", "上线", "成立", "竣工"]),
     ("技术与能力演进", ["模型", "仿真", "数据合成", "场景库", "平台", "引擎", "智能体", "空间感知"]),
 ]
+
+POLICY_DOCUMENT_TITLE_PATTERN = re.compile(
+    r"《[^》]*(?:法|条例|办法|规定|规范|标准|规划|意见|方案)[^》]*》"
+    r"|(?:政策|法规|条例|规章|规范性文件|管理办法|指导意见|实施方案|行动方案|发展规划)"
+    r".{0,12}(?:发布|印发|施行|实施|修订|废止|征求意见)"
+    r"|(?:国家标准|行业标准|地方标准|团体标准).{0,12}(?:发布|印发|施行|实施|修订|废止|征求意见)"
+    r"|(?:发布|印发|施行|实施|修订|废止|征求意见).{0,12}"
+    r"(?:政策|法规|条例|规章|规范性文件|管理办法|指导意见|实施方案|行动方案|发展规划|国家标准|行业标准|地方标准|团体标准)"
+)
 
 
 def load_json_records(path: Path) -> List[Dict[str, Any]]:
@@ -380,6 +398,33 @@ class QualityValidator:
             errors.extend(self._validate_scoring(item_id, item))
             errors.extend(self._validate_uncertainties(item_id, item))
             errors.extend(self._validate_content_hygiene(item_id, item))
+            errors.extend(self._validate_policy_document_category(item_id, item, category))
+            errors.extend(self._validate_formal_entity_scope(item_id, item))
+
+        current_format = any(
+            item.get("category") == "市场客户趋势与资金项目机会"
+            for item in self.records
+        )
+        if current_format:
+            category_counts = {
+                category: sum(item.get("category") == category for item in self.records)
+                for category in CATEGORY_ORDER
+            }
+            for category, count in category_counts.items():
+                if count < 3:
+                    errors.append(
+                        f"{category}: current four-module format requires at least 3 items; found {count}"
+                    )
+            legacy_items = [
+                str(item.get("id", "<missing-id>"))
+                for item in self.records
+                if item.get("category") not in CATEGORY_ORDER
+            ]
+            if legacy_items:
+                errors.append(
+                    "current four-module format cannot mix legacy categories: "
+                    + ", ".join(legacy_items)
+                )
 
         return errors
 
@@ -471,6 +516,33 @@ class QualityValidator:
             errors.append(f"{item_id}: summary contains unsupported promotional language")
         return errors
 
+    def _validate_policy_document_category(
+        self, item_id: str, item: Dict[str, Any], category: str
+    ) -> List[str]:
+        if category == "政策趋势与监管":
+            return []
+        title = str(item.get("title", ""))
+        if POLICY_DOCUMENT_TITLE_PATTERN.search(title):
+            return [
+                f"{item_id}: policy, regulation, or standard publication must use 政策趋势与监管"
+            ]
+        return []
+
+    def _validate_formal_entity_scope(
+        self, item_id: str, item: Dict[str, Any]
+    ) -> List[str]:
+        searchable = " ".join(
+            [str(item.get("title", "")), *_as_text_list(item.get("entities"))]
+        ).casefold()
+        matched = sorted(
+            entity for entity in OUT_OF_SCOPE_FORMAL_ENTITIES if entity.casefold() in searchable
+        )
+        if matched:
+            return [
+                f"{item_id}: out-of-scope entity cannot enter formal output: {', '.join(matched)}"
+            ]
+        return []
+
 
 class IntelligenceRenderer:
     def __init__(self, records: Sequence[Dict[str, Any]], title: str = "丰行慧运周度情报"):
@@ -544,11 +616,12 @@ def validate_weekly_dir(path: Path) -> int:
     candidate_pool_path = path / "candidate-pool.md"
     records = load_json_records(selected_path)
     errors = QualityValidator(records).validate()
+    errors.extend(_validate_issue_date_window(path, records))
 
     if source_audit_path.exists():
         errors.extend(_validate_source_audit(source_audit_path, records))
     if candidate_pool_path.exists():
-        errors.extend(_validate_candidate_pool(candidate_pool_path))
+        errors.extend(_validate_candidate_pool(candidate_pool_path, records))
 
     if google_path.exists():
         rendered_urls = {item["source"]["url"] for item in records if "source" in item}
@@ -566,6 +639,76 @@ def validate_weekly_dir(path: Path) -> int:
     return 0
 
 
+def _validate_issue_date_window(
+    path: Path, records: Sequence[Dict[str, Any]]
+) -> List[str]:
+    issue_match = re.fullmatch(r"(\d{4}-\d{2}-\d{2})", path.name)
+    if not issue_match:
+        return []
+
+    issue_end = datetime.strptime(issue_match.group(1), "%Y-%m-%d")
+    issue_start = issue_end - timedelta(days=7)
+    strict_date_basis = issue_end >= datetime(2026, 7, 17)
+    errors: List[str] = []
+
+    for item in records:
+        item_id = str(item.get("id", "<missing-id>"))
+        published_at = str(item.get("published_at", ""))
+        try:
+            published_date = datetime.strptime(published_at, "%Y-%m-%d")
+        except ValueError:
+            errors.append(f"{item_id}: published_at must use YYYY-MM-DD")
+            continue
+        if not issue_start <= published_date <= issue_end:
+            errors.append(
+                f"{item_id}: published_at {published_at} is outside issue window "
+                f"{issue_start:%Y-%m-%d} to {issue_end:%Y-%m-%d}"
+            )
+
+        if not strict_date_basis:
+            continue
+
+        source_published_at = str(item.get("source_published_at", "")).strip()
+        event_date_text = str(item.get("event_date", "")).strip()
+        date_basis = str(item.get("date_basis", "")).strip()
+        if not source_published_at:
+            errors.append(f"{item_id}: item missing source_published_at")
+        elif source_published_at != published_at:
+            errors.append(
+                f"{item_id}: source_published_at {source_published_at} "
+                f"does not match displayed published_at {published_at}"
+            )
+        if not event_date_text:
+            errors.append(f"{item_id}: item missing event_date")
+        else:
+            try:
+                event_date = datetime.strptime(event_date_text, "%Y-%m-%d")
+            except ValueError:
+                errors.append(f"{item_id}: event_date must use YYYY-MM-DD")
+            else:
+                if not issue_start <= event_date <= issue_end:
+                    errors.append(
+                        f"{item_id}: event_date {event_date_text} is outside issue window "
+                        f"{issue_start:%Y-%m-%d} to {issue_end:%Y-%m-%d}"
+                    )
+        if not date_basis:
+            errors.append(f"{item_id}: item missing date_basis")
+
+        for field in ("document_issued_at", "effective_at", "page_updated_at"):
+            if field not in item:
+                errors.append(f"{item_id}: item missing {field}")
+                continue
+            optional_date = item.get(field)
+            if optional_date in (None, ""):
+                continue
+            try:
+                datetime.strptime(str(optional_date), "%Y-%m-%d")
+            except ValueError:
+                errors.append(f"{item_id}: {field} must use YYYY-MM-DD or null")
+
+    return errors
+
+
 def _validate_source_audit(path: Path, records: Sequence[Dict[str, Any]]) -> List[str]:
     text = path.read_text(encoding="utf-8")
     errors: List[str] = []
@@ -581,6 +724,16 @@ def _validate_source_audit(path: Path, records: Sequence[Dict[str, Any]]) -> Lis
                 f"{item_id}: source-audit published_at {published_match.group(1)} "
                 f"does not match selected-intelligence {item.get('published_at')}"
             )
+        event_match = re.search(r"事件日期[:：]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})", section)
+        if item.get("event_date") and not event_match:
+            errors.append(f"{item_id}: source-audit missing event_date")
+        elif event_match and event_match.group(1) != item.get("event_date"):
+            errors.append(
+                f"{item_id}: source-audit event_date {event_match.group(1)} "
+                f"does not match selected-intelligence {item.get('event_date')}"
+            )
+        if item.get("date_basis") and "时间口径依据" not in section:
+            errors.append(f"{item_id}: source-audit missing date_basis")
         for pattern in ["待补核", "未打开正文", "无法核验"]:
             if pattern in section:
                 errors.append(f"{item_id}: source-audit contains unresolved blocker: {pattern}")
@@ -593,7 +746,9 @@ def _source_audit_section(text: str, item_id: str) -> str:
     return match.group(0) if match else ""
 
 
-def _validate_candidate_pool(path: Path) -> List[str]:
+def _validate_candidate_pool(
+    path: Path, records: Sequence[Dict[str, Any]]
+) -> List[str]:
     text = path.read_text(encoding="utf-8")
     errors: List[str] = []
     taibo_no_find_patterns = [
@@ -608,12 +763,62 @@ def _validate_candidate_pool(path: Path) -> List[str]:
         errors.append(
             "candidate-pool.md claims Taibo found no effective updates without Taibo Data API scan evidence"
         )
+    issue_match = re.fullmatch(r"(\d{4}-\d{2}-\d{2})", path.parent.name)
+    strict_date_basis = bool(
+        issue_match
+        and datetime.strptime(issue_match.group(1), "%Y-%m-%d") >= datetime(2026, 7, 17)
+    )
+    if not strict_date_basis:
+        return errors
+
+    for item in records:
+        item_id = str(item.get("id", ""))
+        section = _candidate_pool_section(text, item_id)
+        if not section:
+            errors.append(f"candidate-pool.md missing formal section for {item_id}")
+            continue
+        source_date_match = re.search(
+            r"^- 日期[:：]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})",
+            section,
+            re.MULTILINE,
+        )
+        if not source_date_match:
+            errors.append(f"{item_id}: candidate-pool missing source publication date")
+        elif source_date_match.group(1) != item.get("source_published_at"):
+            errors.append(
+                f"{item_id}: candidate-pool source date {source_date_match.group(1)} "
+                f"does not match selected-intelligence {item.get('source_published_at')}"
+            )
+        event_date_match = re.search(
+            r"^- 事件日期[:：]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})",
+            section,
+            re.MULTILINE,
+        )
+        if not event_date_match:
+            errors.append(f"{item_id}: candidate-pool missing event_date")
+        elif event_date_match.group(1) != item.get("event_date"):
+            errors.append(
+                f"{item_id}: candidate-pool event_date {event_date_match.group(1)} "
+                f"does not match selected-intelligence {item.get('event_date')}"
+            )
+        if "时间口径依据" not in section:
+            errors.append(f"{item_id}: candidate-pool missing date_basis")
     return errors
+
+
+def _candidate_pool_section(text: str, item_id: str) -> str:
+    pattern = re.compile(
+        rf"^###\s+{re.escape(item_id)}.*?(?=^###\s+|^##\s+|\Z)",
+        re.MULTILINE | re.DOTALL,
+    )
+    match = pattern.search(text)
+    return match.group(0) if match else ""
 
 
 def render_weekly_dir(path: Path) -> int:
     records = load_json_records(path / "selected-intelligence.json")
     errors = QualityValidator(records).validate()
+    errors.extend(_validate_issue_date_window(path, records))
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)

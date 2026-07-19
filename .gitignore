@@ -4,6 +4,8 @@
 __pycache__/
 *.py[cod]
 
+node_modules/
+
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -18,6 +20,8 @@ knowledge/source-extracts/
 
 apps/web/public/data/
 apps/web/dist/
+apps/web/src/generated/
+.netlify/
 
 *.log
 *.tmp

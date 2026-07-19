@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "latest_issue_id": "2026-07-17",
+  "issues": [
+    {
+      "issue_id": "2026-07-17",
+      "issue_date": "2026-07-17",
+      "display_date": "2026.07.17",
+      "title": "2026年7月17日刊",
+      "category_counts": {
+        "policy": 4,
+        "competitor": 4,
+        "market-opportunity": 3,
+        "tech": 3
+      },
+      "content_hash": "49fb68e88524cd7f844474414003195168294c52f922b01511132e56affdc38d"
+    },
+    {
+      "issue_id": "2026-07-10",
+      "issue_date": "2026-07-10",
+      "display_date": "2026.07.10",
+      "title": "2026年7月10日刊",
+      "category_counts": {
+        "policy": 3,
+        "funding": 0,
+        "competitor": 2,
+        "market": 4,
+        "tech": 3
+      },
+      "content_hash": "a06faf82149c5c033ad8ca500206effa2aa5d9437418898ebb6aa4f7c5f5368f"
+    },
+    {
+      "issue_id": "2026-07-03",
+      "issue_date": "2026-07-03",
+      "display_date": "2026.07.03",
+      "title": "2026年7月3日刊",
+      "category_counts": {
+        "policy": 6,
+        "funding": 3,
+        "competitor": 3,
+        "market": 4,
+        "tech": 6
+      },
+      "content_hash": "a959331e837ace367e6f12a521c1f1272ada2db91bc13e5ccb0a394f04254bfa"
+    },
+    {
+      "issue_id": "2026-06-26",
+      "issue_date": "2026-06-26",
+      "display_date": "2026.06.26",
+      "title": "2026年6月26日刊",
+      "category_counts": {
+        "policy": 4,
+        "funding": 2,
+        "competitor": 3,
+        "market": 1,
+        "tech": 1
+      },
+      "content_hash": "c307b6f43568c5e930d6b25cc8e308aea9444c6767103f0c09bfad7642d7d51f"
+    }
+  ],
+  "content_hash": "68859d0ce863ba2eaa7c3258a1eccdbca5afcb2cbf062fd6abf3e20dec1b9330"
+}

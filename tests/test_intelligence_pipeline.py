@@ -9,6 +9,7 @@ from scripts.intelligence_pipeline import (
     IntelligenceRenderer,
     QualityValidator,
     WebsiteTextAuditor,
+    _validate_issue_date_window,
     load_json_records,
     normalize_taibo_record,
     render_taibo_markdown,
@@ -17,6 +18,72 @@ from scripts.intelligence_pipeline import (
 
 
 class QualityValidatorTest(unittest.TestCase):
+    def test_rejects_item_published_outside_issue_window(self):
+        item = self._base_item("竞合与标杆动向")
+        item["published_at"] = "2026-07-09"
+        item["source_published_at"] = "2026-07-09"
+        item["event_date"] = "2026-07-09"
+
+        errors = _validate_issue_date_window(Path("2026-07-17"), [item])
+
+        self.assertIn(
+            "FXHY-TEST-BASE: published_at 2026-07-09 is outside issue window 2026-07-10 to 2026-07-17",
+            errors,
+        )
+
+    def test_rejects_policy_with_old_event_hidden_by_late_page_date(self):
+        item = self._base_item("政策趋势与监管")
+        item["published_at"] = "2026-07-13"
+        item["source_published_at"] = "2026-07-13"
+        item["event_date"] = "2026-07-01"
+        item["date_basis"] = "办法施行日期"
+
+        errors = _validate_issue_date_window(Path("2026-07-17"), [item])
+
+        self.assertIn(
+            "FXHY-TEST-BASE: event_date 2026-07-01 is outside issue window 2026-07-10 to 2026-07-17",
+            errors,
+        )
+
+    def test_accepts_policy_effective_inside_issue_window(self):
+        item = self._base_item("政策趋势与监管")
+        item["published_at"] = "2026-07-16"
+        item["source_published_at"] = "2026-07-16"
+        item["event_date"] = "2026-07-15"
+        item["date_basis"] = "办法正式施行日期"
+
+        errors = _validate_issue_date_window(Path("2026-07-17"), [item])
+
+        self.assertEqual(errors, [])
+
+    def test_rejects_non_policy_event_outside_issue_window(self):
+        item = self._base_item("竞合与标杆动向")
+        item["published_at"] = "2026-07-13"
+        item["source_published_at"] = "2026-07-13"
+        item["event_date"] = "2026-07-09"
+        item["date_basis"] = "企业活动发生日期"
+
+        errors = _validate_issue_date_window(Path("2026-07-17"), [item])
+
+        self.assertIn(
+            "FXHY-TEST-BASE: event_date 2026-07-09 is outside issue window 2026-07-10 to 2026-07-17",
+            errors,
+        )
+
+    def test_rejects_source_date_different_from_displayed_date(self):
+        item = self._base_item("技术与能力演进")
+        item["published_at"] = "2026-07-17"
+        item["source_published_at"] = "2026-07-15"
+        item["event_date"] = "2026-07-15"
+        item["date_basis"] = "主来源发布日期"
+
+        errors = _validate_issue_date_window(Path("2026-07-17"), [item])
+
+        self.assertIn(
+            "FXHY-TEST-BASE: source_published_at 2026-07-15 does not match displayed published_at 2026-07-17",
+            errors,
+        )
+
     def test_rejects_selected_item_with_unresolved_source_audit(self):
         item = {
             "id": "FXHY-TEST-001",
@@ -89,30 +156,59 @@ class QualityValidatorTest(unittest.TestCase):
             errors,
         )
 
+    def test_rejects_policy_document_in_technology_category(self):
+        item = self._base_item("技术与能力演进")
+        item["title"] = "《功能型无人车道路测试及应用试点管理办法（试行）》印发"
+
+        errors = QualityValidator([item]).validate()
+
+        self.assertIn(
+            "FXHY-TEST-BASE: policy, regulation, or standard publication must use 政策趋势与监管",
+            errors,
+        )
+
+    def test_rejects_standard_release_in_technology_category(self):
+        item = self._base_item("技术与能力演进")
+        item["title"] = "七项人工智能智能体行业标准正式发布"
+
+        errors = QualityValidator([item]).validate()
+
+        self.assertIn(
+            "FXHY-TEST-BASE: policy, regulation, or standard publication must use 政策趋势与监管",
+            errors,
+        )
+
+    def test_rejects_out_of_scope_company_from_formal_output(self):
+        item = self._base_item("竞合与标杆动向")
+        item["entities"] = ["project44"]
+
+        errors = QualityValidator([item]).validate()
+
+        self.assertIn(
+            "FXHY-TEST-BASE: out-of-scope entity cannot enter formal output: project44",
+            errors,
+        )
+
     def test_renderer_uses_standard_category_templates(self):
-        item = self._base_item("资金与项目机会")
-        item["fields"] = {
-            "机会类型": "政府采购",
-            "牵头主体": "某市交通运输局",
-            "涉及地区/行业": "华东；道路货运监管",
-            "可跟进点": "跟踪招标文件和平台建设范围。",
-        }
+        item = self._base_item("市场客户趋势与资金项目机会")
 
         text = IntelligenceRenderer([item]).render()
 
-        self.assertIn("## 资金与项目机会", text)
-        self.assertIn("机会类型：政府采购", text)
+        self.assertIn("## 市场客户趋势与资金项目机会", text)
+        self.assertIn("信息类型：资金与项目机会", text)
         self.assertIn("真实新闻链接：https://example.com/news", text)
         self.assertNotIn("score", text)
         self.assertNotIn("分数", text)
 
     def test_renderer_uses_updated_competitor_fields_and_order(self):
         competitor = self._base_item("竞合与标杆动向")
-        market = self._base_item("市场与客户趋势")
+        market = self._base_item("市场客户趋势与资金项目机会")
+        technology = self._base_item("技术与能力演进")
 
-        text = IntelligenceRenderer([market, competitor]).render()
+        text = IntelligenceRenderer([technology, market, competitor]).render()
 
-        self.assertLess(text.index("## 竞合与标杆动向"), text.index("## 市场与客户趋势"))
+        self.assertLess(text.index("## 竞合与标杆动向"), text.index("## 市场客户趋势与资金项目机会"))
+        self.assertLess(text.index("## 竞合与标杆动向"), text.index("## 技术与能力演进"))
         self.assertIn("核心内容：发布车队管理方案。", text)
         self.assertIn("战略意义：可作为新能源车队运营能力对比样本。", text)
         self.assertIn("对丰行的启示：关注车队运营、安全风控和客户交付闭环差异。", text)
@@ -221,6 +317,13 @@ class QualityValidatorTest(unittest.TestCase):
                 "官方原文链接": "https://example.com/news",
                 "解读链接": "",
             },
+            "市场客户趋势与资金项目机会": {
+                "信息类型": "资金与项目机会",
+                "客户行业/项目主体": "某市交通运输局",
+                "趋势或机会内容": "建设道路货运监管平台。",
+                "业务痛点/建设任务": "车辆动态监管与风险闭环。",
+                "丰行契合点/可跟进点": "跟踪招标文件和平台建设范围。",
+            },
             "资金与项目机会": {
                 "机会类型": "政府采购",
                 "牵头主体": "某市交通运输局",
@@ -252,6 +355,12 @@ class QualityValidatorTest(unittest.TestCase):
             "title": "测试标题",
             "summary": "来源确认的测试事实。",
             "published_at": "2026-06-20",
+            "source_published_at": "2026-06-20",
+            "event_date": "2026-06-20",
+            "date_basis": "测试主来源及事件日期",
+            "document_issued_at": None,
+            "effective_at": None,
+            "page_updated_at": None,
             "stars": "★★★★",
             "score": 82,
             "entities": ["测试主体"],

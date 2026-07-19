@@ -29,6 +29,7 @@
       "category": {
         "enum": [
           "政策趋势与监管",
+          "市场客户趋势与资金项目机会",
           "资金与项目机会",
           "竞合与标杆动向",
           "市场与客户趋势",
@@ -37,7 +38,13 @@
       },
       "title": { "type": "string" },
       "summary": { "type": "string" },
-      "published_at": { "type": "string" },
+      "published_at": { "type": "string", "format": "date" },
+      "source_published_at": { "type": "string", "format": "date" },
+      "event_date": { "type": "string", "format": "date" },
+      "date_basis": { "type": "string", "minLength": 1 },
+      "document_issued_at": { "type": ["string", "null"], "format": "date" },
+      "effective_at": { "type": ["string", "null"], "format": "date" },
+      "page_updated_at": { "type": ["string", "null"], "format": "date" },
       "stars": { "enum": ["★★★★★", "★★★★", "★★★"] },
       "score": { "type": "integer", "minimum": 75, "maximum": 100 },
       "entities": { "type": "array", "items": { "type": "string" } },
@@ -68,7 +75,12 @@
         }
       },
       "evidence": { "type": "array", "items": { "type": "string" } },
-      "source_facts": { "type": "string" },
+      "source_facts": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "array", "items": { "type": "string" } }
+        ]
+      },
       "business_inference": { "type": "string" },
       "implication_for_fengxing": { "type": "string" },
       "recommended_actions": { "type": "array", "items": { "type": "string" } },

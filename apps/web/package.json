@@ -1,0 +1,36 @@
+{
+  "name": "fengxing-intelligence-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "content:export": "python3 ../../workflows/web-publishing/export_site_data.py --root ../.. --output src/generated/site-content.json",
+    "content:issue": "python3 ../../workflows/web-publishing/export_site_data.py --root ../.. --output src/generated/site-content.json --issue",
+    "content:check": "python3 ../../workflows/web-publishing/export_site_data.py --root ../.. --output src/generated/site-content.json --check",
+    "dev": "npm run content:export && vite --port=3000 --host=0.0.0.0",
+    "dev:preview": "vite --port=3000 --host=0.0.0.0",
+    "build": "npm run content:export && vite build && python3 ../../workflows/web-publishing/audit_site_bundle.py --dist dist",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "lint": "npm run content:export && tsc --noEmit",
+    "test:content": "python3 -m unittest discover -s ../../workflows/web-publishing/tests -v",
+    "test:all": "npm run test:content && npm run lint && npm run content:check"
+  },
+  "dependencies": {
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^6.0.3",
+    "@types/node": "^22.14.0",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.1.14",
+    "typescript": "~5.8.2",
+    "vite": "^8.1.5"
+  }
+}

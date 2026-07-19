@@ -7,11 +7,11 @@
 
 ## 1. 结论
 
-丰行慧运情报中心采用“单仓库、只读门户、显式人工发布门禁”的重构路线。
+丰行慧运情报中心采用“单仓库、只读门户、JSON 自动生成、Git 推送前人工门禁”的重构路线。
 
-以现有网站仓库的 Git 历史为基础，将网站移动到 `apps/web/`，再导入经过清理的丰行情报生产流程。`output/weekly/YYYY-MM-DD/selected-intelligence.json` 继续作为每期唯一正式结构化内容源，不新建第二套正式周报 Schema。网站只能消费通过现有质量校验、来源审计和独立人工批准清单后生成的脱敏站点 JSON。
+以现有网站仓库的 Git 历史为基础，将网站移动到 `apps/web/`，再导入经过清理的丰行情报生产流程。`output/weekly/YYYY-MM-DD/selected-intelligence.json` 继续作为每期唯一正式结构化内容源，不新建第二套正式周报 Schema。质量校验通过后立即生成脱敏站点 JSON 并本地预览；人工审核控制是否允许 Git push，推送生产分支后由 Netlify 自动部署。
 
-第一阶段保留 Vite、React、Tailwind、AI Studio/Cloud Run 和现有蓝白视觉风格；不建设后台、点赞、反馈、客户端写入、应用内账号或在线编辑能力。
+第一阶段保留 Vite、React、Tailwind、Netlify 和现有蓝白视觉风格；不建设后台、点赞、反馈、客户端写入、应用内账号或在线编辑能力。
 
 ## 2. 实施计划前置工作：完整备份（已完成）
 
@@ -156,7 +156,7 @@ backups/README.md
 
 1. **目标 GitHub 仓库必须改为私有仓库。** 当前网站仓库可以匿名读取，应按公开仓库处理。仓库变为私有并确认公司组织成员权限前，禁止导入知识包、来源审计、候选池或其他内部资料。
 2. **确认仓库归属。** 优先迁移至公司 GitHub Organization；若暂时保留个人账号仓库，必须记录管理员、备份负责人和移交方式。
-3. **确认 Cloud Run 访问控制。** 正式服务不得允许匿名访问。具体使用 Cloud Run IAM、IAP 或现有公司统一身份方式，须在部署阶段根据当前账号和域名条件验证，不能在代码中自建临时账号系统代替。
+3. **确认 Netlify 访问控制。** 核对站点所属团队、生产分支、域名和站点保护策略；如门户仅限公司内部，必须在 Netlify 或公司统一身份层配置访问保护，不能在前端代码中自建临时账号系统代替。
 4. **确认敏感材料边界。** `knowledge/source-extracts/` 中可能包含内部客户、经营、项目和规划材料，默认不提交 Git。只提交经过审查的知识摘要、规则和导航文件。
 5. **建立可恢复基线。** 网站现状创建只读备份分支和发布标签；重构在独立分支进行，旧版本在新站验收前保持可部署。
 
@@ -234,43 +234,19 @@ config/output-format.md
 
 实施时先完成一次正式 Schema 校准：确定 `source_facts` 的规范类型，迁移历史文件，并让 Python 校验器实际调用 JSON Schema 校验。该校准只统一技术表示，不改写来源事实和业务内容。
 
-### ADR-003：内容草稿状态与上线批准状态分离
+### ADR-003：JSON 生成与线上发布解耦
 
-现有 Schema 将 `review_status` 固定为“待人工审核草稿”，历史文件还存在 `pending_human_review` 等写法。不能直接用该字段决定网站上线。
+现有 Schema 将 `review_status` 固定为“待人工审核草稿”，该字段只描述研究内容状态，不控制 JSON 生成或网站索引。
 
-新增独立的人工发布批准文件：
+周报通过质量校验后，导出器立即生成：
 
 ```text
-publish/reviews/YYYY-MM-DD.json
+publish/weekly/YYYY-MM-DD/issue.json
+publish/issues.json
+apps/web/src/generated/site-content.json
 ```
 
-建议结构：
-
-```json
-{
-  "schema_version": 1,
-  "issue_id": "2026-07-10",
-  "decision": "approved_for_internal_display",
-  "approved_item_ids": [
-    "FXHY-20260710-PR-001",
-    "FXHY-20260710-CO-001",
-    "FXHY-20260710-MT-001"
-  ],
-  "reviewer": "待填写",
-  "reviewed_at": "2026-07-17T00:00:00+08:00",
-  "notes": "待填写"
-}
-```
-
-允许的批准状态：
-
-- `pending_review`
-- `approved_for_internal_display`
-- `rejected`
-- `withdrawn`
-- `archived`
-
-只有 `approved_for_internal_display` 和已经发布后转为 `archived` 的期刊可以进入站点索引。批准文件由人工提交，导出脚本不得自行生成批准结论。
+不再创建 `publish/reviews/YYYY-MM-DD.json`，也不再读取 `approved_for_publication`、`approved_for_internal_display`、`archived` 等批准状态。人工审核发生在本地预览之后，只决定 Agent 是否可以执行 Git commit/push。未收到人工明确确认时，Agent 可以生成和验证 JSON，但不得推送或触发 Netlify 生产部署。
 
 ### ADR-004：第一阶段不大规模移动现有研究目录
 
@@ -316,14 +292,11 @@ publish/reviews/YYYY-MM-DD.json
 ├── state/                             # 去重状态，不进入网站构建物
 ├── output/weekly/YYYY-MM-DD/          # 完整研究产物
 ├── publish/
-│   ├── reviews/                       # 人工发布批准记录
-│   ├── weekly/YYYY-MM-DD/issue.json   # 脱敏站点 DTO
-│   └── issues.json                    # 站点期刊索引
+│   ├── weekly/YYYY-MM-DD/issue.json   # 校验后自动生成的脱敏站点 DTO
+│   └── issues.json                    # 自动生成的站点期刊索引
 ├── workflows/web-publishing/
 │   ├── export_site_data.py
-│   ├── validate_publication.py
 │   ├── schemas/
-│   │   ├── publication-review.schema.json
 │   │   └── site-issue.schema.json
 │   └── tests/
 ├── scripts/                            # 现有研究校验与渲染脚本
@@ -347,22 +320,20 @@ output/weekly/YYYY-MM-DD/candidate-pool.md
 output/weekly/YYYY-MM-DD/source-audit.md
 output/weekly/YYYY-MM-DD/analyst-review.md
 output/weekly/YYYY-MM-DD/google-ai-studio-input.md
-publish/reviews/YYYY-MM-DD.json
 ```
 
-### 8.2 发布前检查
+### 8.2 JSON 导出检查
 
 导出脚本按以下顺序执行：
 
 1. 调用现有 `validate_weekly_dir()`，不得复制一套质量规则。
 2. 执行 `templates/selected-intelligence.schema.json` 的完整 JSON Schema 校验。
-3. 验证批准文件符合 `publication-review.schema.json`。
-4. 验证 `approved_item_ids` 与 `selected-intelligence.json` 完全匹配，不允许批准不存在的 ID。
-5. 验证每个批准 ID 在 `candidate-pool.md` 和 `source-audit.md` 中有记录。
-6. 验证期刊中不存在重复 URL、低于 75 分条目、C 级单一来源、论文或未解决证据阻断。
-7. 只按字段白名单生成站点 DTO。
-8. 计算源 JSON、批准文件和站点 DTO 的 SHA-256 校验值。
-9. `--check` 模式比较生成结果与已提交结果，不一致时 CI 失败。
+3. 验证每个正式条目在 `candidate-pool.md` 和 `source-audit.md` 中有记录。
+4. 验证期刊中不存在重复 URL、低于 75 分条目、C 级单一来源、论文或未解决证据阻断。
+5. 只按字段白名单生成站点 DTO。
+6. 计算源 JSON 和站点 DTO 的 SHA-256 校验值。
+7. 更新 `publish/issues.json` 和本地聚合内容。
+8. `--check` 模式比较生成结果与已提交结果，不一致时 CI 失败。
 
 ### 8.3 浏览器允许字段
 
@@ -394,7 +365,7 @@ publish/reviews/YYYY-MM-DD.json
 - 来源审计内部备注
 - 内部路径、联系人和本地文件名
 
-如果后续确需展示证据摘录，必须新增独立的人工批准字段，不能直接把整个 `evidence` 或 `source-audit.md` 复制到前端。
+如果后续确需展示证据摘录，必须先扩展正式 Schema、字段白名单和敏感信息测试，不能直接把整个 `evidence` 或 `source-audit.md` 复制到前端。
 
 ### 8.4 证据状态
 
@@ -403,7 +374,7 @@ publish/reviews/YYYY-MM-DD.json
 - 来源层级：直接读取 `source.tier`。
 - 是否原始来源：直接读取 `source.is_original`。
 - 内容校验状态：当且仅当整期通过 `validate_weekly_dir()` 时标记为 `validated`。
-- 人工发布状态：读取批准文件的 `decision`。
+- 本地/生产状态不写入内容 DTO；同一份 JSON 在本地预览通过后由 Git push 进入部署流程。
 
 `detail_read_status`、`original_source_status` 等状态只有在研究产物中形成结构化字段后才能展示，禁止从 Markdown 自由文本中猜测。
 
@@ -514,7 +485,7 @@ legacy/frontend-content/
 - 静态年度竞品看板
 - 无法与当前正式 JSON 对齐的历史文本
 
-隔离区不参与构建、不参与搜索索引，也不能被导出脚本扫描。每一期只有完成来源核验、当前 Schema 迁移、质量校验和人工批准后，才可重新进入站点。
+隔离区不参与构建、不参与搜索索引，也不能被导出脚本扫描。每一期只有完成来源核验、当前 Schema 迁移和质量校验后，才可生成站点 JSON；人工本地审核通过后才允许推送上线。
 
 ## 11. 安全边界
 
@@ -537,8 +508,8 @@ apps/web/dist/
 
 ### 11.2 构建边界
 
-- Cloud Build 或 Docker 构建上下文限定为 `apps/web/` 加必要的 `publish/` 生成输入。
-- `.gcloudignore` 和 `.dockerignore` 明确排除 `knowledge/`、`state/`、`output/`、`candidate-pool.md`、`source-audit.md` 和 `analyst-review.md`。
+- Netlify 只运行 `netlify.toml` 中声明的测试和前端构建，发布目录固定为 `apps/web/dist`。
+- `backups/`、`knowledge/source-extracts/`、密钥和本地凭据不得提交 Git；构建脚本不得读取 `legacy/`、候选池、来源审计或分析审查。
 - CI 在构建后扫描 `dist/` 或容器文件系统，命中内部目录名、联系人、绝对路径或禁止字段即失败。
 - 浏览器环境变量只能包含非敏感公开配置；任何服务端密钥不得以 `VITE_` 或 `define` 注入前端。
 
@@ -547,7 +518,7 @@ apps/web/dist/
 - 站点无写 API、无数据库、无 Cookie 业务状态。
 - 外链统一使用 `target="_blank"`、`rel="noopener noreferrer"`。
 - 内容以文本渲染为主；如支持 Markdown，禁用原始 HTML。
-- Cloud Run 禁止匿名调用，并通过公司成员组授权。
+- Netlify 站点按确认后的团队和访问保护策略开放，公司内部站不得默认公开。
 - 日志不得记录完整内部内容，只记录请求状态、构建版本和错误编号。
 
 ## 12. 实施阶段
@@ -615,8 +586,8 @@ output/weekly/2026-06-12/google-ai-studio-input.txt
 - 目标网站仓库改为私有并确认公司组织权限。
 - 确认仓库管理员、备份负责人和移交方式。
 - 创建 `refactor/single-repo-foundation` 分支。
-- 建立根 `.gitignore`、`.gcloudignore`、`.dockerignore` 和构建输入白名单。
-- 调查并记录 Cloud Run 当前服务、项目、区域、构建和访问控制方式。
+- 建立根 `.gitignore`、Netlify 构建输入白名单和浏览器敏感字段审计。
+- 调查并记录 Netlify 站点 ID、团队、域名、生产分支、Deploy Preview 和访问控制方式。
 
 #### Step 0.7：清理后验证
 
@@ -658,19 +629,17 @@ Step 0 交付物：
 
 退出条件：目录迁移后 TypeScript 和生产构建仍通过，Git 历史可追溯。
 
-### 阶段 2：人工批准与内容导出
+### 阶段 2：质量校验与 JSON 导出
 
 交付：
 
-- `publication-review.schema.json`。
 - `site-issue.schema.json`。
 - 统一 `source_facts` 等漂移字段，并把正式 JSON Schema 校验接入 Python 质量门禁。
-- `validate_publication.py`。
-- `export_site_data.py`，支持 `--write` 和 `--check`。
-- 导出确定性、字段白名单、未审核排除和旧站隔离测试。
-- 2026-07-10 的人工批准模板；未获人工确认前保持 `pending_review`。
+- `export_site_data.py`，支持按期刊生成 JSON 和 `--check`。
+- 导出确定性、字段白名单、质量失败阻断和旧站隔离测试。
+- 本地预览命令与人工检查清单。
 
-退出条件：只有显式批准且通过现有质量校验的期刊能够生成站点 JSON。
+退出条件：任何通过现有质量校验的期刊都能直接生成站点 JSON，不依赖批准文件或批准状态。
 
 ### 阶段 3：前端数据化重构
 
@@ -683,18 +652,18 @@ Step 0 交付物：
 - 支持期刊、栏目、星级、来源层级和关键词筛选。
 - 保留蓝白视觉并完成基础移动端适配。
 
-退出条件：在不修改 React 文件的情况下，更换批准后的站点 JSON即可出现新一期。
+退出条件：在不修改 React 文件的情况下，重新生成站点 JSON 即可在本地出现新一期。
 
 ### 阶段 4：旧内容隔离与首发
 
 交付：
 
 - 所有 `news_*.ts` 和无正式数据支撑内容进入隔离区。
-- 首发索引只包含人工批准且校验通过的 2026-07-10。
+- 首发索引只包含通过校验并完成人工本地预览的期刊。
 - 历史页对未发布期刊不显示虚构占位。
 - 首发预览与旧站逐项对比。
 
-退出条件：正式页面内容全部能回溯到批准后的 `selected-intelligence.json`。
+退出条件：正式页面内容全部能回溯到对应 `selected-intelligence.json` 和内容哈希。
 
 ### 阶段 5：CI、部署和访问控制
 
@@ -716,7 +685,7 @@ npm --prefix apps/web run build
 - 基础无障碍检查。
 - 生成物敏感内容扫描。
 - 外链安全属性检查。
-- Cloud Run 非匿名访问验证。
+- Netlify 生产分支、站点关联和访问保护验证。
 
 退出条件：所有门禁通过后才允许部署；失败时保留线上上一版本。
 
@@ -736,9 +705,9 @@ npm --prefix apps/web run build
 旧字段映射
 → 来源和证据补核
 → 当前 Schema 校验
-→ 人工内容复核
-→ 发布批准
 → 站点导出
+→ 本地预览
+→ 人工确认后 Git push
 ```
 
 不得通过降低校验标准或删除不确定性来批量放行旧内容。
@@ -757,9 +726,8 @@ npm --prefix apps/web run build
 
 ### 发布导出
 
-- 已批准期刊进入索引。
-- 未批准、拒绝或撤回期刊不进入索引。
-- 批准 ID 不存在时失败。
+- 通过质量校验的期刊可以直接生成 JSON 并进入本地索引。
+- 质量校验失败时不得生成或更新期刊 JSON。
 - 缺少候选池或来源审计记录时失败。
 - 内部字段不进入站点 DTO。
 - 输出字段顺序和内容哈希稳定。
@@ -783,7 +751,7 @@ npm --prefix apps/web run build
 - 无 Firebase、写 API 或密钥注入。
 - 外链安全属性。
 - Markdown 不执行原始 HTML。
-- Cloud Run 匿名请求被拒绝，公司授权成员可以访问。
+- Netlify 构建不读取本地密钥、知识抽取文本或备份。
 
 ## 14. 发布与回滚
 
@@ -791,23 +759,22 @@ npm --prefix apps/web run build
 
 ```text
 研究校验
-→ 人工内容复核
-→ 提交发布批准文件
 → 生成站点 DTO
 → 导出一致性检查
 → 前端测试
-→ 预览部署
-→ 人工验收
-→ 正式部署
+→ 本地网站预览
+→ 人工验收并明确允许推送
+→ Git commit/push
+→ Netlify 自动部署
 ```
 
 回滚策略：
 
 - 每次正式部署记录 Git SHA 和内容索引哈希。
-- Cloud Run 保留上一可用 Revision，不立即清理。
-- 内容错误优先回滚至上一批准清单和生成数据。
+- Netlify 保留可回溯的历史 Deploy。
+- 内容错误使用 Git revert 恢复上一版源文件和生成数据。
 - 代码错误回滚至上一发布标签。
-- 被撤回期刊将批准状态改为 `withdrawn`，重新导出并发布，不直接手改静态 JSON。
+- 不直接手改线上或生成目录中的静态 JSON。
 
 ## 15. 验收标准
 
@@ -819,15 +786,15 @@ npm --prefix apps/web run build
 4. 目标仓库为私有仓库，访问权限定公司授权成员。
 5. 网站与情报生产流程位于同一 Git 仓库。
 6. `selected-intelligence.json` 仍是唯一正式结构化内容源。
-7. 未经人工批准的期刊无法进入站点索引。
+7. 通过质量校验的期刊无需批准文件即可生成站点 JSON。
 8. 新增一期周报不修改任何 React 文件。
 9. 旧站硬编码内容全部隔离且不参与构建。
 10. Firebase、点赞、反馈、Gemini Key 和客户端写入全部移除。
-11. 正式页面每条内容都能回溯到来源 URL 和批准记录。
+11. 正式页面每条内容都能回溯到来源 URL、正式 JSON 和内容哈希。
 12. CI 通过研究校验、导出一致性、前端测试、生产构建和敏感内容扫描。
-13. Cloud Run 拒绝匿名访问，授权成员可正常访问。
+13. GitHub 推送能够触发 Netlify 构建，生产分支和访问策略已确认。
 14. 线上故障可以恢复到上一版本。
-15. 首发内容只包含通过校验并获人工批准的期刊。
+15. 人工审核发生在最后一次变更之后，未获明确确认时 Agent 不执行 Git push。
 
 ## 16. 建议实施批次
 
@@ -837,7 +804,7 @@ npm --prefix apps/web run build
 | A | 仓库私有化、网站备份、分支保护 | `chore(repo): establish private migration baseline` |
 | B | 网站移动至 `apps/web` | `refactor(web): move app into monorepo workspace` |
 | C | 导入已清理的研究流程与敏感文件边界 | `chore(research): import validated intelligence workflow` |
-| D | 人工批准和导出脚本 | `feat(publishing): add reviewed content export gate` |
+| D | JSON 导出、本地预览和 Git 推送门禁 | `feat(publishing): add validated json preview pipeline` |
 | E | 前端拆分与静态数据加载 | `refactor(web): render validated issue data` |
 | F | 删除 Firebase/Gemini 与隔离旧站内容 | `chore(web): remove writes and quarantine legacy content` |
 | G | CI、访问控制和首发 | `ci: enforce validation build and deployment gates` |
@@ -851,9 +818,9 @@ npm --prefix apps/web run build
 1. 目标 GitHub 仓库是否迁入公司 Organization，以及私有仓库管理员名单。
 2. 哪些 `fengxing_knowledge_pack/` 文件允许提交 Git，哪些必须仅保存在受控内部存储。
 3. 首发是否只包含 2026-07-10，还是等待更多历史期刊修复后一起上线。
-4. 人工发布批准人或批准角色如何填写，是否需要双人复核。
-5. Cloud Run 当前部署项目、区域、服务名和访问控制方式。
-6. 是否保留现有域名，以及公司成员的 Google Workspace 组织范围。
-7. `apps/web/public/data/` 采用构建时生成还是提交生成结果；两种方式均需保留哈希和一致性校验。
+4. Netlify 生产分支是否固定为 `main`，以及谁有权合并或直接推送。
+5. Netlify 站点 ID、团队、域名和访问控制方式。
+6. 是否启用分支 Deploy Preview 和 PR 合并保护。
+7. `publish/weekly/` 与 `publish/issues.json` 提交生成结果；`apps/web/src/generated/` 继续仅在构建时生成。
 
-这些事项未确认时可以完成本地代码重构和测试，但不得导入敏感材料、标记内容已批准或执行正式发布。
+这些事项未确认时可以完成 JSON 生成、本地预览和测试，但不得导入敏感材料、执行 Git push 或触发正式发布。

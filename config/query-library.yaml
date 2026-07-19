@@ -5,6 +5,10 @@ schema_note: >-
   use event_relation_type, not the entity default_relation_type, when assigning a
   concrete competitive relationship.
 event_relation_type_required: true
+enterprise_geography_priority:
+  primary: [中国大陆企业, 中国香港企业, 中国澳门企业, 中国台湾企业]
+  overseas_rule: 仅保留固定观察名单中的国际标杆，或对中国交通货运市场具有直接重大影响的事件
+  excluded_unless_user_requested: [project44]
 watchlist_entity_ids:
   - manbang_group
   - g7_yiliu
@@ -58,7 +62,7 @@ categories:
     synonyms: [竞品, 标杆企业, 平台厂商, 生态伙伴, GIS, geospatial, map platform, fleet management, logistics technology, data governance, 交付数据黑洞, API开放, Skill能力, 车路运能]
     entity_ids: [manbang_group, g7_yiliu, samsara, streamax, china_transinfo, wanji_technology, transfar_zhilian, jd_logistics, naas_technology, zhonghuan_satellite]
     discovery_rule_ids: [local_beidou_operators, additional_competitors]
-    company_and_product_names: [满帮, 运满满, 货车帮, G7易流, Samsara, 锐明技术, Streamax, 千方科技, 万集科技, 传化智联, 京东物流, 能链智电, 中寰卫星, Motive, project44]
+    company_and_product_names: [满帮, 运满满, 货车帮, G7易流, Samsara, 锐明技术, Streamax, 千方科技, 万集科技, 传化智联, 京东物流, 能链智电, 中寰卫星, 境跃科技, 欧拉图, Motive]
     event_types: [产品发布, 产品升级, 客户签约, 项目中标, 战略合作, 融资并购, 财报, 组织变化, 高管变化, 招聘变化, 定价变化, 海外扩张, API开放, 负面事件, 客户落地]
     official_source_filters: [官网, 官方, 新闻稿, 投资者关系, SEC, 年报, 财报, pending_official_domain]
     mandatory_site_filters: ["site:eastmoney.com", "site:finance.sina.com.cn", "site:sina.com.cn", "site:taibo.cn"]
@@ -92,7 +96,6 @@ categories:
         - Samsara video-based safety driver safety telematics official
         - Full Truck Alliance enterprise logistics API TMS earnings
         - Streamax commercial vehicle video telematics ADAS DMS
-        - project44 freight visibility AI delay prediction official
         - Motive fleet management edge AI dashcam official
 
   market_trends:
@@ -166,8 +169,8 @@ categories:
     core_topics: [AI Agent, MCP, Skill, 地图智能体, 地址治理, 地理编码, 路径规划, WiFi指纹, 货运地图, 数据质检, 可信数据空间, 可审计决策链, 物理世界模型, 自动驾驶仿真, 数据合成, 场景库, 空间感知, 时空智能, 低空物流, 数智科技链, 供应链智能体, 产业链数智化]
     synonyms: [map agent, geocoding, address intelligence, route optimization, WiFi fingerprinting, data quality, trusted data space, auditable decision chain, operational AI, world model, physical AI, simulation, synthetic data, scenario library, spatial perception, geospatial intelligence, low-altitude logistics, 代理式AI, 规则约束建模, 工业数字孪生]
     entity_ids: [g7_yiliu, samsara, streamax, china_transinfo, wanji_technology, jd_logistics]
-    company_and_product_names: [Samsara, Motive, project44, G7易流, 锐明技术, 京东物流, 千方科技, 华为数字能源]
-    event_types: [技术范式变化, 能力升级, 标准发布, 产品文档更新, API更新, 官方博客, 开发者平台, 行业技术资讯, AI助手, 大模型应用]
+    company_and_product_names: [Samsara, Motive, G7易流, 锐明技术, 京东物流, 千方科技, 华为数字能源, 境跃科技]
+    event_types: [技术范式变化, 能力升级, 产品文档更新, API更新, 官方博客, 开发者平台, 行业技术资讯, AI助手, 大模型应用]
     official_source_filters: [official blog, product docs, developer docs, 企业官网, 官方博客, 产品文档, 开发者平台, 官方新闻稿, 行业媒体, pending_official_domain]
     mandatory_site_filters: ["site:taibo.cn"]
     tender_filters: [智能调度 招标, 路线优化 采购, 车联网 平台 中标]

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fengxing.local/schemas/portal-content.schema.json",
+  "title": "丰行慧运情报中心网站扩展内容",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "site", "expert_insights", "competitor_dashboard", "about"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "site": {
+      "type": "object",
+      "required": ["name", "english_name", "report_title", "report_description", "focus_title", "footer_brand", "footer_tagline", "copyright", "version"]
+    },
+    "expert_insights": {
+      "type": "object",
+      "required": ["title", "items"],
+      "properties": {"items": {"type": "array", "items": {"type": "object", "required": ["id", "badge", "published_label", "title", "summary", "link"]}}}
+    },
+    "competitor_dashboard": {
+      "type": "object",
+      "required": ["title", "subtitle", "source_note", "tabs", "groups"]
+    },
+    "about": {
+      "type": "object",
+      "required": ["title", "organization", "producer", "sections", "feedback"]
+    }
+  }
+}

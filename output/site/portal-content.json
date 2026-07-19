@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "site": {
+    "name": "丰行慧运情报中心",
+    "english_name": "Intelligence & Decisions",
+    "report_title": "行业政策情报周度报告",
+    "report_description": "持续跟踪与丰行慧运业务相关的外部变化，精准识别政策红利、物流供应链需求、竞品动作与安全监管风险。",
+    "focus_title": "重点关注",
+    "footer_brand": "Huiyun Intelligence",
+    "footer_tagline": "Strategic excellence in spatial data 与 AI decision support.",
+    "copyright": "© 2026 丰行慧运",
+    "version": "版本 2.4.1"
+  },
+  "expert_insights": {
+    "title": "专家观点与深度综述",
+    "items": [
+      {
+        "id": "spatial-intelligence-report-2026",
+        "theme": "indigo",
+        "badge": "权威发布",
+        "published_label": "2026年3月发布",
+        "title": "《空间智能发展报告》",
+        "organization_label": "联合编制单位",
+        "organizations": [
+          "工信部元宇宙标准化标委会（筹）",
+          "中电标协元宇宙工作委员会"
+        ],
+        "summary": "《空间智能发展报告》揭示了人工智能正在从“读万卷书”的信息阶段，迈向“行万里路”的物理交互时代。",
+        "highlight_label": "什么是空间智能？",
+        "highlight": "智能体在三维空间中感知、理解、推理与实时自主决策。通过多模态数据，让机器具备在物理环境导航、协同协作能力。",
+        "stages": [
+          {"time": "60年代", "title": "几何建模"},
+          {"time": "21世纪初", "title": "感知融合"},
+          {"time": "10年代", "title": "语义理解"},
+          {"time": "现阶段", "title": "虚实共生"}
+        ],
+        "link": {
+          "label": "下载完整 PDF",
+          "url": "https://pan.baidu.com/s/1gxj987Lxje7vkOVjSG366Q?pwd=0409"
+        },
+        "note": "微信公众号“赛西元宇宙”发送「空间智能」获取（提取码：0409）"
+      },
+      {
+        "id": "flowr-multi-agent-supply-chain",
+        "theme": "emerald",
+        "badge": "学术前沿",
+        "published_label": "2026年最新 ArXiv 预印本",
+        "title": "Flowr：多智能体 AI 正在走向“供应链流程自动化”",
+        "organization_label": "研究团队 / 机构",
+        "organizations": [
+          "Old Dominion University、德勤（Deloitte）、埃森哲实验室（Accenture Technology Labs）等机构"
+        ],
+        "summary": "目前供应链、采购及物流管理中大部分异常跟进仍依赖人工协调。Flowr 框架把流程拆分为专业智能体，在人类监督下实现端到端闭环自动化。",
+        "highlight_label": "核心战略逻辑",
+        "highlight": "AI 真正改变供应链和货运行业的方式，不只是回答问题，而是参与流程、协调角色、处理异常和辅助决策。",
+        "bullets": [
+          "丰行未来的 AI 产品不能仅停留在信息问答或报表生成，而应深扎经营，成为调度、派车、在途、异常、风控的业务执行型智能体。"
+        ],
+        "link": {
+          "label": "阅读 ArXiv 论文 [PDF]",
+          "url": "https://arxiv.org/pdf/2604.05987"
+        },
+        "note": "ArXiv:2604.05987｜供应链智能体参考材料；不作为周报正式情报条目。"
+      }
+    ]
+  },
+  "competitor_dashboard": {
+    "title": "竞品看板与年度对标 (2025 FY)",
+    "subtitle": "Competitive Analytics | 竞对定量分析",
+    "source_note": "数据来源：Wind｜所有金额以人民币（CNY）计｜数据更新时间为2026年5月29日，季度更新总市值等数据",
+    "tabs": [
+      {
+        "id": "financial",
+        "label": "财务指标",
+        "metrics": [
+          {"key": "cap", "label": "总市值 (亿元)"},
+          {"key": "revenue", "label": "营业总收入 (亿元)", "highlight": true},
+          {"key": "growth", "label": "营收同比增长率 (%)"},
+          {"key": "profit", "label": "净利润 (亿元)"},
+          {"key": "gross_margin", "label": "销售毛利率 (%)"},
+          {"key": "net_margin", "label": "销售净利率 (%)"}
+        ]
+      },
+      {
+        "id": "hr",
+        "label": "人力指标",
+        "metrics": [
+          {"key": "revenue_per_person", "label": "人均创收 (万元)"},
+          {"key": "profit_per_person", "label": "人均创利 (万元)"},
+          {"key": "salary_per_person", "label": "人均薪酬 (万元)", "highlight": true},
+          {"key": "employees", "label": "员工总数 (人)"},
+          {"key": "masters_ratio", "label": "硕士及以上占比 (%)"},
+          {"key": "rop", "label": "人力投入回报率 (ROP)"}
+        ]
+      },
+      {
+        "id": "rd",
+        "label": "研发指标",
+        "metrics": [
+          {"key": "investment", "label": "研发投入 (亿元)"},
+          {"key": "intensity", "label": "研发费用占营收比 (%)", "highlight": true},
+          {"key": "personnel", "label": "研发人员数量 (人)"},
+          {"key": "personnel_ratio", "label": "研发人员占比 (%)"},
+          {"key": "patents", "label": "有效专利总数 (个)"}
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "category": "一、车队安全风控与车辆智能化",
+        "companies": [
+          {"name": "Samsara", "status": "美股", "code": "IOT.N", "values": {"financial": {"cap": "1251.06", "revenue": "12.49", "growth": "33.26%", "profit": "-1.55", "gross_margin": "76.12%", "net_margin": "-12.40%"}, "hr": {"revenue_per_person": "-", "profit_per_person": "-", "salary_per_person": "-", "employees": "4,100", "masters_ratio": "-", "rop": "-"}, "rd": {"investment": "-", "intensity": "-", "personnel": "-", "personnel_ratio": "-", "patents": "-"}}},
+          {"name": "锐明技术", "status": "A股", "code": "002970.SZ", "values": {"financial": {"cap": "123.20", "revenue": "24.77", "growth": "-10.82%", "profit": "3.89", "gross_margin": "45.18%", "net_margin": "15.68%"}, "hr": {"revenue_per_person": "111.02", "profit_per_person": "17.15", "salary_per_person": "20.23", "employees": "2,231", "masters_ratio": "8.96%", "rop": "85.29%"}, "rd": {"investment": "2.86", "intensity": "11.54%", "personnel": "690", "personnel_ratio": "30.93%", "patents": "563"}}},
+          {"name": "启明信息", "status": "A股", "code": "002232.SZ", "values": {"financial": {"cap": "66.51", "revenue": "7.74", "growth": "-11.88%", "profit": "0.33", "gross_margin": "27.44%", "net_margin": "4.20%"}, "hr": {"revenue_per_person": "50.10", "profit_per_person": "2.11", "salary_per_person": "20.88", "employees": "1,545", "masters_ratio": "10.68%", "rop": "6.88%"}, "rd": {"investment": "1.17", "intensity": "15.09%", "personnel": "961", "personnel_ratio": "62.20%", "patents": "79"}}}
+        ]
+      },
+      {
+        "category": "二、数字货运与运力交易平台",
+        "companies": [
+          {"name": "满帮集团", "status": "美股", "code": "YMM.N", "values": {"financial": {"cap": "626.60", "revenue": "124.90", "growth": "11.13%", "profit": "44.59", "gross_margin": "63.02%", "net_margin": "35.70%"}, "hr": {"revenue_per_person": "-", "profit_per_person": "-", "salary_per_person": "-", "employees": "8,251", "masters_ratio": "-", "rop": "-"}, "rd": {"investment": "-", "intensity": "-", "personnel": "-", "personnel_ratio": "-", "patents": "241"}}},
+          {"name": "快狗打车", "status": "港股", "code": "2246.HK", "values": {"financial": {"cap": "1.01", "revenue": "6.71", "growth": "1.58%", "profit": "-1.63", "gross_margin": "28.12%", "net_margin": "-24.25%"}, "hr": {"revenue_per_person": "-", "profit_per_person": "-", "salary_per_person": "-", "employees": "548", "masters_ratio": "-", "rop": "-"}, "rd": {"investment": "-", "intensity": "-", "personnel": "-", "personnel_ratio": "-", "patents": "32"}}}
+        ]
+      },
+      {
+        "category": "三、综合物流与供应链服务平台",
+        "companies": [
+          {"name": "京东物流", "status": "港股", "code": "2618.HK", "values": {"financial": {"cap": "752.75", "revenue": "2171.47", "growth": "18.77%", "profit": "68.90", "gross_margin": "9.10%", "net_margin": "3.17%"}, "hr": {"revenue_per_person": "-", "profit_per_person": "-", "salary_per_person": "-", "employees": "682,705", "masters_ratio": "-", "rop": "-"}, "rd": {"investment": "-", "intensity": "-", "personnel": "-", "personnel_ratio": "-", "patents": "2,235"}}},
+          {"name": "传化智联", "status": "A股", "code": "002010.SZ", "values": {"financial": {"cap": "148.70", "revenue": "250.84", "growth": "-6.05%", "profit": "6.41", "gross_margin": "15.00%", "net_margin": "2.55%"}, "hr": {"revenue_per_person": "530.47", "profit_per_person": "12.46", "salary_per_person": "32.75", "employees": "4,731", "masters_ratio": "10.36%", "rop": "85.96%"}, "rd": {"investment": "4.55", "intensity": "1.81%", "personnel": "911", "personnel_ratio": "19.26%", "patents": "140"}}}
+        ]
+      },
+      {
+        "category": "四、智慧交通与车路协同基础设施",
+        "companies": [
+          {"name": "千方科技", "status": "A股", "code": "002373.SZ", "values": {"financial": {"cap": "131.16", "revenue": "82.17", "growth": "13.35%", "profit": "2.91", "gross_margin": "31.20%", "net_margin": "3.54%"}, "hr": {"revenue_per_person": "136.50", "profit_per_person": "4.46", "salary_per_person": "28.71", "employees": "6,020", "masters_ratio": "21.16%", "rop": "18.04%"}, "rd": {"investment": "11.39", "intensity": "13.86%", "personnel": "2,508", "personnel_ratio": "41.66%", "patents": "3,251"}}},
+          {"name": "万集科技", "status": "A股", "code": "300552.SZ", "values": {"financial": {"cap": "65.45", "revenue": "10.94", "growth": "17.61%", "profit": "-1.74", "gross_margin": "32.43%", "net_margin": "-15.86%"}, "hr": {"revenue_per_person": "72.84", "profit_per_person": "-12.06", "salary_per_person": "28.18", "employees": "1,502", "masters_ratio": "24.77%", "rop": "-36.29%"}, "rd": {"investment": "2.51", "intensity": "22.93%", "personnel": "406", "personnel_ratio": "27.03%", "patents": "1,166"}}}
+        ]
+      },
+      {
+        "category": "五、能源/加油/充电/车后服务",
+        "companies": [
+          {"name": "能链智电", "status": "美股", "code": "NAAS.O", "values": {"financial": {"cap": "2.25", "revenue": "3.20", "growth": "50.60%", "profit": "-3.85", "gross_margin": "35.15%", "net_margin": "-120.31%"}, "hr": {"revenue_per_person": "64.00", "profit_per_person": "-77.00", "salary_per_person": "28.50", "employees": "500", "masters_ratio": "-", "rop": "-"}, "rd": {"investment": "0.45", "intensity": "14.06%", "personnel": "115", "personnel_ratio": "23.00%", "patents": "135"}}}
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "关于我们",
+    "organization": "丰行慧运情报中心",
+    "producer": "Produced by Public Affairs Department",
+    "sections": [
+      {
+        "title": "我们的初心",
+        "body": "我们致力于提供更智能、高效且高价值的情报研判，通过深耕行业动态精准赋能业务。我们虚心听取各方建议，并积极改进，力求产出更具价值的资讯与洞察。"
+      },
+      {
+        "title": "协同计划",
+        "body": "情报工作重在共创。我们期待通过紧密的合作与深度交流学习，与各部门并肩同行，在知识流转中共同发掘市场增量，助力业务多元化成长。"
+      }
+    ],
+    "feedback": {
+      "title": "留言反馈与建议",
+      "placeholder": "我们非常重视您的每一条建议。在这里留下您对情报中心内容、格式或功能的想法……",
+      "contact_placeholder": "联系方式（选填：邮箱/电话/部门）",
+      "local_notice": "本地只读模式，不会写入线上数据。"
+    }
+  }
+}

@@ -11,6 +11,9 @@ knowledge/                   稳定知识入口和分层导航
 fengxing_knowledge_pack/     丰行慧运结构化知识包
 scripts/                     校验、渲染和网站文本审计脚本
 templates/                   JSON 结构、栏目模板、Google AI Studio 保护提示词
+workflows/web-publishing/     站点 JSON 导出、构建审计和测试
+apps/web/                    Vite + React 只读展示站
+publish/                     自动生成并提交的浏览器安全周报 JSON
 state/                       已见 URL 和事件去重状态
 output/                      周度、日度正式研究产物
 examples/                    历史样例，仅学习格式，不当作新情报
@@ -62,9 +65,14 @@ google-ai-studio-input.md
 python3 scripts/intelligence_pipeline.py scan-taibo --days 7 --pages 3 --format markdown
 python3 scripts/validate_weekly.py output/weekly/YYYY-MM-DD
 python3 scripts/render_google_ai_studio.py output/weekly/YYYY-MM-DD
+python3 scripts/validate_weekly.py output/weekly/YYYY-MM-DD
+npm --prefix apps/web run content:issue -- YYYY-MM-DD
+npm --prefix apps/web run dev
 ```
 
-`google-ai-studio-input.md` 应由 `selected-intelligence.json` 渲染生成。不要手工把未核验候选、观察池、淘汰项或内部审计内容写进 Google AI Studio 成品文本。
+`google-ai-studio-input.md` 是由 `selected-intelligence.json` 渲染生成的格式化周报。不要手工把未核验候选、观察池、淘汰项或内部审计内容写进成品文本。
+
+站点 JSON 在周报校验通过后立即生成，不需要 `approve-review` 或批准状态。人工在本地网站审核通过并明确允许推送后，才执行 Git commit/push；推送生产分支后由 Netlify 自动构建和部署。
 
 ## 目录使用边界
 
@@ -82,3 +90,29 @@ python3 scripts/validate_weekly.py output/weekly/YYYY-MM-DD
 ```
 
 如果历史周报校验失败，先确认是否是旧产物已有的来源审计问题；不要为了通过校验而删除必要的不确定性记录。
+
+## 网站本地调试
+
+重构后网站位于 `apps/web/`。首次启动：
+
+```bash
+npm --prefix apps/web install
+npm --prefix apps/web run dev
+```
+
+然后访问 `http://localhost:3000/`。本地默认采用只读模式，不连接旧站
+Firebase 写入；详细说明见 `apps/web/README.md`。
+
+网站构建会从 `publish/weekly/` 和 `output/site/portal-content.json` 生成脱敏内容包，
+并校验期刊索引、扩展栏目结构与内容哈希。`legacy/` 不参与正常构建或测试。
+每周发布步骤见 `docs/operations/weekly-site-publishing.md`。
+
+发布前必须运行：
+
+```bash
+python3 -m unittest tests/test_intelligence_pipeline.py -v
+npm --prefix apps/web run test:all
+npm --prefix apps/web run build
+```
+
+没有人工明确的“可以提交并推送”指令时，不得执行 `git push`。
