@@ -87,12 +87,7 @@
           "judgmentSuggestion": "跟踪河南省市治超平台升级、数据治理、设备联网和运维采购。\n形成源头装载至整改销号的对象、规则和流程对照表。",
           "rating": 4,
           "summary": "河南开展道路运输安全排查，以源头称重、定位研判、非现场执法和整改销号构建治超闭环。",
-          "interpretations": [
-            {
-              "title": "政策解读",
-              "url": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260717_4209839.html"
-            }
-          ],
+          "interpretations": [],
           "downloads": [
             {
               "title": "官方原文",
@@ -290,7 +285,7 @@
   "provenance": {
     "type": "validated_intelligence",
     "source_file": "output/weekly/2026-07-17/selected-intelligence.json",
-    "source_hash": "276e9cb39378b0d673e55adc0b5c18ab2828306bbe73e3b609f4820017fa3f4b",
-    "content_hash": "49fb68e88524cd7f844474414003195168294c52f922b01511132e56affdc38d"
+    "source_hash": "d0d91473d63b7524a085c68384f0b72becab35bc4d43f20d1e999fd6c09d8ffc",
+    "content_hash": "a2e01da84fba5924c7a9afc35275aa8986c68c319c3c41d82094cb0c4cfea16d"
   }
 }
