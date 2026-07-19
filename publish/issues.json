@@ -9,11 +9,11 @@
       "title": "2026年7月17日刊",
       "category_counts": {
         "policy": 4,
-        "competitor": 4,
+        "competitor": 3,
         "market-opportunity": 3,
         "tech": 3
       },
-      "content_hash": "a2e01da84fba5924c7a9afc35275aa8986c68c319c3c41d82094cb0c4cfea16d"
+      "content_hash": "1330dccbc0fa3a518fae0a8dc864fe18da7831e9b53d7f929ae5c05d14f27adb"
     },
     {
       "issue_id": "2026-07-10",
@@ -58,5 +58,5 @@
       "content_hash": "c307b6f43568c5e930d6b25cc8e308aea9444c6767103f0c09bfad7642d7d51f"
     }
   ],
-  "content_hash": "55ace3e3865e464474a7a313f0c55dca1bbc6b678e8ab0afeee3e3a62ade1b4d"
+  "content_hash": "568b17566e1fd4ad5076b82ba4b209e92c53fd25be31ce8fea430176b274b30b"
 }

@@ -150,22 +150,6 @@
           "summary": "Samsara发布7国资产损失调研，并以Gateway及Tag产品族强化小型资产实时追踪。",
           "interpretations": [],
           "downloads": []
-        },
-        {
-          "id": "FXHY-20260717-CB-004",
-          "sourceTitle": "百度申请将香港第二上市转为主要上市，拟形成香港、纳斯达克双重主要上市",
-          "sourceUrl": "https://ir.baidu.com/news-releases/news-release-details/baidu-pursue-voluntary-conversion-dual-primary-listing-main/",
-          "sourceLabel": "百度投资者关系",
-          "date": "2026-07-16",
-          "eventProperty": "动态类别：资本市场 / 上市地位转换。",
-          "coreFacts": "百度董事会批准寻求将香港联交所主板的第二上市地位自愿转换为主要上市，并授权管理层推进准备和必要程序；转换预计于2026年内生效。完成后，百度将成为香港联交所主板与纳斯达克全球精选市场双重主要上市公司。",
-          "strategicSignal": "双重主要上市如期生效，将拓宽百度在香港和美国资本市场的投资者覆盖与融资灵活性，也意味着其需要同时适应两地主要上市公司的治理和披露要求。",
-          "businessConnection": "百度是中国AI、地图和自动驾驶领域的重要标杆；该申请可作为其长期资本配置与治理结构调整信号观察，但不能据此推断百度新增融资或自动驾驶业务扩张已经发生。",
-          "judgmentSuggestion": "跟踪香港主要上市转换的监管批准、生效时间和后续公告。\n结合百度后续财报与业务公告，核验资本市场动作是否伴随自动驾驶、地图或企业AI投入变化。",
-          "rating": 4,
-          "summary": "百度拟将香港上市地位转为主要上市，预计年内生效，并保留香港与纳斯达克两地交易。",
-          "interpretations": [],
-          "downloads": []
         }
       ]
     },
@@ -285,7 +269,7 @@
   "provenance": {
     "type": "validated_intelligence",
     "source_file": "output/weekly/2026-07-17/selected-intelligence.json",
-    "source_hash": "d0d91473d63b7524a085c68384f0b72becab35bc4d43f20d1e999fd6c09d8ffc",
-    "content_hash": "a2e01da84fba5924c7a9afc35275aa8986c68c319c3c41d82094cb0c4cfea16d"
+    "source_hash": "d9ed7f8a76e5f61047592fc75a6a83ba83671505cad8d93d9e08def08fb043fb",
+    "content_hash": "1330dccbc0fa3a518fae0a8dc864fe18da7831e9b53d7f929ae5c05d14f27adb"
   }
 }
