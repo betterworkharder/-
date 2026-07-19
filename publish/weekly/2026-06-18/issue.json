@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "issue_id": "2026-06-18",
+  "issue_date": "2026-06-18",
+  "display_date": "2026.06.18",
+  "title": "2026年6月18日刊",
+  "categories": [
+    {
+      "id": "policy",
+      "title": "政策趋势与监管",
+      "icon": "ShieldCheck",
+      "description": "聚焦政策导向、制度演进与监管边界的变化，识别影响行业秩序、业务规则和合规空间的关键信号。重点呈现政策变化背后的方向性趋势，判断其对相关行业和市场环境的长期影响。",
+      "news": []
+    },
+    {
+      "id": "funding",
+      "title": "资金与项目机会",
+      "icon": "BarChart3",
+      "description": "聚焦具备明确落地基础的资金安排、项目建设和实施机会，筛选可转化、可跟进、可承接的信息线索。重点判断机会所处阶段、牵头主体、推进路径和落地条件，呈现其后续转化价值。",
+      "news": []
+    },
+    {
+      "id": "competitor",
+      "title": "竞合与标杆动向",
+      "icon": "Target",
+      "description": "聚焦重点企业、平台厂商和生态伙伴的关键动作，持续跟踪其在产品、业务、合作和市场拓展中的实际进展。重点提炼外部主体的策略变化、能力布局与落地路径，为判断竞争态势和产业格局提供参照。",
+      "news": []
+    },
+    {
+      "id": "market",
+      "title": "市场与客户趋势",
+      "icon": "Users",
+      "description": "聚焦客户侧需求结构和市场共性变化，识别行业客户在治理模式、运营效率和数字化能力上的新要求。重点呈现需求变化背后的业务逻辑，判断客户侧投入方向和市场需求的演进趋势。",
+      "news": []
+    },
+    {
+      "id": "tech",
+      "title": "技术与能力演进",
+      "icon": "Cpu",
+      "description": "聚焦技术范式、能力体系和应用路径的演进，识别影响行业效率、产品边界与竞争门槛的关键变化。重点判断相关能力从概念走向规模化落地所需达到的成熟度，呈现技术演进对产业能力结构的影响。",
+      "news": []
+    }
+  ],
+  "provenance": {
+    "type": "legacy_release_snapshot",
+    "source_commit": "e22ba8b8e13a8c85e59f948687437508848e26ef",
+    "source_file": "legacy/frontend-content/news_june18.ts",
+    "source_hash": "4ef7783d7b00e4176e0dd223a2fd8cd93ba8c58ab96dcbd8a8a36fb07bf64979",
+    "content_hash": "e41946da5cb05adff0107222d939991a7bee3ed2f8c19a2a1c2021ded89eaada"
+  }
+}

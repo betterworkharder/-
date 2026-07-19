@@ -1,20 +1,23 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 丰行慧运情报中心
 
-# Run and deploy your AI Studio app
+丰行慧运情报中心公开展示站，使用 Vite + React 构建。
 
-This contains everything you need to run your app locally.
+仓库只包含浏览器安全的周报数据、公开门户内容和网站构建代码；候选池、来源审计、分析复核、公司知识包及其他内部研究材料不进入公开仓库。
 
-View your app in AI Studio: https://ai.studio/apps/770444b6-53b8-446f-b176-89937f910bba
+## 本地运行
 
-## Run Locally
+```bash
+npm --prefix apps/web ci
+npm --prefix apps/web run dev
+```
 
-**Prerequisites:**  Node.js
+默认访问地址：`http://localhost:3000/`。
 
+## 发布验证
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm --prefix apps/web run test:all
+npm --prefix apps/web run build
+```
+
+Netlify 使用根目录的 `netlify.toml` 完成测试、构建和静态站点发布。

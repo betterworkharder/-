@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "issue_id": "2026-07-17",
+  "issue_date": "2026-07-17",
+  "display_date": "2026.07.17",
+  "title": "2026年7月17日刊",
+  "categories": [
+    {
+      "id": "policy",
+      "title": "政策趋势与监管",
+      "icon": "ShieldCheck",
+      "description": "数据要素、人工智能、交通运输与道路货运相关规则和监管变化",
+      "news": [
+        {
+          "id": "FXHY-20260717-PR-005",
+          "sourceTitle": "2026世界人工智能大会主席声明提出智能体权限边界、行为追溯与数据可追溯治理要求",
+          "sourceUrl": "https://un.china-mission.gov.cn/zgyw/202607/t20260717_11984707.htm",
+          "sourceLabel": "中华人民共和国常驻联合国代表团",
+          "date": "2026-07-17",
+          "eventProperty": "全球人工智能治理正在从原则倡议细化到智能体权限、行为审计、风险提示、数据追溯和关键基础设施安全。",
+          "coreFacts": "声明提出推广“人工智能+”并推进交通等领域应用；要求数据可管、可控、可追溯和安全有序流动；强调人工智能处于人类控制之下，为前沿模型设置必要护栏；对智能体明确决策权限和行为边界，建立行为追溯与风险提示机制。",
+          "strategicSignal": "智能体进入运输调度、安全干预、监管辅助等高影响场景后，竞争力和治理要求可能同时转向权限最小化、高风险动作人工确认、全链路留痕和可回放审计。",
+          "businessConnection": "丰行若建设运输调度、车队安全或监管辅助智能体，可优先设计角色权限、工具白名单、高风险审批、提示与模型版本留痕、输入依据和执行结果追溯；现有实现程度待内部核查。",
+          "judgmentSuggestion": "形成运输调度、安全干预和监管辅助智能体的权限矩阵与高风险动作清单。\n为提示、数据依据、工具调用、人工审批、执行结果和模型版本设计可回放审计链。",
+          "rating": 5,
+          "summary": "世界人工智能大会主席声明提出明确智能体权限边界、建立行为追溯与风险提示，并推动数据安全有序流动。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-PR-004",
+          "sourceTitle": "《人工智能拟人化互动服务管理暂行办法》7月15日起施行，强化身份提醒、交互数据和全生命周期安全",
+          "sourceUrl": "https://www.szzg.gov.cn/2026/xwzx/szkx/202607/t20260716_5347193.htm",
+          "sourceLabel": "数字中国建设峰会官网 / 央视新闻",
+          "date": "2026-07-16",
+          "eventProperty": "人工智能服务治理由一般内容合规延伸到拟人化交互边界、用户依赖干预、训练与交互数据安全及全生命周期责任。",
+          "coreFacts": "办法适用于持续性情感互动服务，明确不涉及持续性情感互动的智能客服、知识问答、工作助手、学习教育和科学研究服务不适用；服务提供者需落实全生命周期安全、训练数据治理、交互数据保护、生成内容标识、沉迷与风险提醒、安全评估和算法备案。",
+          "strategicSignal": "AI产品合规正在按交互形态和风险分类细化，身份透明、可退出、数据最小使用、用户风险识别和服务变更评估可能成为高交互AI的基础控制项。",
+          "businessConnection": "丰行未来若在司机服务、车队运营或安全助手中加入持续性情感陪伴、拟人化人格和长期关系设计，需要单独评估适用性；普通运输工作助手若不涉及持续性情感互动通常不直接适用，但相关控制项可作为产品安全设计参照。",
+          "judgmentSuggestion": "盘点司机端、客服端和安全运营端AI功能是否包含持续性情感互动、人格设定或依赖性设计。\n建立身份提醒、交互数据用途、敏感数据训练授权、风险提示、退出机制和安全评估检查表。",
+          "rating": 5,
+          "summary": "拟人化互动服务新规7月15日施行，适用于持续性情感互动，并明确身份提醒、数据保护、安全评估和算法备案要求。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://www.cac.gov.cn/2026-04/10/c_1777558395284407.htm"
+            }
+          ],
+          "downloads": [
+            {
+              "title": "官方原文",
+              "url": "https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm"
+            }
+          ]
+        },
+        {
+          "id": "FXHY-20260717-PR-006",
+          "sourceTitle": "龙岗区印发《功能型无人车道路测试及应用试点管理办法（试行）》",
+          "sourceUrl": "https://www.lg.gov.cn/xxgk/zwgk/zfgb/2026/gb39/content/post_12886102.html",
+          "sourceLabel": "深圳市龙岗区人民政府",
+          "date": "2026-07-10",
+          "eventProperty": "功能型无人车道路测试与应用试点由场景探索进入区级制度化准入和全过程安全监管。",
+          "coreFacts": "办法要求申请主体具备运营服务、实时远程监控、网络与数据安全、风险应对及民事赔偿能力；明确安全员、限定区域运行、软硬件变更申报、阶段性报告和事故上报处置要求。官方解读还明确首批车辆数量、抽检比例及异地同架构车辆测试互认安排。",
+          "strategicSignal": "地方无人车治理正在从单次道路测试审批转向覆盖主体、车辆、运行计划、数据安全、配置变更、事故报告和资格退出的全生命周期监管。",
+          "businessConnection": "该规则与无人货运运营支持、车辆动态监管和安全闭环相关，可关注试点申报、车辆台账、远程监控、变更留痕、运行报告和事故处置所需的数据接口；不能据此认定丰行已具备相应产品。",
+          "judgmentSuggestion": "梳理办法涉及的主体、车辆、区域、远程监控、变更和事故数据字段。\n跟踪龙岗首批试点主体、监管平台和后续实施效果。",
+          "rating": 4,
+          "summary": "龙岗区发布功能型无人车试点办法，明确申请、远程监控、数据安全、变更申报、运行报告和事故处置要求。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://www.lg.gov.cn/gkmlpt/content/12/12883/post_12883081.html"
+            }
+          ],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-PR-001",
+          "sourceTitle": "河南开展道路运输领域“大起底”排查 重点风险隐患应查尽查一个不漏",
+          "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260717_4209839.html",
+          "sourceLabel": "交通运输部政府网站 / 中国交通报",
+          "date": "2026-07-17",
+          "eventProperty": "道路货运治超从路面抽查转向源头、运输、执法和整改全链条的数据驱动监管。",
+          "coreFacts": "河南建立重点货源单位台账，推动源头称重和视频数据接入治超平台，结合车辆通行路线和卫星定位研判重点车辆、路段与时段，部署非现场称重，并把违法信息用于信用、约谈、重大隐患台账以及一车一档、一企一档和销号闭环。",
+          "strategicSignal": "监管对象由单车违法扩展到货源、企业、线路、驾驶员和整改结果，多源数据关联、风险名单、闭环工单和可追溯执法证据的重要性上升。",
+          "businessConnection": "该方向与重载普货监管、车辆动态监管和企业安全运营高度相关，可评估源头装载、车辆轨迹、非现场称重、企业整改和申诉审计的数据贯通能力；历史方案只能说明经验来源。",
+          "judgmentSuggestion": "跟踪河南省市治超平台升级、数据治理、设备联网和运维采购。\n形成源头装载至整改销号的对象、规则和流程对照表。",
+          "rating": 4,
+          "summary": "河南开展道路运输安全排查，以源头称重、定位研判、非现场执法和整改销号构建治超闭环。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260717_4209839.html"
+            }
+          ],
+          "downloads": [
+            {
+              "title": "官方原文",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20260116/e56c9b95f09844f29d3aac09a52500bf.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "competitor",
+      "title": "竞合与标杆动向",
+      "icon": "Target",
+      "description": "聚焦重点企业、平台厂商与生态伙伴的关键动作，持续跟踪其在产品、业务、合作与市场拓展中的实际进展。重点提炼外部主体的策略变化、能力布局与落地路径，为判断竞争态势与产业格局提供参照。",
+      "news": [
+        {
+          "id": "FXHY-20260717-CB-002",
+          "sourceTitle": "境跃科技发布无人物流全国运营合伙人计划，组合路权监管与运营平台",
+          "sourceUrl": "https://www.ljzfin.com/info/87164.jspx",
+          "sourceLabel": "中国金融信息中心 / 陆家嘴金融网",
+          "date": "2026-07-13",
+          "eventProperty": "动态类别：运营模式发布与生态合作。",
+          "coreFacts": "境跃科技联合常州国家高新区、中国邮政、江苏移动、高德地图、吉利远程等推进常州无人物流示范项目，并发布全国运营合伙人计划；其模式组合动态路权监管平台、无人物流运营平台、本地运营服务和跨城市合作伙伴。",
+          "strategicSignal": "该模式把政府侧路权协同、平台侧无人运力调度和属地运营资源打包，可能形成城市无人物流从示范项目向区域复制的本土竞争路径。",
+          "businessConnection": "可重点比较境跃在无人车路权协同、运力调度、履约运营和属地合伙机制上的能力边界；丰图相关地图能力是否可形成协同需内部确认。",
+          "judgmentSuggestion": "将境跃科技纳入中国无人货运运营平台观察池。\n跟踪常州和崇左项目的车辆规模、客户类型、平台采购主体及运营数据。",
+          "rating": 4,
+          "summary": "境跃科技发布全国运营合伙人计划，以动态路权监管平台和无人物流运营平台推进跨城市复制。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-CB-003",
+          "sourceTitle": "斯年智驾完成3亿元C轮融资，资金投向车规级自动驾驶重卡方案",
+          "sourceUrl": "https://www.36kr.com/p/3895721094842249",
+          "sourceLabel": "36氪",
+          "date": "2026-07-16",
+          "eventProperty": "动态类别：融资 / 车规级自动驾驶重卡研发。",
+          "coreFacts": "斯年智驾完成3亿元C轮融资，计划将资金用于新一代车规级自动驾驶方案；公开业务包含无人集卡、无人自卸车、无人平板车和面向港口、园区、干线的自动驾驶解决方案。",
+          "strategicSignal": "自动驾驶重卡竞争正从封闭场景非车规测试向车规级控制器、开放道路数据和多场景产品化延伸，资本继续支持规模化前的工程化投入。",
+          "businessConnection": "应关注有人与无人运力混合调度、远程安全、车辆全生命周期和开放道路数据接口；知识包中的无人货运仍属规划或探索方向，不能写成现有产品。",
+          "judgmentSuggestion": "加入长期竞品观察名单并跟踪融资后的车规产品和客户进展。\n比较港口、园区和干线场景的调度、安全与运维平台需求。",
+          "rating": 4,
+          "summary": "斯年智驾完成3亿元C轮融资，资金用于车规级自动驾驶方案研发及港口、园区、干线场景扩展。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-CB-001",
+          "sourceTitle": "Samsara以资产失窃与损失报告强化Asset Gateway和Asset Tag产品族价值主张",
+          "sourceUrl": "https://www.samsara.com/company/news/press-releases/state-of-connected-operations-asset-theft-and-loss-report",
+          "sourceLabel": "Samsara官方新闻稿",
+          "date": "2026-07-15",
+          "eventProperty": "动态类别：研究报告发布与资产追踪产品营销。",
+          "coreFacts": "Samsara发布面向建筑、物流、现场服务和公用事业的资产失窃与损失调研，并将实时资产可视与Asset Gateway、Asset Tag和Asset Tag XS产品族绑定。",
+          "strategicSignal": "Samsara正把Connected Operations从车辆和司机延伸到工具、传感器和零部件等低值高频资产，并用损失与停工口径强化采购理由。",
+          "businessConnection": "可评估车辆、挂车、货物与场内资产统一可视、异常找回和ROI量化是否属于国内客户真实需求。",
+          "judgmentSuggestion": "纳入车队数字化和软硬件一体化竞品对比。\n访谈国内车队或园区核实低值资产损失痛点。",
+          "rating": 4,
+          "summary": "Samsara发布7国资产损失调研，并以Gateway及Tag产品族强化小型资产实时追踪。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-CB-004",
+          "sourceTitle": "百度申请将香港第二上市转为主要上市，拟形成香港、纳斯达克双重主要上市",
+          "sourceUrl": "https://ir.baidu.com/news-releases/news-release-details/baidu-pursue-voluntary-conversion-dual-primary-listing-main/",
+          "sourceLabel": "百度投资者关系",
+          "date": "2026-07-16",
+          "eventProperty": "动态类别：资本市场 / 上市地位转换。",
+          "coreFacts": "百度董事会批准寻求将香港联交所主板的第二上市地位自愿转换为主要上市，并授权管理层推进准备和必要程序；转换预计于2026年内生效。完成后，百度将成为香港联交所主板与纳斯达克全球精选市场双重主要上市公司。",
+          "strategicSignal": "双重主要上市如期生效，将拓宽百度在香港和美国资本市场的投资者覆盖与融资灵活性，也意味着其需要同时适应两地主要上市公司的治理和披露要求。",
+          "businessConnection": "百度是中国AI、地图和自动驾驶领域的重要标杆；该申请可作为其长期资本配置与治理结构调整信号观察，但不能据此推断百度新增融资或自动驾驶业务扩张已经发生。",
+          "judgmentSuggestion": "跟踪香港主要上市转换的监管批准、生效时间和后续公告。\n结合百度后续财报与业务公告，核验资本市场动作是否伴随自动驾驶、地图或企业AI投入变化。",
+          "rating": 4,
+          "summary": "百度拟将香港上市地位转为主要上市，预计年内生效，并保留香港与纳斯达克两地交易。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    },
+    {
+      "id": "market-opportunity",
+      "title": "市场客户趋势与资金项目机会",
+      "icon": "Users",
+      "description": "客户需求变化、运营痛点以及资金、采购、试点和建设机会",
+      "news": [
+        {
+          "id": "FXHY-20260717-MT-001",
+          "sourceTitle": "日本官方调查显示物流效率提升由企业内部优化转向跨主体协同",
+          "sourceUrl": "https://www.revised-logistics-act-portal.mlit.go.jp/information/details/post_25.html",
+          "sourceLabel": "日本国土交通省",
+          "date": "2026-07-10",
+          "eventProperty": "市场与客户趋势\n货主、连锁企业、卡车运输企业和仓储企业。",
+          "coreFacts": "物流效率提升正由单点内部优化转向预约、作业时间共享、单证前置和跨企业协同。",
+          "strategicSignal": "到车计划与仓库作业脱节，等待与装卸时间缺少统一记录，责任难归因；部分现场仍出现超过5小时等待。",
+          "businessConnection": "可对应货主OTMS、承运商协同、到仓预约、等待与装卸时长记录、异常归因和运输绩效分析，并通过中国客户访谈验证需求强度。",
+          "judgmentSuggestion": "面向制造、零售和仓配客户补充等待与预约需求访谈。\n梳理订单、到车、月台、装卸、离场和异常原因的数据链路。",
+          "rating": 4,
+          "summary": "日本官方调查显示，预约、装货时间共享和单证前置可减少等待，跨主体协同仍是物流提效难点。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-MO-001",
+          "sourceTitle": "淮安G233兆瓦级重卡超充站投运，普通国省道补能由单站向网络扩展",
+          "sourceUrl": "https://www.zgjssw.gov.cn/shixianchuanzhen/huaian/202607/t20260716_8583761.shtml",
+          "sourceLabel": "中共江苏省委新闻网 / 淮安日报",
+          "date": "2026-07-16",
+          "eventProperty": "资金与项目机会\n淮安公路部门、干线物流、新能源重卡车队和补能场站运营主体。",
+          "coreFacts": "国省道干线节点开始建设兆瓦级重卡补能设施，淮安计划继续推进G205徐溜服务区充电站，由一座站向普通国省道绿色补能网络扩展。",
+          "strategicSignal": "干线新能源重卡面临补能点不足、充电时间长、站点可达性和故障运维问题；建设任务包含充电设施、指引系统、智能运维和后续网络布局。",
+          "businessConnection": "关注G205后续站点和零碳公路项目，评估车队线路、电量、排队、补能计划与运输调度协同，以及能源成本与场站可用性分析需求。",
+          "judgmentSuggestion": "跟踪G205后续站点及零碳公路节能减排项目。\n访谈干线新能源车队对补能排队、线路调整和能源成本的实际需求。",
+          "rating": 4,
+          "summary": "淮安G233兆瓦重卡超充站投运，设15个充电车位，单日充电量突破2万千瓦时。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-CO-001",
+          "sourceTitle": "辽宁披露5000万元多式联运示范支持实施进展，重点推进“一单制”“一箱制”",
+          "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260717_4209830.html",
+          "sourceLabel": "交通运输部政府网站 / 中国交通报",
+          "date": "2026-07-17",
+          "eventProperty": "资金与项目机会\n辽宁省交通运输厅；港口、铁路、公路、航空和多式联运经营主体。",
+          "coreFacts": "省级资金支持多式联运示范线路、组织模式与技术装备创新，推动一单制、一箱制实施。",
+          "strategicSignal": "不同运输方式之间存在单证、状态、费用和异常数据衔接问题；后续建设可能涉及跨方式协同、全程可视和运输组织优化。",
+          "businessConnection": "跟踪申报主体、示范项目名单和技术装备采购，重点核实公路运输段的运单协同、在途可视、承运商管理和成本时效分析需求。",
+          "judgmentSuggestion": "监测示范名单、申报和采购节点。\n准备公路运输段数据接口、状态映射和费用核验能力清单。",
+          "rating": 3,
+          "summary": "辽宁安排5000万元支持多式联运示范，推进海铁、公铁、空铁线路及“一单制”“一箱制”。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "title": "技术与能力演进",
+      "icon": "Cpu",
+      "description": "聚焦技术范式、能力体系与应用路径 的 演进，识别影响行业效率、产品边界与竞争门槛的关键变化。重点判断相关能力从概念走向规模化落地所需达到的成熟度，呈现技术演进对产业能力结构的影响。",
+      "news": [
+        {
+          "id": "FXHY-20260717-TE-001",
+          "sourceTitle": "物流智能能力从单点算法走向可信数据、受约束智能体与人机协同闭环",
+          "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260717_4209835.html",
+          "sourceLabel": "交通运输部政府网站 / 中国交通报",
+          "date": "2026-07-17",
+          "eventProperty": "可信物流数据空间与受约束行业智能体。",
+          "coreFacts": "从看板、预测和单次优化，转向数据授权、约束求解、智能体建议、人工复核、执行反馈和审计闭环。",
+          "strategicSignal": "OTMS动态调度、多式联运、承运商协同、在途异常、运输安全和网络货运数据协同。",
+          "businessConnection": "竞争力需要细粒度授权、业务规则注入、决策可解释与回放、高风险动作人工审批，以及与TMS、ERP、车联网和监管平台低成本集成。",
+          "judgmentSuggestion": "设计动态调度或在途异常的建议、审批、执行、反馈和审计原型。\n定义数据权限、业务约束和审计记录的最低门槛。",
+          "rating": 4,
+          "summary": "行业文章提出可信数据、优化求解和受约束智能体架构，国家数据局案例显示物流数据协同已落地。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-TE-002",
+          "sourceTitle": "Physical AI从云端世界模型走向端侧实时推理与可验证物理事实",
+          "sourceUrl": "https://nvidianews.nvidia.com/news/japans-robotics-and-manufacturing-leaders-build-on-nvidia-cosmos-to-advance-physical-ai-frontier",
+          "sourceLabel": "NVIDIA官方新闻稿",
+          "date": "2026-07-15",
+          "eventProperty": "端侧世界模型与可验证物理认知。",
+          "coreFacts": "从云端离线训练和黑箱场景理解，转向边缘实时推理、可核验事实单元，以及真实数据、仿真、部署和反馈闭环。",
+          "strategicSignal": "自动驾驶货运、ADAS/DMS视频理解、危险场景检索、安全事件归因和端侧动作预测。",
+          "businessConnection": "竞争力应以端侧时延、事实错误率、长尾召回率、可追溯证据、设备成本和持续学习效率衡量，不能只比较模型参数。",
+          "judgmentSuggestion": "跟踪端侧时延、错误率和长尾召回的公开基准。\n评估危险驾驶视频理解是否需要事实级证据与可回放链路。",
+          "rating": 4,
+          "summary": "NVIDIA推出端侧视觉推理模型，文远知行WITT以原子物理事实支持场景提取、推理与验证。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260717-TE-003",
+          "sourceTitle": "无人物流从单车运营走向RaaS共享、跨货主调度与规模复制",
+          "sourceUrl": "https://www.sznews.com/news/content/2026-07/16/content_32122658.htm",
+          "sourceLabel": "深圳新闻网 / 深圳特区报",
+          "date": "2026-07-16",
+          "eventProperty": "平台化无人物流运力运营与编排。",
+          "coreFacts": "从单车、单线路和单一货主运营，走向订单与运力统一调度、RaaS共享车队、跨货主分时服务和规模复制。",
+          "strategicSignal": "城市配送、制造业厂区物流、医疗物资配送和多货主分时共享运力。",
+          "businessConnection": "规模化竞争力需要同时验证车辆在线率、订单履约率、远程接管时效、跨货主调度效率、单票成本和共享车队利用率。",
+          "judgmentSuggestion": "梳理无人车订单分配、跨货主调度、远程接管和履约回传的接口要求。\n持续跟踪车辆在线率、共享利用率、单票成本和跨城复制周期。",
+          "rating": 4,
+          "summary": "深圳披露无人物流车837辆、开放线路2713条；曹操和新石器分别推进RaaS及跨货主共享车队模式。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "type": "validated_intelligence",
+    "source_file": "output/weekly/2026-07-17/selected-intelligence.json",
+    "source_hash": "276e9cb39378b0d673e55adc0b5c18ab2828306bbe73e3b609f4820017fa3f4b",
+    "content_hash": "49fb68e88524cd7f844474414003195168294c52f922b01511132e56affdc38d"
+  }
+}
