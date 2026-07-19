@@ -13,7 +13,7 @@
         "market-opportunity": 3,
         "tech": 3
       },
-      "content_hash": "49fb68e88524cd7f844474414003195168294c52f922b01511132e56affdc38d"
+      "content_hash": "a2e01da84fba5924c7a9afc35275aa8986c68c319c3c41d82094cb0c4cfea16d"
     },
     {
       "issue_id": "2026-07-10",
@@ -58,5 +58,5 @@
       "content_hash": "c307b6f43568c5e930d6b25cc8e308aea9444c6767103f0c09bfad7642d7d51f"
     }
   ],
-  "content_hash": "68859d0ce863ba2eaa7c3258a1eccdbca5afcb2cbf062fd6abf3e20dec1b9330"
+  "content_hash": "55ace3e3865e464474a7a313f0c55dca1bbc6b678e8ab0afeee3e3a62ade1b4d"
 }
