@@ -20,13 +20,13 @@ class SitePublicationTest(unittest.TestCase):
         first = export_site_data.build_site_content(ROOT)
         second = export_site_data.build_site_content(ROOT)
         self.assertEqual(first, second)
-        self.assertEqual(first["latest_issue_id"], "2026-07-17")
         self.assertEqual(first["mode"], "site")
-        self.assertEqual(len(first["issues"]), 4)
-        self.assertEqual(
-            [issue["issue_id"] for issue in first["issues"]],
-            ["2026-07-17", "2026-07-10", "2026-07-03", "2026-06-26"],
-        )
+        issue_ids = [issue["issue_id"] for issue in first["issues"]]
+        self.assertGreaterEqual(len(issue_ids), 4)
+        self.assertEqual(issue_ids, sorted(issue_ids, reverse=True))
+        self.assertEqual(first["latest_issue_id"], issue_ids[0])
+        self.assertEqual(issue_ids[0], "2026-07-24")
+        self.assertNotIn("2026-07-23", issue_ids)
         self.assertNotIn("provenance", first["issues"][0])
         self.assertIn("content_hash", first["issues"][0])
         self.assertEqual(first["portal"]["schema_version"], 1)

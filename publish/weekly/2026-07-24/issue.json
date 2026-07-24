@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "issue_id": "2026-07-24",
+  "issue_date": "2026-07-24",
+  "display_date": "2026.07.24",
+  "title": "2026年7月24日刊",
+  "categories": [
+    {
+      "id": "policy",
+      "title": "政策趋势与监管",
+      "icon": "ShieldCheck",
+      "description": "数据要素、人工智能、交通运输与道路货运相关规则和监管变化",
+      "news": [
+        {
+          "id": "FXHY-20260723-PR-001",
+          "sourceTitle": "交通运输部明确“十五五”物流网、货运枢纽数智化与平台规范重点",
+          "sourceUrl": "https://jtj.wuhan.gov.cn/jtzx/zwdt/202607/t20260722_2824157.shtml",
+          "sourceLabel": "武汉市交通运输局 / 中国交通报",
+          "date": "2026-07-22",
+          "eventProperty": "“十五五”交通物流政策从单点设施建设转向物流网、货运节点、跨方式规则、数字化运营和平台经营规范协同推进。",
+          "coreFacts": "交通运输部提出再支持约30个城市开展综合货运枢纽补链强链，首批改造约300个主要货运节点，推进“一单制”“一箱制”，规范网络货运承运平台经营，并谋划无人快递车规范应用试点。",
+          "strategicSignal": "货运数字化将更强调枢纽设施与规则标准同步建设，网络货运、无人配送和智能驾驶进入“创新应用与经营规范并行”的阶段。",
+          "businessConnection": "丰行可重点跟踪首批支持城市、节点改造清单、网络货运规范细则及无人快递车试点要求，评估OTMS、运力管理、跨方式数据衔接、调度审计和监管接口的产品准备度。",
+          "judgmentSuggestion": "建立约30个支持城市和首批货运节点的持续跟踪清单。\n梳理网络货运平台经营规范、无人配送试点与现有产品权限审计要求的差距。",
+          "rating": 5,
+          "summary": "交通运输部在7月21日国新办发布会上提出支持约30个城市补链强链、改造约300个货运节点，并谋划无人快递车规范应用试点。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://english.scio.gov.cn/pressroom/2026-07/22/content_118611682.html"
+            }
+          ],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260723-PR-002",
+          "sourceTitle": "黑龙江启动高速公路夏季联合执法，重点检查“两客一危一货一面”",
+          "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260723_4210278.html",
+          "sourceLabel": "交通运输部网站 / 中国交通报",
+          "date": "2026-07-23",
+          "eventProperty": "道路运输安全监管由单部门路面检查转向交通、公安、气象、应急和高速运营单位的联合执法与闭环处置。",
+          "coreFacts": "行动对“两客一危一货一面”开展高速入口检查，将违法多发、事故频发企业纳入黑名单，建立隐患、责任、整改三项清单，并开展跨区域联合查缉和高风险车辆闭环管控。",
+          "strategicSignal": "重点货运车辆监管正在把入口查验、企业信用、风险路段、气象预警和跨区域查缉合并为持续运营机制，监管数据跨部门联动要求提高。",
+          "businessConnection": "丰行面向政府或运输企业的安全产品，应能支持车辆和企业风险分级、清单销号、预警触达、联合处置留痕及跨区域风险查询，而非仅提供定位与告警。",
+          "judgmentSuggestion": "跟踪黑龙江行动中的信息化平台、入口查验和黑名单数据接口需求。\n用企业风险分级、隐患清单、整改销号和跨部门协同四个维度评估现有监管方案。",
+          "rating": 4,
+          "summary": "黑龙江交通与公安部门启动持续至10月15日的联合执法，对重点车辆开展入口检查、企业黑名单管理和跨区域联合查缉。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260723-PR-003",
+          "sourceTitle": "永州通报危货运输“车单不符”案例，电子运单成为闭环监管核心凭证",
+          "sourceUrl": "https://jtj.yzcity.gov.cn/jtj/0201/202607/a1f783780ebd4408a52e1656a70ac428.shtml",
+          "sourceLabel": "永州市交通运输局",
+          "date": "2026-07-22",
+          "eventProperty": "危险货物运输监管持续强化电子运单、车辆资质、GPS动态监控和出车前核验的一致性。",
+          "coreFacts": "通报显示涉事车辆实际挂车与电子运单登记信息不一致，执法部门依据《危险货物道路运输安全管理办法》责令整改并罚款；企业需在更换挂车时同步更新运单信息。",
+          "strategicSignal": "电子运单正在由业务单据转为资质核验、动态监管和应急处置的关键主键，车、挂、货、人员和轨迹数据一致性成为监管重点。",
+          "businessConnection": "危货运输相关产品应支持牵引车与挂车组合校验、运单变更控制、资质有效性检查、GPS关联和异常审计，并保留人工复核与整改证据。",
+          "judgmentSuggestion": "把牵引车、挂车、货物、驾驶员、押运员和运单一致性纳入产品检查表。\n评估运单变更、异常阻断、人工审批和整改销号的端到端留痕能力。",
+          "rating": 4,
+          "summary": "永州交通执法通报一起危货车辆实际挂车与电子运单不一致案件，责令企业整改并处罚款2000元。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260724-PR-004",
+          "sourceTitle": "交通运输部7月24日解读数据分级、AI处理与全周期安全责任",
+          "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260724_4210354.html",
+          "sourceLabel": "交通运输部网站 / 中国交通报",
+          "date": "2026-07-24",
+          "eventProperty": "交通运输数据治理从原则性安全要求进入分类分级、全生命周期、特殊处理场景和责任闭环的可执行阶段。",
+          "coreFacts": "解读明确核心、重要和一般数据分级，覆盖采集至销毁的全生命周期，并将人工智能处理、数据出境、委托或共同处理和日志留存等列为需要专门控制的场景；重要数据、核心数据及处理1000万人以上个人信息的主体需每年开展风险评估。",
+          "strategicSignal": "交通运输平台未来不仅要证明数据可用，还要证明数据如何定级、谁被授权、模型如何处理、日志能否追溯以及安全事件是否完成整改复盘。",
+          "businessConnection": "丰行可优先检查车辆、司机、轨迹、运单和风险画像数据的分类分级、最小权限、AI调用边界、委托处理台账、日志期限和应急演练证据。",
+          "judgmentSuggestion": "对车辆、司机、轨迹、运单、视频和风险画像建立数据分级与处理活动清单。\n检查AI功能、外部接口、日志留存、风险评估和应急演练是否能提供审计证据。",
+          "rating": 5,
+          "summary": "交通运输部网站7月24日发布专题解读，说明交通运输数据分级保护、人工智能处理等特殊场景要求，以及风险评估、监测预警和事后复盘机制。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260724_4210354.html"
+            }
+          ],
+          "downloads": [
+            {
+              "title": "官方原文",
+              "url": "https://xxgk.mot.gov.cn/xzgfxwj/202607/t20260713_4209545.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "competitor",
+      "title": "竞合与标杆动向",
+      "icon": "Target",
+      "description": "聚焦重点企业、平台厂商与生态伙伴的关键动作，持续跟踪其在产品、业务、合作与市场拓展中的实际进展。重点提炼外部主体的策略变化、能力布局与落地路径，为判断竞争态势与产业格局提供参照。",
+      "news": [
+        {
+          "id": "FXHY-20260723-CB-001",
+          "sourceTitle": "满帮将司机与货主智能体嵌入交易决策，推进双边Agent协作平台",
+          "sourceUrl": "https://finance.eastmoney.com/a/202607183811787057.html",
+          "sourceLabel": "东方财富网 / 上证报中国证券网",
+          "date": "2026-07-18",
+          "eventProperty": "动态类别：产品与平台架构升级",
+          "coreFacts": "司机侧智能体处理货源匹配，货主侧智能体承担方案生成、运力匹配和异常处置；满帮提出在可授权、可观测、可追责边界内推进双边智能体协作。",
+          "strategicSignal": "满帮可能把货源、运力、交易和履约数据进一步封装为可执行任务，强化其对货运交易入口和决策流程的控制。",
+          "businessConnection": "丰行应以目标授权、约束建模、工具调用、异常回退、人工接管和全链路审计评价运输智能体，避免只建设对话入口。",
+          "judgmentSuggestion": "拆解满帮司机、货主、调度、风控和履约智能体的任务边界。\n建立运输智能体正确率、时延、异常回退、权限、审计和成本评测表。",
+          "rating": 5,
+          "summary": "满帮在世界人工智能大会披露司机侧“找货助手”和货主侧“智能助理”，覆盖匹配、方案生成和异常处置等任务。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260723-CB-003",
+          "sourceTitle": "Aurora发布第二代无人驾驶重卡，强化冗余、寿命与量产工艺",
+          "sourceUrl": "https://ir.aurora.tech/news-events/press-releases/detail/144/aurora-launches-second-generation-driverless-trucks-in-u-s-to-meet-customer-demand",
+          "sourceLabel": "Aurora Investor Relations",
+          "date": "2026-07-22",
+          "eventProperty": "动态类别：无人驾驶重卡产品与制造升级",
+          "coreFacts": "第二代车辆采用International LT平台，Aurora称新硬件按百万英里寿命设计并完成相关Safety Case，Roush负责冗余系统集成和标准化改装流程。",
+          "strategicSignal": "无人重卡竞争正在从算法演示扩展到硬件寿命、安全论证、冗余集成、制造节拍和客户交付。",
+          "businessConnection": "丰行研究无人货运时，应把安全论证、车队运维、故障恢复、保险和全生命周期成本纳入平台能力，而不仅比较自动驾驶里程。",
+          "judgmentSuggestion": "建立无人重卡安全论证、冗余、寿命、维保和保险对标框架。\n持续跟踪企业目标产能是否转化为实际交付和稳定线路运营。",
+          "rating": 5,
+          "summary": "Aurora发布基于International LT平台的第二代无人驾驶重卡，披露百万英里硬件寿命设计、安全论证和冗余系统集成流程。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260724-CB-006",
+          "sourceTitle": "Applied Intuition发布Dana，将Agentic AI延伸至自动驾驶开发与车队运营",
+          "sourceUrl": "https://www.appliedintuition.com/press-releases/applied-intuition-launches-dana",
+          "sourceLabel": "Applied Intuition",
+          "date": "2026-07-21",
+          "eventProperty": "动态类别：物理AI与自动驾驶工具链产品发布",
+          "coreFacts": "Dana把数据、仿真、验证、部署和车队运营工作流放入统一智能体平台，支持自然语言、命令行及企业系统集成；五十铃正用其加速商用车队L4自动驾驶开发。",
+          "strategicSignal": "自动驾驶基础设施厂商正在从单点仿真和验证工具向开发—部署—运营一体化编排层扩展，可能进一步控制车队运营数据和工程工作流入口。",
+          "businessConnection": "丰行可把任务编排、评测追踪、权限治理、人工接管和现有系统集成纳入无人货运能力评估，并判断与此类平台的合作和能力边界。",
+          "judgmentSuggestion": "建立自动驾驶工具链的数据闭环、评测、追踪、权限和人工接管对标表。\n跟踪五十铃项目从开发提速转化为车辆交付、稳定运营和经济性的实际进展。",
+          "rating": 4,
+          "summary": "Applied Intuition发布物理AI智能体平台Dana，覆盖开发、测试、部署和运营，并披露五十铃正用其加速商用车队L4自动驾驶开发。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260724-CB-007",
+          "sourceTitle": "Central Dispatch升级AI运价工具，用实时交易信号联动报价与派车时效",
+          "sourceUrl": "https://www.coxautoinc.com/insights/central-dispatch-enhances-ai-powered-pricing-intelligence-to-be-more-responsive-to-rapidly-shifting-vehicle-transport-market/",
+          "sourceLabel": "Cox Automotive",
+          "date": "2026-07-21",
+          "eventProperty": "动态类别：汽车物流平台运价智能升级",
+          "coreFacts": "Price Check Plus提高市场数据刷新频率，动态适配供需变化并加入新输入，以交易数据生成建议运价和预计派车时间；Price Check与Plus累计支持超过1600万次定价决策。",
+          "strategicSignal": "物流平台正把交易网络数据沉淀为运价和履约时效预测能力，并通过高级订阅把数据优势转化为平台黏性和付费产品。",
+          "businessConnection": "丰行可对照构建线路、车型、时段、供需、承运商履约和异常等特征体系，同时保留推荐依据、人工调整和事后偏差复盘。",
+          "judgmentSuggestion": "梳理现有线路报价、承运商履约和调度时效数据能否形成可回测的运价预测样本。\n对标建议运价、预计派车时间、人工调价原因和实际成交结果的闭环指标。",
+          "rating": 4,
+          "summary": "Cox Automotive旗下Central Dispatch升级Price Check Plus，增加更高频数据刷新、供需动态调整和新输入，并披露相关工具已支持超过1600万次定价决策。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260724-CB-005",
+          "sourceTitle": "杭叉发布LogiMind与五类叉车机器人，强化云边协同和人机接管",
+          "sourceUrl": "https://www.xhby.net/content/s6a62e5f0e4b04723d0feca6d.html",
+          "sourceLabel": "新华报业网",
+          "date": "2026-07-24",
+          "eventProperty": "动态类别：仓储与场内物流机器人产品发布",
+          "coreFacts": "杭叉发布LogiMind具身智能大模型和五类叉车机器人，采用云端任务与车队协同、端侧环境和任务理解的架构，并加入数字孪生、自动充电和异常远程人工确认。",
+          "strategicSignal": "场内物流装备正由预设路径自动执行转向任务理解、动态调度、异常恢复和人机协同运营，软硬件一体化能力成为竞争重点。",
+          "businessConnection": "丰行可将其作为仓园运输衔接和无人装备运营标杆，重点观察任务编排、车队调度、异常接管及与WMS、TMS的接口；不能表述为丰行现有能力。",
+          "judgmentSuggestion": "跟踪杭叉机器人在真实仓园的持续运行、人工接管率和单位任务成本。\n梳理WMS、场内调度与TMS之间的订单状态、装卸节拍和异常接口。",
+          "rating": 4,
+          "summary": "杭叉集团在首届AI DAY发布LogiMind具身智能大模型及五类叉车机器人，披露云端调度、端侧感知决策、数字孪生和异常远程接管等能力。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    },
+    {
+      "id": "market-opportunity",
+      "title": "市场客户趋势与资金项目机会",
+      "icon": "Users",
+      "description": "客户需求变化、运营痛点以及资金、采购、试点和建设机会",
+      "news": [
+        {
+          "id": "FXHY-20260723-MT-001",
+          "sourceTitle": "新能源商用车增长延续，推广由城配短倒向干线骨干车队延伸",
+          "sourceUrl": "https://www.news.cn/fortune/20260721/99bc4de85e3d41938251036de4979a5d/c.html",
+          "sourceLabel": "新华网",
+          "date": "2026-07-21",
+          "eventProperty": "市场与客户趋势\n大型运输企业、快递物流企业、规模化货运车队、港口矿区和补能运营主体。",
+          "coreFacts": "新能源商用车一端继续在城配物流车和轻卡放量，另一端由中短途、场内转运向干线公路运输与骨干车队延伸。",
+          "strategicSignal": "干线场景更依赖跨区域补能、任务与电量联动、等待时长、车辆利用率、能源成本和故障救援。",
+          "businessConnection": "关注新能源车队的任务—车辆—路线—电量—补能协同、能耗核算和经营分析；具体在售产品及商业化状态需内部确认。",
+          "judgmentSuggestion": "访谈制造、快递、大宗和干线物流客户的任务—电量—补能冲突。\n建立单位里程能耗、补能等待、空驶、救援、准点和周转指标清单。",
+          "rating": 5,
+          "summary": "新华网报道上半年新能源重卡销量约14万辆、同比增长78.6%，交通运输部提出推动大型运输和快递物流企业在干线运输中率先采用。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260723-MT-002",
+          "sourceTitle": "快递物流量收增长但利润仍薄，竞争重心转向网络效率与成本控制",
+          "sourceUrl": "https://www.nbd.com.cn/articles/2026-07-19/4477007.html",
+          "sourceLabel": "每日经济新闻",
+          "date": "2026-07-19",
+          "eventProperty": "市场与客户趋势\n快递、零担、城市配送、综合物流和制造零售货主的运输服务商。",
+          "coreFacts": "业务量和收入保持增长，但同城、异地和国际业务分化，低利润约束下网络效率、成本控制和资本开支回报更重要。",
+          "strategicSignal": "规模增长未自动转化为高利润，线路网络、车辆利用率、跨区域履约、人工和运输成本仍是经营约束。",
+          "businessConnection": "可对应货主OTMS、车队SaaS、线路规划、智能排线、异常处置、承运商绩效和运输成本核验，不应把行业变化直接写成已确认商机。",
+          "judgmentSuggestion": "把单位订单或吨公里成本、车辆利用率、空驶率和异常成本列为客户访谈必问指标。\n检查现有产品能否形成数字化项目投入回收期和经营改善证据。",
+          "rating": 4,
+          "summary": "国家邮政局公布上半年快递业务量同比增长5.0%、收入增长7.3%；行业采访显示重点物流企业利润率仍处低位。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260724-MT-003",
+          "sourceTitle": "江苏发布首批“人工智能+交通运输”服务商名录并组建产业联盟",
+          "sourceUrl": "https://www.jiangsu.gov.cn/art/2026/7/24/art_60095_11807901.html",
+          "sourceLabel": "江苏省人民政府 / 新华日报",
+          "date": "2026-07-24",
+          "eventProperty": "项目与生态机会\n江苏省交通运输主管部门、交通运营主体、人工智能技术和系统集成服务商。",
+          "coreFacts": "江苏以首批服务商名录、产业联盟、重点工作和典型场景清单组织供需对接，路演覆盖运输审批、交通治理、智慧物流、自动驾驶和低空管理。",
+          "strategicSignal": "需要把场景开放、高质量数据集、算法工具链、行业模型、监管机制和商业闭环同时落地，并提升公铁水空联运调度效率。",
+          "businessConnection": "核实首批服务商名录和联盟加入机制，筛选智慧物流、运输监管、道路安全、车队运营和多式联运场景；目前不能据此认定已形成采购项目。",
+          "judgmentSuggestion": "获取并核对首批140家服务商完整名录、联盟章程和后续场景需求清单。\n按智慧物流、监管、安全和多式联运四类筛选可跟进场景，并核实采购或试点阶段。",
+          "rating": 5,
+          "summary": "江苏省政府7月23日举行“人工智能+交通运输”路演，省交通运输厅发布首批服务商名录并介绍产业联盟，要求推动场景商业化和多式联运调度。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "title": "技术与能力演进",
+      "icon": "Cpu",
+      "description": "聚焦技术范式、能力体系与应用路径 的 演进，识别影响行业效率、产品边界与竞争门槛的关键变化。重点判断相关能力从概念走向规模化落地所需达到的成熟度，呈现技术演进对产业能力结构的影响。",
+      "news": [
+        {
+          "id": "FXHY-20260723-TE-001",
+          "sourceTitle": "自动驾驶车队能力由单车驾驶延伸至标准化维保与生命周期运营",
+          "sourceUrl": "https://tj.chinadaily.com.cn/a/202607/22/WS6a6089cda310d709c2fbf212.html",
+          "sourceLabel": "中国日报网",
+          "date": "2026-07-22",
+          "eventProperty": "自动驾驶及无人物流车队的标准化运维和生命周期管理。",
+          "coreFacts": "能力评价从车辆能否自主行驶，扩展到网格化服务、传感器和线控底盘专项维保、标定复检、备件、数字工单和恢复上线。",
+          "strategicSignal": "Robotaxi、园区无人物流车、城市配送和未来干线自动驾驶车队。",
+          "businessConnection": "竞争力需以停运时长、维修SLA、标定复检通过率、备件可用率、履约率、单车成本和任务恢复时间衡量。",
+          "judgmentSuggestion": "把车辆健康、故障分级、维修SLA、标定复检和停运损失加入无人货运对标表。\n区分车辆采购、算法服务、运力服务和车队生命周期运营四类需求。",
+          "rating": 4,
+          "summary": "小马智行与京东养车提出网格化维保、专用备件、标定复检和数字工单；Momenta相关报道显示无人物流车开始进入园区持续运营验证。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260723-TE-002",
+          "sourceTitle": "物流具身智能由展台演示转向真实仓持续作业与量化POC",
+          "sourceUrl": "https://thinktank.cnfin.com/zjgc-lb/detail/20260721/4443671_1.html",
+          "sourceLabel": "中国金融信息网 / 新华财经",
+          "date": "2026-07-21",
+          "eventProperty": "物流具身智能的真实场景验证和可复制交付。",
+          "coreFacts": "评价重点从动作展示转向真实订单、连续作业、多机协同、任务成功率、异常恢复、POC验收和按业务量计费。",
+          "strategicSignal": "仓内拣选、搬运、分拣车归位、复合打包衔接及未来仓运协同。",
+          "businessConnection": "应公开任务成功率、单位处理量、连续无故障时长、人工接管率、异常恢复、SKU适配、部署周期、单位订单成本和接口稳定性。",
+          "judgmentSuggestion": "对外部具身智能方案要求量化POC指标和持续运行证据。\n研究OMS、WMS与TMS的订单完成预测、异常回传和排程联动接口。",
+          "rating": 3,
+          "summary": "多家企业在物流仓推进具身智能验证，科捷真实运营仓持续执行拣选任务，并与大咖机器人探索分拣POC和按件、按仓服务模式。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260723-TE-003",
+          "sourceTitle": "运输安全能力由识别告警走向干预、整改与权限审计闭环",
+          "sourceUrl": "https://xj.spb.gov.cn/xjyzglj/c100057/c100060/202607/406a2dc59f1e4b4685303e917d1df739.shtml",
+          "sourceLabel": "新疆维吾尔自治区邮政管理局",
+          "date": "2026-07-22",
+          "eventProperty": "道路运输安全监测与受治理安全智能体。",
+          "coreFacts": "从单点识别和弹窗告警升级为规则触发、分级提醒、人工复核、整改督办、权限控制、操作留痕和效果复盘。",
+          "strategicSignal": "邮运和货运车队驾驶安全、疲劳与超速管理、保险风险减量、企业安全运营和政府运输监管。",
+          "businessConnection": "竞争力需衡量误报漏报、告警确认时长、干预完成率、重复违规率、整改销号率、权限最小化、审计日志和规则版本追溯。",
+          "judgmentSuggestion": "盘点安全链路是否覆盖识别、分级、触达、复核、干预、整改、复盘和审计。\n明确安全智能体可自动执行与必须人工确认的动作，并保留模型和规则版本。",
+          "rating": 5,
+          "summary": "新疆邮政管理局披露49台邮运车辆形成告警、通报和整改流程；安全智能体平台开始加入身份、权限、审计和可观测治理。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "type": "validated_intelligence",
+    "source_file": "output/weekly/2026-07-24/selected-intelligence.json",
+    "source_hash": "0ccf0188ae8a025662ccad07bdc1ec47e432d714d14e56ab411dd2c53b14671f",
+    "content_hash": "8e4f5a5c7d7948b6ebfd3ac8cf13055e31d521dc7266cf35ef8dee6cca28a58f"
+  }
+}
