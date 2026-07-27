@@ -8,12 +8,12 @@
       "display_date": "2026.07.24",
       "title": "2026年7月24日刊",
       "category_counts": {
-        "policy": 4,
+        "policy": 5,
         "competitor": 5,
         "market-opportunity": 3,
         "tech": 3
       },
-      "content_hash": "8e4f5a5c7d7948b6ebfd3ac8cf13055e31d521dc7266cf35ef8dee6cca28a58f"
+      "content_hash": "d6c730385e1f16797f75611c7a9be1c00ab88a38d8fc56acc0dcc2fa1d239c09"
     },
     {
       "issue_id": "2026-07-17",
@@ -71,5 +71,5 @@
       "content_hash": "c307b6f43568c5e930d6b25cc8e308aea9444c6767103f0c09bfad7642d7d51f"
     }
   ],
-  "content_hash": "f30517174ea593a53fdab5997a25f07ac096de0e0348035533a333926e8a1353"
+  "content_hash": "4854056eaca1e379acada3902e48aebe1392a828da9a09a8dde822b5f91d4072"
 }

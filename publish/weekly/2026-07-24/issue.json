@@ -89,6 +89,32 @@
               "url": "https://xxgk.mot.gov.cn/xzgfxwj/202607/t20260713_4209545.html"
             }
           ]
+        },
+        {
+          "id": "FXHY-20260724-PR-005",
+          "sourceTitle": "上海：推动科创板持续深化改革 持续扩大科创板第五套上市标准的适用范围",
+          "sourceUrl": "https://api3.cls.cn/share/article/2434784?app=&os=ios&sv=857",
+          "sourceLabel": "财联社",
+          "date": "2026-07-23",
+          "eventProperty": "科技金融和资本市场制度继续扩大对人工智能、低空经济及未来产业未盈利科技企业的包容范围。",
+          "coreFacts": "措施提出推动出台科创板人工智能、低空经济等企业适用第五套上市标准审核指引，支持可控核聚变、具身智能、大模型、量子计算、脑机接口等企业上市，并完善优质科技企业IPO预先审阅和投资机构沟通机制。",
+          "strategicSignal": "人工智能和低空经济正在被纳入更细的上市审核与科技金融支持框架，后续企业能否适用仍取决于行业认定、核心技术评价、产业化证据和正式审核指引。",
+          "businessConnection": "丰行可关注人工智能运输、无人货运及低空物流相关企业的行业认定和审核证据要求；现有知识包不足以确认丰行适用相关标准，也不能据此推断丰行存在上市或融资安排。",
+          "judgmentSuggestion": "持续跟踪人工智能、低空经济第五套上市标准审核指引及行业认定口径。\n如内部确有融资或上市研究需求，再由法务、财务和业务负责人核验主体资格、核心技术证据与产业化材料。",
+          "rating": 3,
+          "summary": "上海市委金融办等九部门发布科技金融措施，提出推动出台科创板人工智能、低空经济等企业适用第五套上市标准审核指引，并支持可控核聚变、具身智能、大模型、量子计算、脑机接口等领域企业在科创板上市。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://finance.ce.cn/stock/gsgdbd/202607/t20260724_3104574.shtml"
+            }
+          ],
+          "downloads": [
+            {
+              "title": "官方原文",
+              "url": "https://m.yicai.com/news/103289129.html"
+            }
+          ]
         }
       ]
     },
@@ -296,7 +322,7 @@
   "provenance": {
     "type": "validated_intelligence",
     "source_file": "output/weekly/2026-07-24/selected-intelligence.json",
-    "source_hash": "0ccf0188ae8a025662ccad07bdc1ec47e432d714d14e56ab411dd2c53b14671f",
-    "content_hash": "8e4f5a5c7d7948b6ebfd3ac8cf13055e31d521dc7266cf35ef8dee6cca28a58f"
+    "source_hash": "1cfc6691546f1ecfdfad363f89accd9ea5b50f3e0e80b556217f5484cb191469",
+    "content_hash": "d6c730385e1f16797f75611c7a9be1c00ab88a38d8fc56acc0dcc2fa1d239c09"
   }
 }
