@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "issue_id": "2026-07-31",
+  "issue_date": "2026-07-31",
+  "display_date": "2026.07.31",
+  "title": "2026年7月31日刊",
+  "categories": [
+    {
+      "id": "policy",
+      "title": "政策趋势与监管",
+      "icon": "ShieldCheck",
+      "description": "数据要素、人工智能、交通运输与道路货运相关规则和监管变化",
+      "news": [
+        {
+          "id": "FXHY-20260731-PR-001",
+          "sourceTitle": "两部门正式公开深化综合交通运输体系改革意见，货运数据与智能安全监管纳入改革任务",
+          "sourceUrl": "https://xxgk.mot.gov.cn/jigou/zcyjs/202607/t20260724_4210365.html",
+          "sourceLabel": "交通运输部",
+          "date": "2026-07-24",
+          "eventProperty": "综合运输改革由设施衔接延伸至货运规则、数据交换、安全监管、平台算法与公共数据运营。",
+          "coreFacts": "文件提出3方面18项任务，包括推进多式联运“一单制”“一箱制”、促进货运数据交换、加强经营性道路运输车辆智能安全监管、强化平台算法常态化监管、推动交通公共数据授权运营和“人工智能+交通运输”。",
+          "strategicSignal": "运输数字化将更强调跨主体数据可交换、车辆安全可干预、算法规则可监管和公共数据使用可授权，单点可视化难以覆盖合规要求。",
+          "businessConnection": "丰行可对照数据交换、车辆安全、算法治理和公共数据授权四条责任链检查OTMS、车队与监管产品，并关注后续配套规则和试点。",
+          "judgmentSuggestion": "建立文件18项任务与现有产品能力的差距表。\n持续跟踪货运数据交换、算法监管和公共数据授权的配套细则。",
+          "rating": 5,
+          "summary": "交通运输部、国家发展改革委7月24日公开交政研发〔2026〕74号文件，部署多式联运、货运数据交换、经营性道路运输车辆智能安全监管、平台算法监管和交通公共数据授权运营等任务。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://www.mot.gov.cn/gongkai/zcjd/202607/t20260724_4210386.html"
+            }
+          ],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-PR-002",
+          "sourceTitle": "四部门解读交通运输统一大市场实施方案，平台监管与市场数据共享并行推进",
+          "sourceUrl": "https://www.mot.gov.cn/gongkai/zcjd/202607/t20260729_4210680.html",
+          "sourceLabel": "交通运输部",
+          "date": "2026-07-29",
+          "eventProperty": "以统一市场规则降低跨区域、跨方式交易壁垒，同时强化平台、招投标和市场数据治理。",
+          "coreFacts": "官方解读列出六方面任务，包括推进多式联运与物流制造融合、治理招投标违法违规、对平台企业实施常态化监管、促进市场数据共享并有序开放新兴领域。",
+          "strategicSignal": "平台经营、跨区域运输和政府项目将同步面对统一规则、竞争秩序、数据共享与新业态准入要求。",
+          "businessConnection": "丰行可关注跨区域数据规则、平台经营合规和招投标治理要求，避免把市场开放信号直接判断为已确认项目。",
+          "judgmentSuggestion": "跟踪完整方案及各地交通运输统一市场任务清单。\n把数据共享、平台规则与招投标合规纳入项目机会核验表。",
+          "rating": 5,
+          "summary": "交通运输部7月29日发布官方解读，说明交通运输部会同铁路、民航、邮政主管部门制定统一大市场实施方案，任务涉及多式联运、招投标治理、平台常态化监管和市场数据共享。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-PR-003",
+          "sourceTitle": "综合运输服务发展“十五五”规划正式发布，货运枢纽与运输监管进入数智协同阶段",
+          "sourceUrl": "https://www.gov.cn/zhengce/zhengceku/202607/content_7076565.htm",
+          "sourceLabel": "中国政府网政策库",
+          "date": "2026-07-24",
+          "eventProperty": "综合运输服务以跨方式协同、货运枢纽提效、人工智能应用、绿色运输与安全韧性为主线。",
+          "coreFacts": "规划提出到2030年基本建成现代化综合运输服务体系，部署41项重点任务；提出新能源重型卡车保有量占比20%，提升约1000个货运节点多式联运功能，并建设“两客一危”监管智能体专项工程。",
+          "strategicSignal": "政策重心由单一运输方式优化转向跨方式运营、数据联通、智能监管和绿色运力的系统协同。",
+          "businessConnection": "丰行可围绕货运枢纽、运输控制塔、多式联运、重点车辆监管和新能源车队运营建立长期政策跟踪清单。",
+          "judgmentSuggestion": "拆解规划41项任务中与公路货运直接相关的责任部门、指标和专栏。\n跟踪地方规划、示范名单和配套标准。",
+          "rating": 5,
+          "summary": "交通运输部等四部门7月24日发布交运发〔2026〕86号规划，围绕综合运输协同、交通物流、数智赋能、安全韧性等九方面部署41项任务，并设置13个专栏。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://jtj.wuhan.gov.cn/jtzx/zwdt/202607/t20260728_2826498.shtml"
+            }
+          ],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-PR-004",
+          "sourceTitle": "自动驾驶地图快审平台通过落地论证，拟向“车路云一体化”试点城市推广",
+          "sourceUrl": "https://www.taibo.cn/p/99574",
+          "sourceLabel": "地图技术审查中心（用户提供原文，泰伯网复核）",
+          "date": "2026-07-29",
+          "eventProperty": "自动驾驶地图治理由试点规则探索进一步转向统一送审、快速审查、云环境安全和部省市协同的监管基础设施落地。",
+          "coreFacts": "快审平台已完成统一送审格式转换、全流程闭环测试和多场景验证；围绕审图与受理范围、云环境安全保密、部省市分工及人员培训建立配套机制，专家建议先在“车路云一体化”应用试点城市部署并逐步推广。",
+          "strategicSignal": "自动驾驶地图合规可能由项目制、人工为主的审查流程，逐步转向标准化格式、平台化闭环和多层级协同；审查时效、安全保密、流程可追溯将成为并行要求。",
+          "businessConnection": "对丰行规划中的无人货运和智驾运营，地图与时空数据合规可能成为车辆测试、跨区域运营和监管接入的前置条件。丰图相关能力可能为丰行提供底层数据或技术支撑，具体产品归属、协同方式及商业化状态待内部确认。",
+          "judgmentSuggestion": "跟踪首批部署城市、送审格式、审查时限、受理范围和云环境安全要求。\n由产品、法务与数据安全团队梳理无人货运场景中的地图数据采集、加工、传输、更新和送审责任链。",
+          "rating": 4,
+          "summary": "自然资源部地图技术审查中心7月29日披露，受地理信息管理司委托，中心于7月24日组织自动驾驶地图快速审查平台落地应用论证。平台已完成统一送审格式转换、全流程闭环测试和多场景验证，专家建议先在“车路云一体化”应用试点城市部署并逐步推广。",
+          "interpretations": [
+            {
+              "title": "政策解读",
+              "url": "https://www.taibo.cn/p/99574"
+            }
+          ],
+          "downloads": []
+        }
+      ]
+    },
+    {
+      "id": "competitor",
+      "title": "竞合与标杆动向",
+      "icon": "Target",
+      "description": "聚焦重点企业、平台厂商与生态伙伴的关键动作，持续跟踪其在产品、业务、合作与市场拓展中的实际进展。重点提炼外部主体的策略变化、能力布局与落地路径，为判断竞争态势与产业格局提供参照。",
+      "news": [
+        {
+          "id": "FXHY-20260731-CB-001",
+          "sourceTitle": "京东物流在深圳落地“无人车—地铁—无人车”三段式同城配送链路",
+          "sourceUrl": "https://www.ithome.com/0/982/674.htm",
+          "sourceLabel": "IT之家",
+          "date": "2026-07-28",
+          "eventProperty": "动态类别：无人货运运营与城市公共运力协同",
+          "coreFacts": "无人车承担两端接驳，地铁承担跨区运输，形成网格仓、轨道与分拣中心的连续链路；企业称深圳已投放近百台无人车并开通121条夜间线路。",
+          "strategicSignal": "京东正在把自有无人车、网点网络与公共交通平峰运力组合为城市级履约网络；是否标准化对外输出尚未披露。",
+          "businessConnection": "无人货运支持需覆盖多段运力编排、箱体交接、路权合规、安全责任、异常接管、成本基线和时效审计。",
+          "judgmentSuggestion": "按任务编排、交接、异常、安全和成本五个维度拆解该模式。\n持续核验运营频次、日单量和是否对外商业化。",
+          "rating": 4,
+          "summary": "京东物流7月28日披露在深圳将坪山网格仓集货、地铁跨区运输和宝安出站接驳串联为三段式配送链路，并公布成本、运力利用率及无人车线路等运营口径。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-CB-002",
+          "sourceTitle": "Freightos接入FreightSuite，将实时运价与订舱嵌入AI原生TMS",
+          "sourceUrl": "https://www.prnewswire.com/il/news-releases/freightos-enables-live-air-cargo-booking-in-freightsuites-ai-native-tms-302836327.html",
+          "sourceLabel": "Freightos / PR Newswire",
+          "date": "2026-07-28",
+          "eventProperty": "动态类别：TMS平台集成与智能体交易执行",
+          "coreFacts": "Freightos将实时空运价格、舱位和电子订舱能力嵌入FreightSuite，智能体可在主系统中自动询价和订舱，减少跨平台切换与人工录入。",
+          "strategicSignal": "TMS竞争正由记录与可视化延伸到连接外部运力市场并直接执行交易，平台网络覆盖和可审计自动化成为差异点。",
+          "businessConnection": "丰行可评估将询价、运力选择、下单和异常回退组成可授权工作流，并明确人工确认、数据时效和交易审计边界。",
+          "judgmentSuggestion": "对比现有OTMS从询价到下单的自动化与人工接管能力。\n跟踪该集成的客户覆盖和正式商业定价。",
+          "rating": 4,
+          "summary": "Freightos与FreightSuite于7月28日宣布集成，货代可在TMS内调用75家以上航司的实时运价、舱位和电子订舱，并由智能体工作流执行询价与订舱。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-CB-003",
+          "sourceTitle": "YMX以数字孪生决策引擎推进场内物流持续优化",
+          "sourceUrl": "https://www.prnewswire.com/news-releases/ymx-logistics-wins-supply-chain-ai-excellence-award-302836516.html",
+          "sourceLabel": "YMX Logistics / PR Newswire",
+          "date": "2026-07-28",
+          "eventProperty": "动态类别：场内物流数字孪生与运营决策",
+          "coreFacts": "YMX披露的决策引擎把场地布局、车队、劳动力、交通流、电动化和实时执行数据纳入统一模拟与优化。",
+          "strategicSignal": "场内物流技术由单一车辆自动化延伸到场景建模、资源规划、实时推荐和持续运营优化。",
+          "businessConnection": "面向园区或货主的运输规划能力应能比较方案、解释约束、回放执行偏差，并把安全、效率与能源指标统一度量。",
+          "judgmentSuggestion": "建立场内调度能力的约束、仿真、实时反馈和效果审计检查表。\n继续核验客户案例及量化收益。",
+          "rating": 3,
+          "summary": "YMX Logistics 7月28日披露其Autonomous Yard Operating System以数字孪生、机器学习、预测分析、计算机视觉和实时运营数据评估场地布局、车队规模、用工、交通流及电动化方案。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    },
+    {
+      "id": "market-opportunity",
+      "title": "市场客户趋势与资金项目机会",
+      "icon": "Users",
+      "description": "客户需求变化、运营痛点以及资金、采购、试点和建设机会",
+      "news": [
+        {
+          "id": "FXHY-20260731-MT-001",
+          "sourceTitle": "宁夏矿区新能源重卡示范线路完成重载实景试跑",
+          "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202607/t20260729_4210689.html",
+          "sourceLabel": "交通运输部 / 人民日报客户端",
+          "date": "2026-07-29",
+          "eventProperty": "项目与生态机会\n宁夏矿区大宗运输与新能源重卡运营主体",
+          "coreFacts": "示范线路由实景重载试跑向达标后常态化运营推进，数字平台同时承担调度、补能、路线、交付和合规回溯。",
+          "strategicSignal": "矿区重载运输需同时解决运力组织、错峰补能、线路适配、现场交付、票据合规和全程追溯。",
+          "businessConnection": "丰行可将其作为大宗新能源车队运营样本，跟踪常态化车队规模、平台接口、补能调度和安全运营需求；当前不是已确认采购商机。",
+          "judgmentSuggestion": "跟踪达标条件、常态化运营时间和分批导入规模。\n对比现有产品在补能约束、票据合规和运输回溯方面的支持。",
+          "rating": 5,
+          "summary": "宁夏红四矿至宝丰A/B区新能源重卡示范线路完成首期重载实景试跑，公开报道显示梦驼铃数字平台贯通货源调度、运输、交付、票据合规、服务保障和数据回溯。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-MT-002",
+          "sourceTitle": "云南新能源重卡充换电站突破1000座，补能网络覆盖全部州市",
+          "sourceUrl": "https://www.news.cn/fortune/20260728/3a0f715d1d2a44359b2b2db9eaa953b1/c.html",
+          "sourceLabel": "新华网",
+          "date": "2026-07-28",
+          "eventProperty": "市场趋势与基础设施机会\n云南新能源重卡车队、补能运营商和电网企业",
+          "coreFacts": "补能建设由单站布局转向省域覆盖，并探索兆瓦超充、光储充、智能有序充电和车网互动。",
+          "strategicSignal": "车队需要把线路、站点可用性、电价、排队、充电功率和运输时窗共同纳入调度。",
+          "businessConnection": "丰行可评估新能源车队能耗与补能计划、站点协同、成本核算和异常调度能力；充电设施本身不等同于丰行现有产品。",
+          "judgmentSuggestion": "跟踪站点实时状态、价格、排队和接口开放情况。\n选择典型矿区或干线车队验证运输—补能联合排程需求。",
+          "rating": 4,
+          "summary": "文山广南珠街重卡充电站7月28日并网投运，云南累计并网接入新能源重卡充换电站超过1000座、总容量超过200万千伏安，并形成全部州市覆盖。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-MT-003",
+          "sourceTitle": "地方调研显示无人配送需求由“能上路”转向合规、安全与运营效益",
+          "sourceUrl": "https://cq.spb.gov.cn/cqsyzglj/c100057/c100060/202607/4e6f4480b803422ca447a54ae4a07406.shtml",
+          "sourceLabel": "重庆市邮政管理局",
+          "date": "2026-07-27",
+          "eventProperty": "市场与客户趋势\n邮政快递企业、地方交通与公安监管部门、无人配送运营商",
+          "coreFacts": "客户关注点由车辆展示转向路权审批、复杂场景适配、安全监管、进村覆盖和可验证的运营效益。",
+          "strategicSignal": "需建立准入、车辆状态、任务调度、远程监控、事故处置、人工接管和单车经济性的一体化运营机制。",
+          "businessConnection": "丰行可围绕无人货运运营支持、车队调度、路权合规和安全审计开展客户访谈，不把调研诉求包装为已确认采购。",
+          "judgmentSuggestion": "设计无人配送客户访谈表，覆盖审批、安全、接管、场景和成本。\n跟踪重庆、淮南后续管理规则与运营项目。",
+          "rating": 4,
+          "summary": "重庆和安徽两地7月27日至28日公开调研信息，快递企业与主管部门集中讨论无人车路权审批、安全监管、进村进小区、复杂场景感知以及“跑得稳、有效益”等落地问题。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-MT-004",
+          "sourceTitle": "尚义县1300万元科技治超项目建设四处不停车检测卡点和联网平台",
+          "sourceUrl": "https://www.ccgp.gov.cn/cggg/dfgg/gkzb/202607/t20260727_27013013.htm",
+          "sourceLabel": "中国政府采购网",
+          "date": "2026-07-27",
+          "eventProperty": "资金与项目机会\n尚义县交通运输局",
+          "coreFacts": "县域科技治超项目同步采购前端不停车检测和后端联网管理平台，预算1300万元，要求60日内安装调试。",
+          "strategicSignal": "建设4处卡点10条车道，整合辖区超限信息，管理非现场执法证据，并完成车辆统计、图像视频数据接收分析和部门共享交换。",
+          "businessConnection": "与政府车辆监管、重载普货和数据平台方向直接相关；可核验采购文件、资质门槛和联合体机会，是否参与须内部决策。",
+          "judgmentSuggestion": "下载并核对采购文件、评分办法、资质和接口要求。\n确认内部监管产品归属及是否具备联合跟进条件。",
+          "rating": 5,
+          "summary": "尚义县交通运输局7月27日发布公开招标，预算1300万元，在三条国省干线建设4处不停车检测卡点、10条车道及1套后端联网治超管理平台。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-MT-005",
+          "sourceTitle": "自贡采购道路运输车辆动态监督GPS系统三年运维服务",
+          "sourceUrl": "https://www.ccgp.gov.cn/cggg/dfgg/jzxcs/202607/t20260728_27017671.htm",
+          "sourceLabel": "中国政府采购网",
+          "date": "2026-07-28",
+          "eventProperty": "资金与项目机会\n自贡市道路交通运输服务中心",
+          "coreFacts": "地方道路运输动态监管平台以三年运维、逐年考核方式采购持续服务。",
+          "strategicSignal": "保障道路运输车辆动态监督GPS监控信息系统稳定运行；具体功能和服务指标需以采购需求附件为准。",
+          "businessConnection": "与道路运输动态监管、车辆定位和平台运营直接相关，可跟踪服务边界、考核指标及现有系统厂商。",
+          "judgmentSuggestion": "读取附件核验运维范围、接口、数据质量和考核指标。\n跟踪成交结果及现有平台服务商。",
+          "rating": 5,
+          "summary": "自贡市道路交通运输服务中心7月28日发布竞争性磋商，预算35万元，采购道路运输车辆动态监督GPS监控信息系统运维服务，服务期拟三年并逐年考核续签。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "title": "技术与能力演进",
+      "icon": "Cpu",
+      "description": "聚焦技术范式、能力体系与应用路径 的 演进，识别影响行业效率、产品边界与竞争门槛的关键变化。重点判断相关能力从概念走向规模化落地所需达到的成熟度，呈现技术演进对产业能力结构的影响。",
+      "news": [
+        {
+          "id": "FXHY-20260731-TE-001",
+          "sourceTitle": "MCP稳定版把智能体工具接入推进到可扩展、可治理的生产协议",
+          "sourceUrl": "https://github.com/modelcontextprotocol/modelcontextprotocol/releases",
+          "sourceLabel": "Model Context Protocol官方仓库",
+          "date": "2026-07-28",
+          "eventProperty": "生产级智能体工具协议与任务治理",
+          "coreFacts": "协议由依赖有状态会话的原型接入，扩展到可负载均衡、可发现、可追踪、可授权并支持长任务和交互界面的生产架构。",
+          "strategicSignal": "把TMS、运单、路线优化、车辆司机、风险预警与审批工具封装为可复用服务，承载长时运筹和异常处置。",
+          "businessConnection": "达到竞争力需验证鉴权隔离、任务幂等、超时恢复、人工审批、全链路追踪、版本兼容和高并发稳定性，不能只完成工具调用演示。",
+          "judgmentSuggestion": "选择一个低风险运输查询流程验证无状态服务、长任务和审计。\n建立SDK兼容、鉴权、幂等和回退测试基线。",
+          "rating": 5,
+          "summary": "Model Context Protocol于7月28日发布2026稳定版，新增无状态模式、服务发现、扩展机制、长任务、交互式应用、路由与追踪头以及OAuth/OIDC强化，并由官方SDK开始支持。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-TE-002",
+          "sourceTitle": "城市同城物流开始复用轨道平峰运力并强化多段交接协同",
+          "sourceUrl": "https://www.nanjing.gov.cn/msxx/202607/t20260728_5884217.html",
+          "sourceLabel": "南京市人民政府",
+          "date": "2026-07-28",
+          "eventProperty": "公共运力复用与城市多段运输编排",
+          "coreFacts": "同城物流由单一公路干线转向轨道平峰运力、站内笼车交接和末端接驳协同，运营约束需进入统一计划。",
+          "strategicSignal": "跨市域同城快件、农产品小件、轨道站点接驳和大客流条件下的动态停运回退。",
+          "businessConnection": "竞争力取决于班次时窗、品类重量、客流优先级、笼车与包裹追踪、ETA、异常回退和分段成本的可配置与可审计。",
+          "judgmentSuggestion": "建立轨道物流多段任务和交接数据模型。\n跟踪双向班次、货量、成本与大客流回退效果。",
+          "rating": 4,
+          "summary": "南京地铁S6号线7月起试点工作日平峰“轨道+快递”，7月27日常规班次从句容至马群约40分钟、日均约百件，并设置品类、重量、大客流暂停和专人交接等约束。",
+          "interpretations": [],
+          "downloads": []
+        },
+        {
+          "id": "FXHY-20260731-TE-003",
+          "sourceTitle": "工程运输车辆盲区防控从单点告警走向实车比测、平台接入与试点验证",
+          "sourceUrl": "https://jtys.sz.gov.cn/gkmlpt/content/12/12912/post_12912265.html",
+          "sourceLabel": "深圳市交通运输局",
+          "date": "2026-07-28",
+          "eventProperty": "工程运输车辆主动安全闭环",
+          "coreFacts": "能力评价由单一告警准确率扩展到车载可靠性、四类实景测试、监管平台接口、过程数据采集和存量车辆试点效果。",
+          "strategicSignal": "路口右转、前方盲区起步、特殊环境和复杂干扰下的行人及非机动车风险防控。",
+          "businessConnection": "达到竞争力需证明检测召回与误报、告警时延、全时段稳定性、车规适配、接口合规、故障监测和试点改善效果。",
+          "judgmentSuggestion": "按四类测试场景和监管接口要求评估现有安全能力。\n如业务有意向，内部确认后再决定是否跟进8月21日申报。",
+          "rating": 5,
+          "summary": "深圳市交通运输局7月28日发布技术需求，要求方案具备行人和非机动车检测、盲区消减、分级预警、驾驶员提示、车规可靠性及监管平台数据接入，并通过封闭场地和开放道路比测。",
+          "interpretations": [],
+          "downloads": []
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "type": "validated_intelligence",
+    "source_file": "output/weekly/2026-07-31/selected-intelligence.json",
+    "source_hash": "1cd5e476eef5f573f8e4a5f3ec5c76be8b8801160ebc9587df64bf065ec0f300",
+    "content_hash": "a94ec6b1baadc4e63a094bf3383edc4ffeb2410c7ae3a18998347fe8096f68de"
+  }
+}

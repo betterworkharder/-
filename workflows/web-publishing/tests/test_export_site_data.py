@@ -25,7 +25,7 @@ class SitePublicationTest(unittest.TestCase):
         self.assertGreaterEqual(len(issue_ids), 4)
         self.assertEqual(issue_ids, sorted(issue_ids, reverse=True))
         self.assertEqual(first["latest_issue_id"], issue_ids[0])
-        self.assertEqual(issue_ids[0], "2026-07-24")
+        self.assertEqual(issue_ids[0], "2026-07-31")
         self.assertNotIn("2026-07-23", issue_ids)
         self.assertNotIn("provenance", first["issues"][0])
         self.assertIn("content_hash", first["issues"][0])
