@@ -10,10 +10,10 @@
       "category_counts": {
         "policy": 3,
         "competitor": 4,
-        "market-opportunity": 4,
+        "market-opportunity": 3,
         "tech": 3
       },
-      "content_hash": "49fcbef715dc8c89ddc7330f7c5fb598f3a739ab9ac0ae18893b9c261457816f"
+      "content_hash": "3c8a02a9a391ec41463cd87c743c80337b5a5171d62086e46e77597e2d4d8651"
     },
     {
       "issue_id": "2026-07-31",
@@ -97,5 +97,5 @@
       "content_hash": "c307b6f43568c5e930d6b25cc8e308aea9444c6767103f0c09bfad7642d7d51f"
     }
   ],
-  "content_hash": "1eed18d4492f559ff35ab528f96ac3d3d74fa88730d4222f94244785382532fc"
+  "content_hash": "f5e6d2000ffb3e01f7ec97fef05694bc448183c4412ead3f3fa5d175e879e236"
 }

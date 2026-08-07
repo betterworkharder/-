@@ -140,22 +140,6 @@
       "description": "客户需求变化、运营痛点以及资金、采购、试点和建设机会",
       "news": [
         {
-          "id": "FXHY-20260807-MT-002",
-          "sourceTitle": "内蒙古大宗货运呈现多式联运与自动驾驶并行扩张",
-          "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202608/t20260806_4211218.html",
-          "sourceLabel": "交通运输部 / 中国交通新闻网",
-          "date": "2026-08-06",
-          "eventProperty": "市场趋势\n内蒙古大宗货运、多式联运及口岸运输主体",
-          "coreFacts": "货运增长同时伴随铁水联运“一单制”、跨盟市自动驾驶编队和口岸AGV无人通关体系扩展。",
-          "strategicSignal": "运营主体需要统一管理多运输方式订单、口岸交接、编队车辆、安全责任、异常处置和全程时效。",
-          "businessConnection": "丰行可跟踪大宗货运多式联运和自动驾驶编队的调度、在途、安全及运营数据需求；公开报道不是已确认采购项目。",
-          "judgmentSuggestion": "跟踪24条“一单制”线路的运营主体、系统接口和主要货类。\n梳理自动驾驶编队场景中的调度、远程运营、安全与异常接管需求。",
-          "rating": 4,
-          "summary": "交通运输部网站8月6日报道，2026年上半年内蒙古综合货运量为13.4亿吨、货物周转量为3091.5亿吨公里，同比分别增长9.6%和9.9%；当地已开发24条铁水联运“一单制”线路，开行多式联运班列441列，同比增长46.5%。",
-          "interpretations": [],
-          "downloads": []
-        },
-        {
           "id": "FXHY-20260807-MT-003",
           "sourceTitle": "山东推进交通数字化改造及155座电动重卡补能站建设",
           "sourceUrl": "https://www.mot.gov.cn/xinwen/jiaotongyaowen/202608/t20260806_4211214.html",
@@ -265,7 +249,7 @@
   "provenance": {
     "type": "validated_intelligence",
     "source_file": "output/weekly/2026-08-07/selected-intelligence.json",
-    "source_hash": "ad172a26d546ba31a7194934ed81f529d8a24502a5eb8279e645a71747032d03",
-    "content_hash": "49fcbef715dc8c89ddc7330f7c5fb598f3a739ab9ac0ae18893b9c261457816f"
+    "source_hash": "0c6003607ab5e551699356b1d1dc11ddcb5183f3272470ec536003acb68474bb",
+    "content_hash": "3c8a02a9a391ec41463cd87c743c80337b5a5171d62086e46e77597e2d4d8651"
   }
 }
