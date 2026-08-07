@@ -218,22 +218,6 @@
           "summary": "中国政府采购网8月4日公告，524国道秀洲段非现场执法系统工程预算818.4512万元、最高限价786.8934万元，计划对12条车道建设动态称重、车牌识别、监控、信息发布和数据传输系统。",
           "interpretations": [],
           "downloads": []
-        },
-        {
-          "id": "FXHY-20260807-MT-006",
-          "sourceTitle": "枣阳市3002.06万元非现场治超项目启动第三次招标",
-          "sourceUrl": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260804_27071546.htm",
-          "sourceLabel": "中国政府采购网",
-          "date": "2026-08-04",
-          "eventProperty": "资金与项目机会\n枣阳市非现场治超执法设备系统项目",
-          "coreFacts": "金额超过3000万元的非现场治超设备系统进入第三次公开招标，要求150日历天完成。",
-          "strategicSignal": "项目需要在明确工期内完成设备与系统建设；再次招标的原因、采购条件变化和实施风险需重点核验。",
-          "businessConnection": "与重载车辆监管和政府治超场景直接相关；应先核对前两次采购结果、废标原因、技术范围和投标门槛。",
-          "judgmentSuggestion": "回溯前两次公告、结果和可能的废标原因。\n核对完整设备清单、平台功能、资格条件和付款验收节点。",
-          "rating": 5,
-          "summary": "中国政府采购网8月4日公告，枣阳市交通运输综合执法大队再次采购非现场治超执法设备系统，预算和最高限价均为3002.0571万元，合同履行期限为150日历天。",
-          "interpretations": [],
-          "downloads": []
         }
       ]
     },
@@ -297,7 +281,7 @@
   "provenance": {
     "type": "validated_intelligence",
     "source_file": "output/weekly/2026-08-07/selected-intelligence.json",
-    "source_hash": "3936fa693f7ade484c7f39568c352682066e79ea9f6761bb0ab1f5cc4021b5ab",
-    "content_hash": "3af5e17c9ee4651c0614ccaa708f84bf02cd8359339515fdb2ad681bea45fc44"
+    "source_hash": "16283bd7a53ee2e3ab79b32a1f1362632d19879b90f77f6f5cce5095d579ea13",
+    "content_hash": "40d1b0e155516c2c2d2854f85f9da63e55ac6de999429e6238d9daa96da83d2e"
   }
 }
