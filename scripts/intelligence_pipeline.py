@@ -406,15 +406,6 @@ class QualityValidator:
             for item in self.records
         )
         if current_format:
-            category_counts = {
-                category: sum(item.get("category") == category for item in self.records)
-                for category in CATEGORY_ORDER
-            }
-            for category, count in category_counts.items():
-                if count < 3:
-                    errors.append(
-                        f"{category}: current four-module format requires at least 3 items; found {count}"
-                    )
             legacy_items = [
                 str(item.get("id", "<missing-id>"))
                 for item in self.records

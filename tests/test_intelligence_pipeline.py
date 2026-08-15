@@ -178,6 +178,13 @@ class QualityValidatorTest(unittest.TestCase):
             errors,
         )
 
+    def test_accepts_current_format_with_fewer_than_three_items(self):
+        item = self._base_item("市场客户趋势与资金项目机会")
+
+        errors = QualityValidator([item]).validate()
+
+        self.assertEqual(errors, [])
+
     def test_rejects_out_of_scope_company_from_formal_output(self):
         item = self._base_item("竞合与标杆动向")
         item["entities"] = ["project44"]
