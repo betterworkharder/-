@@ -367,9 +367,6 @@ def build_issue_from_selected(root: Path, issue_id: str) -> tuple[dict[str, Any]
             "技术与能力演进",
         }
         for item in records
-    ) and any(
-        item.get("category") == "市场客户趋势与资金项目机会"
-        for item in records
     )
     if uses_current_categories:
         categories = [{**item, "news": []} for item in current_templates]
