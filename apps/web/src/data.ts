@@ -30,12 +30,26 @@ export interface TrendCategory {
   news: NewsDetail[];
 }
 
+export interface WeeklyJudgmentColumn {
+  title: string;
+  subtitle: string;
+  items: Array<{title: string; body: string}>;
+}
+
+export interface WeeklyJudgment {
+  title: string;
+  policy: WeeklyJudgmentColumn;
+  industry: WeeklyJudgmentColumn;
+  review_status: string;
+}
+
 export interface ArchiveIssue {
   issueId: string;
   date: string;
   displayDate: string;
   title: string;
   categories: TrendCategory[];
+  weeklyJudgment?: WeeklyJudgment;
   contentHash: string;
 }
 
@@ -121,6 +135,7 @@ interface RawIssue {
   display_date: string;
   title: string;
   categories: TrendCategory[];
+  weekly_judgment?: WeeklyJudgment;
   content_hash: string;
 }
 
@@ -170,6 +185,7 @@ function loadSiteContent(value: unknown): {latestIssueId: string; issues: Archiv
     displayDate: issue.display_date,
     title: issue.title,
     categories: reorderCategories(issue.categories),
+    weeklyJudgment: issue.weekly_judgment,
     contentHash: issue.content_hash,
   }));
   if (!issues.some((issue) => issue.issueId === content.latest_issue_id)) {

@@ -1,7 +1,20 @@
 {
   "schema_version": 1,
-  "latest_issue_id": "2026-09-04",
+  "latest_issue_id": "2026-09-11",
   "issues": [
+    {
+      "issue_id": "2026-09-11",
+      "issue_date": "2026-09-11",
+      "display_date": "2026.09.11",
+      "title": "2026年9月11日刊",
+      "category_counts": {
+        "policy": 1,
+        "competitor": 5,
+        "market-opportunity": 6,
+        "tech": 1
+      },
+      "content_hash": "6857bde185230fa2e4c4af3b6ef24a8d0c28620752d5c2607217c45db105eff8"
+    },
     {
       "issue_id": "2026-09-04",
       "issue_date": "2026-09-04",
@@ -149,5 +162,5 @@
       "content_hash": "c307b6f43568c5e930d6b25cc8e308aea9444c6767103f0c09bfad7642d7d51f"
     }
   ],
-  "content_hash": "9fe2dabcf896b0f48b3a22abd5394d559ddfe5184187e9f6443efab29f13692e"
+  "content_hash": "9ce1921ce51df77ff83a17c38437e5d76fdd81f6507255bdced7eb188a0b94a1"
 }

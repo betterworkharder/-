@@ -10,6 +10,7 @@ import {
   PORTAL_CONTENT,
   type NewsDetail,
   type TrendCategory,
+  type WeeklyJudgment,
 } from './data';
 import {About, CompetitorDashboard, ExpertInsights, Footer} from './PortalSections';
 
@@ -37,6 +38,26 @@ function Navbar({categories, title, onHistory, liked, likes, onLike}: {categorie
 function Header({displayDate}: {displayDate: string}) {
   const site = PORTAL_CONTENT.site;
   return <header className="pt-16 pb-12 max-w-7xl mx-auto px-6 md:px-8"><motion.div initial={{opacity: 0, y: 24}} animate={{opacity: 1, y: 0}} transition={{duration: 0.7}}><div className="inline-flex items-center gap-2 px-3 py-1 bg-white/70 border border-blue-100 rounded-full mb-7"><span className="w-1.5 h-1.5 bg-[#2468ff] rounded-full" /><span className="text-slate-400 font-mono text-[9px] font-bold uppercase">{displayDate} Issue | Weekly Intelligence Briefing</span></div><h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-5 leading-[1.16] font-display">{site.name}<br /><span className="text-[#2468ff] font-black">{site.report_title}</span></h1><p className="text-sm md:text-base text-slate-500 font-medium max-w-3xl leading-[1.8]">{site.report_description}</p></motion.div></header>;
+}
+
+function WeeklyMainJudgment({judgment}: {judgment?: WeeklyJudgment}) {
+  if (!judgment) return null;
+  const columns = [
+    {key: 'policy', icon: Icons.Landmark, content: judgment.policy},
+    {key: 'industry', icon: Icons.TrendingUp, content: judgment.industry},
+  ] as const;
+  return <section id="本周主判断" className="max-w-7xl mx-auto px-4 md:px-8 pt-2 pb-16">
+    <motion.div initial={{opacity: 0, y: 18}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}} className="max-w-6xl">
+      <div className="flex items-center gap-3 mb-4"><div className="w-11 h-11 rounded-2xl bg-[#2468ff] text-white shadow-[0_10px_22px_rgba(36,104,255,0.28)] flex items-center justify-center"><Icons.Crosshair className="w-5 h-5" /></div><div><p className="text-[10px] font-black tracking-[0.28em] text-[#2468ff] uppercase">Weekly Main Judgment</p><h2 className="text-3xl font-black text-slate-900 font-display leading-tight">本周主判断</h2></div></div>
+      <p className="text-2xl md:text-[30px] font-black text-[#17233b] tracking-[-0.025em] leading-[1.45] max-w-6xl">{judgment.title}</p>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
+        {columns.map(({key, icon: Icon, content}) => <article key={key} className="rounded-[26px] border border-[#cfe0ff] bg-[#f8fbff]/85 p-6 md:p-7 shadow-[0_14px_34px_rgba(52,103,180,0.06)]">
+          <div className="flex items-center gap-3"><div className="w-9 h-9 rounded-xl bg-white border border-[#d8e6ff] text-[#2468ff] flex items-center justify-center"><Icon className="w-[18px] h-[18px]" /></div><div><h3 className="text-[17px] font-black text-[#2468ff]">{content.title}</h3><p className="text-[11px] font-bold text-[#8094b2] mt-0.5">{content.subtitle}</p></div></div>
+          <div className="mt-6 space-y-5">{content.items.map((item) => <div key={item.title} className="grid grid-cols-[8px_minmax(0,1fr)] gap-x-3"><span className="w-1.5 h-1.5 rounded-full bg-[#4d7cff] mt-2.5" /><p className="text-[13px] md:text-[14px] text-[#536987] leading-[1.85]"><strong className="font-black text-[#263b59]">{item.title}：</strong>{item.body}</p></div>)}</div>
+        </article>)}
+      </div>
+    </motion.div>
+  </section>;
 }
 
 function RatingStars({rating}: {rating: number}) {
@@ -121,7 +142,7 @@ export default function App() {
 
   return <div className="min-h-screen font-sans selection:bg-[#0052D9]/30"><BlueGradient /><button onClick={() => setHistoryOpen(true)} className="fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-white border border-l-0 border-slate-200 px-3 py-10 rounded-r-3xl shadow-2xl flex flex-col items-center gap-4 hover:bg-[#0052D9] group"><Icons.History className="w-5 h-5 text-slate-400 group-hover:text-white" /><span className="[writing-mode:vertical-lr] text-[10px] font-black text-slate-500 tracking-[0.3em] group-hover:text-white">历史期刊</span></button>
     <Navbar categories={displayIssue.categories} title={displayIssue.title} onHistory={() => setHistoryOpen(true)} liked={liked} likes={likes} onLike={like} />
-    <main><Header displayDate={displayIssue.displayDate} /><section className="max-w-7xl mx-auto px-4 md:px-8 pb-32"><div className="mb-12"><h2 className="text-3xl font-extrabold text-slate-900 mb-5 flex items-center gap-3 font-display"><Icons.Cpu className="text-[#2468ff] w-8 h-8" />{PORTAL_CONTENT.site.focus_title}</h2><div className="w-16 h-1 bg-[#2468ff] rounded-full" /></div><div className="grid grid-cols-1 gap-10 max-w-6xl">{displayIssue.categories.map((category, index) => <TrendCard key={category.id} category={category} index={index} onOpen={openDetail} />)}</div></section><ExpertInsights content={PORTAL_CONTENT.expert_insights} /><CompetitorDashboard content={PORTAL_CONTENT.competitor_dashboard} /><About content={PORTAL_CONTENT.about} /></main>
+    <main><Header displayDate={displayIssue.displayDate} /><WeeklyMainJudgment judgment={displayIssue.weeklyJudgment} /><section className="max-w-7xl mx-auto px-4 md:px-8 pb-32"><div className="mb-12"><h2 className="text-3xl font-extrabold text-slate-900 mb-5 flex items-center gap-3 font-display"><Icons.Cpu className="text-[#2468ff] w-8 h-8" />{PORTAL_CONTENT.site.focus_title}</h2><div className="w-16 h-1 bg-[#2468ff] rounded-full" /></div><div className="grid grid-cols-1 gap-10 max-w-6xl">{displayIssue.categories.map((category, index) => <TrendCard key={category.id} category={category} index={index} onOpen={openDetail} />)}</div></section><ExpertInsights content={PORTAL_CONTENT.expert_insights} /><CompetitorDashboard content={PORTAL_CONTENT.competitor_dashboard} /><About content={PORTAL_CONTENT.about} /></main>
     <CategoryDetail category={selectedCategory} activeNewsId={activeNewsId} onClose={() => {setSelectedCategory(null); setActiveNewsId(null);}} /><HistorySidebar open={historyOpen} selected={selectedDate} onClose={() => setHistoryOpen(false)} onSelect={setSelectedDate} /><Footer content={PORTAL_CONTENT.site} />
   </div>;
 }

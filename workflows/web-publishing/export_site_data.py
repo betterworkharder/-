@@ -204,8 +204,32 @@ def load_portal_content(root: Path) -> dict[str, Any]:
     return portal
 
 
-def browser_issue(issue: dict[str, Any]) -> dict[str, Any]:
-    return {
+def load_weekly_judgment(root: Path, issue_id: str) -> dict[str, Any] | None:
+    path = root / "output" / "weekly" / issue_id / "weekly-judgment.json"
+    if not path.exists():
+        return None
+    judgment = read_json(path)
+    for key in ["title", "review_status"]:
+        if not str(judgment.get(key, "")).strip():
+            raise PublicationError(f"{issue_id}: weekly judgment missing {key}")
+    for key in ["policy", "industry"]:
+        if not isinstance(judgment.get(key), dict):
+            raise PublicationError(f"{issue_id}: weekly judgment missing {key}")
+    for column_key in ["policy", "industry"]:
+        column = judgment[column_key]
+        if not str(column.get("title", "")).strip() or not str(column.get("subtitle", "")).strip():
+            raise PublicationError(f"{issue_id}: weekly judgment {column_key} heading is incomplete")
+        items = column.get("items")
+        if not isinstance(items, list) or not items:
+            raise PublicationError(f"{issue_id}: weekly judgment {column_key} items are missing")
+        for item in items:
+            if not isinstance(item, dict) or not str(item.get("title", "")).strip() or not str(item.get("body", "")).strip():
+                raise PublicationError(f"{issue_id}: weekly judgment {column_key} item is incomplete")
+    return judgment
+
+
+def browser_issue(issue: dict[str, Any], weekly_judgment: dict[str, Any] | None = None) -> dict[str, Any]:
+    browser_value = {
         "schema_version": issue["schema_version"],
         "issue_id": issue["issue_id"],
         "issue_date": issue["issue_date"],
@@ -214,6 +238,9 @@ def browser_issue(issue: dict[str, Any]) -> dict[str, Any]:
         "categories": issue["categories"],
         "content_hash": issue["provenance"]["content_hash"],
     }
+    if weekly_judgment is not None:
+        browser_value["weekly_judgment"] = weekly_judgment
+    return browser_value
 
 
 def build_site_content(root: Path) -> dict[str, Any]:
@@ -222,7 +249,10 @@ def build_site_content(root: Path) -> dict[str, Any]:
     index_path = root / "publish" / "issues.json"
     if not index_path.exists() or read_json(index_path) != expected_index:
         raise PublicationError("publish/issues.json is stale; export the issue or run --refresh-index")
-    browser_issues = [browser_issue(issue) for issue in issues]
+    browser_issues = [
+        browser_issue(issue, load_weekly_judgment(root, issue["issue_id"]))
+        for issue in issues
+    ]
     portal = load_portal_content(root)
     site_content = {
         "schema_version": 1,
