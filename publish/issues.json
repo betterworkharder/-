@@ -8,12 +8,12 @@
       "display_date": "2026.09.11",
       "title": "2026年9月11日刊",
       "category_counts": {
-        "policy": 1,
+        "policy": 2,
         "competitor": 5,
-        "market-opportunity": 6,
+        "market-opportunity": 5,
         "tech": 1
       },
-      "content_hash": "6857bde185230fa2e4c4af3b6ef24a8d0c28620752d5c2607217c45db105eff8"
+      "content_hash": "e91d3b0e10a0e25f977029671cf337f11641a97746fe092fdee684c5481f370d"
     },
     {
       "issue_id": "2026-09-04",
@@ -162,5 +162,5 @@
       "content_hash": "c307b6f43568c5e930d6b25cc8e308aea9444c6767103f0c09bfad7642d7d51f"
     }
   ],
-  "content_hash": "9ce1921ce51df77ff83a17c38437e5d76fdd81f6507255bdced7eb188a0b94a1"
+  "content_hash": "da026c1ee4b9328a4fc248f7e4d804fd485ee64f5b37df25267294a06cd085fd"
 }
