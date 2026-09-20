@@ -22,17 +22,39 @@ function SectionIcon({name, className}: {name: string; className?: string}) {
   return <Component className={className} />;
 }
 
-function Navbar({categories, title, onHistory, liked, likes, onLike}: {categories: TrendCategory[]; title: string; onHistory: () => void; liked: boolean; likes: number; onLike: () => void}) {
+type PortalPanel = 'experts' | 'competitors';
+
+function Navbar({categories, title, onHistory, onOpenPanel, liked, likes, onLike}: {categories: TrendCategory[]; title: string; onHistory: () => void; onOpenPanel: (panel: PortalPanel) => void; liked: boolean; likes: number; onLike: () => void}) {
   const site = PORTAL_CONTENT.site;
   return <nav className="sticky top-0 z-50 border-b border-slate-200/50 bg-white/85 backdrop-blur-xl"><div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
     <div className="flex items-center gap-3"><div className="w-10 h-10 bg-[#0052D9] rounded-xl flex items-center justify-center shadow-md"><Icons.Cpu className="text-white w-5 h-5" /></div><div><span className="font-extrabold text-lg tracking-tight text-slate-900 leading-none font-display block">{site.name}</span><span className="text-[9px] font-bold text-slate-400 tracking-[0.12em] uppercase">{site.english_name}</span></div></div>
     <div className="hidden md:flex gap-8 items-center">
       <div className="relative group"><button className="flex items-center gap-1 text-sm font-semibold text-slate-500 py-8">{site.focus_title}<Icons.ChevronDown className="w-4 h-4" /></button><div className="absolute top-full left-0 w-64 bg-white border border-slate-200/80 shadow-2xl rounded-2xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"><div className="flex flex-col gap-1">{categories.map((category) => <a key={category.id} href={`#cat-${category.id}`} className="px-4 py-3 rounded-xl text-xs font-bold text-slate-600 hover:bg-[#0052D9]/5 hover:text-[#0052D9]">{category.title}</a>)}</div></div></div>
-      <a href="#专家观点" className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">专家观点</a><a href="#竞品看板" className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">竞品看板</a><a href="#关于我们" className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">关于我们</a>
+      <button onClick={() => onOpenPanel('experts')} className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">专家观点</button><button onClick={() => onOpenPanel('competitors')} className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">竞品看板</button><a href="#关于我们" className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">关于我们</a>
       <button onClick={onHistory} className="text-sm font-semibold text-slate-500 hover:text-[#0052D9] flex items-center gap-1.5">历史期刊<Icons.History className="w-4 h-4" /></button>
     </div>
     <div className="flex items-center gap-4"><button onClick={onLike} disabled={liked} className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border ${liked ? 'bg-red-50 text-red-500' : 'bg-slate-50 text-slate-400'}`}><Icons.Heart className={`w-3.5 h-3.5 ${liked ? 'fill-current' : ''}`} /><span className="text-[11px] font-bold font-mono">{likes}</span></button><div className="hidden lg:flex px-4 py-1.5 rounded-full bg-slate-900 text-[10px] font-bold text-white">{title}</div></div>
-  </div></nav>;
+  </div><div className="md:hidden flex gap-6 px-8 pb-4"><button onClick={() => onOpenPanel('experts')} className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">专家观点</button><button onClick={() => onOpenPanel('competitors')} className="text-sm font-semibold text-slate-500 hover:text-[#0052D9]">竞品看板</button></div></nav>;
+}
+
+function PortalDialog({panel, onClose}: {panel: PortalPanel | null; onClose: () => void}) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    if (!panel) return;
+    const dialog = dialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog?.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => {
+      dialog?.close();
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [panel]);
+
+  return <dialog ref={dialogRef} aria-labelledby="portal-dialog-title" onCancel={onClose} onClick={(event) => {if (event.target === event.currentTarget) onClose();}} className="fixed inset-0 m-auto w-[calc(100%-2rem)] max-w-7xl max-h-[90dvh] rounded-3xl bg-white p-0 shadow-2xl backdrop:bg-slate-900/40 backdrop:backdrop-blur-sm">
+    {panel && <><div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-100 bg-white/95 px-6 py-4 backdrop-blur-xl"><h2 id="portal-dialog-title" className="text-lg font-black text-slate-900">{panel === 'experts' ? '专家观点' : '竞品看板'}</h2><button autoFocus onClick={onClose} aria-label="关闭" className="rounded-full bg-slate-50 p-2 text-slate-600 hover:bg-slate-100"><Icons.X className="h-5 w-5" /></button></div>{panel === 'experts' ? <ExpertInsights content={PORTAL_CONTENT.expert_insights} /> : <CompetitorDashboard content={PORTAL_CONTENT.competitor_dashboard} />}</>}
+  </dialog>;
 }
 
 function Header({displayDate}: {displayDate: string}) {
@@ -47,13 +69,14 @@ function WeeklyMainJudgment({judgment}: {judgment?: WeeklyJudgment}) {
     {key: 'industry', icon: Icons.TrendingUp, content: judgment.industry},
   ] as const;
   return <section id="本周主判断" className="max-w-7xl mx-auto px-4 md:px-8 pt-2 pb-16">
-    <motion.div initial={{opacity: 0, y: 18}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}} className="max-w-6xl">
+    <motion.div initial={{opacity: 0, y: 18}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}} className="relative overflow-hidden rounded-[32px] border border-[#d6e4ff] bg-white/95 p-6 md:p-10 shadow-[0_18px_50px_rgba(52,103,180,0.05)]">
+      <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#2468ff] via-cyan-400 to-indigo-600" />
       <div className="flex items-center gap-3 mb-4"><div className="w-11 h-11 rounded-2xl bg-[#2468ff] text-white shadow-[0_10px_22px_rgba(36,104,255,0.28)] flex items-center justify-center"><Icons.Crosshair className="w-5 h-5" /></div><div><p className="text-[10px] font-black tracking-[0.28em] text-[#2468ff] uppercase">Weekly Main Judgment</p><h2 className="text-3xl font-black text-slate-900 font-display leading-tight">本周主判断</h2></div></div>
-      <p className="text-2xl md:text-[30px] font-black text-[#17233b] tracking-[-0.025em] leading-[1.45] max-w-6xl">{judgment.title}</p>
+      <p className="text-xl md:text-2xl font-black text-[#17233b] tracking-[-0.025em] leading-[1.6]">{judgment.title}</p>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
-        {columns.map(({key, icon: Icon, content}) => <article key={key} className="rounded-[26px] border border-[#cfe0ff] bg-[#f8fbff]/85 p-6 md:p-7 shadow-[0_14px_34px_rgba(52,103,180,0.06)]">
+        {columns.map(({key, icon: Icon, content}) => <article key={key} className="rounded-2xl border border-[#d6e4ff] bg-[#f5f8ff] p-6">
           <div className="flex items-center gap-3"><div className="w-9 h-9 rounded-xl bg-white border border-[#d8e6ff] text-[#2468ff] flex items-center justify-center"><Icon className="w-[18px] h-[18px]" /></div><div><h3 className="text-[17px] font-black text-[#2468ff]">{content.title}</h3><p className="text-[11px] font-bold text-[#8094b2] mt-0.5">{content.subtitle}</p></div></div>
-          <div className="mt-6 space-y-5">{content.items.map((item) => <div key={item.title} className="grid grid-cols-[8px_minmax(0,1fr)] gap-x-3"><span className="w-1.5 h-1.5 rounded-full bg-[#4d7cff] mt-2.5" /><p className="text-[13px] md:text-[14px] text-[#536987] leading-[1.85]"><strong className="font-black text-[#263b59]">{item.title}：</strong>{item.body}</p></div>)}</div>
+          <div className="mt-6 space-y-5">{content.items.map((item) => <div key={item.title} className="grid grid-cols-[8px_minmax(0,1fr)] gap-x-3"><span className="w-1.5 h-1.5 rounded-full bg-[#4d7cff] mt-2.5" /><p className="text-[13px] text-[#536987] leading-[1.85]"><strong className="font-black text-[#263b59]">{item.title}。</strong>{item.body}</p></div>)}{!content.items.length && <p className="text-sm text-[#536987] leading-relaxed">{content.empty_reason}</p>}</div>
         </article>)}
       </div>
     </motion.div>
@@ -62,6 +85,13 @@ function WeeklyMainJudgment({judgment}: {judgment?: WeeklyJudgment}) {
 
 function RatingStars({rating}: {rating: number}) {
   return <div className="flex items-center gap-0.5">{[1, 2, 3, 4, 5].map((star) => <Icons.Star key={star} className={`w-3.5 h-3.5 text-amber-400 ${star <= rating ? 'fill-amber-400' : ''}`} />)}</div>;
+}
+
+function NewsRating({news}: {news: NewsDetail}) {
+  return <div className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-1.5">
+    <div className="shrink-0" aria-label={`${news.rating}星`}><RatingStars rating={news.rating} /></div>
+    {news.tags?.slice(0, 3).map((tag) => <span key={tag} className="inline-flex rounded-md border border-[#dbe8fc] bg-[#f1f6ff] px-1.5 py-0.5 text-[10px] font-medium leading-4 text-[#5276a6] whitespace-nowrap">{tag}</span>)}
+  </div>;
 }
 
 function TrendCard({category, index, onOpen}: {category: TrendCategory; index: number; onOpen: (category: TrendCategory, newsId?: string) => void}) {
@@ -79,7 +109,7 @@ function TrendCard({category, index, onOpen}: {category: TrendCategory; index: n
         {category.news.length ? <div className="space-y-9 md:space-y-10">{category.news.map((news) => <button key={news.id} onClick={() => onOpen(category, news.id)} className="group w-full text-left grid grid-cols-[10px_minmax(0,1fr)] gap-x-3 items-start">
           <span className="w-1.5 h-1.5 bg-[#82bcff] rounded-full mt-1.5" />
           <div className="min-w-0">
-            <div className="flex items-center justify-between gap-3"><RatingStars rating={news.rating} /><span className="text-[10px] font-medium tracking-[0.06em] text-[#c5d2e5] whitespace-nowrap">{news.date}</span></div>
+            <div className="flex items-center justify-between gap-3"><NewsRating news={news} /><span className="text-[10px] font-medium tracking-[0.06em] text-[#c5d2e5] whitespace-nowrap">{news.date}</span></div>
             <div className="flex items-start gap-3 mt-2"><div className="min-w-0 flex-1"><h4 className="text-[15px] font-bold text-[#17233b] leading-[1.55] group-hover:text-[#2468ff] transition-colors">{news.sourceTitle}</h4><p className="text-[13px] text-[#8aa0be] mt-2 leading-[1.75]">{news.summary}</p></div><Icons.ChevronRight className="w-4 h-4 text-[#dbe5f2] mt-1 shrink-0 group-hover:text-[#2468ff] transition-colors" /></div>
           </div>
         </button>)}</div> : <p className="p-5 bg-[#f7f9fd] rounded-2xl text-sm text-[#8aa0be] font-bold">本期该栏目未发现达到正式候选标准的新情报。</p>}
@@ -120,7 +150,7 @@ function CategoryDetail({category, activeNewsId, onClose}: {category: TrendCateg
     return () => cancelAnimationFrame(frameId);
   }, [category, activeNewsId]);
 
-  return <AnimatePresence>{category && <><motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} onClick={onClose} className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[90]" /><motion.aside ref={panelRef} initial={{x: '100%'}} animate={{x: 0}} exit={{x: '100%'}} transition={{type: 'spring', damping: 26, stiffness: 220}} className="fixed right-0 top-0 h-full w-full max-w-3xl bg-white z-[100] shadow-2xl overflow-y-auto"><div ref={headerRef} className="sticky top-0 bg-white/90 backdrop-blur-xl border-b border-slate-100 p-6 flex justify-between items-center z-10"><div className="flex items-center gap-3"><SectionIcon name={category.icon} className="w-6 h-6 text-[#0052D9]" /><h2 className="text-xl font-black text-slate-900">{category.title}</h2></div><button onClick={onClose} className="p-2 bg-slate-50 rounded-full"><Icons.X className="w-5 h-5" /></button></div><div className="p-6 md:p-10 space-y-8">{category.news.map((news) => <article ref={activeNewsId === news.id ? activeNewsRef : undefined} id={`news-${news.id}`} key={news.id} className={`p-6 rounded-3xl border ${activeNewsId === news.id ? 'border-[#0052D9]/40 bg-[#0052D9]/[0.02]' : 'border-slate-100'}`}><div className="flex items-center justify-between gap-4 mb-4"><RatingStars rating={news.rating} /><span className="text-[10px] font-bold text-slate-400">{news.date}</span></div><h3 className="text-xl font-black text-slate-900 leading-snug mb-3">{news.sourceTitle}</h3><p className="text-sm text-slate-500 leading-relaxed mb-5">{news.summary}</p><DetailRows news={news} categoryId={category.id} /><div className="flex flex-wrap gap-3 mt-5"><a href={news.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-black">查看原文<Icons.ExternalLink className="w-3 h-3" /></a>{news.interpretations?.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-xl text-xs font-black bg-slate-100 text-slate-600">{link.title}</a>)}</div></article>)}</div></motion.aside></>}</AnimatePresence>;
+  return <AnimatePresence>{category && <><motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} onClick={onClose} className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[90]" /><motion.aside ref={panelRef} initial={{x: '100%'}} animate={{x: 0}} exit={{x: '100%'}} transition={{type: 'spring', damping: 26, stiffness: 220}} className="fixed right-0 top-0 h-full w-full max-w-3xl bg-white z-[100] shadow-2xl overflow-y-auto"><div ref={headerRef} className="sticky top-0 bg-white/90 backdrop-blur-xl border-b border-slate-100 p-6 flex justify-between items-center z-10"><div className="flex items-center gap-3"><SectionIcon name={category.icon} className="w-6 h-6 text-[#0052D9]" /><h2 className="text-xl font-black text-slate-900">{category.title}</h2></div><button onClick={onClose} className="p-2 bg-slate-50 rounded-full"><Icons.X className="w-5 h-5" /></button></div><div className="p-6 md:p-10 space-y-8">{category.news.map((news) => <article ref={activeNewsId === news.id ? activeNewsRef : undefined} id={`news-${news.id}`} key={news.id} className={`p-6 rounded-3xl border ${activeNewsId === news.id ? 'border-[#0052D9]/40 bg-[#0052D9]/[0.02]' : 'border-slate-100'}`}><div className="flex items-center justify-between gap-4 mb-4"><NewsRating news={news} /><span className="text-[10px] font-bold text-slate-400">{news.date}</span></div><h3 className="text-xl font-black text-slate-900 leading-snug mb-3">{news.sourceTitle}</h3><p className="text-sm text-slate-500 leading-relaxed mb-5">{news.summary}</p><DetailRows news={news} categoryId={category.id} /><div className="flex flex-wrap gap-3 mt-5"><a href={news.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-black">查看原文<Icons.ExternalLink className="w-3 h-3" /></a>{news.interpretations?.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-xl text-xs font-black bg-slate-100 text-slate-600">{link.title}</a>)}</div></article>)}</div></motion.aside></>}</AnimatePresence>;
 }
 
 function HistorySidebar({open, selected, onClose, onSelect}: {open: boolean; selected: string; onClose: () => void; onSelect: (id: string) => void}) {
@@ -132,6 +162,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<TrendCategory | null>(null);
   const [activeNewsId, setActiveNewsId] = useState<string | null>(null);
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [portalPanel, setPortalPanel] = useState<PortalPanel | null>(null);
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(0);
   const displayIssue = HISTORICAL_ISSUES.find((issue) => issue.issueId === selectedDate) ?? LATEST_ISSUE;
@@ -141,8 +172,9 @@ export default function App() {
   const openDetail = (category: TrendCategory, newsId?: string) => {setSelectedCategory(category); setActiveNewsId(newsId ?? null);};
 
   return <div className="min-h-screen font-sans selection:bg-[#0052D9]/30"><BlueGradient /><button onClick={() => setHistoryOpen(true)} className="fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-white border border-l-0 border-slate-200 px-3 py-10 rounded-r-3xl shadow-2xl flex flex-col items-center gap-4 hover:bg-[#0052D9] group"><Icons.History className="w-5 h-5 text-slate-400 group-hover:text-white" /><span className="[writing-mode:vertical-lr] text-[10px] font-black text-slate-500 tracking-[0.3em] group-hover:text-white">历史期刊</span></button>
-    <Navbar categories={displayIssue.categories} title={displayIssue.title} onHistory={() => setHistoryOpen(true)} liked={liked} likes={likes} onLike={like} />
-    <main><Header displayDate={displayIssue.displayDate} /><WeeklyMainJudgment judgment={displayIssue.weeklyJudgment} /><section className="max-w-7xl mx-auto px-4 md:px-8 pb-32"><div className="mb-12"><h2 className="text-3xl font-extrabold text-slate-900 mb-5 flex items-center gap-3 font-display"><Icons.Cpu className="text-[#2468ff] w-8 h-8" />{PORTAL_CONTENT.site.focus_title}</h2><div className="w-16 h-1 bg-[#2468ff] rounded-full" /></div><div className="grid grid-cols-1 gap-10 max-w-6xl">{displayIssue.categories.map((category, index) => <TrendCard key={category.id} category={category} index={index} onOpen={openDetail} />)}</div></section><ExpertInsights content={PORTAL_CONTENT.expert_insights} /><CompetitorDashboard content={PORTAL_CONTENT.competitor_dashboard} /><About content={PORTAL_CONTENT.about} /></main>
+    <Navbar categories={displayIssue.categories} title={displayIssue.title} onHistory={() => setHistoryOpen(true)} onOpenPanel={setPortalPanel} liked={liked} likes={likes} onLike={like} />
+    <main><Header displayDate={displayIssue.displayDate} /><WeeklyMainJudgment judgment={displayIssue.weeklyJudgment} /><section className="max-w-7xl mx-auto px-4 md:px-8 pb-32"><div className="mb-12"><h2 className="text-3xl font-extrabold text-slate-900 mb-5 flex items-center gap-3 font-display"><Icons.Cpu className="text-[#2468ff] w-8 h-8" />{PORTAL_CONTENT.site.focus_title}</h2><div className="w-16 h-1 bg-[#2468ff] rounded-full" /></div><div className="grid grid-cols-1 gap-10 max-w-6xl">{displayIssue.categories.map((category, index) => <TrendCard key={category.id} category={category} index={index} onOpen={openDetail} />)}</div></section><About content={PORTAL_CONTENT.about} /></main>
+    <PortalDialog panel={portalPanel} onClose={() => setPortalPanel(null)} />
     <CategoryDetail category={selectedCategory} activeNewsId={activeNewsId} onClose={() => {setSelectedCategory(null); setActiveNewsId(null);}} /><HistorySidebar open={historyOpen} selected={selectedDate} onClose={() => setHistoryOpen(false)} onSelect={setSelectedDate} /><Footer content={PORTAL_CONTENT.site} />
   </div>;
 }

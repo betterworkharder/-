@@ -2,21 +2,54 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Fengxing generated site issue DTO",
   "type": "object",
-  "required": ["schema_version", "issue_id", "issue_date", "display_date", "title", "categories", "provenance"],
+  "required": [
+    "schema_version",
+    "issue_id",
+    "issue_date",
+    "display_date",
+    "title",
+    "categories",
+    "provenance"
+  ],
   "properties": {
-    "schema_version": {"const": 1},
-    "issue_id": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
-    "issue_date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
-    "display_date": {"type": "string"},
-    "title": {"type": "string"},
+    "schema_version": {
+      "const": 1
+    },
+    "issue_id": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "issue_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "display_date": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
     "weekly_judgment": {
       "type": "object",
-      "required": ["title", "policy", "industry", "review_status"],
+      "required": [
+        "title",
+        "policy",
+        "industry",
+        "review_status"
+      ],
       "properties": {
-        "title": {"type": "string"},
-        "review_status": {"type": "string"},
-        "policy": {"$ref": "#/$defs/judgment_column"},
-        "industry": {"$ref": "#/$defs/judgment_column"}
+        "title": {
+          "type": "string"
+        },
+        "review_status": {
+          "type": "string"
+        },
+        "policy": {
+          "$ref": "#/$defs/judgment_column"
+        },
+        "industry": {
+          "$ref": "#/$defs/judgment_column"
+        }
       }
     },
     "categories": {
@@ -25,32 +58,61 @@
       "maxItems": 5,
       "items": {
         "type": "object",
-        "required": ["id", "title", "icon", "description", "news"]
+        "required": [
+          "id",
+          "title",
+          "icon",
+          "description",
+          "news"
+        ]
       }
     },
     "provenance": {
       "type": "object",
-      "required": ["type", "source_file", "source_hash", "content_hash"]
+      "required": [
+        "type",
+        "source_file",
+        "source_hash",
+        "content_hash"
+      ]
     }
   },
   "$defs": {
     "judgment_column": {
       "type": "object",
-      "required": ["title", "subtitle", "items"],
+      "required": [
+        "title",
+        "subtitle",
+        "items"
+      ],
       "properties": {
-        "title": {"type": "string"},
-        "subtitle": {"type": "string"},
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
         "items": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 0,
           "items": {
             "type": "object",
-            "required": ["title", "body"],
+            "required": [
+              "title",
+              "body"
+            ],
             "properties": {
-              "title": {"type": "string"},
-              "body": {"type": "string"}
+              "title": {
+                "type": "string"
+              },
+              "body": {
+                "type": "string"
+              }
             }
           }
+        },
+        "empty_reason": {
+          "type": "string"
         }
       }
     }

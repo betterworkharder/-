@@ -204,31 +204,7 @@ def load_portal_content(root: Path) -> dict[str, Any]:
     return portal
 
 
-def load_weekly_judgment(root: Path, issue_id: str) -> dict[str, Any] | None:
-    path = root / "output" / "weekly" / issue_id / "weekly-judgment.json"
-    if not path.exists():
-        return None
-    judgment = read_json(path)
-    for key in ["title", "review_status"]:
-        if not str(judgment.get(key, "")).strip():
-            raise PublicationError(f"{issue_id}: weekly judgment missing {key}")
-    for key in ["policy", "industry"]:
-        if not isinstance(judgment.get(key), dict):
-            raise PublicationError(f"{issue_id}: weekly judgment missing {key}")
-    for column_key in ["policy", "industry"]:
-        column = judgment[column_key]
-        if not str(column.get("title", "")).strip() or not str(column.get("subtitle", "")).strip():
-            raise PublicationError(f"{issue_id}: weekly judgment {column_key} heading is incomplete")
-        items = column.get("items")
-        if not isinstance(items, list) or not items:
-            raise PublicationError(f"{issue_id}: weekly judgment {column_key} items are missing")
-        for item in items:
-            if not isinstance(item, dict) or not str(item.get("title", "")).strip() or not str(item.get("body", "")).strip():
-                raise PublicationError(f"{issue_id}: weekly judgment {column_key} item is incomplete")
-    return judgment
-
-
-def browser_issue(issue: dict[str, Any], weekly_judgment: dict[str, Any] | None = None) -> dict[str, Any]:
+def browser_issue(issue: dict[str, Any]) -> dict[str, Any]:
     browser_value = {
         "schema_version": issue["schema_version"],
         "issue_id": issue["issue_id"],
@@ -238,19 +214,33 @@ def browser_issue(issue: dict[str, Any], weekly_judgment: dict[str, Any] | None 
         "categories": issue["categories"],
         "content_hash": issue["provenance"]["content_hash"],
     }
-    if weekly_judgment is not None:
-        browser_value["weekly_judgment"] = weekly_judgment
+    if "weekly_judgment" in issue:
+        browser_value["weekly_judgment"] = issue["weekly_judgment"]
     return browser_value
 
 
 def build_site_content(root: Path) -> dict[str, Any]:
     issues = load_published_issues(root)
+    # Local research sources can change independently of published DTOs. Require
+    # an explicit issue export after review; public-only builds need no sources.
+    sys.path.insert(0, str(root))
+    from scripts.intelligence_pipeline import load_weekly_judgment, public_weekly_judgment
+
+    for issue in issues:
+        directory = root / "output" / "weekly" / issue["issue_id"]
+        selected = directory / "selected-intelligence.json"
+        if selected.exists():
+            judgment, errors = load_weekly_judgment(directory, read_json(selected))
+            if errors:
+                raise PublicationError(f"{issue['issue_id']}: {'; '.join(errors)}")
+            if public_weekly_judgment(judgment) != issue.get("weekly_judgment"):
+                raise PublicationError(f"{issue['issue_id']}: weekly judgment is stale; export with --issue {issue['issue_id']}")
     expected_index = build_index(issues)
     index_path = root / "publish" / "issues.json"
     if not index_path.exists() or read_json(index_path) != expected_index:
         raise PublicationError("publish/issues.json is stale; export the issue or run --refresh-index")
     browser_issues = [
-        browser_issue(issue, load_weekly_judgment(root, issue["issue_id"]))
+        browser_issue(issue)
         for issue in issues
     ]
     portal = load_portal_content(root)
@@ -336,6 +326,7 @@ def convert_selected_item(item: dict[str, Any]) -> dict[str, Any]:
         "businessConnection": business_connection,
         "judgmentSuggestion": "\n".join(str(action) for action in item.get("recommended_actions", [])),
         "rating": len(item["stars"]),
+        "tags": item.get("tags", [])[:3],
         "summary": item["summary"],
         "interpretations": interpretations,
         "downloads": [{"title": "官方原文", "url": url} for url in official_links],
@@ -348,7 +339,7 @@ def build_issue_from_selected(root: Path, issue_id: str) -> tuple[dict[str, Any]
         raise PublicationError(f"{issue_id}: selected intelligence is missing")
 
     sys.path.insert(0, str(root))
-    from scripts.intelligence_pipeline import validate_weekly_dir
+    from scripts.intelligence_pipeline import validate_weekly_dir, load_weekly_judgment, public_weekly_judgment
 
     if validate_weekly_dir(selected_path.parent) != 0:
         raise PublicationError(f"{issue_id}: weekly quality validation failed")
@@ -418,6 +409,8 @@ def build_issue_from_selected(root: Path, issue_id: str) -> tuple[dict[str, Any]
             raise PublicationError(f"{issue_id}: unknown category {item.get('category')!r}")
         categories_by_id[category_id]["news"].append(convert_selected_item(item))
 
+    judgment, _errors = load_weekly_judgment(selected_path.parent, records)
+    judgment_fields = {"weekly_judgment": public_weekly_judgment(judgment)} if judgment else {}
     issue = finalize_issue(
         {
             "schema_version": 1,
@@ -426,6 +419,7 @@ def build_issue_from_selected(root: Path, issue_id: str) -> tuple[dict[str, Any]
             "display_date": issue_id.replace("-", "."),
             "title": f"{int(issue_id[0:4])}年{int(issue_id[5:7])}月{int(issue_id[8:10])}日刊",
             "categories": categories,
+            **judgment_fields,
             "provenance": {
                 "type": "validated_intelligence",
                 "source_file": f"output/weekly/{issue_id}/selected-intelligence.json",

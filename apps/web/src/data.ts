@@ -17,6 +17,7 @@ export interface NewsDetail {
   businessConnection: string;
   judgmentSuggestion?: string;
   rating: number;
+  tags?: string[];
   summary: string;
   interpretations?: NewsLink[];
   downloads?: NewsLink[];
@@ -34,6 +35,7 @@ export interface WeeklyJudgmentColumn {
   title: string;
   subtitle: string;
   items: Array<{title: string; body: string}>;
+  empty_reason?: string;
 }
 
 export interface WeeklyJudgment {

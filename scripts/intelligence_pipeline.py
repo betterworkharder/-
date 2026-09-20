@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 from datetime import datetime, timedelta
 from html import unescape
 import json
@@ -10,12 +11,24 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 
-CATEGORY_ORDER = [
+CURRENT_CATEGORY_ORDER = [
     "政策趋势与监管",
     "竞合与标杆动向",
     "市场客户趋势与资金项目机会",
     "技术与能力演进",
 ]
+
+LEGACY_CATEGORY_ORDER = [
+    "政策趋势与监管",
+    "资金与项目机会",
+    "竞合与标杆动向",
+    "市场与客户趋势",
+    "技术与能力演进",
+]
+
+# Keep the public name for callers that still import it. New issues use the
+# merged four-module order; early five-module issues remain renderable.
+CATEGORY_ORDER = CURRENT_CATEGORY_ORDER
 
 CATEGORY_FIELDS = {
     "政策趋势与监管": [
@@ -409,7 +422,7 @@ class QualityValidator:
             legacy_items = [
                 str(item.get("id", "<missing-id>"))
                 for item in self.records
-                if item.get("category") not in CATEGORY_ORDER
+                if item.get("category") not in CURRENT_CATEGORY_ORDER
             ]
             if legacy_items:
                 errors.append(
@@ -535,18 +548,113 @@ class QualityValidator:
         return []
 
 
+# Earlier archives keep their original content; all new issues require synthesis.
+JUDGMENT_REQUIRED_FROM = "2026-09-18"
+
+
+def load_weekly_judgment(path: Path, records: Sequence[Dict[str, Any]]):
+    """Return source judgment and errors, including stale/foreign evidence checks."""
+    source = path / "weekly-judgment.json"
+    if not source.exists():
+        return None, (["weekly-judgment.json is required"] if path.name >= JUDGMENT_REQUIRED_FROM else [])
+    try:
+        value = json.loads(source.read_text(encoding="utf-8"))
+    except (ValueError, OSError) as exc:
+        return None, [f"weekly-judgment.json: {exc}"]
+    if not isinstance(value, dict):
+        return None, ["weekly-judgment.json must be an object"]
+    errors = []
+    strict = path.name >= JUDGMENT_REQUIRED_FROM
+    if not isinstance(value.get("title"), str) or not value["title"].strip():
+        errors.append("weekly judgment title is missing")
+    if value.get("review_status") != "待人工审核草稿":
+        errors.append("weekly judgment must remain 待人工审核草稿")
+    if strict:
+        if value.get("issue_id") != path.name:
+            errors.append("weekly judgment issue_id does not match this issue")
+        digest = hashlib.sha256((path / "selected-intelligence.json").read_bytes()).hexdigest()
+        if value.get("source_hash") != digest:
+            errors.append("weekly judgment source_hash is stale; recheck judgments against selected intelligence")
+    by_id = {item["id"]: item for item in records}
+    for key, heading in [("policy", "政策判断"), ("industry", "行业趋势判断")]:
+        column = value.get(key)
+        if not isinstance(column, dict):
+            errors.append(f"weekly judgment {key} is missing")
+            continue
+        if column.get("title") != heading or not isinstance(column.get("subtitle"), str) or not column["subtitle"].strip():
+            errors.append(f"weekly judgment {key} heading is incomplete")
+        items = column.get("items")
+        if not isinstance(items, list) or (strict and len(items) > 3):
+            errors.append(f"weekly judgment {key} requires 0–3 items")
+            continue
+        if not items and not str(column.get("empty_reason", "")).strip():
+            errors.append(f"weekly judgment {key} requires an explicit empty_reason")
+        for item in items:
+            if not isinstance(item, dict) or any(not isinstance(item.get(k), str) or not item[k].strip() for k in ["title", "body"]):
+                errors.append(f"weekly judgment {key} item is incomplete")
+                continue
+            if not strict:
+                continue
+            ids = item.get("evidence_ids")
+            if not isinstance(ids, list) or not ids or any(not isinstance(i, str) or i not in by_id for i in ids):
+                errors.append(f"weekly judgment {key} evidence_ids must reference this issue's selected items")
+                continue
+            if len(ids) != len(set(ids)):
+                errors.append(f"weekly judgment {key} evidence_ids must be unique")
+            if key == "policy" and not any(by_id[i]["category"] == "政策趋势与监管" for i in ids):
+                errors.append("weekly judgment policy requires policy evidence")
+    return value, errors
+
+
+def public_weekly_judgment(value):
+    """Explicit whitelist: evidence IDs, hashes and analyst notes stay internal."""
+    if value is None:
+        return None
+    result = {key: value[key] for key in ["title", "review_status"]}
+    for key in ["policy", "industry"]:
+        column = value[key]
+        result[key] = {k: column[k] for k in ["title", "subtitle"]}
+        result[key]["items"] = [{k: item[k] for k in ["title", "body"]} for item in column["items"]]
+        if not column["items"]:
+            result[key]["empty_reason"] = column["empty_reason"]
+    return result
+
+
+def render_judgment(value):
+    lines = ["## 本周主判断", "", value["title"], ""]
+    for key in ["policy", "industry"]:
+        column = value[key]
+        lines.extend([f"### {column['title']}", "", column["subtitle"], ""])
+        for item in column["items"]:
+            lines.extend([f"- **{item['title']}：**{item['body']}", ""])
+        if not column["items"]:
+            lines.extend([column["empty_reason"], ""])
+    return "\n".join(lines)
+
+
 class IntelligenceRenderer:
-    def __init__(self, records: Sequence[Dict[str, Any]], title: str = "丰行慧运周度情报"):
+    def __init__(self, records: Sequence[Dict[str, Any]], title: str = "丰行慧运周度情报", judgment=None):
         self.records = list(records)
         self.title = title
+        self.judgment = judgment
 
     def render(self) -> str:
         lines = [f"# {self.title}", "", "状态：待人工审核草稿", ""]
-        by_category = {category: [] for category in CATEGORY_ORDER}
+        if self.judgment is not None:
+            lines.extend([render_judgment(self.judgment), ""])
+        category_order = (
+            CURRENT_CATEGORY_ORDER
+            if all(
+                item.get("category") in CURRENT_CATEGORY_ORDER
+                for item in self.records
+            )
+            else LEGACY_CATEGORY_ORDER
+        )
+        by_category = {category: [] for category in category_order}
         for item in self.records:
             by_category.setdefault(item["category"], []).append(item)
 
-        for category in CATEGORY_ORDER:
+        for category in category_order:
             lines.append(f"## {category}")
             lines.append("")
             items = by_category.get(category, [])
@@ -563,7 +671,7 @@ class IntelligenceRenderer:
         source = item["source"]
         fields = item["fields"]
         lines = [
-            f"【{item['stars']}】",
+            f"【{item['stars']}】" + (" " + " · ".join(item["tags"][:3]) if item.get("tags") else ""),
             "",
             item["title"],
             "",
@@ -608,6 +716,8 @@ def validate_weekly_dir(path: Path) -> int:
     records = load_json_records(selected_path)
     errors = QualityValidator(records).validate()
     errors.extend(_validate_issue_date_window(path, records))
+    judgment, judgment_errors = load_weekly_judgment(path, records)
+    errors.extend(judgment_errors)
 
     if source_audit_path.exists():
         errors.extend(_validate_source_audit(source_audit_path, records))
@@ -617,6 +727,8 @@ def validate_weekly_dir(path: Path) -> int:
     if google_path.exists():
         rendered_urls = {item["source"]["url"] for item in records if "source" in item}
         google_text = google_path.read_text(encoding="utf-8")
+        if judgment is not None and not judgment_errors and render_judgment(judgment).strip() not in google_text:
+            errors.append("google-ai-studio-input.md weekly judgment is missing or stale; render again")
         for url in rendered_urls:
             if url not in google_text:
                 errors.append(f"google-ai-studio-input.md missing selected URL: {url}")
@@ -810,11 +922,13 @@ def render_weekly_dir(path: Path) -> int:
     records = load_json_records(path / "selected-intelligence.json")
     errors = QualityValidator(records).validate()
     errors.extend(_validate_issue_date_window(path, records))
+    judgment, judgment_errors = load_weekly_judgment(path, records)
+    errors.extend(judgment_errors)
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
-    output = IntelligenceRenderer(records, title=path.name + " 丰行慧运周度情报").render()
+    output = IntelligenceRenderer(records, title=path.name + " 丰行慧运周度情报", judgment=judgment).render()
     (path / "google-ai-studio-input.md").write_text(output, encoding="utf-8")
     print(path / "google-ai-studio-input.md")
     return 0

@@ -223,6 +223,22 @@ class QualityValidatorTest(unittest.TestCase):
         self.assertNotIn("核心动作：", text)
         self.assertNotIn("参考意义：", text)
 
+    def test_renderer_keeps_five_module_order_for_legacy_records(self):
+        funding = self._base_item("资金与项目机会")
+        market = self._base_item("市场与客户趋势")
+
+        text = IntelligenceRenderer([market, funding]).render()
+
+        headings = [
+            "## 政策趋势与监管",
+            "## 资金与项目机会",
+            "## 竞合与标杆动向",
+            "## 市场与客户趋势",
+            "## 技术与能力演进",
+        ]
+        self.assertTrue(all(heading in text for heading in headings))
+        self.assertEqual([text.index(heading) for heading in headings], sorted(text.index(heading) for heading in headings))
+
     def test_load_json_records_accepts_list_file(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "selected-intelligence.json"
