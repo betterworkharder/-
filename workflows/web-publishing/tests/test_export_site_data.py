@@ -70,6 +70,43 @@ class SitePublicationTest(unittest.TestCase):
         self.assertEqual(mapped["rating"], 4)
         self.assertEqual(mapped["sourceLabel"], "测试来源")
 
+    def test_user_requested_observation_exports_without_rating_or_internal_fields(self):
+        for tags, expected_tags in [
+            ([], ["技术观察"]),
+            (["路径规划", "调度", "集成"], ["技术观察", "路径规划", "调度"]),
+            (["路径规划", "技术观察", "技术观察", "调度"], ["技术观察", "路径规划", "调度"]),
+        ]:
+            with self.subTest(tags=tags):
+                item = {
+                    "id": "FXHY-OBSERVATION-TEST",
+                    "category": "技术与能力演进",
+                    "title": "技术观察测试",
+                    "summary": "测试摘要",
+                    "published_at": "2026-10-16",
+                    "stars": "技术观察",
+                    "tags": tags,
+                    "fields": {"技术/能力方向": "路径规划"},
+                    "source": {"name": "测试来源", "url": "https://example.com"},
+                    "selection_mode": "user_requested_observation",
+                    "user_request": "仅供内部核验的授权记录",
+                    "selection_reason": "仅供内部核验的入选原因",
+                    "disposition": "技术观察",
+                    "score": 70,
+                    "score_breakdown": {"business_relevance": 25},
+                    "review_status": "待人工审核草稿",
+                }
+                original = copy.deepcopy(item)
+                mapped = export_site_data.convert_selected_item(item)
+                self.assertEqual(mapped["rating"], 0)
+                self.assertEqual(mapped["tags"], expected_tags)
+                self.assertEqual(item, original)
+                internal_fields = {
+                    "selection_mode", "user_request", "selection_reason", "score",
+                    "score_breakdown", "review_status", "stars",
+                }
+                self.assertTrue(internal_fields.isdisjoint(mapped))
+                self.assertNotIn("仅供内部核验", json.dumps(mapped, ensure_ascii=False))
+
     def test_validated_issue_exports_without_review_record(self):
         internal_issue = ROOT / "output" / "weekly" / "2026-07-10"
         if not internal_issue.exists():

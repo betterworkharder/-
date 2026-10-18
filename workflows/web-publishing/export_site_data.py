@@ -314,6 +314,10 @@ def convert_selected_item(item: dict[str, Any]) -> dict[str, Any]:
         url for url in _link_values(fields.get("官方原文链接"))
         if url.startswith(("https://", "http://")) and url != source["url"]
     ]
+    is_observation = item.get("selection_mode") == "user_requested_observation"
+    tags = item.get("tags", [])
+    if is_observation:
+        tags = ["技术观察", *(tag for tag in tags if tag != "技术观察")]
     return {
         "id": item["id"],
         "sourceTitle": item["title"],
@@ -325,8 +329,8 @@ def convert_selected_item(item: dict[str, Any]) -> dict[str, Any]:
         "strategicSignal": strategic_signal,
         "businessConnection": business_connection,
         "judgmentSuggestion": "\n".join(str(action) for action in item.get("recommended_actions", [])),
-        "rating": len(item["stars"]),
-        "tags": item.get("tags", [])[:3],
+        "rating": 0 if is_observation else len(item["stars"]),
+        "tags": tags[:3],
         "summary": item["summary"],
         "interpretations": interpretations,
         "downloads": [{"title": "官方原文", "url": url} for url in official_links],

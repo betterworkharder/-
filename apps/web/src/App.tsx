@@ -89,7 +89,7 @@ function RatingStars({rating}: {rating: number}) {
 
 function NewsRating({news}: {news: NewsDetail}) {
   return <div className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-1.5">
-    <div className="shrink-0" aria-label={`${news.rating}星`}><RatingStars rating={news.rating} /></div>
+    {news.rating > 0 && <div className="shrink-0" aria-label={`${news.rating}星`}><RatingStars rating={news.rating} /></div>}
     {news.tags?.slice(0, 3).map((tag) => <span key={tag} className="inline-flex rounded-md border border-[#dbe8fc] bg-[#f1f6ff] px-1.5 py-0.5 text-[10px] font-medium leading-4 text-[#5276a6] whitespace-nowrap">{tag}</span>)}
   </div>;
 }

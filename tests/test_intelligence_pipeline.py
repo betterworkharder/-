@@ -18,6 +18,72 @@ from scripts.intelligence_pipeline import (
 
 
 class QualityValidatorTest(unittest.TestCase):
+    def _observation_item(self):
+        item = self._base_item("技术与能力演进")
+        item.update(
+            score=73,
+            stars="技术观察",
+            disposition="技术观察",
+            selection_mode="user_requested_observation",
+            selection_reason="保留产品进展供评估，尚不满足正式候选标准。",
+            user_request="请在技术模块展示该项观察。",
+        )
+        return item
+
+    def test_score_below_75_still_rejected_without_observation_request(self):
+        item = self._base_item("技术与能力演进")
+        item.update(score=73, stars="观察池")
+        self.assertIn(
+            "FXHY-TEST-BASE: score below 75 cannot enter formal output",
+            QualityValidator([item]).validate(),
+        )
+
+    def test_accepts_explicit_user_requested_technology_observation(self):
+        for score in [60, 73, 74]:
+            with self.subTest(score=score):
+                item = self._observation_item()
+                item["score"] = score
+                self.assertEqual(QualityValidator([item]).validate(), [])
+
+    def test_rejects_observation_with_invalid_metadata(self):
+        for field, value in [
+            ("selection_mode", "user_requested_observaton"),
+            ("category", "竞合与标杆动向"),
+            ("score", 59),
+            ("score", 75),
+            ("score", 73.5),
+            ("stars", "★★★"),
+            ("disposition", "正式候选"),
+            ("review_status", "已批准"),
+            ("selection_reason", " "),
+            ("selection_reason", None),
+            ("user_request", ""),
+            ("user_request", None),
+        ]:
+            with self.subTest(field=field, value=value):
+                item = self._observation_item()
+                item[field] = value
+                if field == "category":
+                    item["fields"] = self._base_item(value)["fields"]
+                self.assertTrue(QualityValidator([item]).validate())
+        for field in ["selection_reason", "user_request"]:
+            with self.subTest(missing=field):
+                item = self._observation_item()
+                del item[field]
+                self.assertTrue(QualityValidator([item]).validate())
+
+    def test_observations_keep_source_duplicate_and_date_checks(self):
+        item = self._observation_item()
+        item["source"]["tier"] = "C"
+        self.assertTrue(any("C-tier" in error for error in QualityValidator([item]).validate()))
+        item = self._observation_item()
+        duplicate = self._observation_item()
+        duplicate["id"] = "FXHY-TEST-DUP"
+        self.assertTrue(any("duplicate source url" in error for error in QualityValidator([item, duplicate]).validate()))
+        item.update(published_at="2026-07-13", source_published_at="2026-07-13", event_date="2026-07-09")
+        self.assertTrue(any("event_date 2026-07-09 is outside" in error for error in _validate_issue_date_window(Path("2026-07-17"), [item])))
+
+
     def test_rejects_item_published_outside_issue_window(self):
         item = self._base_item("竞合与标杆动向")
         item["published_at"] = "2026-07-09"

@@ -37,6 +37,22 @@ class WeeklyJudgmentTest(unittest.TestCase):
     def test_accepts_same_issue_evidence(self):
         self.assertEqual(self.check_value(self.value), [])
 
+    def test_rejects_observation_even_when_mixed_with_formal_evidence(self):
+        self.records.append({
+            'id': 'observation-1', 'category': '技术与能力演进',
+            'selection_mode': 'user_requested_observation',
+        })
+        self.source.write_text(json.dumps(self.records))
+        self.value['source_hash'] = hashlib.sha256(self.source.read_bytes()).hexdigest()
+        for key, formal_id in [('policy', 'policy-1'), ('industry', 'tech-1')]:
+            with self.subTest(column=key):
+                data = copy.deepcopy(self.value)
+                data[key]['items'][0]['evidence_ids'] = [formal_id, 'observation-1']
+                self.assertIn(
+                    f'weekly judgment {key} cannot cite user-requested observations as formal evidence',
+                    self.check_value(data),
+                )
+
     def test_rejects_cross_issue_and_stale_source(self):
         for field, value in [('issue_id', '2026-09-11'), ('source_hash', '0' * 64)]:
             with self.subTest(field=field):

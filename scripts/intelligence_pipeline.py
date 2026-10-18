@@ -492,6 +492,26 @@ class QualityValidator:
             score = int(item.get("score"))
         except (TypeError, ValueError):
             return [f"{item_id}: score must be an integer"]
+        if item.get("selection_mode") == "user_requested_observation":
+            # An explicitly requested observation is displayed without stars;
+            # it is not an exception to the formal candidate score threshold.
+            if isinstance(item.get("score"), float) and not item["score"].is_integer():
+                errors.append(f"{item_id}: score must be an integer")
+            if not 60 <= score <= 74:
+                errors.append(f"{item_id}: user-requested observation score must be 60–74")
+            for field, expected in {
+                "category": "技术与能力演进",
+                "stars": "技术观察",
+                "disposition": "技术观察",
+                "review_status": "待人工审核草稿",
+            }.items():
+                if item.get(field) != expected:
+                    errors.append(f"{item_id}: user-requested observation {field} must be {expected}")
+            for field in ["selection_reason", "user_request"]:
+                value = item.get(field)
+                if not isinstance(value, str) or not value.strip():
+                    errors.append(f"{item_id}: user-requested observation requires non-empty {field}")
+            return errors
         expected = score_to_stars(score)
         actual = str(item.get("stars", "")).strip()
         if expected != actual:
@@ -593,9 +613,15 @@ def load_weekly_judgment(path: Path, records: Sequence[Dict[str, Any]]):
             if not isinstance(item, dict) or any(not isinstance(item.get(k), str) or not item[k].strip() for k in ["title", "body"]):
                 errors.append(f"weekly judgment {key} item is incomplete")
                 continue
+            ids = item.get("evidence_ids")
+            if isinstance(ids, list) and any(
+                isinstance(i, str)
+                and by_id.get(i, {}).get("selection_mode") == "user_requested_observation"
+                for i in ids
+            ):
+                errors.append(f"weekly judgment {key} cannot cite user-requested observations as formal evidence")
             if not strict:
                 continue
-            ids = item.get("evidence_ids")
             if not isinstance(ids, list) or not ids or any(not isinstance(i, str) or i not in by_id for i in ids):
                 errors.append(f"weekly judgment {key} evidence_ids must reference this issue's selected items")
                 continue
