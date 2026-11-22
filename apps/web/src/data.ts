@@ -39,7 +39,7 @@ export interface WeeklyJudgmentColumn {
 }
 
 export interface WeeklyJudgment {
-  title: string;
+  title: string | null;
   policy: WeeklyJudgmentColumn;
   industry: WeeklyJudgmentColumn;
   review_status: string;

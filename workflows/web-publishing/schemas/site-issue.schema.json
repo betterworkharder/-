@@ -39,7 +39,7 @@
       ],
       "properties": {
         "title": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "review_status": {
           "type": "string"

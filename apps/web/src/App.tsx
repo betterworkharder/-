@@ -72,7 +72,7 @@ function WeeklyMainJudgment({judgment}: {judgment?: WeeklyJudgment}) {
     <motion.div initial={{opacity: 0, y: 18}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}} className="relative overflow-hidden rounded-[32px] border border-[#d6e4ff] bg-white/95 p-6 md:p-10 shadow-[0_18px_50px_rgba(52,103,180,0.05)]">
       <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#2468ff] via-cyan-400 to-indigo-600" />
       <div className="flex items-center gap-3 mb-4"><div className="w-11 h-11 rounded-2xl bg-[#2468ff] text-white shadow-[0_10px_22px_rgba(36,104,255,0.28)] flex items-center justify-center"><Icons.Crosshair className="w-5 h-5" /></div><div><p className="text-[10px] font-black tracking-[0.28em] text-[#2468ff] uppercase">Weekly Main Judgment</p><h2 className="text-3xl font-black text-slate-900 font-display leading-tight">本周主判断</h2></div></div>
-      <p className="text-xl md:text-2xl font-black text-[#17233b] tracking-[-0.025em] leading-[1.6]">{judgment.title}</p>
+      {judgment.title !== null && <p className="text-xl md:text-2xl font-black text-[#17233b] tracking-[-0.025em] leading-[1.6]">{judgment.title}</p>}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
         {columns.map(({key, icon: Icon, content}) => <article key={key} className="rounded-2xl border border-[#d6e4ff] bg-[#f5f8ff] p-6">
           <div className="flex items-center gap-3"><div className="w-9 h-9 rounded-xl bg-white border border-[#d8e6ff] text-[#2468ff] flex items-center justify-center"><Icon className="w-[18px] h-[18px]" /></div><div><h3 className="text-[17px] font-black text-[#2468ff]">{content.title}</h3><p className="text-[11px] font-bold text-[#8094b2] mt-0.5">{content.subtitle}</p></div></div>
